@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dravidianism — The Philosophy Behind the Politics</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Literata:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #1a1208;
+  --paper: #faf6ee;
+  --paper2: #f3ede0;
+  --paper3: #ebe3d0;
+  --dust: #d4c9b0;
+  --dust2: #b8aa90;
+  --muted: #8a7d68;
+  --accent: #8b3a00;
+  --accent2: #5a1a00;
+  --gold: #a07030;
+  --teal: #1a5848;
+  --teal-s: rgba(26,88,72,.08);
+  --red: #8b2020;
+  --red-s: rgba(139,32,32,.08);
+  --blue: #1a3868;
+  --blue-s: rgba(26,56,104,.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Literata', Georgia, serif;
+  font-size: 16px;
+  line-height: 1.75;
+  min-height: 100vh;
+}
+
+/* GRAIN TEXTURE */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+}
+
+.wrap { max-width: 780px; margin: 0 auto; padding: 0 24px 120px; position: relative; z-index: 1; }
+
+/* HEADER */
+.masthead {
+  padding: 60px 0 40px;
+  border-bottom: 2px solid var(--ink);
+  margin-bottom: 0;
+  text-align: center;
+}
+
+.masthead-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 20px;
+  display: block;
+}
+
+.masthead h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(36px, 6vw, 64px);
+  font-weight: 900;
+  line-height: 1.0;
+  margin-bottom: 16px;
+  letter-spacing: -.02em;
+}
+
+.masthead h1 em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.masthead-sub {
+  font-size: 15px;
+  color: var(--muted);
+  font-style: italic;
+  max-width: 520px;
+  margin: 0 auto 24px;
+  line-height: 1.65;
+  font-weight: 300;
+}
+
+.intent-box {
+  background: var(--paper2);
+  border: 1.5px solid var(--dust);
+  border-radius: 6px;
+  padding: 16px 20px;
+  font-size: 13px;
+  color: var(--muted);
+  font-style: italic;
+  line-height: 1.65;
+  margin: 0 auto;
+  max-width: 580px;
+}
+
+/* CHAPTER HEADERS */
+.chapter {
+  padding: 52px 0 0;
+  margin-bottom: 40px;
+}
+
+.ch-num {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--muted);
+  display: block;
+  margin-bottom: 8px;
+}
+
+.ch-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(22px, 4vw, 34px);
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 10px;
+  letter-spacing: -.01em;
+}
+
+.ch-lead {
+  font-size: 15px;
+  color: var(--muted);
+  font-style: italic;
+  line-height: 1.7;
+  margin-bottom: 28px;
+  font-weight: 300;
+  border-left: 3px solid var(--dust);
+  padding-left: 16px;
+}
+
+.rule { height: 1px; background: var(--dust); margin: 40px 0; }
+.rule-heavy { height: 2px; background: var(--ink); margin: 52px 0; }
+
+/* PROSE */
+.prose { font-size: 15.5px; line-height: 1.8; color: var(--ink); margin-bottom: 20px; }
+.prose strong { font-weight: 700; color: var(--accent2); }
+.prose em { font-style: italic; }
+
+/* QUIZ */
+.quiz-wrap { margin: 32px 0; }
+
+.quiz-intro {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.q-item {
+  background: var(--paper2);
+  border: 1.5px solid var(--dust);
+  border-radius: 8px;
+  padding: 20px 22px;
+  margin-bottom: 14px;
+  transition: border-color .2s;
+}
+
+.q-item.revealed { border-color: var(--gold); }
+
+.q-text {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: 14px;
+  line-height: 1.55;
+}
+
+.q-options { display: flex; flex-direction: column; gap: 8px; }
+
+.q-opt {
+  background: var(--paper);
+  border: 1.5px solid var(--dust2);
+  border-radius: 5px;
+  padding: 10px 14px;
+  font-size: 14px;
+  color: var(--ink);
+  cursor: pointer;
+  text-align: left;
+  transition: all .2s;
+  font-family: 'Literata', Georgia, serif;
+  line-height: 1.4;
+}
+
+.q-opt:hover:not(:disabled) { border-color: var(--gold); background: var(--paper3); }
+.q-opt:disabled { cursor: default; }
+.q-opt.selected { border-color: var(--accent); background: var(--paper3); }
+
+.q-reflection {
+  display: none;
+  margin-top: 14px;
+  padding: 14px 16px;
+  background: var(--paper3);
+  border-radius: 5px;
+  font-size: 13.5px;
+  color: var(--muted);
+  font-style: italic;
+  line-height: 1.65;
+  border-left: 3px solid var(--gold);
+}
+
+.q-reflection.show { display: block; }
+.q-reflection strong { color: var(--ink); font-style: normal; }
+
+/* CALLOUT BOXES */
+.callout {
+  border-radius: 6px;
+  padding: 18px 20px;
+  margin: 24px 0;
+  font-size: 14.5px;
+  line-height: 1.7;
+}
+
+.callout.thought {
+  background: var(--paper2);
+  border-left: 4px solid var(--gold);
+  color: var(--ink);
+}
+
+.callout.warn {
+  background: var(--red-s);
+  border-left: 4px solid var(--red);
+  color: var(--ink);
+}
+
+.callout.truth {
+  background: var(--teal-s);
+  border-left: 4px solid var(--teal);
+  color: var(--ink);
+}
+
+.callout.neutral {
+  background: var(--blue-s);
+  border-left: 4px solid var(--blue);
+  color: var(--ink);
+}
+
+.callout-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  display: block;
+  margin-bottom: 6px;
+}
+
+/* TIMELINE */
+.timeline { margin: 28px 0; position: relative; padding-left: 24px; }
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 7px; top: 8px; bottom: 8px;
+  width: 2px;
+  background: linear-gradient(180deg, var(--accent), var(--gold), var(--teal));
+}
+
+.tl-item { position: relative; margin-bottom: 24px; }
+.tl-dot {
+  position: absolute;
+  left: -20px; top: 6px;
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  border: 2px solid var(--paper);
+}
+
+.tl-yr {
+  font-family: 'Space Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 3px;
+}
+
+.tl-title { font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 4px; line-height: 1.3; }
+.tl-body { font-size: 13px; color: var(--muted); line-height: 1.65; }
+
+/* COMPARE TABLE */
+.compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border: 2px solid var(--dust);
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 24px 0;
+}
+@media(max-width:600px){ .compare { grid-template-columns: 1fr; } }
+
+.compare-col-head {
+  padding: 12px 18px;
+  font-family: 'Space Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  border-bottom: 1.5px solid var(--dust);
+}
+
+.compare-col-head.a { background: var(--accent); color: var(--paper); }
+.compare-col-head.b { background: var(--teal); color: var(--paper); border-left: 2px solid var(--dust); }
+.compare-col.b .compare-item { border-left: 2px solid var(--dust); }
+
+.compare-item {
+  padding: 13px 18px;
+  border-bottom: 1px solid var(--dust);
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.55;
+  background: var(--paper2);
+}
+.compare-item:last-child { border-bottom: none; }
+.compare-item strong { color: var(--ink); display: block; font-size: 12.5px; margin-bottom: 2px; }
+
+/* FREEBIE VIZ */
+.freebie-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 20px 0;
+}
+@media(max-width:560px){ .freebie-grid { grid-template-columns: 1fr; } }
+
+.fb-card {
+  border-radius: 7px;
+  padding: 16px;
+  border: 1.5px solid;
+}
+
+.fb-card.invest {
+  background: var(--teal-s);
+  border-color: var(--teal);
+}
+
+.fb-card.circus {
+  background: var(--red-s);
+  border-color: var(--red);
+}
+
+.fb-card-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.fb-card.invest .fb-card-label { color: var(--teal); }
+.fb-card.circus .fb-card-label { color: var(--red); }
+
+.fb-card-title { font-size: 13.5px; font-weight: 600; color: var(--ink); margin-bottom: 6px; }
+.fb-card-body { font-size: 12.5px; color: var(--muted); line-height: 1.6; }
+
+/* PERIYAR SECTION */
+.periyar-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin: 20px 0;
+}
+@media(max-width:580px){ .periyar-split { grid-template-columns: 1fr; } }
+
+.ps-col {
+  border-radius: 7px;
+  padding: 16px;
+  border: 1.5px solid;
+}
+
+.ps-col.rational { background: var(--teal-s); border-color: var(--teal); }
+.ps-col.irrational { background: var(--red-s); border-color: var(--red); }
+
+.ps-col-head {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.ps-col.rational .ps-col-head { color: var(--teal); }
+.ps-col.irrational .ps-col-head { color: var(--red); }
+
+.ps-item {
+  font-size: 12.5px;
+  color: var(--muted);
+  line-height: 1.6;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--dust);
+}
+
+.ps-item:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+.ps-item strong { color: var(--ink); display: block; font-size: 12px; margin-bottom: 2px; }
+
+/* FAILURE CARDS */
+.fail-list { margin: 20px 0; }
+.fail-item {
+  background: var(--paper2);
+  border: 1.5px solid var(--dust);
+  border-radius: 7px;
+  padding: 16px 18px;
+  margin-bottom: 12px;
+}
+
+.fail-num {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.fail-title { font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 5px; }
+.fail-body { font-size: 13px; color: var(--muted); line-height: 1.65; }
+
+/* CLOSING REFLECTION */
+.reflection-section {
+  margin: 40px 0 0;
+  padding: 36px 0 0;
+  border-top: 2px solid var(--ink);
+}
+
+.ref-intro {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  font-style: italic;
+}
+
+.ref-lead {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 28px;
+  font-style: italic;
+  line-height: 1.65;
+}
+
+.ref-q {
+  padding: 20px 22px;
+  border: 1.5px solid var(--dust);
+  border-radius: 7px;
+  margin-bottom: 14px;
+  background: var(--paper2);
+  cursor: pointer;
+  transition: border-color .2s;
+}
+
+.ref-q:hover { border-color: var(--gold); }
+
+.ref-q-text {
+  font-size: 15px;
+  font-style: italic;
+  color: var(--ink);
+  line-height: 1.55;
+  margin-bottom: 0;
+}
+
+.ref-q-expand {
+  display: none;
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid var(--dust);
+  font-size: 13.5px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.ref-q-expand.open { display: block; }
+
+.ref-q-expand p { margin-bottom: 10px; }
+.ref-q-expand p:last-child { margin-bottom: 0; }
+
+/* CITE */
+.cite {
+  font-family: 'Space Mono', monospace;
+  font-size: 9.5px;
+  color: var(--muted);
+  border-top: 1px solid var(--dust);
+  margin-top: 40px;
+  padding-top: 20px;
+  line-height: 1.9;
+}
+
+.cite a { color: var(--teal); }
+
+/* PROGRESS */
+.progress-bar {
+  position: fixed;
+  top: 0; left: 0;
+  height: 3px;
+  background: var(--accent);
+  z-index: 300;
+  transition: width .1s;
+  width: 0%;
+}
+
+/* PULL QUOTE */
+.pull {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(18px, 3vw, 24px);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--accent);
+  line-height: 1.4;
+  margin: 32px 0;
+  padding: 20px 24px;
+  border-left: 4px solid var(--accent);
+  background: var(--paper2);
+  border-radius: 0 6px 6px 0;
+}
+
+/* ANIMATE */
+.fade-up {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity .6s ease, transform .6s ease;
+}
+.fade-up.in { opacity: 1; transform: translateY(0); }
+
+/* NAV dots */
+.nav-dots {
+  position: fixed;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  z-index: 100;
+}
+@media(max-width:900px){ .nav-dots { display: none; } }
+
+.nav-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--dust2);
+  cursor: pointer;
+  transition: all .2s;
+}
+.nav-dot.active { background: var(--accent); transform: scale(1.5); }
+.nav-dot:hover { background: var(--gold); }
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="prog"></div>
+
+<div class="nav-dots" id="navDots">
+  <div class="nav-dot active" onclick="g('quiz')" title="Start Here"></div>
+  <div class="nav-dot" onclick="g('ch1')" title="What is Dravidianism?"></div>
+  <div class="nav-dot" onclick="g('ch2')" title="The Timeline"></div>
+  <div class="nav-dot" onclick="g('ch3')" title="Periyar"></div>
+  <div class="nav-dot" onclick="g('ch4')" title="Philosophy in Practice"></div>
+  <div class="nav-dot" onclick="g('ch5')" title="The Freebie Question"></div>
+  <div class="nav-dot" onclick="g('ch6')" title="Where It Failed"></div>
+  <div class="nav-dot" onclick="g('ch7')" title="Reflection"></div>
+</div>
+
+<div class="wrap">
+
+<!-- MASTHEAD -->
+<div class="masthead fade-up">
+  <span class="masthead-label">A question journey · For curious minds · No agenda</span>
+  <h1>What is <em>Dravidianism</em><br>actually?</h1>
+  <p class="masthead-sub">Not the politics. Not the parties. The 100-year philosophy that most people have an opinion about — but haven't quite examined.</p>
+  <div class="intent-box">
+    This is not an argument for any party. It is not against any party. It is an attempt to separate a <em>philosophy</em> from the <em>politicians</em> who claimed to carry it — and sometimes did, and sometimes didn't. Read slowly. Sit with the questions. There are no right answers here — only more honest ones.
+  </div>
+</div>
+
+<div class="rule-heavy"></div>
+
+<!-- OPENING QUIZ -->
+<div id="quiz" class="chapter fade-up">
+  <span class="ch-num">Before We Begin</span>
+  <div class="ch-title">Where are you starting from?</div>
+  <p class="ch-lead">Not a test. No score. Just a mirror — so you know what assumptions you're walking in with. Answer honestly. Notice what comes up.</p>
+
+  <div class="quiz-wrap">
+    <p class="quiz-intro">Five questions · Your answers stay with you · Tap to reflect</p>
+
+    <div class="q-item" id="q1">
+      <div class="q-text">1. When someone says "Dravidian politics," what's your first instinct?</div>
+      <div class="q-options">
+        <button class="q-opt" onclick="answer(1,'a')">DMK. Family rule. Corruption. Free stuff.</button>
+        <button class="q-opt" onclick="answer(1,'b')">Tamil pride. Anti-caste. Language fights.</button>
+        <button class="q-opt" onclick="answer(1,'c')">I'm not really sure. It's complicated.</button>
+        <button class="q-opt" onclick="answer(1,'d')">A philosophy going back to Periyar.</button>
+      </div>
+      <div class="q-reflection" id="r1">
+        <strong>Notice this:</strong> If your first thought was DMK or corruption, you're not wrong — those things exist. But you jumped from a <em>party</em> to a <em>philosophy</em> in one step. That's the exact conflation this piece wants to gently pull apart. If your first thought was Tamil pride or Periyar — you may already have some separation between the two. Neither is more correct. Both are worth examining.
+      </div>
+    </div>
+
+    <div class="q-item" id="q2">
+      <div class="q-text">2. Who started the noon meal scheme in Tamil Nadu?</div>
+      <div class="q-options">
+        <button class="q-opt" onclick="answer(2,'a')">MGR</button>
+        <button class="q-opt" onclick="answer(2,'b')">Karunanidhi</button>
+        <button class="q-opt" onclick="answer(2,'c')">Kamarajar</button>
+        <button class="q-opt" onclick="answer(2,'d')">Jayalalithaa</button>
+      </div>
+      <div class="q-reflection" id="r2">
+        <strong>The answer is Kamarajar</strong> — a Congress leader, not a Dravidian party leader. He started it in the late 1950s to keep poor children in school by removing hunger as a barrier. MGR later scaled it dramatically in the 1980s. Jayalalithaa expanded it further. <em>Three different leaders, three different parties, one continuous philosophy: the state owes the poor child a floor.</em> If the philosophy were just DMK politics, how did it survive across parties that hated each other?
+      </div>
+    </div>
+
+    <div class="q-item" id="q3">
+      <div class="q-text">3. "Freebies are ruining Tamil Nadu." Do you agree?</div>
+      <div class="q-options">
+        <button class="q-opt" onclick="answer(3,'a')">Completely agree. It's vote-buying.</button>
+        <button class="q-opt" onclick="answer(3,'b')">Some freebies make sense. Others are circus.</button>
+        <button class="q-opt" onclick="answer(3,'c')">Disagree. Welfare is not a freebie.</button>
+        <button class="q-opt" onclick="answer(3,'d')">I genuinely don't know where to draw the line.</button>
+      </div>
+      <div class="q-reflection" id="r3">
+        <strong>The most honest answer is probably B or D.</strong> There is a real difference between a scheme that removes a barrier to opportunity — a bus pass that lets a woman access work, a meal that keeps a child in school — and a scheme that simply buys a vote with no lasting change. Both exist in TN's political history. The question worth sitting with: <em>who decides which is which, and by what standard?</em>
+      </div>
+    </div>
+
+    <div class="q-item" id="q4">
+      <div class="q-text">4. Has caste discrimination reduced in Tamil Nadu after 70+ years of Dravidian-influenced governance?</div>
+      <div class="q-options">
+        <button class="q-opt" onclick="answer(4,'a')">Yes — it's much better than before.</button>
+        <button class="q-opt" onclick="answer(4,'b')">Partially — education improved but caste still runs deep.</button>
+        <button class="q-opt" onclick="answer(4,'c')">No — it just changed form. Politicians weaponised caste.</button>
+        <button class="q-opt" onclick="answer(4,'d')">I see evidence of both improvement and failure.</button>
+      </div>
+      <div class="q-reflection" id="r4">
+        <strong>D is probably the most accurate reading.</strong> School enrollment across caste lines improved significantly. Backward class representation in government jobs increased. But caste-based violence still occurs. Caste is still the primary unit of electoral calculation. The parties that promised to end caste used caste to win elections. <em>That is a genuine, documented failure of execution — worth examining honestly rather than defending or dismissing entirely.</em>
+      </div>
+    </div>
+
+    <div class="q-item" id="q5">
+      <div class="q-text">5. Have you ever said "I don't like Dravidian politics" when what you really meant was "I don't like how DMK or AIADMK governs"?</div>
+      <div class="q-options">
+        <button class="q-opt" onclick="answer(5,'a')">Yes — I think I've done exactly that.</button>
+        <button class="q-opt" onclick="answer(5,'b')">No — I meant the whole ideology, not just the parties.</button>
+        <button class="q-opt" onclick="answer(5,'c')">I've never really thought about the difference.</button>
+        <button class="q-opt" onclick="answer(5,'d')">For me, the ideology and the parties are inseparable.</button>
+      </div>
+      <div class="q-reflection" id="r5">
+        <strong>This is the central question of this entire piece.</strong> If you answered A — you've already done the hard work. What follows is just context. If you answered B or D — that's worth examining too. Can you point to one idea in Dravidian philosophy that you find wrong — separate from DMK or AIADMK's behaviour? If you can, the critique is substantive. If the critique only exists when you think of the parties — it might be anti-incumbency wearing a philosophical costume. <em>Neither answer makes you right or wrong. Both make you more honest.</em>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="rule-heavy"></div>
+
+<!-- CHAPTER 1: WHAT IS IT -->
+<div id="ch1" class="chapter fade-up">
+  <span class="ch-num">Chapter 01</span>
+  <div class="ch-title">What Dravidianism actually is — and is not</div>
+  <p class="ch-lead">It's older than DMK. It's older than Tamil Nadu as a state. And it belongs to no single party.</p>
+
+  <p class="prose">Let's start with what it is not. Dravidianism is not DMK. It is not AIADMK. It is not Karunanidhi's dynasty. It is not Jayalalithaa's governance style. These are all political expressions — some good, some deeply flawed — of an older underlying philosophy.</p>
+
+  <p class="prose">Dravidianism as a philosophy has four core ideas. These ideas existed before any party. They have been carried — partially and imperfectly — by multiple parties across 100 years.</p>
+
+  <div class="callout thought">
+    <span class="callout-label">The Four Core Ideas</span>
+    <p style="margin-bottom:10px;"><strong>1. Caste hierarchy is the primary obstacle to development</strong> — not poverty, not lack of industry, but the system that decides a child's ceiling at birth. Fix this first.</p>
+    <p style="margin-bottom:10px;"><strong>2. The state owes citizens a floor of dignity</strong> — not charity, not populism, but a baseline below which no person should fall. Food, education, basic mobility.</p>
+    <p style="margin-bottom:10px;"><strong>3. Tamil identity is civilisational, not just cultural</strong> — one of the world's oldest living languages and literary traditions deserves to be protected structurally, not merely celebrated.</p>
+    <p style="margin-bottom:0;"><strong>4. Autonomy from Delhi is governance intelligence</strong> — a state that understands its own conditions will always make better decisions than a central authority managing 1.4 billion people through one lens.</p>
+  </div>
+
+  <p class="prose">Now here is the important thing to hold. These four ideas are not DMK's ideas. Kamarajar — a Congress leader — governed by ideas 1 and 2 without ever calling them Dravidian. MGR — who split from DMK and was closer to BJP sympathetically — governed by idea 2 more aggressively than any DMK leader. Jayalalithaa — BJP's own coalition partner — governed by idea 3 and 4 fiercely.</p>
+
+  <div class="pull">
+    "If the philosophy is just DMK, how did it survive every leader who was at war with DMK?"
+  </div>
+
+  <div class="compare">
+    <div class="compare-col a">
+      <div class="compare-col-head a">Dravidianism — The Philosophy</div>
+      <div class="compare-item"><strong>Anti-caste as core principle</strong>Caste hierarchy is irrational and unjust. Remove it structurally — through education, representation, and social reform.</div>
+      <div class="compare-item"><strong>Welfare as infrastructure</strong>The state's job is to remove barriers that keep the poor trapped — not to give gifts, but to clear obstacles.</div>
+      <div class="compare-item"><strong>Tamil civilisational pride</strong>A 2,000+ year literary tradition. Language as identity. Cultural confidence as human capital.</div>
+      <div class="compare-item"><strong>Federal autonomy</strong>States know their people. Delhi does not. Decentralisation is efficiency, not separatism.</div>
+    </div>
+    <div class="compare-col b">
+      <div class="compare-col-head b">DMK / AIADMK — The Parties</div>
+      <div class="compare-item"><strong>Family dynasties</strong>Karunanidhi's sons. Stalin's own. Jayalalithaa's patronage. Power concentrated in a few hands.</div>
+      <div class="compare-item"><strong>Electoral freebies</strong>Mixers, grinders, gold, TVs — distributed before elections with no lasting development logic. Vote-buying in welfare's clothing.</div>
+      <div class="compare-item"><strong>Caste as vote-bank</strong>The parties that promised to end caste became the parties that weaponised it. Caste calculus drives candidate selection.</div>
+      <div class="compare-item"><strong>Corruption cycles</strong>Multiple documented corruption cases across both parties across multiple decades.</div>
+    </div>
+  </div>
+
+  <p class="prose">One column can be legitimate. The other can be corrupt. <strong>They are not the same thing</strong> — even though the same people have sometimes claimed to represent both.</p>
+
+</div>
+
+<div class="rule"></div>
+
+<!-- CHAPTER 2: TIMELINE -->
+<div id="ch2" class="chapter fade-up">
+  <span class="ch-num">Chapter 02</span>
+  <div class="ch-title">The Timeline — 100 years in honest sequence</div>
+  <p class="ch-lead">The story did not begin with DMK. It did not begin with Tamil Nadu as a political unit. It began with a man who wanted to break something.</p>
+
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-dot" style="background:var(--accent)"></div>
+      <div class="tl-yr">1879 · Periyar is born</div>
+      <div class="tl-title">E.V. Ramasamy is born into a merchant caste in Erode</div>
+      <div class="tl-body">A man who would eventually reject the caste he was born into — and reject religion, ritual, and hierarchy with a ferocity that made him the most controversial and most consequential Tamil thinker of the 20th century. He didn't become Periyar — the great one — immediately. That took decades of argument, organisation, and provocation.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot" style="background:var(--accent)"></div>
+      <div class="tl-yr">1925 · Self-Respect Movement</div>
+      <div class="tl-title">Periyar founds the Self-Respect Movement — the ideological root of everything</div>
+      <div class="tl-body">This is where Dravidianism as a philosophy formally begins. Not a party. A movement. Core argument: caste, Brahminical authority, and religious superstition are tools of oppression. Rational thinking, self-dignity, and social equality are the alternative. Periyar ran self-respect marriages — without priests, without dowry, without caste criteria. Radical for 1925. Still radical in many parts of India today.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot" style="background:var(--accent)"></div>
+      <div class="tl-yr">1938 · The Hindi Imposition Agitation</div>
+      <div class="tl-title">Periyar leads massive resistance to compulsory Hindi in Madras Presidency</div>
+      <div class="tl-body">The British colonial government under Congress wanted to impose Hindi as a compulsory subject. Periyar organised mass protests. Two protesters died. The policy was eventually withdrawn. This was the first major demonstration that Tamil linguistic identity could mobilise a political movement. It also set the template for 1965 — the second, larger Hindi agitation that permanently ended any central government attempt to impose Hindi on Tamil Nadu.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot" style="background:var(--gold)"></div>
+      <div class="tl-yr">1944 · Dravidar Kazhagam founded</div>
+      <div class="tl-title">Periyar founds DK — a social organisation, not an electoral party</div>
+      <div class="tl-body">Periyar was skeptical of electoral politics. He believed political parties would compromise ideological purity. He was partially right. DK remained a social-cultural organisation. It never contested elections — a deliberate choice. This is why the argument "Periyar built Dravidianism as an electoral project" is historically inaccurate. He built it as a social project. Others converted it into electoral currency.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot" style="background:var(--gold)"></div>
+      <div class="tl-yr">1949 · DMK founded by CN Annadurai</div>
+      <div class="tl-title">Annadurai splits from Periyar and creates an electoral vehicle from the philosophy</div>
+      <div class="tl-body">Annadurai — "Anna" — was Periyar's protégé. He broke from DK primarily over the question of electoral participation. Where Periyar refused politics, Anna embraced it. He took the anti-caste, Tamil identity, anti-Brahmin framework and turned it into coalition mathematics. This is the moment when Dravidian philosophy becomes Dravidian party politics. The translation was imperfect from the start.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot" style="background:var(--gold)"></div>
+      <div class="tl-yr">1954–1963 · Kamarajar as Chief Minister</div>
+      <div class="tl-title">A Congress leader operationalises Dravidian social priorities without the label</div>
+      <div class="tl-body">K. Kamarajar — a Nadar, formally educated only to Class 6 — becomes one of the most consequential Chief Ministers in TN's history. He builds thousands of schools in rural areas. He initiates the noon meal scheme to keep poor children from dropping out. His rise was only possible because Periyar's movement had cracked the upper-caste ceiling on public life. He never called himself Dravidian. He was operating within the world Periyar had made possible.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot" style="background:var(--teal)"></div>
+      <div class="tl-yr">1965 · Second Hindi Agitation</div>
+      <div class="tl-title">Mass resistance to Hindi imposition — two students die, national policy changes</div>
+      <div class="tl-body">The central government attempted to make Hindi the sole official language of India. Tamil Nadu exploded. Student suicides, mass protests, clashes. Two students — Veeramani and Shanmugam — died. The national policy was permanently reversed. Tamil was protected as an official language. This was the decisive moment when Tamil linguistic identity became structurally embedded in Indian constitutional politics. It did not happen through elections. It happened through the streets.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot" style="background:var(--teal)"></div>
+      <div class="tl-yr">1967 · DMK wins — Congress era ends permanently in TN</div>
+      <div class="tl-title">Annadurai wins. Tamil Nadu never returns to Congress. Dravidian parties govern ever since.</div>
+      <div class="tl-body">Congress has not won a Tamil Nadu assembly election since. This is the beginning of the Dravidian party era. What follows is 57 years of alternating DMK and AIADMK governance — with all the achievements and all the failures that come with power concentrated in a two-party dynamic with no serious third alternative.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot" style="background:var(--teal)"></div>
+      <div class="tl-yr">1972 · AIADMK founded by MGR</div>
+      <div class="tl-title">Film star MGR splits from DMK — Dravidian politics fractures into two camps</div>
+      <div class="tl-body">MGR's split was personal and political — he was expelled from DMK. He built a party on his film stardom, his welfare-populist instincts, and mass adoration. His governance, despite its theatrical qualities, delivered real welfare outcomes. He scaled the noon meal scheme to universal coverage. He created the TASCO cooperative system. The philosophy traveled — even through a film star who was ideologically conservative and closer to national parties.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot" style="background:var(--blue)"></div>
+      <div class="tl-yr">1980s–2000s · The Welfare State Expands and Distorts</div>
+      <div class="tl-title">Genuine welfare competes with electoral freebies — the line blurs</div>
+      <div class="tl-body">Both parties expand welfare programmes. Free rice, subsidised rations, health schemes, education. Simultaneously: free TVs, free mixers, free grinders appear. The distinction between removing barriers to opportunity and buying votes with consumer goods becomes harder to defend. This is the period when the philosophy begins to be genuinely misused — not abandoned, but instrumentalised in ways that empty it of meaning.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot" style="background:var(--blue)"></div>
+      <div class="tl-yr">Today · The Anti-Dravidian Sentiment Rises</div>
+      <div class="tl-title">Legitimate anti-incumbency gets absorbed into anti-Dravidian framing</div>
+      <div class="tl-body">Frustration with DMK's family politics, AIADMK's corruption, and the genuine failure to deliver on the anti-caste promise is real and valid. But this frustration is increasingly framed not as "these parties failed" but as "Dravidianism failed." Those are different arguments with different implications. One is an electoral critique. The other is a civilisational one. This matters — because one invites better governance, the other invites replacing the philosophy entirely.</div>
+    </div>
+  </div>
+
+</div>
+
+<div class="rule"></div>
+
+<!-- CHAPTER 3: PERIYAR -->
+<div id="ch3" class="chapter fade-up">
+  <span class="ch-num">Chapter 03</span>
+  <div class="ch-title">Periyar — The Rational and The Irrational</div>
+  <p class="ch-lead">He is either worshipped or reviled. Both responses miss him. He was a complex, often contradictory human being with some genuinely transformative ideas and some genuinely troubling ones.</p>
+
+  <p class="prose">Periyar's incest claim — which circulates constantly — needs to be addressed clearly. In the 1940s, he made an anthropological argument that society's rules around kinship marriage were social constructs, not divine law. He was challenging the idea that any social rule is "natural" rather than made by humans. This was a philosophical provocation in the tradition of rational inquiry. It was weaponised, stripped of context, and turned into a personal accusation. That is a legitimate concern about how his words were used — not evidence that the rest of his thinking is wrong.</p>
+
+  <div class="callout neutral">
+    <span class="callout-label">On the incest claim — the honest reading</span>
+    Periyar's argument was that social norms — all social norms — are human creations, not divine mandates. He used kinship marriage rules as an example of an arbitrary norm. Whether you agree with his argument or not, it is a philosophical position, not an endorsement. The claim that "Periyar supported incest" is a decontextualised misreading used to discredit his anti-caste work. Engaging with his actual arguments is more honest than either worshipping him or dismissing him through this claim.
+  </div>
+
+  <div class="periyar-split">
+    <div class="ps-col rational">
+      <span class="ps-col-head">What he got right — rational thinking</span>
+
+      <div class="ps-item">
+        <strong>Caste is irrational</strong>
+        Arguing in 1925 that caste hierarchy had no rational basis — only a power-maintenance basis — was ahead of what most institutions would say openly until decades later.
+      </div>
+      <div class="ps-item">
+        <strong>Women's equality</strong>
+        He advocated for widow remarriage, against dowry, against child marriage — at a time when these positions were genuinely radical. Self-respect marriages gave women legal equality without ritual subordination.
+      </div>
+      <div class="ps-item">
+        <strong>Rationalism over superstition</strong>
+        He challenged temple rituals, priesthood monopoly, and religious justifications for social hierarchy. Whether you agree with his atheism or not, his critique of religious authority being used to justify caste oppression was structurally accurate.
+      </div>
+      <div class="ps-item">
+        <strong>Tamil identity without supremacy</strong>
+        He argued for Tamil civilisational pride without arguing Tamil people were superior to others. The distinction between cultural confidence and cultural supremacy is one he largely maintained.
+      </div>
+    </div>
+
+    <div class="ps-col irrational">
+      <span class="ps-col-head">Where he was inconsistent or wrong</span>
+
+      <div class="ps-item">
+        <strong>Dravidistan separatism</strong>
+        At various points, Periyar advocated for a separate Dravidian nation — separate from India. This went beyond cultural assertion into a political position that most Tamil people never supported and that contradicted his own universalist social philosophy.
+      </div>
+      <div class="ps-item">
+        <strong>His late marriage</strong>
+        Periyar married Maniammai — a woman significantly younger than him — late in his life. He was in his 70s. He had advocated for women's autonomy and against unequal power in relationships. The contradiction between his stated values and personal choice was real and noted by contemporaries.
+      </div>
+      <div class="ps-item">
+        <strong>Anti-north statements</strong>
+        Some of his rhetoric about northern Indians crossed from cultural self-assertion into generalisations that were reductive. Critiquing Brahmin power is one thing. Characterising entire northern populations is another. The distinction was not always maintained in his speeches.
+      </div>
+      <div class="ps-item">
+        <strong>Electoral skepticism that backfired</strong>
+        His refusal to engage with electoral politics meant the philosophy he built was eventually picked up by parties — DMK — without the structural guardrails he might have insisted on. His distrust of politics left the philosophy without political protection.
+      </div>
+    </div>
+  </div>
+
+  <div class="callout thought">
+    <span class="callout-label">The honest assessment</span>
+    Periyar was not a saint. He was not a demon. He was a man who identified a genuine structural injustice — caste hierarchy — and fought it with the tools available to him: argument, provocation, organisation, and relentless public challenge of authority. Some of his methods were extreme. Some of his positions were inconsistent. The question worth asking is: <em>can you separate the idea from the man who first articulated it?</em> Because the idea — that caste hierarchy is irrational and must be dismantled — does not become wrong because Periyar was sometimes wrong about other things.
+  </div>
+
+</div>
+
+<div class="rule"></div>
+
+<!-- CHAPTER 4: PHILOSOPHY IN PRACTICE -->
+<div id="ch4" class="chapter fade-up">
+  <span class="ch-num">Chapter 04</span>
+  <div class="ch-title">How the philosophy held across parties that hated each other</div>
+  <p class="ch-lead">This is the most important evidence that Dravidianism is a philosophy, not a party platform. The same core ideas survived leaders who were political enemies.</p>
+
+  <p class="prose">Consider what the noon meal scheme tells us. Kamarajar — Congress — started it in the 1950s as a development intervention: keep poor children in school by removing hunger as a barrier. This is philosophy idea number 2: the state owes citizens a floor of dignity.</p>
+
+  <p class="prose">MGR — AIADMK, DMK's bitter rival — scaled it to every child in Tamil Nadu in the 1980s. He didn't do this because Karunanidhi told him to. He did this because the philosophical logic was sound: a hungry child cannot learn. A child who cannot learn cannot escape poverty. The state must intervene at that specific point of failure.</p>
+
+  <p class="prose">Jayalalithaa — who took the feud with DMK to personal and occasionally vicious levels — maintained and expanded the scheme. She also fiercely defended Tamil linguistic rights and opposed central government overreach — philosophy ideas 3 and 4.</p>
+
+  <div class="callout truth">
+    <span class="callout-label">What this proves</span>
+    If the philosophy were merely DMK's political programme, it would have died the moment AIADMK came to power in 1977. It didn't. If it were merely one leader's personality cult, it would have died with MGR in 1987. It didn't. The continuity of core welfare commitments and Tamil identity protection across deeply hostile political rivals is the strongest evidence that something exists underneath the parties — a shared philosophical floor that no party has been willing to fully abandon, even when abandoning it would have served their political interests.
+  </div>
+
+  <p class="prose">Kamarajar's role specifically is worth holding clearly. He was not Dravidian in party affiliation. He was a product of the social environment Periyar created — where a Nadar with a Class 6 education could rise to Chief Minister. His governance instincts — education first, honest administration, rural investment, the poor child over the wealthy corporation — were shaped by the same social philosophy. He is proof that the philosophy does not belong to any one party's ownership.</p>
+
+</div>
+
+<div class="rule"></div>
+
+<!-- CHAPTER 5: FREEBIES -->
+<div id="ch5" class="chapter fade-up">
+  <span class="ch-num">Chapter 05</span>
+  <div class="ch-title">The freebie question — where's the line?</div>
+  <p class="ch-lead">Not all welfare is the same. The difference between removing a barrier and buying a vote is real — and worth examining without being dismissive of either.</p>
+
+  <p class="prose">There is an old distinction: teaching a person to fish versus giving them a fish. Applied to welfare, it becomes: does this scheme create lasting capability, or does it only create temporary comfort? Both might be defensible — but they are not the same thing, and conflating them is how legitimate welfare gets discredited and how vote-buying gets defended as welfare.</p>
+
+  <div class="freebie-grid">
+    <div class="fb-card invest">
+      <span class="fb-card-label">Barrier-removal welfare</span>
+      <div class="fb-card-title">Noon meal scheme</div>
+      <div class="fb-card-body">A hungry child cannot concentrate, cannot learn, cannot attend school consistently. Remove hunger, and school attendance goes up, learning improves, and the child's trajectory changes. The investment compounds across a lifetime and across generations. This is barrier-removal.</div>
+    </div>
+    <div class="fb-card invest">
+      <span class="fb-card-label">Barrier-removal welfare</span>
+      <div class="fb-card-title">Free bus passes for women</div>
+      <div class="fb-card-body">Transport cost is a real barrier to workforce participation for women in lower-income households. Removing it expands the labour market they can access. A woman who earns income is less economically dependent. The scheme creates mobility — literal and economic.</div>
+    </div>
+    <div class="fb-card invest">
+      <span class="fb-card-label">Barrier-removal welfare</span>
+      <div class="fb-card-title">₹1,000/month to women</div>
+      <div class="fb-card-body">A small regular income in a woman's name — not the household's name — creates a degree of financial independence. Whether this is sufficient is debatable. Whether financial independence matters to women's autonomy is not. The intent maps to the philosophy.</div>
+    </div>
+    <div class="fb-card invest">
+      <span class="fb-card-label">Barrier-removal welfare</span>
+      <div class="fb-card-title">Education subsidies, free books</div>
+      <div class="fb-card-body">Cost of education materials is a documented reason for poor children dropping out. Removing that cost removes a barrier. First-generation learners in families that have never had an educated member need structural support — not charity, but equalisation.</div>
+    </div>
+
+    <div class="fb-card circus">
+      <span class="fb-card-label">Electoral freebie — question its logic</span>
+      <div class="fb-card-title">Free mixers and grinders</div>
+      <div class="fb-card-body">A mixer-grinder is a consumer appliance. It does not change a household's income, education, or opportunity. It makes cooking easier — but it does not remove any structural barrier to development. It is a gift. The question: does receiving a mixer make someone's children more likely to finish school or access better work? If yes — indirect barrier removal. If no — it is electoral goodwill.</div>
+    </div>
+    <div class="fb-card circus">
+      <span class="fb-card-label">Electoral freebie — question its logic</span>
+      <div class="fb-card-title">Free TVs</div>
+      <div class="fb-card-body">Television is entertainment and information. A TV does not produce income, does not improve health outcomes, does not change a child's educational trajectory in any documented way. It is a visible, memorable gift delivered before an election. The philosophy of "the state owes citizens a floor of dignity" does not obviously include a television.</div>
+    </div>
+    <div class="fb-card circus">
+      <span class="fb-card-label">Worth examining honestly</span>
+      <div class="fb-card-title">Free gold for marriages</div>
+      <div class="fb-card-body">This one is genuinely complicated. Dowry burden on poor families is real and documented. Reducing that burden has a real effect on whether daughters are seen as liabilities. But gold as the mechanism — rather than direct dowry-abolition campaigns or legal enforcement — raises questions. Is this reducing the dowry problem or participating in it?</div>
+    </div>
+    <div class="fb-card circus">
+      <span class="fb-card-label">The structural problem</span>
+      <div class="fb-card-title">The escalation pattern</div>
+      <div class="fb-card-body">Each election cycle sees new promises. Each party tries to outbid the other. The competition is no longer about who has the better development vision — it is about who will give more. This arms race hollows out the philosophy. The original idea was dignity through capability. The circus version is dignity through consumption.</div>
+    </div>
+  </div>
+
+  <div class="callout thought">
+    <span class="callout-label">The honest question to sit with</span>
+    The freebie debate is often used to dismiss all welfare — which is intellectually lazy. And welfare is sometimes used to defend all freebies — which is equally lazy. The real question is: <em>does this specific scheme create lasting change in someone's capability or opportunity, or does it create temporary comfort and electoral memory?</em> Both can be defended. But they should be defended on different grounds. Conflating them weakens the case for the welfare that genuinely works.
+  </div>
+
+</div>
+
+<div class="rule"></div>
+
+<!-- CHAPTER 6: WHERE IT FAILED -->
+<div id="ch6" class="chapter fade-up">
+  <span class="ch-num">Chapter 06</span>
+  <div class="ch-title">Where Dravidianism failed — and why honesty requires saying so</div>
+  <p class="ch-lead">A philosophy that cannot acknowledge its failures becomes a religion. These are documented failures — not anti-Dravidian arguments, but honest assessments of where the gap between promise and delivery is real.</p>
+
+  <div class="fail-list">
+    <div class="fail-item">
+      <div class="fail-num">Failure 01 · The Core Promise</div>
+      <div class="fail-title">Casteism was supposed to end. It didn't.</div>
+      <div class="fail-body">This is the most fundamental failure. The central promise of Dravidian philosophy — that caste hierarchy would be dismantled through social reform — has not been delivered in 100 years. Tamil Nadu has better caste-based representation in government jobs than most states. It has better school enrollment across caste lines. But caste-based violence still occurs. Caste is still the primary unit of electoral calculation for both Dravidian parties. The parties that were supposed to end caste use caste as their most reliable electoral tool. Whether this is a failure of the philosophy or a failure of its executors is the genuine debate.</div>
+    </div>
+
+    <div class="fail-item">
+      <div class="fail-num">Failure 02 · The Dynasty Problem</div>
+      <div class="fail-title">The movement that fought inherited privilege became inherited privilege.</div>
+      <div class="fail-body">Periyar's movement was explicitly anti-dynastic — he rejected hereditary authority of all kinds, including Brahmin hereditary authority. DMK under Karunanidhi became a family business: Stalin inherited the party, Kanimozhi is a Rajya Sabha member, multiple family members hold party positions. AIADMK under Jayalalithaa was less dynastic but built on absolute personal loyalty. The parties that were founded to fight one form of inherited privilege created another. This is a documented failure that cannot be explained away.</div>
+    </div>
+
+    <div class="fail-item">
+      <div class="fail-num">Failure 03 · Corruption as Normal</div>
+      <div class="fail-title">Anti-corruption was part of the founding promise. Corruption became endemic.</div>
+      <div class="fail-body">Both parties have documented corruption cases across multiple governments. 2G spectrum allocation under DMK-aligned central ministers. Jayalalithaa's own disproportionate assets case — for which she was convicted by a Karnataka court before acquittal on appeal. Sand mining, liquor licensing, government contracts — the corruption in TN's governance has been documented across investigative journalism and court records. A philosophy that began with Kamarajar's legendary personal honesty — he reportedly died with almost nothing — ended up producing governments with very different standards.</div>
+    </div>
+
+    <div class="fail-item">
+      <div class="fail-num">Failure 04 · Caste as Vote Bank</div>
+      <div class="fail-title">The anti-caste movement created caste-based electoral arithmetic.</div>
+      <div class="fail-body">In trying to represent OBC communities politically, both parties ended up making caste the primary unit of electoral organisation. Candidate selection is based on caste arithmetic. Coalition building is based on caste arithmetic. This is not unique to TN — it is the structural contradiction of any electoral democracy trying to address caste. But it is worth naming: the parties that were supposed to make caste irrelevant made it more relevant as an electoral unit, even as they made it less relevant as a social ceiling. Two different things happened simultaneously.</div>
+    </div>
+
+    <div class="fail-item">
+      <div class="fail-num">Failure 05 · The Philosophy Became a Tribal Identity</div>
+      <div class="fail-title">Dravidianism stopped being examined and started being performed.</div>
+      <div class="fail-body">By the 2000s, "Dravidian" for many people was less a set of ideas to be examined and more a cultural identity to be claimed. You were Dravidian because you opposed BJP, not because you had thought through Periyar's anti-caste arguments. You were against Hindi imposition because it was the Dravidian position, not because you had examined why language autonomy matters. When a philosophy becomes a tribal marker — something you inherit rather than choose — it loses its ability to challenge and reform. This is arguably the deepest failure: the philosophy ate itself.</div>
+    </div>
+  </div>
+
+  <div class="callout warn">
+    <span class="callout-label">The honest position</span>
+    Naming these failures is not the same as saying the philosophy is wrong. It is saying that having good ideas and executing them well are two different things. The anti-caste idea was correct. The execution has been deeply imperfect. Welfare as infrastructure was correct. It became partially corrupted by electoral incentives. Tamil autonomy was correct. It became partially tribalistic. <em>You can hold both: the ideas were largely right, and the parties that claimed them largely failed to fully deliver them.</em> That is not a contradiction. That is the honest picture.
+  </div>
+
+</div>
+
+<div class="rule-heavy"></div>
+
+<!-- CLOSING REFLECTION -->
+<div id="ch7" class="reflection-section fade-up">
+  <div class="ref-intro">Before you close — sit with these</div>
+  <p class="ref-lead">Not questions with answers. Questions with honesty. Tap each one when you're ready.</p>
+
+  <div class="ref-q" onclick="toggleRef(this)">
+    <div class="ref-q-text">"When I criticise Dravidian politics, am I criticising a set of ideas — or a set of people who claimed those ideas and disappointed me?"</div>
+    <div class="ref-q-expand">
+      <p>Both are valid. But they require different conversations. If you're criticising the ideas — that Brahmins dominated unfairly, that caste should not determine destiny, that the state owes its poorest citizens a floor, that Tamil has a right to exist without subordination to Hindi — then make that argument. Say which specific idea you think is wrong.</p>
+      <p>If you're criticising DMK's nepotism, AIADMK's corruption, and the freebie circus — that's also valid. But it is a critique of governance, not philosophy. The same way you can criticise a specific government's handling of the economy without arguing that economic development is a bad goal.</p>
+      <p>The question is: <em>what exactly are you angry at?</em> The more precisely you can answer that, the more useful your critique becomes — and the less likely it is to be absorbed into a broader anti-Dravidian sentiment that serves interests you may not share.</p>
+    </div>
+  </div>
+
+  <div class="ref-q" onclick="toggleRef(this)">
+    <div class="ref-q-text">"If Dravidianism's core ideas — anti-caste, welfare as infrastructure, Tamil identity, federal autonomy — are wrong, what is the alternative? And has anyone actually offered one?"</div>
+    <div class="ref-q-expand">
+      <p>This is worth thinking through honestly. The critique of Dravidianism is often clearer than the alternative being offered. What is the alternative model for Tamil Nadu's development? One that addresses caste inequality differently? One that delivers welfare more efficiently? One that protects Tamil without cultural chauvinism?</p>
+      <p>These are legitimate questions. But "the Gujarat model" or "BJP's governance" are not self-evidently the answer — because Gujarat's human development indicators lag Tamil Nadu's on most metrics. The comparison requires specifics, not slogans.</p>
+      <p>The question to hold: <em>am I rejecting a philosophy, or am I rejecting the people who claimed it?</em> If it's the people — say that clearly. If it's the philosophy — say what you'd replace it with and why.</p>
+    </div>
+  </div>
+
+  <div class="ref-q" onclick="toggleRef(this)">
+    <div class="ref-q-text">"Casteism survived 100 years of anti-caste politics in Tamil Nadu. Does that mean the idea was wrong — or that it was never fully tried?"</div>
+    <div class="ref-q-expand">
+      <p>This might be the most important question in this entire piece. The anti-caste philosophy says: a society organised around birth-based hierarchy wastes its human potential, produces injustice, and sustains itself through social violence. That observation is accurate by almost any measure.</p>
+      <p>The Dravidian parties said they would dismantle caste. They improved representation. They improved access. They did not dismantle caste — partly because dismantling caste required giving up the caste-based voter coalitions that kept them in power.</p>
+      <p>So: the philosophy was never fully tried, because fully trying it would have been politically suicidal for the parties that claimed it. <em>That is a failure of political courage, not a failure of the underlying idea.</em> Whether you find that distinction meaningful is up to you.</p>
+    </div>
+  </div>
+
+  <div class="ref-q" onclick="toggleRef(this)">
+    <div class="ref-q-text">"Have I ever seen a freebie that changed someone's life — and have I ever seen one that was just a purchase of loyalty?"</div>
+    <div class="ref-q-expand">
+      <p>Most people who grew up in Tamil Nadu can probably answer yes to both if they think carefully. A first-generation college student whose family could afford school because of subsidised meals and free textbooks — that is a changed life. A household that received a television before an election and voted accordingly and received nothing else — that is purchased loyalty.</p>
+      <p>The honest position is not "all welfare is good" or "all freebies are bad." It is: <em>what is the mechanism of change?</em> Does this specific scheme create lasting capability? Does it remove a specific documented barrier? Is there evidence it works?</p>
+      <p>When the answer is yes — defend it as welfare, not as freebies. When the answer is no — it is worth saying so, even if it is uncomfortable.</p>
+    </div>
+  </div>
+
+  <div class="ref-q" onclick="toggleRef(this)">
+    <div class="ref-q-text">"What would Periyar think of Tamil Nadu today — and is that a comfortable thought?"</div>
+    <div class="ref-q-expand">
+      <p>He would probably notice that inter-caste marriage rates in Tamil Nadu remain low despite decades of anti-caste politics. He would probably note that manual scavenging — which he called irrational and degrading — has not been fully eliminated. He would probably observe that the parties that claimed his legacy became exactly the kind of hereditary authority structures he spent his life opposing.</p>
+      <p>He would also probably note that a Dalit woman can now sit in the front of a bus, that a first-generation learner from an OBC family can access college, that Tamil is constitutionally protected in ways it wasn't in 1925.</p>
+      <p>He would probably be both satisfied and furious — which is the only honest thing a rational thinker can be when examining a century of partial progress. <em>The question for you is: which part of that assessment do you sit with more comfortably?</em></p>
+    </div>
+  </div>
+
+  <div style="margin-top:40px;text-align:center;">
+    <p style="font-family:'Playfair Display',serif;font-size:18px;font-style:italic;color:var(--muted);line-height:1.65;max-width:500px;margin:0 auto;">
+      You don't have to agree with Dravidianism.<br>You don't have to defend DMK or AIADMK.<br>You just have to know which one you're talking about<br>before you start.
+    </p>
+  </div>
+
+</div>
+
+<!-- CITATIONS -->
+<div class="cite fade-up">
+  <strong style="display:block;margin-bottom:10px;font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.2em;text-transform:uppercase;">Sources & Further Reading</strong>
+  This piece draws on documented historical records and peer-reviewed scholarship. Key sources: A.R. Venkatachalapathy, <em>In Those Days There Was No Coffee: Writings in Cultural History</em> (Yoda Press, 2006) — on Tamil social history. V. Geetha and S.V. Rajadurai, <em>Towards a Non-Brahmin Millennium</em> (Samya, 1998) — the standard scholarly work on Periyar and the Dravidian movement. M.S.S. Pandian, <em>The Image Trap: M.G. Ramachandran in Film and Politics</em> (Sage, 1992) — on MGR and Dravidian populism. B.R. Ambedkar, <em>Annihilation of Caste</em> (1936, republished Verso 2014) — on caste as a structural problem. Election Commission of India official records for electoral data. Census of India and NFHS surveys for demographic data. NHRC and state government records for welfare scheme data. The noon meal scheme history is documented in government records and K. Rajaram, <em>Kamarajar: A Study</em> (Emerald 1991). Periyar's speeches are available through the Periyar Self-Respect Propaganda Institution archives, Chennai.
+</div>
+
+</div><!-- /wrap -->
+
+<script>
+function g(id) {
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function answer(qNum, opt) {
+  const item = document.getElementById('q' + qNum);
+  const opts = item.querySelectorAll('.q-opt');
+  const ref = document.getElementById('r' + qNum);
+
+  opts.forEach(o => {
+    o.disabled = true;
+    o.classList.remove('selected');
+  });
+
+  event.target.classList.add('selected');
+  item.classList.add('revealed');
+
+  setTimeout(() => {
+    ref.classList.add('show');
+  }, 300);
+}
+
+function toggleRef(el) {
+  const exp = el.querySelector('.ref-q-expand');
+  exp.classList.toggle('open');
+}
+
+// Progress bar
+window.addEventListener('scroll', () => {
+  const doc = document.documentElement;
+  const top = doc.scrollTop;
+  const height = doc.scrollHeight - doc.clientHeight;
+  const pct = (top / height) * 100;
+  document.getElementById('prog').style.width = pct + '%';
+});
+
+// Nav dot activation
+const sections = ['quiz','ch1','ch2','ch3','ch4','ch5','ch6','ch7'];
+const dots = document.querySelectorAll('.nav-dot');
+
+function updateDots() {
+  let current = 0;
+  sections.forEach((id, i) => {
+    const el = document.getElementById(id);
+    if (el && el.getBoundingClientRect().top < window.innerHeight * 0.5) {
+      current = i;
+    }
+  });
+  dots.forEach((d, i) => d.classList.toggle('active', i === current));
+}
+
+window.addEventListener('scroll', updateDots);
+
+// Fade-up on scroll
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) e.target.classList.add('in');
+  });
+}, { threshold: 0.07 });
+
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
