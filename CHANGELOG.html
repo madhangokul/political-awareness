@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Changelog · Political Self-Awareness</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='5' fill='%23faf6ee'/><path d='M16 10c-8 0-12 6-12 6s4 6 12 6 12-6 12-6-4-6-12-6z' fill='none' stroke='%231a1208' stroke-width='1.5'/><circle cx='16' cy='16' r='4' fill='%238b3a00'/><circle cx='17.5' cy='14.5' r='1.5' fill='%23faf6ee' opacity='.7'/></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Literata:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #1a1208;
+  --paper: #faf6ee;
+  --paper2: #f3ede0;
+  --paper3: #ebe3d0;
+  --dust: #d4c9b0;
+  --dust2: #b8aa90;
+  --muted: #8a7d68;
+  --accent: #8b3a00;
+  --gold: #a07030;
+  --teal: #1a5848;
+  --green: #2a6020;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Literata', Georgia, serif;
+  font-size: 16px;
+  line-height: 1.75;
+  min-height: 100vh;
+}
+
+/* GRAIN */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+}
+
+.wrap {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 24px 120px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── MASTHEAD ── */
+.masthead {
+  padding: 60px 0 40px;
+  border-bottom: 2px solid var(--ink);
+  text-align: center;
+  margin-bottom: 0;
+}
+
+.masthead-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: .30em;
+  text-transform: uppercase;
+  color: var(--muted);
+  display: block;
+  margin-bottom: 18px;
+}
+
+.masthead h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(32px, 5vw, 52px);
+  font-weight: 900;
+  line-height: 1.0;
+  letter-spacing: -.025em;
+  margin-bottom: 14px;
+}
+
+.masthead-sub {
+  font-size: 14px;
+  color: var(--muted);
+  font-style: italic;
+  font-weight: 300;
+  max-width: 480px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* ── BACK LINK ── */
+.back {
+  display: inline-block;
+  margin: 28px 0 0;
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: none;
+  border-bottom: 1px solid var(--dust);
+  padding-bottom: 1px;
+  transition: color .15s, border-color .15s;
+}
+
+.back:hover { color: var(--accent); border-color: var(--accent); }
+
+/* ── YEAR SECTION ── */
+.year-block {
+  margin-top: 56px;
+}
+
+.year-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: .30em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border-bottom: 1px solid var(--dust);
+  padding-bottom: 10px;
+  margin-bottom: 32px;
+}
+
+/* ── ENTRY ── */
+.entry {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 0 28px;
+  padding: 0 0 36px;
+  border-bottom: 1px solid var(--paper3);
+}
+
+.entry:last-child { border-bottom: none; }
+
+.entry-date {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: .1em;
+  color: var(--dust2);
+  padding-top: 4px;
+  line-height: 1.6;
+}
+
+.entry-date strong {
+  display: block;
+  font-size: 11px;
+  color: var(--muted);
+  font-weight: 700;
+  letter-spacing: .02em;
+  margin-bottom: 2px;
+}
+
+.entry-body {}
+
+.entry-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.25;
+  margin-bottom: 8px;
+  letter-spacing: -.01em;
+}
+
+.entry-desc {
+  font-size: 13.5px;
+  color: var(--muted);
+  line-height: 1.75;
+  font-weight: 300;
+  margin-bottom: 12px;
+}
+
+/* ── TAGS ── */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.tag {
+  font-family: 'Space Mono', monospace;
+  font-size: 8px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  border-radius: 2px;
+  padding: 3px 8px;
+  border: 1px solid;
+}
+
+.tag-add    { color: var(--green); border-color: rgba(42,96,32,.25); background: rgba(42,96,32,.05); }
+.tag-update { color: var(--accent); border-color: rgba(139,58,0,.25); background: rgba(139,58,0,.05); }
+.tag-fix    { color: var(--teal); border-color: rgba(26,88,72,.25); background: rgba(26,88,72,.05); }
+.tag-design { color: #5a3a8a; border-color: rgba(90,58,138,.25); background: rgba(90,58,138,.05); }
+.tag-tone   { color: #6a4020; border-color: rgba(106,64,32,.25); background: rgba(106,64,32,.05); }
+
+/* ── NOTES BOX ── */
+.note-box {
+  background: var(--paper2);
+  border: 1.5px solid var(--dust);
+  border-left: 3px solid var(--dust2);
+  border-radius: 2px 4px 4px 2px;
+  padding: 12px 16px;
+  font-size: 13px;
+  color: var(--muted);
+  font-style: italic;
+  line-height: 1.7;
+  margin-top: 8px;
+}
+
+.note-box strong { color: var(--ink); font-style: normal; font-weight: 500; }
+
+/* ── FILE LINK ── */
+.file-link {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  color: var(--muted);
+  text-decoration: none;
+  border-bottom: 1px dashed var(--dust);
+  transition: color .15s;
+}
+
+.file-link:hover { color: var(--accent); }
+
+/* ── FOOTER ── */
+.footer {
+  margin-top: 64px;
+  padding-top: 28px;
+  border-top: 1px solid var(--dust);
+  text-align: center;
+}
+
+.footer p {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--dust2);
+  line-height: 2;
+}
+
+/* ── FADE IN ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.fade-up { animation: fadeUp .5s ease both; }
+.year-block { animation: fadeUp .5s .1s ease both; }
+.year-block:nth-child(3) { animation-delay: .2s; }
+
+@media (max-width: 560px) {
+  .entry { grid-template-columns: 1fr; gap: 4px 0; }
+  .entry-date { padding-top: 0; margin-bottom: 6px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- MASTHEAD -->
+  <div class="masthead fade-up">
+    <span class="masthead-label">Internal Notes · Build History · Working Decisions</span>
+    <h1>Changelog</h1>
+    <p class="masthead-sub">A running record of what changed, why it changed, and what to keep in mind going forward.</p>
+    <a class="back" href="index.html">← Back to Home</a>
+  </div>
+
+  <!-- 2026 -->
+  <div class="year-block">
+    <div class="year-label">2026</div>
+
+    <!-- ENTRY: Titles & Tone Pass -->
+    <div class="entry">
+      <div class="entry-date">
+        <strong>08 May</strong>
+        2026
+      </div>
+      <div class="entry-body">
+        <div class="entry-title">Title & Tone Pass — Self-Realization Framing</div>
+        <div class="tags">
+          <span class="tag tag-update">Update</span>
+          <span class="tag tag-tone">Tone</span>
+        </div>
+        <p class="entry-desc">Refined browser <code>&lt;title&gt;</code> tags and homepage copy across all three pages. The previous titles leaned declarative ("The Honest Picture", "Real Governance Flaws") — language that argues toward a conclusion. Shift goal: every label should feel like an invitation to examine, not a verdict being handed down.</p>
+        <div class="note-box">
+          <strong>Rule to maintain:</strong> Titles and eyebrow copy should read as questions or orientations ("Examine the Idea", "Read the Full Record"), not as findings ("Real Flaws", "Hidden Costs"). The body content can be direct — the framing should never be.
+        </div>
+        <div class="tags" style="margin-top:10px;gap:8px;">
+          <a class="file-link" href="index.html">index.html</a>
+          <a class="file-link" href="dravidianism-awareness.html">dravidianism-awareness.html</a>
+          <a class="file-link" href="tn-cited.html">tn-cited.html</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ENTRY: Favicons -->
+    <div class="entry">
+      <div class="entry-date">
+        <strong>08 May</strong>
+        2026
+      </div>
+      <div class="entry-body">
+        <div class="entry-title">Favicons — Inline SVG Eye</div>
+        <div class="tags">
+          <span class="tag tag-add">Add</span>
+          <span class="tag tag-design">Design</span>
+        </div>
+        <p class="entry-desc">Added a favicon to all pages using an inline SVG data URI — no external file dependency. The icon is a stylised open eye: a deliberate symbol for self-awareness, observation, and reflection rather than a political symbol.</p>
+        <div class="note-box">
+          <strong>Note:</strong> Two favicon variants exist — warm paper background (<code>#faf6ee</code> base) for the light pages, dark background (<code>#080b0f</code> base) for <a class="file-link" href="tn-cited.html">tn-cited.html</a>. If new pages are added, match the page's background in the favicon.
+        </div>
+      </div>
+    </div>
+
+    <!-- ENTRY: Homepage Created -->
+    <div class="entry">
+      <div class="entry-date">
+        <strong>08 May</strong>
+        2026
+      </div>
+      <div class="entry-body">
+        <div class="entry-title">Homepage Created — <a class="file-link" href="index.html">index.html</a></div>
+        <div class="tags">
+          <span class="tag tag-add">Add</span>
+          <span class="tag tag-design">Design</span>
+        </div>
+        <p class="entry-desc">First homepage built for the repository. Two cards, each linking to an existing article. Design inherits the warm paper aesthetic from <a class="file-link" href="dravidianism-awareness.html">dravidianism-awareness.html</a> — Playfair Display headings, Literata body text, grain texture overlay. Zero frameworks, zero backend.</p>
+        <div class="note-box">
+          <strong>Design decision:</strong> Cards use a thin colour stripe at top (warm amber for philosophy pieces, teal for data/cited pieces) as a visual taxonomy. Maintain this as new articles are added. Coming-soon cards use dashed borders and reduced opacity — do not remove, they signal intent.
+        </div>
+        <div class="tags" style="margin-top:10px;gap:8px;">
+          <a class="file-link" href="index.html">index.html</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ENTRY: Initial Articles -->
+    <div class="entry">
+      <div class="entry-date">
+        <strong>08 May</strong>
+        2026
+      </div>
+      <div class="entry-body">
+        <div class="entry-title">Initial Articles Published</div>
+        <div class="tags">
+          <span class="tag tag-add">Add</span>
+        </div>
+        <p class="entry-desc">Two standalone HTML articles form the foundation of this repository. No shared CSS, no templating — each page is fully self-contained.</p>
+        <div class="note-box">
+          <strong><a class="file-link" href="dravidianism-awareness.html">dravidianism-awareness.html</a></strong> — A reflective question journey through Dravidian philosophy. Warm paper aesthetic, interactive quiz elements (pure JS), Playfair Display. Tone: curious, no verdict.<br><br>
+          <strong><a class="file-link" href="tn-cited.html">tn-cited.html</a></strong> — A data-heavy cited reference on Tamil Nadu governance. Dark theme (toggleable), Chart.js visualisations, superscript citation system. Tone: factual, both-sided, every claim sourced.
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <!-- /2026 -->
+
+  <!-- NOTES TO SELF -->
+  <div class="year-block">
+    <div class="year-label">Standing Notes</div>
+
+    <div class="entry">
+      <div class="entry-date">
+        <strong>Ongoing</strong>
+      </div>
+      <div class="entry-body">
+        <div class="entry-title">Core Principle — Self-Realization, Not Persuasion</div>
+        <div class="tags">
+          <span class="tag tag-tone">Tone</span>
+        </div>
+        <p class="entry-desc">This is not a political campaign. It is not trying to move someone's vote. Every word should serve one purpose: giving the reader a clearer picture of what they already believe and why — so they can hold it more consciously, or revise it more honestly.</p>
+        <div class="note-box">
+          <strong>Test for any new copy:</strong> Does this sentence invite reflection, or does it push a conclusion? If it pushes — rewrite it as a question or a documented fact.
+        </div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-date">
+        <strong>Ongoing</strong>
+      </div>
+      <div class="entry-body">
+        <div class="entry-title">Technical Constraints — Pure HTML Only</div>
+        <div class="tags">
+          <span class="tag tag-fix">Constraint</span>
+        </div>
+        <p class="entry-desc">No build tools, no frameworks, no backend, no npm. Every page must open directly in a browser from the file system. External CDN links (Google Fonts, Chart.js) are acceptable as they are read-only and degrade gracefully.</p>
+        <div class="note-box">
+          <strong>CSS/JS rule:</strong> All styles and scripts live in <code>&lt;style&gt;</code> and <code>&lt;script&gt;</code> blocks in the same file. No external <code>.css</code> or <code>.js</code> files. This keeps each article fully portable.
+        </div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-date">
+        <strong>Ongoing</strong>
+      </div>
+      <div class="entry-body">
+        <div class="entry-title">Adding New Articles — Checklist</div>
+        <div class="tags">
+          <span class="tag tag-add">Process</span>
+        </div>
+        <p class="entry-desc">Steps to follow when adding a new piece to this repository.</p>
+        <div class="note-box">
+          1. Create a new self-contained <code>.html</code> file.<br>
+          2. Add an inline SVG eye favicon matching the page's background colour.<br>
+          3. Set <code>&lt;title&gt;</code> in examination framing, not verdict framing.<br>
+          4. Add a card to <code>index.html</code> with appropriate stripe colour (amber = philosophy, teal = data).<br>
+          5. Add an entry to this changelog with the date, what changed, and any design decisions worth remembering.
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <!-- /standing notes -->
+
+  <div class="footer">
+    <p>Changelog · Political Self-Awareness · Pure HTML<br>Maintained manually — updated with every significant change</p>
+  </div>
+
+</div>
+</body>
+</html>
