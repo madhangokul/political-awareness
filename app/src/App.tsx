@@ -7,6 +7,7 @@ import { ArticleView } from './features/articles/ArticleView'
 import { VersionHistory } from './features/articles/VersionHistory'
 import { AdminPanel } from './features/admin/AdminPanel'
 import { ComponentExplorer } from './pages/ComponentExplorer'
+import { LegacyView } from './pages/LegacyView'
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -29,6 +30,7 @@ export default function App() {
               <Route path="articles/:slug/history" element={<VersionHistory />} />
               <Route path="admin" element={<AdminPanel />} />
               <Route path="components" element={<ComponentExplorer />} />
+              <Route path="legacy/:slug" element={<LegacyView />} />
             </Route>
           </Routes>
         </BrowserRouter>

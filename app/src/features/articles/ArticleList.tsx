@@ -98,6 +98,53 @@ export function ArticleList() {
         </>
       )}
 
+      {/* ── Legacy Archives ── */}
+      <div style={{ marginTop: 72, paddingTop: 40, borderTop: '1px solid var(--dust2)' }}>
+        <span className="section-label" style={{ marginBottom: 20 }}>
+          Legacy · Original static pages
+        </span>
+        <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.9rem', color: 'var(--muted)', marginBottom: 24, maxWidth: 520 }}>
+          The original hand-written HTML versions of these articles — no auth, no React, just the raw page.
+        </p>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+          {[
+            { slug: 'dravidianism-awareness', label: 'What is Dravidianism, actually?' },
+            { slug: 'tn-cited',               label: 'Tamil Nadu — Read the Full Record' },
+            { slug: 'tn-flaws-alignment-costs', label: 'TN Flaws & Alignment Costs' },
+          ].map(({ slug, label }) => (
+            <Link
+              key={slug}
+              to={`/legacy/${slug}`}
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: 10,
+                fontFamily: 'var(--font-mono)',
+                fontSize: '0.8rem',
+                color: 'var(--muted)',
+                textDecoration: 'none',
+                letterSpacing: '0.03em',
+                transition: 'color 0.15s',
+              }}
+              onMouseEnter={e => (e.currentTarget.style.color = 'var(--accent)')}
+              onMouseLeave={e => (e.currentTarget.style.color = 'var(--muted)')}
+            >
+              <span style={{
+                fontSize: '0.65rem',
+                letterSpacing: '0.1em',
+                background: 'var(--dust)',
+                padding: '1px 6px',
+                borderRadius: 3,
+                color: 'var(--muted)',
+              }}>
+                HTML
+              </span>
+              {label} →
+            </Link>
+          ))}
+        </div>
+      </div>
+
       {/* ── Footer ── */}
       <div className="site-footer">
         <p>
