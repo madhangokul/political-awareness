@@ -127,6 +127,34 @@ body::before {
   padding: 44px 0 28px;
 }
 
+/* ── ComponentExplorer: stat callout grid ───────────────────────────────────── */
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 3px;
+}
+@media (max-width: 640px) {
+  .stat-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ── ComponentExplorer: typography specimen rows ────────────────────────────── */
+.type-specimen-row {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 24px;
+  align-items: start;
+  padding: 24px 0;
+  border-bottom: 1px solid var(--dust);
+}
+@media (max-width: 640px) {
+  .type-specimen-row {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+}
+
 /* ── Index page: card grid ───────────────────────────────────────────────────── */
 .cards {
   display: grid;

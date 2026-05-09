@@ -143,7 +143,7 @@ export function ComponentExplorer() {
               el: <code style={{ ...MONO, fontSize: 12, letterSpacing: '0.05em', color: 'var(--ink)' }}>v1 · 2024-05-09 · Factual · Cited · Both-Sided</code>,
             },
           ] as { label: string; el: React.ReactNode }[]).map(({ label, el }) => (
-            <div key={label} style={{ display: 'grid', gridTemplateColumns: '200px 1fr', gap: 24, alignItems: 'start', padding: '24px 0', borderBottom: '1px solid var(--dust)' }}>
+            <div key={label} className="type-specimen-row">
               <span style={{ ...MONO, display: 'block', fontSize: 8, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--muted)', paddingTop: 4, lineHeight: 1.6 }}>{label}</span>
               <div>{el}</div>
             </div>
@@ -157,7 +157,7 @@ export function ComponentExplorer() {
           <span style={sectionNum}>02</span>
           <span style={sectionTitle}>Stat Callouts</span>
         </div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: 3 }}>
+        <div className="stat-grid">
           {([
             { num: '28.8%',   label: 'TN Debt / GSDP',        sub: 'FY 2023–24' },
             { num: '₹44K cr', label: 'TASMAC Revenue',         sub: 'Annual 2023–24' },
