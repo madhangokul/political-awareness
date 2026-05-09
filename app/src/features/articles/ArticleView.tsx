@@ -7,6 +7,7 @@ import { supabase } from '../../lib/supabase'
 import { useAuth } from '../auth/AuthProvider'
 import { LoginModal } from '../auth/LoginModal'
 import { CommentThread } from '../comments/CommentThread'
+import { useTrack } from '../analytics/useTrack'
 
 declare global {
   interface Window {
@@ -23,6 +24,8 @@ export function ArticleView() {
   const { user, loading: authLoading } = useAuth()
   const [showLogin, setShowLogin] = useState(false)
   const htmlRef = useRef<HTMLDivElement>(null)
+  const { track, attachScrollTracker } = useTrack(slug)
+  const viewStartRef = useRef<number>(Date.now())
 
   const { data: article, isLoading: articleLoading } = useQuery({
     queryKey: ['article', slug],
@@ -55,6 +58,24 @@ export function ArticleView() {
 
   const content = currentVersion?.content ?? ''
   const isHtml = content.trimStart().startsWith('<')
+
+  // Track article_view once content loads; track time_on_page on unmount
+  useEffect(() => {
+    if (!user || !article || !currentVersion) return
+    viewStartRef.current = Date.now()
+    track('article_view', { title: article.title, version: article.current_version })
+    return () => {
+      const seconds = Math.round((Date.now() - viewStartRef.current) / 1000)
+      track('time_on_page', { seconds })
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user?.id, currentVersion?.id])
+
+  // Attach scroll depth tracker to rendered content
+  useEffect(() => {
+    if (!user || !htmlRef.current) return
+    return attachScrollTracker(htmlRef.current)
+  }, [user, attachScrollTracker, currentVersion?.id])
 
   // Activate all interactive JS after HTML content is rendered
   useEffect(() => {
@@ -322,6 +343,10 @@ export function ArticleView() {
         <div
           ref={htmlRef}
           dangerouslySetInnerHTML={{ __html: content }}
+          onClick={(e) => {
+            const a = (e.target as HTMLElement).closest('a[href]')
+            if (a) track('link_click', { href: a.getAttribute('href') })
+          }}
         />
         {/* Comment thread */}
         {currentVersion && (

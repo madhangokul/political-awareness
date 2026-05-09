@@ -1,11 +1,14 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
+import { useState } from 'react'
 import { supabase } from '../../lib/supabase'
 import { useAuth } from '../auth/AuthProvider'
+import { UserEngagementDrawer } from './UserEngagementDrawer'
 import type { Role, Profile } from '../../lib/types'
 
 export function ReviewerManager() {
   const { profile: self } = useAuth()
   const queryClient = useQueryClient()
+  const [auditUser, setAuditUser] = useState<{ id: string; username: string | null } | null>(null)
 
   const { data: users = [], isLoading } = useQuery({
     queryKey: ['all-profiles'],
@@ -42,6 +45,7 @@ export function ReviewerManager() {
             <th className="font-mono text-[9px] uppercase tracking-wider text-muted text-left pb-2">User</th>
             <th className="font-mono text-[9px] uppercase tracking-wider text-muted text-left pb-2">Current Role</th>
             <th className="font-mono text-[9px] uppercase tracking-wider text-muted text-left pb-2">Set Role</th>
+            <th className="font-mono text-[9px] uppercase tracking-wider text-muted text-left pb-2">Audit</th>
           </tr>
         </thead>
         <tbody className="divide-y divide-dust">
@@ -68,10 +72,42 @@ export function ReviewerManager() {
                   <option value="admin">admin</option>
                 </select>
               </td>
+              <td className="py-3">
+                <button
+                  onClick={() => setAuditUser({ id: u.id, username: u.display_name ?? u.username ?? null })}
+                  title="View engagement history"
+                  style={{
+                    background: 'none',
+                    border: '1px solid var(--dust2)',
+                    borderRadius: 4,
+                    padding: '3px 8px',
+                    cursor: 'pointer',
+                    fontFamily: 'var(--font-mono)',
+                    fontSize: '0.7rem',
+                    color: 'var(--muted)',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: 4,
+                    transition: 'color 0.15s, border-color 0.15s',
+                  }}
+                  onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.color = 'var(--accent)'; (e.currentTarget as HTMLButtonElement).style.borderColor = 'var(--accent)' }}
+                  onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.color = 'var(--muted)'; (e.currentTarget as HTMLButtonElement).style.borderColor = 'var(--dust2)' }}
+                >
+                  📊 Stats
+                </button>
+              </td>
             </tr>
           ))}
         </tbody>
       </table>
+
+      {auditUser && (
+        <UserEngagementDrawer
+          userId={auditUser.id}
+          username={auditUser.username}
+          onClose={() => setAuditUser(null)}
+        />
+      )}
     </div>
   )
 }
