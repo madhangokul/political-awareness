@@ -1,0 +1,1254 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Tamil Nadu Ministries — Civics Cheat Sheet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #faf8f4;
+    --surface: #ffffff;
+    --surface2: #f3f0ea;
+    --border: #e2ddd4;
+    --text: #1a1612;
+    --text2: #5a5248;
+    --text3: #8a8078;
+    --accent: #c8540a;
+    --toggle-bg: #e2ddd4;
+    --shadow: 0 2px 12px rgba(0,0,0,0.06);
+    --card-hover: 0 4px 20px rgba(0,0,0,0.10);
+  }
+  [data-theme="dark"] {
+    --bg: #0f1117;
+    --surface: #181c26;
+    --surface2: #1e2330;
+    --border: #262d3f;
+    --text: #ede8e0;
+    --text2: #9097b0;
+    --text3: #5a6080;
+    --accent: #f0954a;
+    --toggle-bg: #262d3f;
+    --shadow: 0 2px 12px rgba(0,0,0,0.3);
+    --card-hover: 0 4px 20px rgba(0,0,0,0.4);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', system-ui, sans-serif;
+    line-height: 1.6;
+    transition: background 0.3s, color 0.3s;
+  }
+
+  /* ─── HEADER ─── */
+  header {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 14px 24px;
+    display: flex; align-items: center; gap: 16px;
+    box-shadow: var(--shadow);
+  }
+  .header-title {
+    flex: 1;
+  }
+  .header-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 2px;
+  }
+  .header-h1 {
+    font-family: 'Lora', Georgia, serif;
+    font-size: 20px; font-weight: 700; color: var(--text);
+  }
+  .toggle-btn {
+    background: var(--toggle-bg); border: 1px solid var(--border);
+    color: var(--text2); cursor: pointer; padding: 7px 14px;
+    border-radius: 20px; font-size: 13px; font-family: 'DM Sans', sans-serif;
+    display: flex; align-items: center; gap: 6px;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+  .toggle-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* ─── INTRO STRIP ─── */
+  .intro {
+    max-width: 900px; margin: 32px auto 0; padding: 0 24px;
+  }
+  .intro h2 {
+    font-family: 'Lora', Georgia, serif;
+    font-size: clamp(22px, 4vw, 34px); font-weight: 700;
+    color: var(--text); line-height: 1.25; margin-bottom: 12px;
+  }
+  .intro h2 em { font-style: italic; color: var(--accent); }
+  .intro p {
+    font-size: 15px; color: var(--text2); max-width: 640px; line-height: 1.75;
+  }
+
+  /* ─── CATEGORY FILTER ─── */
+  .filter-bar {
+    max-width: 900px; margin: 24px auto 0; padding: 0 24px;
+    display: flex; flex-wrap: wrap; gap: 8px;
+  }
+  .filter-pill {
+    background: var(--surface); border: 1px solid var(--border);
+    color: var(--text2); padding: 5px 14px; border-radius: 20px;
+    font-size: 12px; font-weight: 500; cursor: pointer;
+    transition: all 0.15s; white-space: nowrap;
+  }
+  .filter-pill:hover { border-color: var(--accent); color: var(--accent); }
+  .filter-pill.active {
+    background: var(--accent); border-color: var(--accent);
+    color: #fff; font-weight: 600;
+  }
+
+  /* ─── SECTION HEADER ─── */
+  .section-header {
+    max-width: 900px; margin: 36px auto 0; padding: 0 24px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .section-header-line { flex: 1; height: 1px; background: var(--border); }
+  .section-label {
+    font-family: 'DM Mono', monospace; font-size: 11px;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--text3); white-space: nowrap;
+  }
+  .section-icon { font-size: 18px; }
+
+  /* ─── CARD GRID ─── */
+  .grid {
+    max-width: 900px; margin: 16px auto 0; padding: 0 24px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 14px;
+  }
+
+  /* ─── MINISTRY CARD ─── */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px 20px;
+    display: flex; flex-direction: column; gap: 10px;
+    box-shadow: var(--shadow);
+    transition: box-shadow 0.2s, transform 0.2s;
+    border-top: 3px solid var(--cat-color);
+  }
+  .card:hover {
+    box-shadow: var(--card-hover);
+    transform: translateY(-1px);
+  }
+  .card-head {
+    display: flex; align-items: flex-start; gap: 10px;
+  }
+  .card-icon {
+    font-size: 24px; flex-shrink: 0; line-height: 1;
+  }
+  .card-name {
+    font-family: 'Lora', Georgia, serif;
+    font-size: 15px; font-weight: 700; color: var(--text);
+    line-height: 1.3;
+  }
+  .card-tagline {
+    font-size: 12px; color: var(--text3); font-style: italic;
+    line-height: 1.5; font-family: 'Lora', Georgia, serif;
+  }
+  .divider { height: 1px; background: var(--border); }
+  .card-section-label {
+    font-family: 'DM Mono', monospace; font-size: 9px;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--cat-color); margin-bottom: 4px; font-weight: 500;
+  }
+  .card-body { font-size: 12.5px; color: var(--text2); line-height: 1.65; }
+  .card-controls {
+    display: flex; flex-direction: column; gap: 4px;
+  }
+  .control-item {
+    display: flex; align-items: baseline; gap: 6px;
+    font-size: 12px; color: var(--text2);
+  }
+  .control-dot {
+    width: 5px; height: 5px; border-radius: 50%;
+    background: var(--cat-color); flex-shrink: 0;
+    margin-top: 5px;
+  }
+  .fact-box {
+    background: var(--surface2); border-radius: 6px;
+    padding: 9px 12px;
+    font-size: 11.5px; color: var(--text2); line-height: 1.6;
+  }
+  .fact-box strong { color: var(--text); font-weight: 600; }
+
+  /* ─── FOOTER ─── */
+  .footer {
+    max-width: 900px; margin: 48px auto 0; padding: 0 24px 48px;
+    text-align: center;
+  }
+  .footer-note {
+    font-size: 11.5px; color: var(--text3); line-height: 1.8;
+    border-top: 1px solid var(--border); padding-top: 24px;
+  }
+
+  /* ─── CATEGORY COLOR VARS applied per card ─── */
+  .cat-governance { --cat-color: #3b6fd4; }
+  .cat-infrastructure { --cat-color: #d97706; }
+  .cat-basics { --cat-color: #16a34a; }
+  .cat-nature { --cat-color: #0891b2; }
+  .cat-welfare { --cat-color: #7c3aed; }
+  .cat-economy { --cat-color: #b45309; }
+  .cat-culture { --cat-color: #be185d; }
+
+  /* hidden cards for filter */
+  .card.hidden { display: none; }
+
+  @media (max-width: 600px) {
+    header { flex-wrap: wrap; }
+    .grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-title">
+    <div class="header-eyebrow">Tamil Nadu · State Government</div>
+    <div class="header-h1">Ministry Portfolios — Civics Cheat Sheet</div>
+  </div>
+  <button class="toggle-btn" onclick="toggleTheme()" id="themeBtn">🌙 Dark Mode</button>
+</header>
+
+<div class="intro">
+  <h2>What does the state <em>actually</em> govern?</h2>
+  <p>
+    A state government is divided into <strong>ministries</strong> — each one responsible for a specific slice of public life.
+    Think of each ministry as a department that exists because <em>something needs to be run, regulated, or protected</em>.
+    This is your map to understanding what they are, why they exist, and what happens because of them.
+  </p>
+</div>
+
+<div class="filter-bar">
+  <button class="filter-pill active" onclick="filterCat('all', this)">All Ministries</button>
+  <button class="filter-pill" onclick="filterCat('cat-governance', this)">🏛 Governance</button>
+  <button class="filter-pill" onclick="filterCat('cat-infrastructure', this)">🏗 Infrastructure</button>
+  <button class="filter-pill" onclick="filterCat('cat-basics', this)">📚 People's Basics</button>
+  <button class="filter-pill" onclick="filterCat('cat-nature', this)">🌿 Land & Nature</button>
+  <button class="filter-pill" onclick="filterCat('cat-welfare', this)">🤝 Welfare</button>
+  <button class="filter-pill" onclick="filterCat('cat-economy', this)">💼 Economy</button>
+  <button class="filter-pill" onclick="filterCat('cat-culture', this)">🎭 Culture & Identity</button>
+</div>
+
+
+<!-- ══════════════════════════════════════════════
+     SECTION 1: GOVERNANCE
+════════════════════════════════════════════════ -->
+<div class="section-header" data-cat="cat-governance">
+  <span class="section-icon">🏛</span>
+  <span class="section-label">Governance — How the state runs itself</span>
+  <div class="section-header-line"></div>
+</div>
+<div class="grid">
+
+  <div class="card cat-governance" data-cat="cat-governance">
+    <div class="card-head">
+      <span class="card-icon">👑</span>
+      <div>
+        <div class="card-name">General Administration</div>
+        <div class="card-tagline">"The nervous system of government"</div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div>
+      <div class="card-section-label">Why it exists</div>
+      <div class="card-body">Every government department needs coordination, staffing, and policy oversight. GA is the hub that keeps all other ministries talking to each other.</div>
+    </div>
+    <div>
+      <div class="card-section-label">What it controls</div>
+      <div class="card-controls">
+        <div class="control-item"><span class="control-dot"></span><span>IAS officers — posting, transfer, promotion</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>Cabinet decisions and government orders</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>District Collectors and revenue officers</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>Chief Minister's Office coordination</span></div>
+      </div>
+    </div>
+    <div class="fact-box"><strong>In practice:</strong> When a government scheme is launched, GA decides which officer goes where to implement it.</div>
+  </div>
+
+  <div class="card cat-governance" data-cat="cat-governance">
+    <div class="card-head">
+      <span class="card-icon">💰</span>
+      <div>
+        <div class="card-name">Finance</div>
+        <div class="card-tagline">"Where every rupee comes from and goes"</div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div>
+      <div class="card-section-label">Why it exists</div>
+      <div class="card-body">The state earns money (taxes, grants) and must spend it wisely. Finance ensures every department gets funded, and spending is accounted for.</div>
+    </div>
+    <div>
+      <div class="card-section-label">What it controls</div>
+      <div class="card-controls">
+        <div class="control-item"><span class="control-dot"></span><span>State Budget — presented every year</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>Treasury — all government payments</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>Pension and retirement benefits of employees</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>Loans and borrowings by the state</span></div>
+      </div>
+    </div>
+    <div class="fact-box"><strong>In practice:</strong> Before any department spends money on a new scheme, Finance Ministry clears the allocation.</div>
+  </div>
+
+  <div class="card cat-governance" data-cat="cat-governance">
+    <div class="card-head">
+      <span class="card-icon">🚔</span>
+      <div>
+        <div class="card-name">Home (Police & Public Order)</div>
+        <div class="card-tagline">"Keeping the peace — literally"</div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div>
+      <div class="card-section-label">Why it exists</div>
+      <div class="card-body">Law & order is the first duty of any government. Home Ministry manages the entire police apparatus and ensures internal security.</div>
+    </div>
+    <div>
+      <div class="card-section-label">What it controls</div>
+      <div class="card-controls">
+        <div class="control-item"><span class="control-dot"></span><span>Tamil Nadu Police — all postings, operations</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>IPS officer appointments</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>Prisons and correctional facilities</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>Fire & Rescue Services</span></div>
+      </div>
+    </div>
+    <div class="fact-box"><strong>In practice:</strong> A protest in Chennai? The police deployment, permissions, and management — all flow from this ministry.</div>
+  </div>
+
+  <div class="card cat-governance" data-cat="cat-governance">
+    <div class="card-head">
+      <span class="card-icon">📋</span>
+      <div>
+        <div class="card-name">Revenue & Disaster Management</div>
+        <div class="card-tagline">"Land records + crisis response"</div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div>
+      <div class="card-section-label">Why it exists</div>
+      <div class="card-body">Land is the most contested resource in any state. Revenue ministry maintains ownership records and steps in when disasters strike.</div>
+    </div>
+    <div>
+      <div class="card-section-label">What it controls</div>
+      <div class="card-controls">
+        <div class="control-item"><span class="control-dot"></span><span>Patta (land ownership) records and disputes</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>District administration via Collectors</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>State Disaster Response Force (SDRF)</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>Flood and cyclone relief operations</span></div>
+      </div>
+    </div>
+    <div class="fact-box"><strong>In practice:</strong> Cyclone Michaung hits Chennai — Revenue Ministry coordinates evacuation, relief camps, and compensation.</div>
+  </div>
+
+  <div class="card cat-governance" data-cat="cat-governance">
+    <div class="card-head">
+      <span class="card-icon">🧾</span>
+      <div>
+        <div class="card-name">Commercial Taxes</div>
+        <div class="card-tagline">"The state's biggest income source"</div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div>
+      <div class="card-section-label">Why it exists</div>
+      <div class="card-body">Businesses and trade generate taxes. This ministry collects GST (state share), stamp duties, and ensures businesses don't evade tax.</div>
+    </div>
+    <div>
+      <div class="card-section-label">What it controls</div>
+      <div class="card-controls">
+        <div class="control-item"><span class="control-dot"></span><span>GST collection — State's share from Centre</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>VAT on petroleum products</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>Property registration & stamp duty</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>Tax enforcement and audits</span></div>
+      </div>
+    </div>
+    <div class="fact-box"><strong>In practice:</strong> When you register a house, the registration fee (stamp duty) flows into the state treasury via this ministry.</div>
+  </div>
+
+  <div class="card cat-governance" data-cat="cat-governance">
+    <div class="card-head">
+      <span class="card-icon">⛏️</span>
+      <div>
+        <div class="card-name">Mines & Natural Resources</div>
+        <div class="card-tagline">"Who controls what's under the ground"</div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div>
+      <div class="card-section-label">Why it exists</div>
+      <div class="card-body">Minerals and natural resources belong to the state. This ministry controls who mines what, prevents illegal quarrying, and earns royalties.</div>
+    </div>
+    <div>
+      <div class="card-section-label">What it controls</div>
+      <div class="card-controls">
+        <div class="control-item"><span class="control-dot"></span><span>Sand, granite, and quarry leases</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>Mining licenses and royalty collection</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>Prevention of illegal sand mining</span></div>
+      </div>
+    </div>
+    <div class="fact-box"><strong>In practice:</strong> The sand you use for construction — someone paid the state government a royalty. This ministry collects it.</div>
+  </div>
+
+</div><!-- /grid -->
+
+
+<!-- ══════════════════════════════════════════════
+     SECTION 2: INFRASTRUCTURE
+════════════════════════════════════════════════ -->
+<div class="section-header" data-cat="cat-infrastructure">
+  <span class="section-icon">🏗</span>
+  <span class="section-label">Infrastructure — Building the physical state</span>
+  <div class="section-header-line"></div>
+</div>
+<div class="grid">
+
+  <div class="card cat-infrastructure" data-cat="cat-infrastructure">
+    <div class="card-head">
+      <span class="card-icon">🛣️</span>
+      <div>
+        <div class="card-name">Public Works (PWD)</div>
+        <div class="card-tagline">"The government's construction company"</div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div>
+      <div class="card-section-label">Why it exists</div>
+      <div class="card-body">Roads, bridges, government buildings — someone has to plan, build, and maintain them. That's PWD. Every piece of public infrastructure is their responsibility.</div>
+    </div>
+    <div>
+      <div class="card-section-label">What it controls</div>
+      <div class="card-controls">
+        <div class="control-item"><span class="control-dot"></span><span>State highways and district roads</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>Government buildings, courts, offices</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>Bridges and flyovers</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>Minor ports along the coast</span></div>
+      </div>
+    </div>
+    <div class="fact-box"><strong>In practice:</strong> The road in front of your house that needs repair — that work order goes through PWD.</div>
+  </div>
+
+  <div class="card cat-infrastructure" data-cat="cat-infrastructure">
+    <div class="card-head">
+      <span class="card-icon">🏙️</span>
+      <div>
+        <div class="card-name">Municipal Administration</div>
+        <div class="card-tagline">"Running every town and city"</div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div>
+      <div class="card-section-label">Why it exists</div>
+      <div class="card-body">Cities need local governing bodies — corporations, municipalities. This ministry oversees all urban local bodies and ensures city services function.</div>
+    </div>
+    <div>
+      <div class="card-section-label">What it controls</div>
+      <div class="card-controls">
+        <div class="control-item"><span class="control-dot"></span><span>15 Municipal Corporations incl. Chennai</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>Urban water supply and sewage</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>Street lights, waste collection</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>Building plan approvals</span></div>
+      </div>
+    </div>
+    <div class="fact-box"><strong>In practice:</strong> Your Chennai Corporation property tax? Goes to a body under this ministry's oversight.</div>
+  </div>
+
+  <div class="card cat-infrastructure" data-cat="cat-infrastructure">
+    <div class="card-head">
+      <span class="card-icon">🏘️</span>
+      <div>
+        <div class="card-name">Rural Development & Panchayats</div>
+        <div class="card-tagline">"Governance at the village level"</div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div>
+      <div class="card-section-label">Why it exists</div>
+      <div class="card-body">Most of Tamil Nadu lives in villages. Panchayat Raj gives villages self-governance. This ministry funds and administers all 12,600+ village panchayats.</div>
+    </div>
+    <div>
+      <div class="card-section-label">What it controls</div>
+      <div class="card-controls">
+        <div class="control-item"><span class="control-dot"></span><span>Village panchayats and union panchayats</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>MGNREGS (rural employment scheme)</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>Rural roads, drains, sanitation</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>Panchayat-level construction works</span></div>
+      </div>
+    </div>
+    <div class="fact-box"><strong>In practice:</strong> The cement road inside your village, the community hall — funded and monitored by this ministry.</div>
+  </div>
+
+  <div class="card cat-infrastructure" data-cat="cat-infrastructure">
+    <div class="card-head">
+      <span class="card-icon">🏠</span>
+      <div>
+        <div class="card-name">Housing & Town Planning</div>
+        <div class="card-tagline">"A home for every family"</div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div>
+      <div class="card-section-label">Why it exists</div>
+      <div class="card-body">Housing is a basic need. Slum clearance, affordable housing schemes, and planned urban growth are impossible without a dedicated ministry.</div>
+    </div>
+    <div>
+      <div class="card-section-label">What it controls</div>
+      <div class="card-controls">
+        <div class="control-item"><span class="control-dot"></span><span>Tamil Nadu Housing Board (TNHB)</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>Slum Clearance Board — rehab schemes</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>CMDA — Chennai's master planning body</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>Rural housing under PMAY</span></div>
+      </div>
+    </div>
+    <div class="fact-box"><strong>In practice:</strong> The "2BHK for poor" scheme in TN — executed through this ministry's agencies.</div>
+  </div>
+
+  <div class="card cat-infrastructure" data-cat="cat-infrastructure">
+    <div class="card-head">
+      <span class="card-icon">🚌</span>
+      <div>
+        <div class="card-name">Transport</div>
+        <div class="card-tagline">"Moving people across the state"</div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div>
+      <div class="card-section-label">Why it exists</div>
+      <div class="card-body">Public transport is the backbone of daily life. The state runs bus corporations connecting every district — private vehicles alone can't serve everyone.</div>
+    </div>
+    <div>
+      <div class="card-section-label">What it controls</div>
+      <div class="card-controls">
+        <div class="control-item"><span class="control-dot"></span><span>TNSTC, MTC — state bus corporations</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>Motor Vehicle Act enforcement</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>Driving licenses and vehicle registration</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>Chennai Metro oversight (state share)</span></div>
+      </div>
+    </div>
+    <div class="fact-box"><strong>In practice:</strong> The free bus ride scheme for women in TN — a policy of this ministry, funded by Finance.</div>
+  </div>
+
+  <div class="card cat-infrastructure" data-cat="cat-infrastructure">
+    <div class="card-head">
+      <span class="card-icon">⚡</span>
+      <div>
+        <div class="card-name">Electricity & Energy</div>
+        <div class="card-tagline">"Power to every home"</div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div>
+      <div class="card-section-label">Why it exists</div>
+      <div class="card-body">Electricity is infrastructure. The state owns power generation plants and distribution networks. Someone must regulate tariffs and ensure supply.</div>
+    </div>
+    <div>
+      <div class="card-section-label">What it controls</div>
+      <div class="card-controls">
+        <div class="control-item"><span class="control-dot"></span><span>TANGEDCO — state electricity utility</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>Power tariffs and subsidy decisions</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>Solar and wind energy policy</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>Rural electrification programs</span></div>
+      </div>
+    </div>
+    <div class="fact-box"><strong>In practice:</strong> Free electricity units for domestic consumers — this ministry sets the slab, Finance funds the subsidy.</div>
+  </div>
+
+  <div class="card cat-infrastructure" data-cat="cat-infrastructure">
+    <div class="card-head">
+      <span class="card-icon">💧</span>
+      <div>
+        <div class="card-name">Water Resources (Irrigation)</div>
+        <div class="card-tagline">"Managing every drop of water"</div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div>
+      <div class="card-section-label">Why it exists</div>
+      <div class="card-body">Agriculture and drinking water both depend on rivers, tanks, and canals. The state must manage and distribute water resources equitably — especially in a drought-prone state.</div>
+    </div>
+    <div>
+      <div class="card-section-label">What it controls</div>
+      <div class="card-controls">
+        <div class="control-item"><span class="control-dot"></span><span>Major dams — Mettur, Vaigai, Bhavanisagar</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>Canal systems for agricultural water</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>Groundwater regulation</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>Cauvery water dispute management</span></div>
+      </div>
+    </div>
+    <div class="fact-box"><strong>In practice:</strong> The annual Mettur dam opening for Cauvery delta farmers — an order from this ministry.</div>
+  </div>
+
+</div><!-- /grid -->
+
+
+<!-- ══════════════════════════════════════════════
+     SECTION 3: PEOPLE'S BASICS
+════════════════════════════════════════════════ -->
+<div class="section-header" data-cat="cat-basics">
+  <span class="section-icon">📚</span>
+  <span class="section-label">People's Basics — Education, Health & Food</span>
+  <div class="section-header-line"></div>
+</div>
+<div class="grid">
+
+  <div class="card cat-basics" data-cat="cat-basics">
+    <div class="card-head">
+      <span class="card-icon">🏫</span>
+      <div>
+        <div class="card-name">School Education</div>
+        <div class="card-tagline">"From age 5 to Class 12"</div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div>
+      <div class="card-section-label">Why it exists</div>
+      <div class="card-body">Nearly 44,000 government schools serve millions of children. Without state-run schooling, education would be inaccessible to the poor. Someone must hire teachers, write curricula, and run exams.</div>
+    </div>
+    <div>
+      <div class="card-section-label">What it controls</div>
+      <div class="card-controls">
+        <div class="control-item"><span class="control-dot"></span><span>All government and government-aided schools</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>Teacher recruitment and transfers</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>Tamil Nadu Board syllabus and exams</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>Noon meal scheme, free textbooks, uniforms</span></div>
+      </div>
+    </div>
+    <div class="fact-box"><strong>In practice:</strong> Free breakfast in government schools? That's the CM's Breakfast Scheme — a policy of this ministry.</div>
+  </div>
+
+  <div class="card cat-basics" data-cat="cat-basics">
+    <div class="card-head">
+      <span class="card-icon">🎓</span>
+      <div>
+        <div class="card-name">Higher Education</div>
+        <div class="card-tagline">"Universities, colleges and research"</div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div>
+      <div class="card-section-label">Why it exists</div>
+      <div class="card-body">Tamil Nadu has 500+ arts & science colleges and 500+ engineering colleges. The state needs to regulate quality, set admission rules, and fund public universities.</div>
+    </div>
+    <div>
+      <div class="card-section-label">What it controls</div>
+      <div class="card-controls">
+        <div class="control-item"><span class="control-dot"></span><span>State universities — Anna, Madras, Bharathiar</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>Engineering and Arts & Science colleges</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>TNEA — engineering admissions</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>Scholarships for students</span></div>
+      </div>
+    </div>
+    <div class="fact-box"><strong>In practice:</strong> The free laptop scheme for government college students — this ministry implements it.</div>
+  </div>
+
+  <div class="card cat-basics" data-cat="cat-basics">
+    <div class="card-head">
+      <span class="card-icon">🏥</span>
+      <div>
+        <div class="card-name">Health & Family Welfare</div>
+        <div class="card-tagline">"From PHCs to super-specialty hospitals"</div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div>
+      <div class="card-section-label">Why it exists</div>
+      <div class="card-body">Healthcare is a public good. The state runs a network of hospitals because private care is unaffordable for most. Doctors, medicines, and medical education need central coordination.</div>
+    </div>
+    <div>
+      <div class="card-section-label">What it controls</div>
+      <div class="card-controls">
+        <div class="control-item"><span class="control-dot"></span><span>Government hospitals — from PHC to AIIMS-level</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>MBBS and specialist doctor recruitment</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>Chief Minister's Comprehensive Health Insurance</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>Vaccination and disease control programs</span></div>
+      </div>
+    </div>
+    <div class="fact-box"><strong>In practice:</strong> Free dialysis and cancer treatment in government hospitals — run through this ministry's scheme.</div>
+  </div>
+
+  <div class="card cat-basics" data-cat="cat-basics">
+    <div class="card-head">
+      <span class="card-icon">🍱</span>
+      <div>
+        <div class="card-name">Food & Civil Supplies</div>
+        <div class="card-tagline">"Rice on every plate"</div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div>
+      <div class="card-section-label">Why it exists</div>
+      <div class="card-body">Food security is non-negotiable. The Public Distribution System (ration shops) ensures subsidised rice and essentials reach every poor household.</div>
+    </div>
+    <div>
+      <div class="card-section-label">What it controls</div>
+      <div class="card-controls">
+        <div class="control-item"><span class="control-dot"></span><span>Ration shops — over 3.5 crore card holders</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>Subsidised rice, sugar, kerosene</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>Price monitoring and consumer protection</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>Civil Supplies Corporation (procurement)</span></div>
+      </div>
+    </div>
+    <div class="fact-box"><strong>In practice:</strong> Free rice for ration card holders — procured from FCI and distributed via this ministry's network.</div>
+  </div>
+
+</div><!-- /grid -->
+
+
+<!-- ══════════════════════════════════════════════
+     SECTION 4: LAND & NATURE
+════════════════════════════════════════════════ -->
+<div class="section-header" data-cat="cat-nature">
+  <span class="section-icon">🌿</span>
+  <span class="section-label">Land & Nature — Agriculture, Forests, Sea</span>
+  <div class="section-header-line"></div>
+</div>
+<div class="grid">
+
+  <div class="card cat-nature" data-cat="cat-nature">
+    <div class="card-head">
+      <span class="card-icon">🌾</span>
+      <div>
+        <div class="card-name">Agriculture & Farmer Welfare</div>
+        <div class="card-tagline">"Supporting the people who feed the state"</div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div>
+      <div class="card-section-label">Why it exists</div>
+      <div class="card-body">Farming is both a livelihood and a food security issue. Farmers need seeds, credit, crop insurance, and price support — and none of that happens without a dedicated ministry.</div>
+    </div>
+    <div>
+      <div class="card-section-label">What it controls</div>
+      <div class="card-controls">
+        <div class="control-item"><span class="control-dot"></span><span>Subsidised seeds, fertilisers, equipment</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>Minimum Support Price procurement</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>Crop insurance and loan waivers</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>Horticulture — fruits, vegetables, flowers</span></div>
+      </div>
+    </div>
+    <div class="fact-box"><strong>In practice:</strong> A paddy farmer gets free power for his pumpset and subsidised seeds — both from this ministry's schemes.</div>
+  </div>
+
+  <div class="card cat-nature" data-cat="cat-nature">
+    <div class="card-head">
+      <span class="card-icon">🌲</span>
+      <div>
+        <div class="card-name">Forests</div>
+        <div class="card-tagline">"Protecting what you can't build back"</div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div>
+      <div class="card-section-label">Why it exists</div>
+      <div class="card-body">Tamil Nadu has 17,000+ sq km of forests. Deforestation, poaching, and encroachment are constant threats. A dedicated ministry and IFS officer cadre is the state's response.</div>
+    </div>
+    <div>
+      <div class="card-section-label">What it controls</div>
+      <div class="card-controls">
+        <div class="control-item"><span class="control-dot"></span><span>Reserved forests and wildlife sanctuaries</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>Anti-poaching enforcement</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>Human-wildlife conflict management</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>Green Tamil Nadu reforestation mission</span></div>
+      </div>
+    </div>
+    <div class="fact-box"><strong>In practice:</strong> The elephant corridor between Mudumalai and Anamalai — protected and managed by the Forest Department under this ministry.</div>
+  </div>
+
+  <div class="card cat-nature" data-cat="cat-nature">
+    <div class="card-head">
+      <span class="card-icon">🌍</span>
+      <div>
+        <div class="card-name">Environment & Climate Change</div>
+        <div class="card-tagline">"Regulating what humans do to nature"</div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div>
+      <div class="card-section-label">Why it exists</div>
+      <div class="card-body">Industrial growth creates pollution. Without regulation, factories dump waste into rivers and air quality degrades. This ministry is the state's environmental watchdog.</div>
+    </div>
+    <div>
+      <div class="card-section-label">What it controls</div>
+      <div class="card-controls">
+        <div class="control-item"><span class="control-dot"></span><span>Tamil Nadu Pollution Control Board</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>Environmental clearances for industries</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>Coastal Regulation Zone (CRZ) enforcement</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>Climate action plans</span></div>
+      </div>
+    </div>
+    <div class="fact-box"><strong>In practice:</strong> A factory near the Noyyal river in Tiruppur? TNPCB under this ministry monitors its effluent discharge.</div>
+  </div>
+
+  <div class="card cat-nature" data-cat="cat-nature">
+    <div class="card-head">
+      <span class="card-icon">🐟</span>
+      <div>
+        <div class="card-name">Fisheries & Animal Husbandry</div>
+        <div class="card-tagline">"The sea and the farm animal"</div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div>
+      <div class="card-section-label">Why it exists</div>
+      <div class="card-body">Tamil Nadu has a 1,076 km coastline and millions of fishermen. Fishing communities, livestock farmers, and poultry growers all need state support and regulation.</div>
+    </div>
+    <div>
+      <div class="card-section-label">What it controls</div>
+      <div class="card-controls">
+        <div class="control-item"><span class="control-dot"></span><span>Fisher welfare — boat subsidies, insurance</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>Aquaculture and inland fishing regulation</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>Veterinary services — livestock health</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>Milk and dairy support via AAVIN</span></div>
+      </div>
+    </div>
+    <div class="fact-box"><strong>In practice:</strong> The seasonal fishing ban every April-June — enforced by this ministry to protect fish breeding cycles.</div>
+  </div>
+
+</div><!-- /grid -->
+
+
+<!-- ══════════════════════════════════════════════
+     SECTION 5: WELFARE
+════════════════════════════════════════════════ -->
+<div class="section-header" data-cat="cat-welfare">
+  <span class="section-icon">🤝</span>
+  <span class="section-label">Welfare — Protecting those who need it most</span>
+  <div class="section-header-line"></div>
+</div>
+<div class="grid">
+
+  <div class="card cat-welfare" data-cat="cat-welfare">
+    <div class="card-head">
+      <span class="card-icon">👩</span>
+      <div>
+        <div class="card-name">Social Welfare & Women Empowerment</div>
+        <div class="card-tagline">"Safety nets for women and children"</div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div>
+      <div class="card-section-label">Why it exists</div>
+      <div class="card-body">Women face specific vulnerabilities. Orphaned children, abandoned elders, and abused women can't be left to fend for themselves — this ministry is the state's institutional safety net.</div>
+    </div>
+    <div>
+      <div class="card-section-label">What it controls</div>
+      <div class="card-controls">
+        <div class="control-item"><span class="control-dot"></span><span>₹1000/month Kalaignar Magalir Urimai scheme</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>Cradle Baby scheme — abandoned newborns</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>Women's hostels and shelter homes</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>Anganwadi centres (child nutrition)</span></div>
+      </div>
+    </div>
+    <div class="fact-box"><strong>In practice:</strong> The monthly ₹1000 direct transfer to women in TN — flagship scheme of this ministry.</div>
+  </div>
+
+  <div class="card cat-welfare" data-cat="cat-welfare">
+    <div class="card-head">
+      <span class="card-icon">⚖️</span>
+      <div>
+        <div class="card-name">Backward Classes Welfare</div>
+        <div class="card-tagline">"Levelling a historically uneven field"</div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div>
+      <div class="card-section-label">Why it exists</div>
+      <div class="card-body">Caste-based discrimination has historically denied communities access to education and opportunity. This ministry administers reservations and welfare schemes for BC, MBC, and Denotified communities.</div>
+    </div>
+    <div>
+      <div class="card-section-label">What it controls</div>
+      <div class="card-controls">
+        <div class="control-item"><span class="control-dot"></span><span>BC/MBC scholarships and hostel funding</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>Reservation implementation in education & jobs</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>Welfare boards for specific communities</span></div>
+      </div>
+    </div>
+    <div class="fact-box"><strong>In practice:</strong> A first-generation college student from a BC community gets a free laptop and hostel — via this ministry's scheme.</div>
+  </div>
+
+  <div class="card cat-welfare" data-cat="cat-welfare">
+    <div class="card-head">
+      <span class="card-icon">🔧</span>
+      <div>
+        <div class="card-name">Labour Welfare & Skill Development</div>
+        <div class="card-tagline">"Protecting workers, building careers"</div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div>
+      <div class="card-section-label">Why it exists</div>
+      <div class="card-body">Without labour laws, employers can exploit workers. This ministry enforces minimum wages, ensures safe workplaces, and trains people for jobs.</div>
+    </div>
+    <div>
+      <div class="card-section-label">What it controls</div>
+      <div class="card-controls">
+        <div class="control-item"><span class="control-dot"></span><span>Minimum wage enforcement across industries</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>Factory inspections and safety audits</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>ITI (Industrial Training Institutes)</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>Employment Exchanges</span></div>
+      </div>
+    </div>
+    <div class="fact-box"><strong>In practice:</strong> Textile workers in Tiruppur demanding proper wages — the Labour Department investigates the complaint.</div>
+  </div>
+
+  <div class="card cat-welfare" data-cat="cat-welfare">
+    <div class="card-head">
+      <span class="card-icon">🤲</span>
+      <div>
+        <div class="card-name">Minorities Welfare</div>
+        <div class="card-tagline">"Equal opportunity for all faiths"</div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div>
+      <div class="card-section-label">Why it exists</div>
+      <div class="card-body">Religious minorities — Muslims, Christians — often face socioeconomic disadvantages. This ministry ensures access to scholarships, housing, and welfare programs.</div>
+    </div>
+    <div>
+      <div class="card-section-label">What it controls</div>
+      <div class="card-controls">
+        <div class="control-item"><span class="control-dot"></span><span>Wakf Board (Muslim endowments)</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>Scholarship programs for minority students</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>NRI Tamil welfare and return support</span></div>
+      </div>
+    </div>
+    <div class="fact-box"><strong>In practice:</strong> A Tamil Muslim student studying in Chennai gets a pre-matric scholarship — via this ministry.</div>
+  </div>
+
+  <div class="card cat-welfare" data-cat="cat-welfare">
+    <div class="card-head">
+      <span class="card-icon">🏆</span>
+      <div>
+        <div class="card-name">Youth Welfare & Sports</div>
+        <div class="card-tagline">"From playgrounds to podiums"</div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div>
+      <div class="card-section-label">Why it exists</div>
+      <div class="card-body">Sports infrastructure, training, and talent identification don't happen by accident. A dedicated ministry ensures the state competes nationally and develops youth energy productively.</div>
+    </div>
+    <div>
+      <div class="card-section-label">What it controls</div>
+      <div class="card-controls">
+        <div class="control-item"><span class="control-dot"></span><span>Government stadiums and sports academies</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>State-level and national games representation</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>Youth welfare hostels and programmes</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>Cash awards for medal-winning athletes</span></div>
+      </div>
+    </div>
+    <div class="fact-box"><strong>In practice:</strong> A TN chess or boxing champion gets state funding and training support — via this ministry.</div>
+  </div>
+
+</div><!-- /grid -->
+
+
+<!-- ══════════════════════════════════════════════
+     SECTION 6: ECONOMY
+════════════════════════════════════════════════ -->
+<div class="section-header" data-cat="cat-economy">
+  <span class="section-icon">💼</span>
+  <span class="section-label">Economy — Trade, Industry & Commerce</span>
+  <div class="section-header-line"></div>
+</div>
+<div class="grid">
+
+  <div class="card cat-economy" data-cat="cat-economy">
+    <div class="card-head">
+      <span class="card-icon">🏭</span>
+      <div>
+        <div class="card-name">MSME & Industries</div>
+        <div class="card-tagline">"The engine of Tamil Nadu's economy"</div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div>
+      <div class="card-section-label">Why it exists</div>
+      <div class="card-body">Tamil Nadu is India's most industrialised state. Small and medium businesses create most jobs. The ministry attracts investment, sets up industrial estates, and supports entrepreneurs.</div>
+    </div>
+    <div>
+      <div class="card-section-label">What it controls</div>
+      <div class="card-controls">
+        <div class="control-item"><span class="control-dot"></span><span>TIDCO — industrial development corporation</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>SIPCOT — industrial estates across districts</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>Investment promotion and MoU signing</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>Cottage and small industries support</span></div>
+      </div>
+    </div>
+    <div class="fact-box"><strong>In practice:</strong> Global Investors Meet — foreign companies signing MoUs with TN — coordinated by this ministry.</div>
+  </div>
+
+  <div class="card cat-economy" data-cat="cat-economy">
+    <div class="card-head">
+      <span class="card-icon">🧵</span>
+      <div>
+        <div class="card-name">Handlooms & Textiles</div>
+        <div class="card-tagline">"Protecting an ancient craft industry"</div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div>
+      <div class="card-section-label">Why it exists</div>
+      <div class="card-body">Kanchipuram silk, Salem textiles, and handloom weavers across TN are part of cultural heritage and livelihood. Without protection, power looms and cheap imports would wipe them out.</div>
+    </div>
+    <div>
+      <div class="card-section-label">What it controls</div>
+      <div class="card-controls">
+        <div class="control-item"><span class="control-dot"></span><span>Weaver welfare schemes and subsidies</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>Co-optex — state handloom cooperative</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>Textile park development</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>Yarn price subsidies for weavers</span></div>
+      </div>
+    </div>
+    <div class="fact-box"><strong>In practice:</strong> A Kanchipuram silk weaver sells through Co-optex at a fair price — the ministry's cooperative prevents exploitation.</div>
+  </div>
+
+  <div class="card cat-economy" data-cat="cat-economy">
+    <div class="card-head">
+      <span class="card-icon">🤝</span>
+      <div>
+        <div class="card-name">Co-operation</div>
+        <div class="card-tagline">"People owning enterprises together"</div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div>
+      <div class="card-section-label">Why it exists</div>
+      <div class="card-body">Cooperatives let farmers, workers, and communities pool resources. Credit societies, milk unions, and consumer stores are all cooperatives — the state registers and regulates them.</div>
+    </div>
+    <div>
+      <div class="card-section-label">What it controls</div>
+      <div class="card-controls">
+        <div class="control-item"><span class="control-dot"></span><span>Primary Agriculture Credit Societies (PACS)</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>Milk cooperative federations (AAVIN)</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>Consumer cooperative stores</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>Cooperative bank regulation</span></div>
+      </div>
+    </div>
+    <div class="fact-box"><strong>In practice:</strong> A farmer getting a crop loan from a village cooperative — that society is registered under this ministry.</div>
+  </div>
+
+  <div class="card cat-economy" data-cat="cat-economy">
+    <div class="card-head">
+      <span class="card-icon">🗺️</span>
+      <div>
+        <div class="card-name">Tourism</div>
+        <div class="card-tagline">"Making the state worth visiting"</div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div>
+      <div class="card-section-label">Why it exists</div>
+      <div class="card-body">Tourism brings forex and creates jobs. TN's temples, beaches, and hill stations are a huge draw — but they need infrastructure, promotion, and management.</div>
+    </div>
+    <div>
+      <div class="card-section-label">What it controls</div>
+      <div class="card-controls">
+        <div class="control-item"><span class="control-dot"></span><span>TTDC — government hotel and tourism corp</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>Tourism promotion and branding</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>Heritage site development</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>Tourist police</span></div>
+      </div>
+    </div>
+    <div class="fact-box"><strong>In practice:</strong> The "Enchanting Tamil Nadu" tourism campaign — developed and funded by this ministry.</div>
+  </div>
+
+  <div class="card cat-economy" data-cat="cat-economy">
+    <div class="card-head">
+      <span class="card-icon">🍶</span>
+      <div>
+        <div class="card-name">Prohibition & Excise</div>
+        <div class="card-tagline">"Regulating alcohol — a moral and revenue tension"</div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div>
+      <div class="card-section-label">Why it exists</div>
+      <div class="card-body">Alcohol is both a social problem and a massive revenue source. The state controls its sale, decides where shops can open, collects excise duty, and enforces alcohol laws.</div>
+    </div>
+    <div>
+      <div class="card-section-label">What it controls</div>
+      <div class="card-controls">
+        <div class="control-item"><span class="control-dot"></span><span>TASMAC — state liquor retail monopoly</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>Liquor pricing and retail licensing</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>Illicit arrack crackdowns</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>Excise duty — TN earns ~₹36,000 Cr/year</span></div>
+      </div>
+    </div>
+    <div class="fact-box"><strong>In practice:</strong> TASMAC shops are owned by the state — alcohol revenue alone funds large parts of the state budget.</div>
+  </div>
+
+</div><!-- /grid -->
+
+
+<!-- ══════════════════════════════════════════════
+     SECTION 7: CULTURE & IDENTITY
+════════════════════════════════════════════════ -->
+<div class="section-header" data-cat="cat-culture">
+  <span class="section-icon">🎭</span>
+  <span class="section-label">Culture & Identity — Language, Faith & Technology</span>
+  <div class="section-header-line"></div>
+</div>
+<div class="grid">
+
+  <div class="card cat-culture" data-cat="cat-culture">
+    <div class="card-head">
+      <span class="card-icon">📖</span>
+      <div>
+        <div class="card-name">Tamil Development</div>
+        <div class="card-tagline">"Protecting the world's oldest living language"</div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div>
+      <div class="card-section-label">Why it exists</div>
+      <div class="card-body">Tamil is a Classical Language with 2,000+ years of literature. In a globalised world, the state actively promotes and preserves the language — in schools, courts, and public signage.</div>
+    </div>
+    <div>
+      <div class="card-section-label">What it controls</div>
+      <div class="card-controls">
+        <div class="control-item"><span class="control-dot"></span><span>Tamil official language enforcement</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>Funding for Tamil literature and research</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>World Tamil Conference organisation</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>Tamil lexicon and dictionary publishing</span></div>
+      </div>
+    </div>
+    <div class="fact-box"><strong>In practice:</strong> The government mandate to use Tamil in official correspondence — enforced by this ministry.</div>
+  </div>
+
+  <div class="card cat-culture" data-cat="cat-culture">
+    <div class="card-head">
+      <span class="card-icon">📰</span>
+      <div>
+        <div class="card-name">Information & Publicity</div>
+        <div class="card-tagline">"How the government speaks to the public"</div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div>
+      <div class="card-section-label">Why it exists</div>
+      <div class="card-body">Citizens need to know about government schemes and policies. The state also accredits journalists and manages its own media properties.</div>
+    </div>
+    <div>
+      <div class="card-section-label">What it controls</div>
+      <div class="card-controls">
+        <div class="control-item"><span class="control-dot"></span><span>Doordarshan and All India Radio (state content)</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>Press accreditation for journalists</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>Government advertisements in media</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>Film censor certification (state-level)</span></div>
+      </div>
+    </div>
+    <div class="fact-box"><strong>In practice:</strong> Those scheme advertisement hoardings across Chennai roads — funded and placed by this ministry.</div>
+  </div>
+
+  <div class="card cat-culture" data-cat="cat-culture">
+    <div class="card-head">
+      <span class="card-icon">🛕</span>
+      <div>
+        <div class="card-name">Hindu Religious & Charitable Endowments (HR&CE)</div>
+        <div class="card-tagline">"Running 38,000 temples"</div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div>
+      <div class="card-section-label">Why it exists</div>
+      <div class="card-body">Tamil Nadu has more than 38,000 Hindu temples, many holding enormous land and wealth. The state administers these institutions to prevent mismanagement and ensure their upkeep and fair access.</div>
+    </div>
+    <div>
+      <div class="card-section-label">What it controls</div>
+      <div class="card-controls">
+        <div class="control-item"><span class="control-dot"></span><span>All major state-controlled temples</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>Temple trust funds and endowments</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>Archakar (priest) appointments and salaries</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>Temple renovation and heritage upkeep</span></div>
+      </div>
+    </div>
+    <div class="fact-box"><strong>In practice:</strong> Tirupati-level temples in TN (like Murugan temples) are administered by HR&CE — their income funds priest salaries and renovation.</div>
+  </div>
+
+  <div class="card cat-culture" data-cat="cat-culture">
+    <div class="card-head">
+      <span class="card-icon">💻</span>
+      <div>
+        <div class="card-name">Information Technology</div>
+        <div class="card-tagline">"Turning TN into a digital economy"</div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div>
+      <div class="card-section-label">Why it exists</div>
+      <div class="card-body">Chennai is India's second largest tech hub. The state must attract IT companies, build digital infrastructure, and modernise government services — all through a dedicated ministry.</div>
+    </div>
+    <div>
+      <div class="card-section-label">What it controls</div>
+      <div class="card-controls">
+        <div class="control-item"><span class="control-dot"></span><span>TIDEL Park and tech parks across TN</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>e-Governance — digital citizen services</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>Cyber security policy for the state</span></div>
+        <div class="control-item"><span class="control-dot"></span><span>Startup Tamil Nadu ecosystem</span></div>
+      </div>
+    </div>
+    <div class="fact-box"><strong>In practice:</strong> Applying for a birth certificate online via e-Sevai — that digital infrastructure is built by this ministry.</div>
+  </div>
+
+</div><!-- /grid -->
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-note">
+    <strong>Tamil Nadu Ministry Portfolios — Civics Reference</strong><br />
+    Based on the structure of the Tamil Nadu Council of Ministers (2021–2026 term, DMK Government).<br />
+    This cheat sheet covers the <em>purpose and function</em> of each ministry — not the individual office-holders.<br />
+    Ministries are created by the Chief Minister and can be split, merged, or renamed at any time.<br />
+    Source: Government of Tamil Nadu · Wikipedia · Official State Department Records
+  </div>
+</div>
+
+<script>
+  function toggleTheme() {
+    const html = document.documentElement;
+    const isDark = html.getAttribute('data-theme') === 'dark';
+    html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+    document.getElementById('themeBtn').textContent = isDark ? '🌙 Dark Mode' : '☀️ Light Mode';
+  }
+
+  function filterCat(cat, btn) {
+    // Update pills
+    document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+
+    // Filter cards
+    document.querySelectorAll('.card').forEach(card => {
+      if (cat === 'all' || card.dataset.cat === cat) {
+        card.classList.remove('hidden');
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+
+    // Show/hide section headers
+    document.querySelectorAll('.section-header').forEach(sh => {
+      if (cat === 'all' || sh.dataset.cat === cat) {
+        sh.style.display = '';
+        // also show grids
+        sh.nextElementSibling.style.display = '';
+      } else {
+        sh.style.display = 'none';
+        sh.nextElementSibling.style.display = 'none';
+      }
+    });
+  }
+</script>
+</body>
+</html>

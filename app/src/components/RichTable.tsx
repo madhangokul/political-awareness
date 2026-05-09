@@ -99,7 +99,7 @@ function PillCell({ value }: { value: string }) {
   )
 }
 
-function renderCell(col: ColDef, value: unknown) {
+function renderCell(col: ColDef<Record<string, unknown>>, value: unknown) {
   switch (col.type) {
     case 'barfill':
       return <BarFill value={Number(value)} max={col.max} />
@@ -263,7 +263,7 @@ export function RichTable<T extends Record<string, unknown>>({
                 <tr key={i}>
                   {cols.map(col => (
                     <td key={col.key} style={td}>
-                      {renderCell(col, row[col.key])}
+                      {renderCell(col as ColDef<Record<string, unknown>>, row[col.key])}
                     </td>
                   ))}
                 </tr>

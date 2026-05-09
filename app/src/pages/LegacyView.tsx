@@ -15,6 +15,30 @@ const LEGACY_ARTICLES: Record<string, { file: string; title: string }> = {
     file: 'tn-flaws-alignment-costs.html',
     title: 'TN Flaws & Alignment Costs',
   },
+  'tn-civic-structure': {
+    file: 'tn_civics/tn-civic-structure.html',
+    title: 'TN Civic Structure — Part I',
+  },
+  'tn-civic-structure-p2': {
+    file: 'tn_civics/tn-civic-structure-p2.html',
+    title: 'TN Civic Structure — Part II',
+  },
+  'tn-civic-structure-p3': {
+    file: 'tn_civics/tn-civic-structure-p3.html',
+    title: 'TN Civic Structure — Part III',
+  },
+  'tn-civic-structure-p4': {
+    file: 'tn_civics/tn-civic-structure-p4.html',
+    title: 'TN Civic Structure — Part IV',
+  },
+  'tn-ministries-civics': {
+    file: 'tn_civics/tn-ministries-civics.html',
+    title: 'TN Ministries — Civics Cheat Sheet',
+  },
+  'tn-elections': {
+    file: 'tn_civics/tn-elections.html',
+    title: 'How Elections Work in Tamil Nadu',
+  },
 }
 
 export function LegacyView() {

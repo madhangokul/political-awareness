@@ -1,0 +1,1237 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Tamil Nadu — Civic Structure Part III</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+/* ══════════ THEME ══════════ */
+:root{
+  --bg:#f7f4ef;--surface:#fff;--surface2:#f0ece4;--surface3:#e8e3d8;
+  --border:#ddd8cf;--text:#1a1612;--text2:#5a5248;--text3:#9a9088;
+  --accent:#c8540a;
+  --union:#1d4ed8;--state:#c2410c;--local:#166534;
+  --purple:#7c3aed;--teal:#0891b2;--rose:#be185d;--amber:#b45309;
+  --sh:0 1px 4px rgba(0,0,0,.06);--sh2:0 2px 12px rgba(0,0,0,.08);
+}
+[data-theme="dark"]{
+  --bg:#0d1117;--surface:#161b22;--surface2:#1c2128;--surface3:#222836;
+  --border:#262d3a;--text:#e8e2d8;--text2:#8090a8;--text3:#505870;
+  --accent:#f0954a;
+  --union:#60a5fa;--state:#fb923c;--local:#4ade80;
+  --purple:#a78bfa;--teal:#22d3ee;--rose:#f472b6;--amber:#fbbf24;
+  --sh:0 1px 4px rgba(0,0,0,.3);--sh2:0 2px 14px rgba(0,0,0,.4);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-size:14px;line-height:1.65;transition:background .3s,color .3s;}
+
+/* ══════════ HEADER / NAV ══════════ */
+header{position:sticky;top:0;z-index:200;background:var(--surface);border-bottom:1px solid var(--border);padding:12px 24px;box-shadow:var(--sh2);display:flex;align-items:center;gap:16px;}
+.htitle-block{flex:1;}
+.eyebrow{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);margin-bottom:1px;}
+.main-title{font-family:'Lora',serif;font-size:18px;font-weight:700;color:var(--text);}
+.toggle-btn{background:var(--surface2);border:1px solid var(--border);color:var(--text2);padding:7px 14px;border-radius:20px;font-size:12px;cursor:pointer;white-space:nowrap;transition:all .2s;}
+.toggle-btn:hover{border-color:var(--accent);color:var(--accent);}
+nav{position:sticky;top:57px;z-index:190;background:var(--surface);border-bottom:1px solid var(--border);overflow-x:auto;scrollbar-width:none;}
+nav::-webkit-scrollbar{display:none;}
+.nav-inner{display:flex;padding:0 24px;white-space:nowrap;min-width:max-content;}
+.nl{display:block;padding:10px 14px;font-size:12px;font-weight:500;color:var(--text3);border-bottom:2px solid transparent;cursor:pointer;transition:all .15s;}
+.nl:hover,.nl.active{color:var(--accent);border-bottom-color:var(--accent);}
+
+/* ══════════ SECTION ══════════ */
+section{max-width:960px;margin:0 auto;padding:52px 24px 24px;}
+section+section{padding-top:40px;}
+.se{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;}
+.st{font-family:'Lora',serif;font-size:clamp(22px,4vw,30px);font-weight:700;color:var(--text);line-height:1.2;margin-bottom:8px;}
+.ss{font-size:14px;color:var(--text2);max-width:640px;line-height:1.7;margin-bottom:28px;}
+.divider{height:1px;background:var(--border);margin:40px 0;}
+.h3{font-family:'Lora',serif;font-size:17px;font-weight:700;color:var(--text);margin-bottom:12px;}
+.h3.mt{margin-top:28px;}
+.mt8{margin-top:8px;}.mt16{margin-top:16px;}.mt24{margin-top:24px;}
+.mb8{margin-bottom:8px;}.mb16{margin-bottom:16px;}.mb24{margin-bottom:24px;}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
+@media(max-width:640px){.g2,.g3,.g4{grid-template-columns:1fr;}}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:18px 20px;box-shadow:var(--sh);}
+.clabel{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:5px;}
+.ctitle{font-family:'Lora',serif;font-size:15px;font-weight:700;color:var(--text);margin-bottom:5px;}
+.cbody{font-size:13px;color:var(--text2);line-height:1.7;}
+.callout{background:var(--surface2);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;padding:14px 18px;font-size:13px;color:var(--text2);line-height:1.7;}
+.callout strong{color:var(--text);}
+.callout.blue{border-color:var(--union);}
+.callout.green{border-color:var(--local);}
+.callout.red{border-color:#dc2626;}
+.callout.purple{border-color:var(--purple);}
+.dot{width:5px;height:5px;border-radius:50%;background:var(--accent);flex-shrink:0;margin-top:5px;}
+.bl{list-style:none;display:flex;flex-direction:column;gap:5px;}
+.bl li{font-size:12.5px;color:var(--text2);display:flex;gap:7px;align-items:baseline;line-height:1.5;}
+
+/* ══════════ CH 13: LEGISLATURE TOOLS ══════════ */
+.tool-cards{display:flex;flex-direction:column;gap:10px;}
+.tool-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;overflow:hidden;box-shadow:var(--sh);}
+.tc-head{display:flex;align-items:center;gap:14px;padding:13px 18px;border-bottom:1px solid var(--border);}
+.tc-icon{font-size:24px;flex-shrink:0;}
+.tc-name{font-family:'Lora',serif;font-size:15px;font-weight:700;color:var(--text);}
+.tc-sub{font-size:11px;color:var(--text3);font-family:'DM Mono',monospace;}
+.tc-tag{margin-left:auto;font-size:10px;font-weight:600;padding:3px 9px;border-radius:10px;white-space:nowrap;}
+.tct-daily{background:rgba(29,78,216,.1);color:var(--union);}
+.tct-nuclear{background:rgba(220,38,38,.1);color:#dc2626;}
+.tct-question{background:rgba(22,101,52,.1);color:var(--local);}
+.tc-body{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;}
+@media(max-width:560px){.tc-body{grid-template-columns:1fr;}}
+.tc-cell{padding:12px 16px;border-right:1px solid var(--border);}
+.tc-cell:last-child{border-right:none;}
+.tc-cell-lbl{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--text3);margin-bottom:4px;}
+.tc-cell-txt{font-size:12.5px;color:var(--text2);line-height:1.55;}
+.tc-cell-txt strong{color:var(--text);}
+
+.assembly-day{display:grid;grid-template-columns:80px 1fr;gap:0;background:var(--surface);border:1px solid var(--border);border-radius:10px;overflow:hidden;box-shadow:var(--sh);margin-bottom:20px;}
+.ad-time-col{background:var(--surface2);border-right:1px solid var(--border);}
+.ad-slot{padding:10px 12px;border-bottom:1px solid var(--border);font-family:'DM Mono',monospace;font-size:11px;color:var(--accent);font-weight:500;}
+.ad-slot:last-child{border-bottom:none;}
+.ad-event-col{}
+.ad-event{padding:10px 16px;border-bottom:1px solid var(--border);font-size:12.5px;color:var(--text2);line-height:1.5;}
+.ad-event:last-child{border-bottom:none;}
+.ad-event strong{color:var(--text);}
+
+.whip-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px;}
+@media(max-width:540px){.whip-grid{grid-template-columns:1fr;}}
+.whip-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px;box-shadow:var(--sh);text-align:center;}
+.whip-lines{font-family:'DM Mono',monospace;font-size:28px;font-weight:700;margin-bottom:6px;}
+.whip-name{font-size:13px;font-weight:600;color:var(--text);margin-bottom:4px;}
+.whip-body{font-size:12px;color:var(--text2);line-height:1.5;}
+.wl1{color:var(--local);}
+.wl2{color:var(--amber);}
+.wl3{color:#dc2626;}
+
+/* ══════════ CH 14: WRIT JURISDICTION ══════════ */
+.writ-cards{display:flex;flex-direction:column;gap:10px;}
+.writ-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;overflow:hidden;box-shadow:var(--sh);}
+.wc-header{padding:12px 18px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--border);}
+.wc-latin{font-family:'Lora',serif;font-size:18px;font-weight:700;font-style:italic;}
+.wc-meaning{font-size:12px;color:var(--text3);font-family:'DM Mono',monospace;letter-spacing:.04em;}
+.wc-name{font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;margin-left:auto;padding:3px 10px;border-radius:6px;}
+.wc-body{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;}
+@media(max-width:560px){.wc-body{grid-template-columns:1fr;}}
+.wc-cell{padding:12px 16px;border-right:1px solid var(--border);}
+.wc-cell:last-child{border-right:none;}
+.wc-cl{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--text3);margin-bottom:4px;}
+.wc-ct{font-size:12.5px;color:var(--text2);line-height:1.55;}
+.wc-ct strong{color:var(--text);}
+
+.writ-flow{display:flex;flex-direction:column;gap:0;max-width:560px;margin:16px auto;}
+.wf-step{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px 16px;display:flex;gap:12px;box-shadow:var(--sh);}
+.wf-conn{height:18px;display:flex;justify-content:center;}
+.wf-line{width:2px;background:var(--border);}
+.wf-num{font-family:'DM Mono',monospace;font-size:18px;color:var(--accent);flex-shrink:0;}
+.wf-title{font-family:'Lora',serif;font-size:13px;font-weight:700;color:var(--text);margin-bottom:2px;}
+.wf-body{font-size:12px;color:var(--text2);line-height:1.5;}
+
+/* ══════════ CH 15: TNPSC + CIVIL SERVICE ══════════ */
+.civil-flow{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:20px;}
+@media(max-width:560px){.civil-flow{grid-template-columns:1fr 1fr;}}
+.cf-node{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px 12px;box-shadow:var(--sh);text-align:center;}
+.cf-icon{font-size:28px;margin-bottom:6px;}
+.cf-title{font-family:'Lora',serif;font-size:13px;font-weight:700;color:var(--text);margin-bottom:4px;}
+.cf-body{font-size:11.5px;color:var(--text2);line-height:1.5;}
+
+.ias-table{background:var(--surface);border:1px solid var(--border);border-radius:10px;overflow:hidden;box-shadow:var(--sh);margin-bottom:16px;}
+.iat-row{display:grid;grid-template-columns:1.5fr 1fr 1fr 1.5fr;gap:0;border-bottom:1px solid var(--border);}
+.iat-row:last-child{border-bottom:none;}
+.iat-head{background:var(--surface2);}
+.iat-cell{padding:10px 14px;font-size:12px;border-right:1px solid var(--border);}
+.iat-cell:last-child{border-right:none;}
+.iat-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);}
+.iat-val{color:var(--text2);}
+.iat-val strong{color:var(--text);}
+@media(max-width:560px){.ias-table{overflow-x:auto;}}
+
+.tnpsc-groups{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px;}
+@media(max-width:560px){.tnpsc-groups{grid-template-columns:1fr 1fr;}}
+.tg-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px;box-shadow:var(--sh);}
+.tg-group{font-family:'DM Mono',monospace;font-size:22px;font-weight:500;color:var(--accent);margin-bottom:5px;}
+.tg-name{font-size:12.5px;font-weight:600;color:var(--text);margin-bottom:4px;}
+.tg-body{font-size:11.5px;color:var(--text2);line-height:1.5;}
+
+/* ══════════ CH 16: PARASTATALS ══════════ */
+.psu-cards{display:flex;flex-direction:column;gap:10px;}
+.psu-card{background:var(--surface);border:1px solid var(--border);border-left:4px solid var(--border);border-radius:0 10px 10px 0;overflow:hidden;box-shadow:var(--sh);}
+.psu-head{display:flex;align-items:center;gap:12px;padding:12px 18px;border-bottom:1px solid var(--border);}
+.psu-icon{font-size:24px;flex-shrink:0;}
+.psu-name{font-family:'Lora',serif;font-size:14px;font-weight:700;color:var(--text);}
+.psu-full{font-size:11px;color:var(--text3);font-family:'DM Mono',monospace;}
+.psu-tags{margin-left:auto;display:flex;gap:5px;flex-wrap:wrap;}
+.ptag{font-size:10px;font-weight:600;padding:2px 8px;border-radius:8px;white-space:nowrap;}
+.ptag-red{background:rgba(220,38,38,.1);color:#dc2626;}
+.ptag-blue{background:rgba(29,78,216,.1);color:var(--union);}
+.ptag-green{background:rgba(22,101,52,.1);color:var(--local);}
+.ptag-amber{background:rgba(180,83,9,.1);color:var(--amber);}
+.psu-body{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:0;}
+@media(max-width:560px){.psu-body{grid-template-columns:1fr;}}
+.psu-cell{padding:10px 16px;border-right:1px solid var(--border);}
+.psu-cell:last-child{border-right:none;}
+.psu-cl{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--text3);margin-bottom:3px;}
+.psu-ct{font-size:12px;color:var(--text2);line-height:1.5;}
+.psu-ct strong{color:var(--text);}
+
+/* ══════════ CH 17: TRIBUNALS ══════════ */
+.trib-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+@media(max-width:540px){.trib-grid{grid-template-columns:1fr;}}
+.trib-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:15px 18px;box-shadow:var(--sh);}
+.trib-head{display:flex;align-items:center;gap:8px;margin-bottom:8px;}
+.trib-icon{font-size:22px;}
+.trib-name{font-family:'Lora',serif;font-size:14px;font-weight:700;color:var(--text);}
+.trib-type{font-size:10px;color:var(--text3);font-family:'DM Mono',monospace;}
+.trib-body{font-size:12.5px;color:var(--text2);line-height:1.6;}
+.trib-note{margin-top:8px;padding:7px 11px;background:var(--surface2);border-radius:5px;font-size:12px;color:var(--text2);line-height:1.5;}
+.trib-note strong{color:var(--text);}
+
+/* ══════════ CH 18: ELECTIONS ══════════ */
+.eci-flow{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:20px;}
+@media(max-width:560px){.eci-flow{grid-template-columns:1fr 1fr;}}
+.eflow-step{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:13px 12px;box-shadow:var(--sh);text-align:center;}
+.ef-num{font-family:'DM Mono',monospace;font-size:20px;color:var(--accent);margin-bottom:4px;}
+.ef-title{font-size:12.5px;font-weight:600;color:var(--text);margin-bottom:3px;}
+.ef-body{font-size:11.5px;color:var(--text2);line-height:1.5;}
+
+.mcc-timeline{background:var(--surface);border:1px solid var(--border);border-radius:10px;overflow:hidden;box-shadow:var(--sh);margin-bottom:16px;}
+.mcc-row{display:flex;align-items:center;gap:0;border-bottom:1px solid var(--border);}
+.mcc-row:last-child{border-bottom:none;}
+.mcc-phase{padding:10px 16px;width:140px;flex-shrink:0;border-right:1px solid var(--border);font-family:'DM Mono',monospace;font-size:11px;color:var(--accent);font-weight:500;}
+.mcc-content{padding:10px 16px;font-size:12.5px;color:var(--text2);line-height:1.5;flex:1;}
+.mcc-content strong{color:var(--text);}
+
+/* ══════════ BUDGET DEEP DIVE ══════════ */
+
+/* Union budget anatomy */
+.budget-anatomy{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px;}
+@media(max-width:600px){.budget-anatomy{grid-template-columns:1fr;}}
+.ba-col{background:var(--surface);border:1px solid var(--border);border-radius:10px;overflow:hidden;box-shadow:var(--sh);}
+.ba-header{padding:12px 16px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;}
+.ba-header.receipts{background:rgba(22,101,52,.1);color:var(--local);}
+.ba-header.expend{background:rgba(220,38,38,.1);color:#dc2626;}
+.ba-items{padding:12px 16px;display:flex;flex-direction:column;gap:8px;}
+.ba-item{display:flex;flex-direction:column;gap:3px;}
+.ba-item-row{display:flex;justify-content:space-between;align-items:center;}
+.ba-item-name{font-size:12.5px;color:var(--text2);}
+.ba-item-val{font-family:'DM Mono',monospace;font-size:11px;color:var(--text3);}
+.ba-bar-track{height:10px;background:var(--surface2);border-radius:3px;overflow:hidden;}
+.ba-bar-fill{height:100%;border-radius:3px;}
+
+/* Union budget calendar — detailed */
+.calendar-detailed{background:var(--surface);border:1px solid var(--border);border-radius:10px;overflow:hidden;box-shadow:var(--sh);margin-bottom:20px;}
+.cd-row{display:grid;grid-template-columns:100px 100px 1fr;gap:0;border-bottom:1px solid var(--border);}
+.cd-row:last-child{border-bottom:none;}
+.cd-row.header{background:var(--surface2);}
+.cd-cell{padding:10px 14px;border-right:1px solid var(--border);font-size:12.5px;}
+.cd-cell:last-child{border-right:none;}
+.cd-month{font-family:'DM Mono',monospace;font-size:11px;font-weight:500;}
+.cd-who{font-size:11.5px;color:var(--text3);}
+.cd-what{color:var(--text2);}
+.cd-what strong{color:var(--text);}
+.cd-row.highlight{background:rgba(200,84,10,.04);border-left:3px solid var(--accent);}
+@media(max-width:560px){.calendar-detailed{overflow-x:auto;} .cd-row{min-width:500px;}}
+
+/* State budget vs Union comparison */
+.compare-table{background:var(--surface);border:1px solid var(--border);border-radius:10px;overflow:hidden;box-shadow:var(--sh);margin-bottom:20px;}
+.ct-header{display:grid;grid-template-columns:1.5fr 1fr 1fr;background:var(--surface2);border-bottom:1px solid var(--border);}
+.ct-row{display:grid;grid-template-columns:1.5fr 1fr 1fr;border-bottom:1px solid var(--border);}
+.ct-row:last-child{border-bottom:none;}
+.ct-cell{padding:10px 16px;font-size:12.5px;border-right:1px solid var(--border);}
+.ct-cell:last-child{border-right:none;}
+.ct-head{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);}
+.ct-feature{font-weight:600;color:var(--text);}
+.ct-union{color:var(--union);}
+.ct-state{color:var(--state);}
+@media(max-width:560px){.compare-table{overflow-x:auto;} .ct-header,.ct-row{min-width:500px;}}
+
+/* State budget calendar */
+.state-cal{display:flex;flex-direction:column;gap:0;background:var(--surface);border:1px solid var(--border);border-radius:10px;overflow:hidden;box-shadow:var(--sh);margin-bottom:20px;}
+.sc-row{display:grid;grid-template-columns:110px 120px 1fr;gap:0;border-bottom:1px solid var(--border);}
+.sc-row:last-child{border-bottom:none;}
+.sc-row.active-sc{background:rgba(200,84,10,.04);}
+.sc-row.peak-sc{background:rgba(194,65,12,.08);}
+.sc-cell{padding:10px 14px;border-right:1px solid var(--border);font-size:12.5px;color:var(--text2);}
+.sc-cell:last-child{border-right:none;}
+.sc-month{font-family:'DM Mono',monospace;font-size:11px;color:var(--accent);font-weight:500;}
+.sc-actor{font-size:11.5px;color:var(--text3);}
+.sc-row.peak-sc .sc-month{color:var(--state);}
+
+/* Money in state budget */
+.state-receipts{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:20px;box-shadow:var(--sh);margin-bottom:20px;}
+.sr-title{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--text3);margin-bottom:16px;}
+.sr-section{margin-bottom:14px;}
+.sr-section-header{font-size:13px;font-weight:600;color:var(--text);margin-bottom:8px;display:flex;align-items:center;gap:8px;}
+.sr-badge{font-size:10px;padding:2px 8px;border-radius:8px;}
+.sr-badge.own{background:rgba(22,101,52,.1);color:var(--local);}
+.sr-badge.central{background:rgba(29,78,216,.1);color:var(--union);}
+.sr-badge.borrow{background:rgba(220,38,38,.1);color:#dc2626;}
+.sr-item{display:flex;align-items:center;gap:10px;margin-bottom:6px;}
+.sr-item-name{font-size:12px;color:var(--text2);width:220px;flex-shrink:0;}
+.sr-bar-wrap{flex:1;}
+.sr-bar-track{height:14px;background:var(--surface2);border-radius:3px;overflow:hidden;}
+.sr-bar-fill{height:100%;border-radius:3px;}
+.sr-val{font-family:'DM Mono',monospace;font-size:11px;color:var(--text3);width:70px;text-align:right;flex-shrink:0;}
+
+/* State expenditure waterfall */
+.expend-waterfall{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:20px;box-shadow:var(--sh);margin-bottom:20px;}
+.ew-title{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--text3);margin-bottom:16px;}
+.ew-row{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
+.ew-name{font-size:12.5px;color:var(--text2);width:200px;flex-shrink:0;}
+.ew-bar-wrap{flex:1;position:relative;}
+.ew-bar-track{height:22px;background:var(--surface2);border-radius:4px;overflow:hidden;}
+.ew-bar{height:100%;border-radius:4px;display:flex;align-items:center;padding-left:8px;font-size:11px;font-weight:600;color:#fff;}
+.ew-pct{font-family:'DM Mono',monospace;font-size:11px;color:var(--text3);width:45px;text-align:right;flex-shrink:0;}
+.ew-note{font-size:11px;color:var(--text3);margin-top:2px;padding-left:0;}
+
+/* CSS vs pure state visual */
+.scheme-flow{display:flex;flex-direction:column;gap:8px;margin-bottom:20px;}
+.sfr{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px 16px;box-shadow:var(--sh);}
+.sfr-name{font-family:'Lora',serif;font-size:13px;font-weight:700;color:var(--text);margin-bottom:6px;}
+.sfr-bar{display:flex;height:24px;border-radius:5px;overflow:hidden;gap:2px;margin-bottom:4px;}
+.sfr-centre{background:#1d4ed8;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;color:#fff;}
+.sfr-state{background:var(--state);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;color:#fff;}
+.sfr-state-only{background:var(--local);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;color:#fff;width:100%;}
+.sfr-eg{font-size:11px;color:var(--text3);}
+
+/* Deficit explainer */
+.deficit-chain{display:flex;flex-direction:column;gap:10px;margin-bottom:20px;}
+.dc-step{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px 18px;box-shadow:var(--sh);}
+.dc-formula{font-family:'DM Mono',monospace;font-size:13px;color:var(--text);margin-bottom:4px;}
+.dc-formula span{color:var(--accent);}
+.dc-body{font-size:12.5px;color:var(--text2);line-height:1.6;}
+.dc-eg{margin-top:6px;padding:7px 12px;background:var(--surface2);border-radius:5px;font-size:12px;color:var(--text2);}
+.dc-eg strong{color:var(--text);}
+
+/* FRBM box */
+.frbm-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:20px;}
+@media(max-width:540px){.frbm-grid{grid-template-columns:1fr;}}
+.frbm-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px;box-shadow:var(--sh);}
+.frbm-num{font-family:'DM Mono',monospace;font-size:26px;font-weight:500;color:var(--accent);margin-bottom:4px;}
+.frbm-title{font-size:13px;font-weight:600;color:var(--text);margin-bottom:4px;}
+.frbm-body{font-size:12px;color:var(--text2);line-height:1.5;}
+
+/* Parliamentary budget stages */
+.parl-stages{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:20px;}
+@media(max-width:560px){.parl-stages{grid-template-columns:1fr 1fr;}}
+.ps-step{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px;box-shadow:var(--sh);text-align:center;}
+.ps-num{font-family:'DM Mono',monospace;font-size:18px;color:var(--accent);margin-bottom:4px;}
+.ps-title{font-size:12px;font-weight:600;color:var(--text);margin-bottom:4px;}
+.ps-body{font-size:11px;color:var(--text2);line-height:1.5;}
+
+/* Vote on Account */
+.voa-box{background:var(--surface);border:1.5px solid var(--amber);border-radius:10px;padding:16px 20px;box-shadow:var(--sh);margin-bottom:20px;}
+.voa-head{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+.voa-icon{font-size:24px;}
+.voa-title{font-family:'Lora',serif;font-size:15px;font-weight:700;color:var(--text);}
+.voa-body{font-size:13px;color:var(--text2);line-height:1.7;}
+
+/* Footer */
+.footer{max-width:960px;margin:48px auto 0;padding:24px 24px 60px;border-top:1px solid var(--border);font-size:12px;color:var(--text3);line-height:1.8;text-align:center;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="htitle-block">
+    <div class="eyebrow">Civics Guide · Part III · Chapters 13–19</div>
+    <div class="main-title">Assembly Tools · Courts · Civil Service · PSUs · Elections · Budget Deep Dive</div>
+  </div>
+  <button class="toggle-btn" onclick="toggleTheme()" id="themeBtn">🌙 Dark</button>
+</header>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nl active" onclick="goTo('assembly-tools')">Assembly Tools</a>
+    <a class="nl" onclick="goTo('writs')">Writ Jurisdiction</a>
+    <a class="nl" onclick="goTo('civil-service')">Civil Service</a>
+    <a class="nl" onclick="goTo('psus')">PSUs</a>
+    <a class="nl" onclick="goTo('tribunals')">Tribunals</a>
+    <a class="nl" onclick="goTo('elections')">Elections</a>
+    <a class="nl" onclick="goTo('budget-deep')">Budget Deep Dive</a>
+  </div>
+</nav>
+
+
+<!-- ══════════════════════════════════════
+     CH 13: LEGISLATURE'S DAILY TOOLS
+══════════════════════════════════════ -->
+<section id="assembly-tools">
+  <div class="se">Chapter 13</div>
+  <h2 class="st">How the Assembly Actually Functions Day to Day</h2>
+  <p class="ss">MLAs don't just vote on bills. Most of their power comes from <em>questioning, challenging, and cornering</em> the government through procedural tools. These are the weapons inside the chamber.</p>
+
+  <!-- A day in Assembly -->
+  <div class="h3 mb8">A Typical Assembly Day</div>
+  <div class="assembly-day">
+    <div class="ad-time-col">
+      <div class="ad-slot">10:00</div>
+      <div class="ad-slot">11:00</div>
+      <div class="ad-slot">12:00</div>
+      <div class="ad-slot">13:00</div>
+      <div class="ad-slot">14:00</div>
+      <div class="ad-slot">15:00</div>
+      <div class="ad-slot">16:00+</div>
+    </div>
+    <div class="ad-event-col">
+      <div class="ad-event"><strong>Question Hour</strong> — MLAs fire questions at ministers. 20–25 oral questions answered. Minister must answer on the spot or submit a written reply. Most watched part of the day.</div>
+      <div class="ad-event"><strong>Zero Hour</strong> — Unstructured. Any MLA can raise any urgent matter without prior notice. No formal rules — Speaker's discretion entirely. Often the most dramatic part.</div>
+      <div class="ad-event"><strong>Calling Attention Motion</strong> — MLAs formally bring a specific urgent issue to a minister's attention. Minister must respond immediately. More structured than Zero Hour.</div>
+      <div class="ad-event"><strong>Lunch Break</strong></div>
+      <div class="ad-event"><strong>Legislative Business</strong> — Bills introduced, read, debated, voted on. This is the actual lawmaking time. Most days see very little of this — Question Hour dominates.</div>
+      <div class="ad-event"><strong>Short Duration Discussion</strong> — 2.5-hour limit. MLAs discuss a specific matter of urgent public importance. No voting outcome — purely accountability pressure.</div>
+      <div class="ad-event"><strong>Private Member Business</strong> — Non-minister MLAs can introduce their own bills or resolutions. Rarely becomes law, but important for putting issues on record.</div>
+    </div>
+  </div>
+
+  <!-- Tool cards -->
+  <div class="tool-cards mt16">
+
+    <div class="tool-card">
+      <div class="tc-head">
+        <span class="tc-icon">❓</span>
+        <div><div class="tc-name">Question Hour</div><div class="tc-sub">Daily · Most powerful accountability mechanism</div></div>
+        <span class="tc-tag tct-daily">Daily Tool</span>
+      </div>
+      <div class="tc-body">
+        <div class="tc-cell"><div class="tc-cell-lbl">Three types</div><div class="tc-cell-txt"><strong>Starred (oral)</strong> — answer + supplementary questions allowed. <strong>Unstarred (written)</strong> — no follow-up. <strong>Short notice</strong> — less than 10 days' notice for urgent matters.</div></div>
+        <div class="tc-cell"><div class="tc-cell-lbl">Why it matters</div><div class="tc-cell-txt">Ministers must answer personally, not delegate. A minister caught unprepared or giving a false answer faces instant public damage. Entire sessions can be shaped by one embarrassing Question Hour exchange.</div></div>
+        <div class="tc-cell"><div class="tc-cell-lbl">TN context</div><div class="tc-cell-txt">TN Assembly sessions are notoriously short — sometimes only 10–15 days. This limits total Question Hours available — a common opposition grievance about accountability avoidance.</div></div>
+      </div>
+    </div>
+
+    <div class="tool-card">
+      <div class="tc-head">
+        <span class="tc-icon">⚡</span>
+        <div><div class="tc-name">Adjournment Motion</div><div class="tc-sub">Suspends all business to debate one urgent failure</div></div>
+        <span class="tc-tag tct-question">Pressure Tool</span>
+      </div>
+      <div class="tc-body">
+        <div class="tc-cell"><div class="tc-cell-lbl">What it does</div><div class="tc-cell-txt">Halts all Assembly business to immediately debate a specific recent failure of the government. Requires Speaker's admission — must show urgency and public importance.</div></div>
+        <div class="tc-cell"><div class="tc-cell-lbl">Political effect</div><div class="tc-cell-txt">If admitted, it signals the Speaker has found the issue serious enough to override the government's legislative agenda. A major embarrassment for the ruling party.</div></div>
+        <div class="tc-cell"><div class="tc-cell-lbl">Restriction</div><div class="tc-cell-txt">Cannot be used for matters already under court consideration. Most Adjournment Motions are rejected — admission itself is newsworthy.</div></div>
+      </div>
+    </div>
+
+    <div class="tool-card" style="border-left:3px solid #dc2626;">
+      <div class="tc-head">
+        <span class="tc-icon">💣</span>
+        <div><div class="tc-name">No-Confidence Motion</div><div class="tc-sub">The nuclear option — brings down a government</div></div>
+        <span class="tc-tag tct-nuclear">Nuclear Option</span>
+      </div>
+      <div class="tc-body">
+        <div class="tc-cell"><div class="tc-cell-lbl">How it works</div><div class="tc-cell-txt">Opposition moves that the Assembly has "no confidence" in the Council of Ministers. Requires support of at least 1/6th of total members (39 MLAs in TN) to be admitted.</div></div>
+        <div class="tc-cell"><div class="tc-cell-lbl">If it passes</div><div class="tc-cell-txt">Government must resign immediately. No exceptions. The Governor then invites the next-largest group to form government, or dissolves the Assembly for fresh elections.</div></div>
+        <div class="tc-cell"><div class="tc-cell-lbl">Floor Test</div><div class="tc-cell-txt">When the Governor doubts a government's majority (e.g., after defections), they can order a Floor Test — the CM must prove majority by a live vote in the Assembly within days.</div></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Whip system -->
+  <div class="h3 mt">The Whip System + Anti-Defection Law</div>
+  <div class="whip-grid">
+    <div class="whip-card">
+      <div class="whip-lines wl1">—</div>
+      <div class="whip-name">One-Line Whip</div>
+      <div class="whip-body">Attend the session. You may vote as you wish. Rarely used except for procedural votes.</div>
+    </div>
+    <div class="whip-card">
+      <div class="whip-lines wl2">——</div>
+      <div class="whip-name">Two-Line Whip</div>
+      <div class="whip-body">Be present AND vote. Absence without permission is noticed. Semi-mandatory — breach is grounds for disciplinary action within party.</div>
+    </div>
+    <div class="whip-card">
+      <div class="whip-lines wl3">———</div>
+      <div class="whip-name">Three-Line Whip</div>
+      <div class="whip-body"><strong>Must be present. Must vote as directed.</strong> Used on confidence votes and major bills. Breaking a three-line whip = grounds for disqualification under Anti-Defection Law.</div>
+    </div>
+  </div>
+
+  <div class="callout red">
+    <strong>Anti-Defection Law (10th Schedule, 1985).</strong> If an MLA votes against their own party's three-line whip, or voluntarily gives up party membership, they lose their assembly seat — not just party membership. The Speaker decides disqualification. Exception: if ⅔ of the party's MLAs merge with another party, it's a legal split, not defection. This law was designed to stop horse-trading but the Speaker being a party member creates an inherent conflict of interest.
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     CH 14: WRIT JURISDICTION
+══════════════════════════════════════ -->
+<section id="writs">
+  <div class="divider"></div>
+  <div class="se">Chapter 14</div>
+  <h2 class="st">High Court Writ Jurisdiction — The Citizen's Direct Weapon</h2>
+  <p class="ss">You don't need to climb through lower courts. Any citizen can directly walk into the Madras High Court and challenge government action using a Writ Petition. These five writs are constitutional rights under Article 226. They are the most powerful tools a citizen has against the state.</p>
+
+  <div class="writ-cards">
+
+    <div class="writ-card" style="border-top:3px solid #dc2626;">
+      <div class="wc-header">
+        <div><div class="wc-latin" style="color:#dc2626;">Habeas Corpus</div><div class="wc-meaning">"You shall have the body"</div></div>
+        <span class="wc-name" style="background:rgba(220,38,38,.1);color:#dc2626;">Personal Liberty</span>
+      </div>
+      <div class="wc-body">
+        <div class="wc-cell"><div class="wc-cl">What it challenges</div><div class="wc-ct"><strong>Illegal detention or arrest.</strong> If anyone — police, state, or private person — is holding someone unlawfully, you file this. The court orders: produce the person in court NOW.</div></div>
+        <div class="wc-cell"><div class="wc-cl">Who can file</div><div class="wc-ct">Anyone — not just the detained person. A relative, friend, or even a stranger can file on their behalf. No formal relationship required. NGOs regularly file on behalf of victims.</div></div>
+        <div class="wc-cell"><div class="wc-cl">Real use</div><div class="wc-ct">Custodial disappearances, preventive detention (NSA, Goondas Act), illegal police lockup beyond 24 hours. The court can release the person immediately if detention is found illegal.</div></div>
+      </div>
+    </div>
+
+    <div class="writ-card" style="border-top:3px solid var(--union);">
+      <div class="wc-header">
+        <div><div class="wc-latin" style="color:var(--union);">Mandamus</div><div class="wc-meaning">"We command"</div></div>
+        <span class="wc-name" style="background:rgba(29,78,216,.1);color:var(--union);">Force Government to Act</span>
+      </div>
+      <div class="wc-body">
+        <div class="wc-cell"><div class="wc-cl">What it challenges</div><div class="wc-ct"><strong>Government inaction.</strong> When a public official refuses to do their legal duty — issue a certificate, process an application, release information — Mandamus orders them to do it.</div></div>
+        <div class="wc-cell"><div class="wc-cl">Classic uses</div><div class="wc-ct">Tahsildar refuses to issue community certificate. Corporation doesn't respond to RTI. Government officer sits on a valid license application. All of these can be mandamused.</div></div>
+        <div class="wc-cell"><div class="wc-cl">Limitation</div><div class="wc-ct">Cannot be used against a private party. Cannot force discretionary actions — only mandatory duties. The duty must be clearly defined in law.</div></div>
+      </div>
+    </div>
+
+    <div class="writ-card" style="border-top:3px solid var(--purple);">
+      <div class="wc-header">
+        <div><div class="wc-latin" style="color:var(--purple);">Certiorari</div><div class="wc-meaning">"To be certified / to be informed"</div></div>
+        <span class="wc-name" style="background:rgba(124,58,237,.1);color:var(--purple);">Quash Bad Orders</span>
+      </div>
+      <div class="wc-body">
+        <div class="wc-cell"><div class="wc-cl">What it challenges</div><div class="wc-ct"><strong>Quash an illegal order already made.</strong> Used to cancel an order passed by a lower tribunal, quasi-judicial body, or government authority that acted without jurisdiction or violated natural justice.</div></div>
+        <div class="wc-cell"><div class="wc-cl">Classic uses</div><div class="wc-ct">Tax assessment made without hearing. Licence cancelled without giving reasons. Panchayat resolution passed illegally. University exam result invalidated without procedure. All can be quashed via Certiorari.</div></div>
+        <div class="wc-cell"><div class="wc-cl">Often combined</div><div class="wc-ct">Usually filed with Mandamus — "quash this order AND direct them to do it properly." This combination is the most common writ petition pattern in practice.</div></div>
+      </div>
+    </div>
+
+    <div class="writ-card" style="border-top:3px solid var(--teal);">
+      <div class="wc-header">
+        <div><div class="wc-latin" style="color:var(--teal);">Prohibition</div><div class="wc-meaning">"To forbid"</div></div>
+        <span class="wc-name" style="background:rgba(8,145,178,.1);color:var(--teal);">Stop Ongoing Action</span>
+      </div>
+      <div class="wc-body">
+        <div class="wc-cell"><div class="wc-cl">What it does</div><div class="wc-ct"><strong>Stops a lower court or tribunal from proceeding</strong> when it has no jurisdiction or is about to exceed its powers. Unlike Certiorari (which cancels a completed order), Prohibition stops it mid-way.</div></div>
+        <div class="wc-cell"><div class="wc-cl">When used</div><div class="wc-ct">When a criminal court is taking up a matter it has no authority over. When a tribunal is about to rule outside its scope. Must be filed before the order is passed — it's preventive.</div></div>
+        <div class="wc-cell"><div class="wc-cl">In practice</div><div class="wc-ct">Less common than Certiorari. Mostly used in service law matters — preventing a disciplinary committee from completing an unfair inquiry. Time-sensitive by nature.</div></div>
+      </div>
+    </div>
+
+    <div class="writ-card" style="border-top:3px solid var(--local);">
+      <div class="wc-header">
+        <div><div class="wc-latin" style="color:var(--local);">Quo Warranto</div><div class="wc-meaning">"By what authority?"</div></div>
+        <span class="wc-name" style="background:rgba(22,101,52,.1);color:var(--local);">Challenge Illegal Appointment</span>
+      </div>
+      <div class="wc-body">
+        <div class="wc-cell"><div class="wc-cl">What it challenges</div><div class="wc-ct"><strong>Challenges someone's right to hold a public office.</strong> Filed when a person is appointed to or occupying a public position without legal authority or eligibility.</div></div>
+        <div class="wc-cell"><div class="wc-cl">Classic uses</div><div class="wc-ct">Person appointed as TNPSC member without qualifying criteria. Mayor/Councillor holding office despite disqualification. Vice Chancellor appointed by bypassing required procedure.</div></div>
+        <div class="wc-cell"><div class="wc-cl">Who files</div><div class="wc-ct">Any citizen — you don't need to be personally affected. It's a public interest tool. Frequently used to challenge university appointments and local body office-bearers.</div></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- How to file -->
+  <div class="h3 mt">How to Actually File a Writ Petition at Madras High Court</div>
+  <div class="writ-flow">
+    <div class="wf-step"><div class="wf-num">1</div><div><div class="wf-title">Identify the writ type</div><div class="wf-body">Is the government failing to act (Mandamus)? Detaining illegally (Habeas Corpus)? Making a bad order (Certiorari)?</div></div></div>
+    <div class="wf-conn"><div class="wf-line"></div></div>
+    <div class="wf-step"><div class="wf-num">2</div><div><div class="wf-title">Draft the petition with an advocate</div><div class="wf-body">Name the respondents (the official/body you're challenging), state the facts, quote the legal basis, and request specific relief.</div></div></div>
+    <div class="wf-conn"><div class="wf-line"></div></div>
+    <div class="wf-step"><div class="wf-num">3</div><div><div class="wf-title">File and get a number</div><div class="wf-body">Filed as "W.P. No. XXXX/20XX" at Madras HC or Madurai Bench. Court fee is nominal — typically ₹150–500.</div></div></div>
+    <div class="wf-conn"><div class="wf-line"></div></div>
+    <div class="wf-step"><div class="wf-num">4</div><div><div class="wf-title">Interim order (if urgent)</div><div class="wf-body">In genuine emergencies, the court can grant a Stay or Interim Order on the same day — temporarily halting the government's action until the full case is heard.</div></div></div>
+    <div class="wf-conn"><div class="wf-line"></div></div>
+    <div class="wf-step"><div class="wf-num">5</div><div><div class="wf-title">Notice to respondent + hearing</div><div class="wf-body">Government must file a counter-affidavit. Both sides argue. Judge decides — can quash, allow, or dismiss the petition.</div></div></div>
+  </div>
+
+  <div class="callout blue">
+    <strong>Article 226 vs Article 32 — state vs Supreme Court writs.</strong> Under <strong>Article 226</strong>, the Madras High Court can issue writs against <em>any</em> authority — state, central, or private performing public function — within TN. Under <strong>Article 32</strong>, the Supreme Court can issue writs for Fundamental Rights violations anywhere in India. HC writs are broader (Article 226 covers rights beyond fundamental rights) but SC writs are the last resort and carry higher authority.
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     CH 15: CIVIL SERVICE PIPELINE
+══════════════════════════════════════ -->
+<section id="civil-service">
+  <div class="divider"></div>
+  <div class="se">Chapter 15</div>
+  <h2 class="st">TNPSC &amp; Civil Service — How the Bureaucracy Gets Built</h2>
+  <p class="ss">Every certificate you've received, every scheme that got implemented, every road that got built — done by a civil servant. Here's how the state recruits, trains, and deploys its entire administrative machinery.</p>
+
+  <!-- Two streams -->
+  <div class="h3">Two Separate Streams — All-India vs State Services</div>
+  <div class="g2 mb16">
+    <div class="card" style="border-left:3px solid var(--union);">
+      <div class="clabel">All-India Services</div>
+      <div class="ctitle">IAS · IPS · IFoS</div>
+      <div class="cbody">Recruited by <strong>UPSC</strong> in New Delhi. Officers serve both Centre and states — posted to states by Centre after training. Tamil Nadu gets an annual cadre allocation. <strong>Key fact:</strong> The state government cannot transfer or punish an IAS officer without Centre's concurrence. This is a constant friction point.</div>
+    </div>
+    <div class="card" style="border-left:3px solid var(--state);">
+      <div class="clabel">Tamil Nadu State Services</div>
+      <div class="ctitle">TNCS · TNPS · Revenue Service</div>
+      <div class="cbody">Recruited by <strong>TNPSC</strong> in Chennai. Entirely state cadre — state government controls postings, transfers, and disciplinary action. No central interference. These officers fill the vast majority of administrative posts in TN.</div>
+    </div>
+  </div>
+
+  <!-- TNPSC Groups -->
+  <div class="h3">TNPSC Groups — What They Recruit For</div>
+  <div class="tnpsc-groups">
+    <div class="tg-card">
+      <div class="tg-group">I</div>
+      <div class="tg-name">Group I</div>
+      <div class="tg-body">Deputy Collector, DSP, BDO — senior executive posts. Prelims + Mains + Interview. Most competitive (1 lakh+ for ~150 posts).</div>
+    </div>
+    <div class="tg-card">
+      <div class="tg-group">II</div>
+      <div class="tg-name">Group II</div>
+      <div class="tg-body">Assistant Section Officer, Sub-Registrar — mid-level. Prelims + Mains. No interview for most posts.</div>
+    </div>
+    <div class="tg-card">
+      <div class="tg-group">IV</div>
+      <div class="tg-name">Group IV</div>
+      <div class="tg-body">Village Administrative Officer (VAO), Junior Assistant — entry-level. Single paper exam. Huge intake — thousands recruited per year.</div>
+    </div>
+    <div class="tg-card">
+      <div class="tg-group">VIII</div>
+      <div class="tg-name">Departmental</div>
+      <div class="tg-body">Revenue, Police, Forest separately recruit constables, forest guards, revenue assistants via own exams under TNPSC oversight.</div>
+    </div>
+  </div>
+
+  <!-- IAS allocation table -->
+  <div class="h3">How an IAS Officer Lands in Tamil Nadu</div>
+  <div class="ias-table">
+    <div class="iat-row iat-head">
+      <div class="iat-cell iat-label">Stage</div>
+      <div class="iat-cell iat-label">Who Decides</div>
+      <div class="iat-cell iat-label">Timeframe</div>
+      <div class="iat-cell iat-label">Key Detail</div>
+    </div>
+    <div class="iat-row">
+      <div class="iat-cell iat-val"><strong>UPSC Civil Services Exam</strong></div>
+      <div class="iat-cell iat-val">UPSC, New Delhi</div>
+      <div class="iat-cell iat-val">~1 year (Prelims → Mains → Interview)</div>
+      <div class="iat-cell iat-val">~900–1000 selected nationally per year. ~50–60 IAS slots.</div>
+    </div>
+    <div class="iat-row">
+      <div class="iat-cell iat-val"><strong>Cadre Allocation</strong></div>
+      <div class="iat-cell iat-val">DoPT, Centre</div>
+      <div class="iat-cell iat-val">After results</div>
+      <div class="iat-cell iat-val">TN gets ~8–10 IAS officers per year from UPSC. Officers preference states; Centre allocates.</div>
+    </div>
+    <div class="iat-row">
+      <div class="iat-cell iat-val"><strong>Foundation Training</strong></div>
+      <div class="iat-cell iat-val">LBSNAA, Mussoorie</div>
+      <div class="iat-cell iat-val">~3 months</div>
+      <div class="iat-cell iat-val">All IAS, IPS, IFoS train together. Generalist orientation — law, economics, public admin.</div>
+    </div>
+    <div class="iat-row">
+      <div class="iat-cell iat-val"><strong>State Attachment</strong></div>
+      <div class="iat-cell iat-val">Tamil Nadu govt</div>
+      <div class="iat-cell iat-val">~1 year in field</div>
+      <div class="iat-cell iat-val">Posted as Sub-Collector / Asst Collector in a district. First real administrative exposure.</div>
+    </div>
+    <div class="iat-row">
+      <div class="iat-cell iat-val"><strong>Junior posting</strong></div>
+      <div class="iat-cell iat-val">State General Admin Dept</div>
+      <div class="iat-cell iat-val">Years 2–8</div>
+      <div class="iat-cell iat-val">District Collector (typically by Year 5–6). Most powerful district-level executive role.</div>
+    </div>
+    <div class="iat-row">
+      <div class="iat-cell iat-val"><strong>Secretariat / Senior</strong></div>
+      <div class="iat-cell iat-val">State + Centre</div>
+      <div class="iat-cell iat-val">Years 8+</div>
+      <div class="iat-cell iat-val">Secretary to Government, Commissioner level. Can be deputed to Centre. State cannot transfer without Centre's concurrence at senior levels.</div>
+    </div>
+  </div>
+
+  <div class="callout purple">
+    <strong>The transfer weapon.</strong> Within state service officers, the CM's office controls transfers almost entirely. An IAS officer posted to a plum district or ministry is often a political reward; transfer to a low-profile role is a punishment. This is why "transfer raj" is a real phenomenon — and why RTI applications about posting orders reveal so much about political priorities.
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     CH 16: PARASTATALS & PSUs
+══════════════════════════════════════ -->
+<section id="psus">
+  <div class="divider"></div>
+  <div class="se">Chapter 16</div>
+  <h2 class="st">Parastatals &amp; PSUs — The State's Operating Companies</h2>
+  <p class="ss">The Tamil Nadu government doesn't just regulate — it directly <em>runs</em> companies. These parastatals implement policy, deliver services, and sometimes generate revenue. Understanding which body does what is essential to understanding who's really in charge of your electricity, bus, or house.</p>
+
+  <div class="psu-cards">
+
+    <div class="psu-card" style="border-left-color:var(--amber);">
+      <div class="psu-head">
+        <span class="psu-icon">⚡</span>
+        <div><div class="psu-name">TANGEDCO</div><div class="psu-full">Tamil Nadu Generation and Distribution Corporation</div></div>
+        <div class="psu-tags"><span class="ptag ptag-red">Monopoly</span><span class="ptag ptag-amber">Loss-making</span></div>
+      </div>
+      <div class="psu-body">
+        <div class="psu-cell"><div class="psu-cl">What it does</div><div class="psu-ct">Generates power (thermal, hydro, wind), purchases from private and central generators, and distributes to all of TN's consumers. <strong>Monopoly distributor</strong> — no competition.</div></div>
+        <div class="psu-cell"><div class="psu-cl">Financial reality</div><div class="psu-ct">Accumulated losses of ~₹1.4 lakh crore. Free power subsidies (farmers, domestic) and below-cost tariffs are the reason. The state government periodically injects equity.</div></div>
+        <div class="psu-cell"><div class="psu-cl">Governed by</div><div class="psu-ct">Electricity Ministry. TNERC (TN Electricity Regulatory Commission) sets tariffs — technically independent of the government, though commissioners are appointed by it.</div></div>
+      </div>
+    </div>
+
+    <div class="psu-card" style="border-left-color:var(--union);">
+      <div class="psu-head">
+        <span class="psu-icon">🚌</span>
+        <div><div class="psu-name">TNSTC + MTC</div><div class="psu-full">TN State Transport Corps (4 regional) + Metropolitan Transport Corp (Chennai)</div></div>
+        <div class="psu-tags"><span class="ptag ptag-red">5 corporations</span><span class="ptag ptag-amber">Subsidised</span></div>
+      </div>
+      <div class="psu-body">
+        <div class="psu-cell"><div class="psu-cl">What it does</div><div class="psu-ct">Operates ~20,000+ buses connecting every district and taluk. Free travel for women, schoolchildren, disabled — these concessions are reimbursed by the state to the corporations.</div></div>
+        <div class="psu-cell"><div class="psu-cl">Structure</div><div class="psu-ct">5 regional TNSTC corps (Coimbatore, Kumbakonam, Salem, Villupuram, Tirunelveli) + MTC for Chennai. Each runs independently but under Transport Ministry.</div></div>
+        <div class="psu-cell"><div class="psu-cl">Financial reality</div><div class="psu-ct">All make operating losses — covered by state grants. Free schemes add ₹2,000+ Cr annual subsidy burden. Fleet aging is a chronic problem.</div></div>
+      </div>
+    </div>
+
+    <div class="psu-card" style="border-left-color:#dc2626;">
+      <div class="psu-head">
+        <span class="psu-icon">🍶</span>
+        <div><div class="psu-name">TASMAC</div><div class="psu-full">Tamil Nadu State Marketing Corporation — State liquor retail monopoly</div></div>
+        <div class="psu-tags"><span class="ptag ptag-green">Highly profitable</span><span class="ptag ptag-red">Monopoly</span></div>
+      </div>
+      <div class="psu-body">
+        <div class="psu-cell"><div class="psu-cl">What it does</div><div class="psu-ct">Sole retailer of Indian Made Foreign Liquor (IMFL) in TN. ~6,800 outlets. Purchases from private manufacturers (United Spirits, United Breweries etc.) and retails at government-set prices.</div></div>
+        <div class="psu-cell"><div class="psu-cl">Revenue machine</div><div class="psu-ct">Contributes ~₹36,000 Cr to TN annually (excise duty + profit). Third largest revenue source after GST and own tax. Without TASMAC, the state budget has a serious problem.</div></div>
+        <div class="psu-cell"><div class="psu-cl">Political tension</div><div class="psu-ct">Every party campaigns for "prohibition" but governs with TASMAC intact. The fiscal dependency makes full prohibition nearly impossible without a dramatic alternative revenue source.</div></div>
+      </div>
+    </div>
+
+    <div class="psu-card" style="border-left-color:var(--local);">
+      <div class="psu-head">
+        <span class="psu-icon">🏭</span>
+        <div><div class="psu-name">SIPCOT + TIDCO + TIDEL</div><div class="psu-full">Industrial estates, investment promotion, tech parks</div></div>
+        <div class="psu-tags"><span class="ptag ptag-blue">Investment</span><span class="ptag ptag-green">Infrastructure</span></div>
+      </div>
+      <div class="psu-body">
+        <div class="psu-cell"><div class="psu-cl">SIPCOT</div><div class="psu-ct">State Industries Promotion Corp — acquires land, develops industrial estates (Hosur, Sriperumbudur, Cheyyar), and allots plots to manufacturers. TN's industrial backbone.</div></div>
+        <div class="psu-cell"><div class="psu-cl">TIDCO</div><div class="psu-ct">TN Industrial Development Corp — takes equity stakes in joint ventures with private sector. Promotes new industries where private investment alone is insufficient.</div></div>
+        <div class="psu-cell"><div class="psu-cl">TIDEL Park</div><div class="psu-ct">IT-specific park in Chennai (India's first IT park, 2000). Managed by TIDEL — a joint venture of TIDCO and ELCOT. Model replicated in other cities.</div></div>
+      </div>
+    </div>
+
+    <div class="psu-card" style="border-left-color:var(--teal);">
+      <div class="psu-head">
+        <span class="psu-icon">🏠</span>
+        <div><div class="psu-name">TNHB + CMDA</div><div class="psu-full">TN Housing Board + Chennai Metropolitan Development Authority</div></div>
+        <div class="psu-tags"><span class="ptag ptag-blue">Planning</span><span class="ptag ptag-amber">Housing</span></div>
+      </div>
+      <div class="psu-body">
+        <div class="psu-cell"><div class="psu-cl">TNHB</div><div class="psu-ct">Tamil Nadu Housing Board — builds and allots affordable housing across the state. Slum clearance, EWS/LIG flats. Also develops commercial properties to cross-subsidise.</div></div>
+        <div class="psu-cell"><div class="psu-cl">CMDA</div><div class="psu-ct">Chennai Metropolitan Development Authority — the master planning body for Greater Chennai. Issues building plan approvals, controls land use, prepares the CMDA Master Plan (last revised 2026).</div></div>
+        <div class="psu-cell"><div class="psu-cl">Key point</div><div class="psu-ct">CMDA approval ≠ Corporation approval. Building in Chennai needs CMDA clearance for plan AND Corporation (CCMC) for construction and occupancy. Two separate bodies, two stages.</div></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     CH 17: TRIBUNALS
+══════════════════════════════════════ -->
+<section id="tribunals">
+  <div class="divider"></div>
+  <div class="se">Chapter 17</div>
+  <h2 class="st">Tribunals &amp; Quasi-Judicial Bodies — Specialist Courts</h2>
+  <p class="ss">Regular courts are slow and generalist. Tribunals are faster, specialist, and often the first stop for specific disputes — environment, service matters, consumer rights, real estate. They have judicial powers but aren't formal courts.</p>
+
+  <div class="trib-grid">
+
+    <div class="trib-card">
+      <div class="trib-head"><span class="trib-icon">🌿</span><div><div class="trib-name">NGT — National Green Tribunal</div><div class="trib-type">Environmental disputes · National · Chennai bench</div></div></div>
+      <div class="trib-body">Handles environmental disputes, pollution cases, forest violations. Can impose fines, order clean-up, and shut down industries. Madras HC cannot hear environmental matters that NGT has jurisdiction over — it's exclusive. Appeals from NGT go directly to the Supreme Court.</div>
+      <div class="trib-note"><strong>TN cases:</strong> Sterlite Thoothukudi, Pallikaranai marshland encroachment, Cooum river pollution — all went through NGT.</div>
+    </div>
+
+    <div class="trib-card">
+      <div class="trib-head"><span class="trib-icon">🏢</span><div><div class="trib-name">CAT — Central Administrative Tribunal</div><div class="trib-type">Central govt service disputes · Chennai bench</div></div></div>
+      <div class="trib-body">For disputes involving central government employees — transfers, promotions, dismissals. State government employees go to the <strong>TN Administrative Tribunal</strong> instead. CAT Chennai bench handles all central services disputes for TN, Pondicherry, and Andaman.</div>
+      <div class="trib-note"><strong>Note:</strong> A central government employee fighting a wrongful transfer files in CAT, not Madras HC. But CAT orders can be challenged in HC.</div>
+    </div>
+
+    <div class="trib-card">
+      <div class="trib-head"><span class="trib-icon">🏠</span><div><div class="trib-name">TNRERA — Real Estate Regulatory Authority</div><div class="trib-type">Housing disputes · Under RERA Act 2016</div></div></div>
+      <div class="trib-body">Regulates builders and real estate agents in TN. Builders must register projects, disclose details, and hand over on time. If a builder delays or cheats, buyers file with TNRERA — which can impose penalties and order refunds. Far faster than civil courts.</div>
+      <div class="trib-note"><strong>Common use:</strong> Builder takes full payment, delays 3 years. Buyer files with TNRERA, gets interest on delay + penalty, without waiting 10 years in civil court.</div>
+    </div>
+
+    <div class="trib-card">
+      <div class="trib-head"><span class="trib-icon">👤</span><div><div class="trib-name">Consumer Disputes Redressal Commission</div><div class="trib-type">3 tiers: District · State · National</div></div></div>
+      <div class="trib-body"><strong>District Commission:</strong> Claims up to ₹50 lakh. <strong>State Commission (Chennai):</strong> ₹50L–₹2Cr, also appeals from District. <strong>NCDRC (Delhi):</strong> Above ₹2Cr and appeals from State. Free to file below ₹5 lakh. No lawyer required at district level.</div>
+      <div class="trib-note"><strong>Common use:</strong> Insurance company denies a valid medical claim. Hospital overcharges. Product defect. All go to Consumer Commission, not civil court.</div>
+    </div>
+
+    <div class="trib-card">
+      <div class="trib-head"><span class="trib-icon">⚖️</span><div><div class="trib-name">Labour Court + Industrial Tribunal</div><div class="trib-type">Worker disputes · Multiple locations in TN</div></div></div>
+      <div class="trib-body">Handles disputes between workers and employers — wrongful termination, wage disputes, strike legality. <strong>Labour Court</strong> for individual disputes. <strong>Industrial Tribunal</strong> for collective disputes (unions vs management). Government can refer disputes here; some disputes are mandatory referrals.</div>
+      <div class="trib-note"><strong>TN context:</strong> Tiruppur knitwear disputes, Chennai auto factory union matters — all go through these bodies before the High Court.</div>
+    </div>
+
+    <div class="trib-card">
+      <div class="trib-head"><span class="trib-icon">💧</span><div><div class="trib-name">Cauvery Water Disputes Tribunal</div><div class="trib-type">Inter-State · Special Constitutional body</div></div></div>
+      <div class="trib-body">Set up under the Inter-State River Waters Disputes Act. The 1991 Cauvery Water Disputes Tribunal gave TN 419 TMC feet. The Supreme Court's 2018 judgment finalised at 404.25 TMC. Cauvery disputes now go to the Cauvery Water Management Authority (CWMA) set up by the Centre in 2018.</div>
+      <div class="trib-note"><strong>Important:</strong> Once a river water dispute is referred to a tribunal, Madras HC cannot interfere — exclusive jurisdiction.</div>
+    </div>
+
+  </div>
+
+  <div class="callout mt16">
+    <strong>Tribunal vs Court — the key distinctions.</strong>
+    Tribunals have <em>technical expertise</em> courts don't (environmental scientists on NGT bench, real estate experts in RERA). They are <em>faster</em> — no full CPC/CrPC procedure. But they have <em>less independence</em> — tribunal members are appointed by the executive, not judiciary, creating periodic bias concerns. All tribunal decisions can ultimately be appealed to the High Court or Supreme Court.
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     CH 18: ELECTION MACHINERY
+══════════════════════════════════════ -->
+<section id="elections">
+  <div class="divider"></div>
+  <div class="se">Chapter 18</div>
+  <h2 class="st">Election Machinery — The ECI and How Elections Actually Run</h2>
+  <p class="ss">Elections are the moment when the entire civic structure resets. The Election Commission of India (ECI) is a constitutional body that temporarily takes control of the entire civil service — police, collectors, everything — to ensure a free election.</p>
+
+  <!-- ECI structure -->
+  <div class="h3">How ECI Is Structured</div>
+  <div class="g3 mb16">
+    <div class="card" style="border-top:3px solid var(--union);">
+      <div class="clabel">Chief Election Commissioner</div>
+      <div class="ctitle">Appointed by President</div>
+      <div class="cbody">Constitutionally protected — can only be removed like a Supreme Court judge (impeachment by Parliament). Heads the Commission. Decisions made collectively with Election Commissioners.</div>
+    </div>
+    <div class="card">
+      <div class="clabel">Election Commissioners (2)</div>
+      <div class="ctitle">Appointed by President</div>
+      <div class="cbody">The CEC cannot act alone — majority vote needed. Since 2023, a selection committee (PM, Opposition leader, Cabinet minister) nominates commissioners — reforming earlier executive-only control.</div>
+    </div>
+    <div class="card" style="border-top:3px solid var(--state);">
+      <div class="clabel">Chief Electoral Officer (TN)</div>
+      <div class="ctitle">Senior IAS officer · TN</div>
+      <div class="cbody">State-level ECI representative. Coordinates the District Election Officers (Collectors). During elections, these officers report to ECI — not the state government.</div>
+    </div>
+  </div>
+
+  <!-- MCC Timeline -->
+  <div class="h3">Model Code of Conduct — What Kicks In When</div>
+  <div class="mcc-timeline">
+    <div class="mcc-row">
+      <div class="mcc-phase" style="font-family:'DM Mono';font-size:10px;text-transform:uppercase;color:var(--text3);">When</div>
+      <div class="mcc-content" style="font-weight:600;color:var(--text);">What the MCC prohibits</div>
+    </div>
+    <div class="mcc-row">
+      <div class="mcc-phase">Day 1 — Schedule announced</div>
+      <div class="mcc-content"><strong>Immediate effect.</strong> Government cannot announce new schemes, lay foundation stones for projects, or make policy promises that could influence voters.</div>
+    </div>
+    <div class="mcc-row">
+      <div class="mcc-phase">Throughout election period</div>
+      <div class="mcc-content"><strong>No government advertisements.</strong> No use of government machinery for campaigning. Civil servants cannot be transferred without ECI clearance. All major postings need ECI approval.</div>
+    </div>
+    <div class="mcc-row">
+      <div class="mcc-phase">48 hrs before polling</div>
+      <div class="mcc-content"><strong>Silence period.</strong> No campaigning of any kind — meetings, rallies, advertisements. Liquor sales banned. Media cannot publish exit polls.</div>
+    </div>
+    <div class="mcc-row">
+      <div class="mcc-phase">Polling day</div>
+      <div class="mcc-content"><strong>Central forces deployed.</strong> District Collectors become Returning Officers. Police under ECI control, not state home ministry. Booth-level officers verify rolls.</div>
+    </div>
+    <div class="mcc-row">
+      <div class="mcc-phase">Post-result</div>
+      <div class="mcc-content"><strong>MCC lifted.</strong> Government resumes normal functioning. Pending schemes, transfers, and announcements can proceed.</div>
+    </div>
+  </div>
+
+  <!-- Delimitation -->
+  <div class="callout blue mt16 mb16">
+    <strong>Delimitation — why constituency boundaries matter.</strong> Delimitation Commissions (set up by Parliament) redraw constituency boundaries based on Census data. The last delimitation used the 1971 Census — frozen since 1977 to prevent states that controlled population (like TN) from losing seats. The next delimitation after the 2026 Census is expected by 2031, and will likely <em>reduce TN's representation</em> in Lok Sabha relative to high-population states. This is TN's biggest long-term political concern about federalism.
+  </div>
+
+  <!-- Anti-defection quick ref -->
+  <div class="callout red">
+    <strong>What the Election Commission can do that surprises people.</strong> ECI can <em>transfer</em> any state government officer if it believes they are compromising election integrity. ECI can <em>recognise or de-recognise political parties</em> and assign/withdraw election symbols. ECI adjudicates on party splits — in the famous 2022 Maharashtra case, ECI had to decide which faction of Shiv Sena was the "real" party and got the bow-and-arrow symbol. Its decisions here are final (subject only to SC appeal).
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     DEEP BUDGET DIVE
+══════════════════════════════════════ -->
+<section id="budget-deep">
+  <div class="divider"></div>
+  <div class="se">Budget Deep Dive · Chapters 13A &amp; 13B</div>
+  <h2 class="st">Union Budget &amp; TN State Budget — Full Anatomy</h2>
+  <p class="ss">Two separate budget cycles. Same country, very different structures, constraints, and players. Understanding both — and how they connect — is what makes the money make sense.</p>
+
+  <!-- ════ UNION BUDGET ════ -->
+  <div class="callout blue mb16">
+    <strong>The Union Budget is not one document — it is six.</strong> The Annual Financial Statement (the real budget), the Finance Bill (tax changes), the Demands for Grants (department-wise spending), the Macro-Economic Framework Statement, the Fiscal Policy Strategy Statement, and the Medium Term Fiscal Policy Statement. When the FM opens the briefcase, all six land in Parliament simultaneously.
+  </div>
+
+  <div class="h3">Union Budget — Full Annual Cycle</div>
+  <div class="calendar-detailed">
+    <div class="cd-row header">
+      <div class="cd-cell cd-month">Month</div>
+      <div class="cd-cell cd-who">Who Acts</div>
+      <div class="cd-cell cd-what">What Happens</div>
+    </div>
+    <div class="cd-row">
+      <div class="cd-cell cd-month">Jun–Jul</div>
+      <div class="cd-cell cd-who">Finance Ministry</div>
+      <div class="cd-cell cd-what cd-val">Budget Circular issued. All ministries told to submit their demands. Sets ceilings based on last year's allocations.</div>
+    </div>
+    <div class="cd-row">
+      <div class="cd-cell cd-month">Aug–Sep</div>
+      <div class="cd-cell cd-who">All Ministries</div>
+      <div class="cd-cell cd-what cd-val">Each ministry submits its expenditure demands — what schemes they want to run, how much. Finance Ministry scrutinises every line item.</div>
+    </div>
+    <div class="cd-row">
+      <div class="cd-cell cd-month">Oct</div>
+      <div class="cd-cell cd-who">Finance Ministry + States</div>
+      <div class="cd-cell cd-what cd-val"><strong>Pre-budget consultations.</strong> Finance Minister meets state FMs, economists, industry, farmers, civil society. These meetings shape policy — not just optics.</div>
+    </div>
+    <div class="cd-row highlight">
+      <div class="cd-cell cd-month">Nov–Dec</div>
+      <div class="cd-cell cd-who">Budget Division (sealed)</div>
+      <div class="cd-cell cd-what cd-val"><strong>Halwa Ceremony.</strong> Officials go into lockdown — no phones, no outside contact. All budget documents printed in government press. Zero leaks are tolerated — a leak = criminal prosecution.</div>
+    </div>
+    <div class="cd-row highlight">
+      <div class="cd-cell cd-month">Feb 1</div>
+      <div class="cd-cell cd-who">Finance Minister</div>
+      <div class="cd-cell cd-what cd-val"><strong>Budget speech in Lok Sabha.</strong> Usually 1.5–2 hours. All six documents tabled simultaneously. Rajya Sabha sees it the same day but cannot vote on money bills.</div>
+    </div>
+    <div class="cd-row">
+      <div class="cd-cell cd-month">Feb–Mar</div>
+      <div class="cd-cell cd-who">Standing Committees + Parliament</div>
+      <div class="cd-cell cd-what cd-val">Department-Related Standing Committees examine Demands for Grants ministry by ministry. General Budget debate in both houses. Cut motions moved by opposition.</div>
+    </div>
+    <div class="cd-row">
+      <div class="cd-cell cd-month">Mar 15</div>
+      <div class="cd-cell cd-who">Lok Sabha</div>
+      <div class="cd-cell cd-what cd-val"><strong>Guillotine.</strong> All remaining undiscussed Demands for Grants are voted on at once — no individual debate. Government ensures Finance Bill is passed before Mar 31.</div>
+    </div>
+    <div class="cd-row highlight">
+      <div class="cd-cell cd-month">Mar 31</div>
+      <div class="cd-cell cd-who">President</div>
+      <div class="cd-cell cd-what cd-val"><strong>Finance Act signed.</strong> All tax changes take effect from Apr 1. Appropriation Act authorises all spending. New financial year begins. Government can now draw from Consolidated Fund.</div>
+    </div>
+  </div>
+
+  <!-- Parliamentary stages -->
+  <div class="h3">The 5 Parliamentary Stages a Budget Goes Through</div>
+  <div class="parl-stages">
+    <div class="ps-step">
+      <div class="ps-num">1</div>
+      <div class="ps-title">Presentation</div>
+      <div class="ps-body">FM's speech. Documents tabled. No vote — just information. Rajya Sabha also sees it.</div>
+    </div>
+    <div class="ps-step">
+      <div class="ps-num">2</div>
+      <div class="ps-title">General Discussion</div>
+      <div class="ps-body">3–4 days of debate on broad principles. No vote on specifics. Both houses debate simultaneously.</div>
+    </div>
+    <div class="ps-step">
+      <div class="ps-num">3</div>
+      <div class="ps-title">Committee Examination</div>
+      <div class="ps-body">Standing Committees examine each ministry's grants in detail. Call secretaries, question schemes, suggest changes.</div>
+    </div>
+    <div class="ps-step">
+      <div class="ps-num">4</div>
+      <div class="ps-title">Voting on Demands</div>
+      <div class="ps-body">Lok Sabha votes on each ministry's grants. Opposition can move Cut Motions to reduce specific allocations by ₹1.</div>
+    </div>
+    <div class="ps-step">
+      <div class="ps-num">5</div>
+      <div class="ps-title">Finance + Appropriation Bills</div>
+      <div class="ps-body">Finance Bill (tax law) + Appropriation Bill (spending authority) passed. President signs → Finance Act. It's now law.</div>
+    </div>
+  </div>
+
+  <!-- Vote on Account -->
+  <div class="voa-box">
+    <div class="voa-head"><span class="voa-icon">⏰</span><div class="voa-title">Vote on Account — The Emergency Budget Mechanism</div></div>
+    <div class="voa-body">In an election year, the outgoing government cannot present a full budget (would amount to using public money to campaign). Instead, Parliament passes a <strong>Vote on Account</strong> — authorising spending for 2 months (sometimes extended to 4) to keep government running. The new government then presents a full budget after elections. <strong>TN 2026:</strong> exactly this scenario — the outgoing DMK government would have presented a Vote on Account, and the new government presents the full TN budget after May 2026.</div>
+  </div>
+
+  <!-- Union Budget anatomy -->
+  <div class="h3 mt">Union Budget — Where the Money Comes From &amp; Goes (FY 2024-25)</div>
+  <div class="budget-anatomy">
+    <div class="ba-col">
+      <div class="ba-header receipts">Revenue Receipts — ₹31.3 lakh crore total</div>
+      <div class="ba-items">
+        <div class="ba-item">
+          <div class="ba-item-row"><span class="ba-item-name">Income Tax (net of state share)</span><span class="ba-item-val">₹10.5 L Cr · 33%</span></div>
+          <div class="ba-bar-track"><div class="ba-bar-fill" style="width:33%;background:#1d4ed8;"></div></div>
+        </div>
+        <div class="ba-item">
+          <div class="ba-item-row"><span class="ba-item-name">GST (Centre's share, post-devolution)</span><span class="ba-item-val">₹9.0 L Cr · 29%</span></div>
+          <div class="ba-bar-track"><div class="ba-bar-fill" style="width:29%;background:#7c3aed;"></div></div>
+        </div>
+        <div class="ba-item">
+          <div class="ba-item-row"><span class="ba-item-name">Customs + Excise (Union)</span><span class="ba-item-val">₹4.5 L Cr · 14%</span></div>
+          <div class="ba-bar-track"><div class="ba-bar-fill" style="width:14%;background:#0891b2;"></div></div>
+        </div>
+        <div class="ba-item">
+          <div class="ba-item-row"><span class="ba-item-name">Non-tax (dividends, RBI surplus)</span><span class="ba-item-val">₹3.5 L Cr · 11%</span></div>
+          <div class="ba-bar-track"><div class="ba-bar-fill" style="width:11%;background:#059669;"></div></div>
+        </div>
+        <div class="ba-item">
+          <div class="ba-item-row"><span class="ba-item-name">Market Borrowings (deficit)</span><span class="ba-item-val">₹14.1 L Cr · Deficit</span></div>
+          <div class="ba-bar-track"><div class="ba-bar-fill" style="width:45%;background:#dc2626;"></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="ba-col">
+      <div class="ba-header expend">Expenditure — ₹45.0 lakh crore total</div>
+      <div class="ba-items">
+        <div class="ba-item">
+          <div class="ba-item-row"><span class="ba-item-name">Interest Payments</span><span class="ba-item-val">₹11.1 L Cr · 25%</span></div>
+          <div class="ba-bar-track"><div class="ba-bar-fill" style="width:25%;background:#dc2626;"></div></div>
+        </div>
+        <div class="ba-item">
+          <div class="ba-item-row"><span class="ba-item-name">Defence</span><span class="ba-item-val">₹6.2 L Cr · 14%</span></div>
+          <div class="ba-bar-track"><div class="ba-bar-fill" style="width:14%;background:#1d4ed8;"></div></div>
+        </div>
+        <div class="ba-item">
+          <div class="ba-item-row"><span class="ba-item-name">Central Transfers to States</span><span class="ba-item-val">₹11.0 L Cr · 24%</span></div>
+          <div class="ba-bar-track"><div class="ba-bar-fill" style="width:24%;background:#059669;"></div></div>
+        </div>
+        <div class="ba-item">
+          <div class="ba-item-row"><span class="ba-item-name">Subsidies (food, fertiliser, fuel)</span><span class="ba-item-val">₹3.8 L Cr · 8%</span></div>
+          <div class="ba-bar-track"><div class="ba-bar-fill" style="width:8%;background:#b45309;"></div></div>
+        </div>
+        <div class="ba-item">
+          <div class="ba-item-row"><span class="ba-item-name">Capital Expenditure (infra)</span><span class="ba-item-val">₹11.1 L Cr · 25%</span></div>
+          <div class="ba-bar-track"><div class="ba-bar-fill" style="width:25%;background:#7c3aed;"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ STATE BUDGET ════ -->
+  <div class="divider"></div>
+  <div class="h3">TN State Budget — The Separate Cycle Running in Parallel</div>
+  <div class="callout green mb16">
+    <strong>Key difference from Union:</strong> State governments cannot print money or borrow from RBI directly. They borrow from markets, NSSF (National Small Savings Fund), and institutional lenders (World Bank, ADB) — all subject to the Centre's approval. The Centre can tighten or loosen state borrowing limits as fiscal pressure management. This is a real lever over states.
+  </div>
+
+  <!-- State budget calendar -->
+  <div class="state-cal">
+    <div class="sc-row">
+      <div class="sc-cell sc-month">Oct–Nov</div>
+      <div class="sc-cell sc-actor">All Depts → Finance</div>
+      <div class="sc-cell cd-val">Budget estimates submitted by each department. Finance Dept runs "budget discussions" — line-by-line scrutiny with each Secretary.</div>
+    </div>
+    <div class="sc-row active-sc">
+      <div class="sc-cell sc-month">Nov–Dec</div>
+      <div class="sc-cell sc-actor">Finance Dept + CM</div>
+      <div class="sc-cell cd-val"><strong>Policy decisions made.</strong> New schemes, scheme expansions, welfare promises — CM + Finance Minister decide what goes in. This is where political priorities translate into rupees.</div>
+    </div>
+    <div class="sc-row active-sc">
+      <div class="sc-cell sc-month">Jan</div>
+      <div class="sc-cell sc-actor">Finance Minister</div>
+      <div class="sc-cell cd-val">Pre-budget consultations with industry bodies (CII, FICCI TN), trade unions, farming groups. Announces date of Assembly session.</div>
+    </div>
+    <div class="sc-row peak-sc">
+      <div class="sc-cell sc-month">Feb–Mar</div>
+      <div class="sc-cell sc-actor">Finance Minister → Assembly</div>
+      <div class="sc-cell cd-val"><strong>Budget presented in TN Assembly.</strong> Unlike Union (Feb 1), TN typically presents in Feb–Mar. Two parts: Part A (economy overview, schemes) and Part B (tax proposals). Single day speech, then debated over multiple sessions.</div>
+    </div>
+    <div class="sc-row peak-sc">
+      <div class="sc-cell sc-month">Mar–Apr</div>
+      <div class="sc-cell sc-actor">Assembly</div>
+      <div class="sc-cell cd-val"><strong>Demands for Grants voted.</strong> Each department's allocation voted separately. Opposition moves Cut Motions. Majority government easily passes all grants. Governor gives assent to Appropriation Bill.</div>
+    </div>
+    <div class="sc-row">
+      <div class="sc-cell sc-month">Apr 1</div>
+      <div class="sc-cell sc-actor">All Depts</div>
+      <div class="sc-cell cd-val">New financial year begins. Departments can now draw funds. First-quarter spending (Apr–Jun) often slow — new schemes take time to operationalise.</div>
+    </div>
+    <div class="sc-row active-sc">
+      <div class="sc-cell sc-month">Sep (mid-year)</div>
+      <div class="sc-cell sc-actor">Finance Dept</div>
+      <div class="sc-cell cd-val"><strong>Supplementary Estimates.</strong> If any department needs more money than budgeted, it comes to Assembly for a second approval. Happens twice a year typically.</div>
+    </div>
+    <div class="sc-row">
+      <div class="sc-cell sc-month">Mar 31</div>
+      <div class="sc-cell sc-actor">All Depts + CAG</div>
+      <div class="sc-cell cd-val"><strong>Year-end rush.</strong> Unspent funds must be surrendered or spent. CAG audit begins. Actual vs budget expenditure compared. Becomes PAC fodder next year.</div>
+    </div>
+  </div>
+
+  <!-- State receipts -->
+  <div class="h3 mt">TN's Revenue — Detailed Breakdown (FY 2024-25 Approx.)</div>
+  <div class="state-receipts">
+    <div class="sr-title">Revenue Sources — Tamil Nadu State Budget</div>
+
+    <div class="sr-section">
+      <div class="sr-section-header">Own Tax Revenue <span class="sr-badge own">~50% of receipts</span></div>
+      <div class="sr-item"><div class="sr-item-name">GST — State's 50% share</div><div class="sr-bar-wrap"><div class="sr-bar-track"><div class="sr-bar-fill" style="width:52%;background:#16a34a;"></div></div></div><div class="sr-val">~₹48K Cr</div></div>
+      <div class="sr-item"><div class="sr-item-name">TASMAC Excise Duty</div><div class="sr-bar-wrap"><div class="sr-bar-track"><div class="sr-bar-fill" style="width:39%;background:#16a34a;"></div></div></div><div class="sr-val">~₹36K Cr</div></div>
+      <div class="sr-item"><div class="sr-item-name">Registration &amp; Stamp Duty</div><div class="sr-bar-wrap"><div class="sr-bar-track"><div class="sr-bar-fill" style="width:22%;background:#16a34a;"></div></div></div><div class="sr-val">~₹20K Cr</div></div>
+      <div class="sr-item"><div class="sr-item-name">Motor Vehicle Tax</div><div class="sr-bar-wrap"><div class="sr-bar-track"><div class="sr-bar-fill" style="width:12%;background:#059669;"></div></div></div><div class="sr-val">~₹11K Cr</div></div>
+      <div class="sr-item"><div class="sr-item-name">State Professions, Entertainment Taxes</div><div class="sr-bar-wrap"><div class="sr-bar-track"><div class="sr-bar-fill" style="width:5%;background:#059669;"></div></div></div><div class="sr-val">~₹5K Cr</div></div>
+    </div>
+
+    <div class="sr-section">
+      <div class="sr-section-header">Central Transfers <span class="sr-badge central">~32% of receipts</span></div>
+      <div class="sr-item"><div class="sr-item-name">Tax Devolution (4.189% of pool)</div><div class="sr-bar-wrap"><div class="sr-bar-track"><div class="sr-bar-fill" style="width:46%;background:#1d4ed8;"></div></div></div><div class="sr-val">~₹43K Cr</div></div>
+      <div class="sr-item"><div class="sr-item-name">CSS Grants (NHM, PMAY, MGNREGS)</div><div class="sr-bar-wrap"><div class="sr-bar-track"><div class="sr-bar-fill" style="width:36%;background:#3b82f6;"></div></div></div><div class="sr-val">~₹34K Cr</div></div>
+      <div class="sr-item"><div class="sr-item-name">Disaster Relief Grants (SDRF)</div><div class="sr-bar-wrap"><div class="sr-bar-track"><div class="sr-bar-fill" style="width:5%;background:#60a5fa;"></div></div></div><div class="sr-val">~₹5K Cr</div></div>
+    </div>
+
+    <div class="sr-section">
+      <div class="sr-section-header">Borrowings <span class="sr-badge borrow">~25% — fills the gap</span></div>
+      <div class="sr-item"><div class="sr-item-name">Market loans (G-secs via RBI auction)</div><div class="sr-bar-wrap"><div class="sr-bar-track"><div class="sr-bar-fill" style="width:50%;background:#dc2626;"></div></div></div><div class="sr-val">~₹45K Cr</div></div>
+      <div class="sr-item"><div class="sr-item-name">NSSF (small savings routed by Centre)</div><div class="sr-bar-wrap"><div class="sr-bar-track"><div class="sr-bar-fill" style="width:10%;background:#ef4444;"></div></div></div><div class="sr-val">~₹9K Cr</div></div>
+      <div class="sr-item"><div class="sr-item-name">World Bank / ADB project loans</div><div class="sr-bar-wrap"><div class="sr-bar-track"><div class="sr-bar-fill" style="width:7%;background:#fca5a5;"></div></div></div><div class="sr-val">~₹6K Cr</div></div>
+    </div>
+  </div>
+
+  <!-- Expenditure waterfall -->
+  <div class="h3">Where TN Spends Its Money — By Category</div>
+  <div class="expend-waterfall">
+    <div class="ew-title">TN Revenue Expenditure Breakdown — FY 2024-25 Approx.</div>
+    <div class="ew-row"><div class="ew-name">Salaries &amp; Wages (all state employees)</div><div class="ew-bar-wrap"><div class="ew-bar-track"><div class="ew-bar" style="width:28%;background:#1d4ed8;">₹78K Cr</div></div></div><div class="ew-pct">28%</div></div>
+    <div class="ew-row"><div class="ew-name">Interest Payments on past borrowings</div><div class="ew-bar-wrap"><div class="ew-bar-track"><div class="ew-bar" style="width:20%;background:#dc2626;">₹55K Cr</div></div></div><div class="ew-pct">20%</div></div>
+    <div class="ew-row"><div class="ew-name">Pensions (retired employees)</div><div class="ew-bar-wrap"><div class="ew-bar-track"><div class="ew-bar" style="width:14%;background:#7c3aed;">₹38K Cr</div></div></div><div class="ew-pct">14%</div></div>
+    <div class="ew-row"><div class="ew-name">Education (schools + colleges)</div><div class="ew-bar-wrap"><div class="ew-bar-track"><div class="ew-bar" style="width:12%;background:#0891b2;">₹33K Cr</div></div></div><div class="ew-pct">12%</div></div>
+    <div class="ew-row"><div class="ew-name">Health &amp; Family Welfare</div><div class="ew-bar-wrap"><div class="ew-bar-track"><div class="ew-bar" style="width:7%;background:#059669;">₹19K Cr</div></div></div><div class="ew-pct">7%</div></div>
+    <div class="ew-row"><div class="ew-name">Welfare Schemes (Magalir Urimai, noon meal, etc.)</div><div class="ew-bar-wrap"><div class="ew-bar-track"><div class="ew-bar" style="width:9%;background:#b45309;">₹25K Cr</div></div></div><div class="ew-pct">9%</div></div>
+    <div class="ew-row"><div class="ew-name">Energy subsidies (free power to farmers etc.)</div><div class="ew-bar-wrap"><div class="ew-bar-track"><div class="ew-bar" style="width:6%;background:#be185d;">₹17K Cr</div></div></div><div class="ew-pct">6%</div></div>
+    <div class="ew-row"><div class="ew-name">Agriculture, Irrigation, Forests, others</div><div class="ew-bar-wrap"><div class="ew-bar-track"><div class="ew-bar" style="width:4%;background:#65a30d;">₹11K Cr</div></div></div><div class="ew-pct">4%</div></div>
+  </div>
+  <div class="callout red mb16">
+    <strong>The salaries + pensions + interest = 62% problem.</strong> Nearly two-thirds of TN's revenue expenditure is locked in before the year begins — you must pay employees, pensioners, and interest regardless of any policy decision. Only the remaining ~38% is "discretionary" — and welfare schemes compete with capital expenditure for that space. This is why every popular scheme announcement squeezes infrastructure investment.
+  </div>
+
+  <!-- Deficit chain -->
+  <div class="h3 mt">The Three Deficits — Fully Explained</div>
+  <div class="deficit-chain">
+    <div class="dc-step">
+      <div class="dc-formula">Revenue Deficit = <span>Revenue Expenditure</span> − <span>Revenue Receipts</span></div>
+      <div class="dc-body">If positive: the government is borrowing to pay daily running costs — salaries, subsidies. <strong>This is the most dangerous deficit.</strong> It means current operations are unsustainable on current income. A revenue surplus state can fund capital works without borrowing.</div>
+      <div class="dc-eg"><strong>TN FY25:</strong> Revenue Deficit ~₹35,000 Cr — meaning TN is borrowing just to meet routine expenses, not to build anything. This has been a chronic problem since 2015.</div>
+    </div>
+    <div class="dc-step">
+      <div class="dc-formula">Fiscal Deficit = <span>Total Expenditure</span> − <span>Total Receipts excl. Borrowings</span></div>
+      <div class="dc-body">The total borrowing requirement. The number that fills every newspaper on budget day. Includes both revenue and capital deficits. Capped at 3% of GSDP under FRBM — states exceeding this need Centre's special permission.</div>
+      <div class="dc-eg"><strong>TN FY25:</strong> Fiscal Deficit ~₹85,000 Cr (~3.2% of GSDP). Marginally above the 3% limit. TN regularly negotiates flexibility with the Centre's DEA (Dept of Economic Affairs).</div>
+    </div>
+    <div class="dc-step">
+      <div class="dc-formula">Primary Deficit = <span>Fiscal Deficit</span> − <span>Interest Payments</span></div>
+      <div class="dc-body">The "true" new borrowing — stripping out what you're borrowing just to service old debt. If Primary Deficit = 0, you've stabilised debt levels even if fiscal deficit is high. Economists watch this more than fiscal deficit.</div>
+      <div class="dc-eg"><strong>TN FY25:</strong> Fiscal Deficit ₹85K Cr − Interest ₹55K Cr = Primary Deficit ~₹30K Cr. TN is still adding real new debt, not just rolling over old debt.</div>
+    </div>
+  </div>
+
+  <!-- FRBM -->
+  <div class="h3 mt">FRBM Act — The Fiscal Rules That Govern State Borrowing</div>
+  <div class="frbm-grid">
+    <div class="frbm-card">
+      <div class="frbm-num">3%</div>
+      <div class="frbm-title">Fiscal Deficit Cap</div>
+      <div class="frbm-body">States cannot borrow beyond 3% of GSDP without Centre's approval. TN repeatedly approaches or exceeds this. Post-COVID, 4–4.5% was allowed temporarily.</div>
+    </div>
+    <div class="frbm-card">
+      <div class="frbm-num">0%</div>
+      <div class="frbm-title">Revenue Deficit Target</div>
+      <div class="frbm-body">FRBM requires states to eliminate revenue deficits. TN has failed this for years. The 15th FC set conditions on grants tied to revenue deficit reduction.</div>
+    </div>
+    <div class="frbm-card">
+      <div class="frbm-num">+0.5%</div>
+      <div class="frbm-title">Borrowing Headroom</div>
+      <div class="frbm-body">States get extra 0.5% GSDP borrowing if they undertake power sector reforms (TANGEDCO). TN has partially unlocked this via TANGEDCO restructuring.</div>
+    </div>
+  </div>
+
+  <!-- Union vs State compare -->
+  <div class="h3 mt">Union Budget vs TN State Budget — Side by Side</div>
+  <div class="compare-table">
+    <div class="ct-header">
+      <div class="ct-cell ct-head">Dimension</div>
+      <div class="ct-cell ct-head">Union Budget</div>
+      <div class="ct-cell ct-head">TN State Budget</div>
+    </div>
+    <div class="ct-row">
+      <div class="ct-cell ct-feature">Presented by</div>
+      <div class="ct-cell ct-union">Finance Minister in Lok Sabha</div>
+      <div class="ct-cell ct-state">Finance Minister in TN Assembly</div>
+    </div>
+    <div class="ct-row">
+      <div class="ct-cell ct-feature">Date</div>
+      <div class="ct-cell ct-union">Feb 1 (since 2017)</div>
+      <div class="ct-cell ct-state">Feb–Mar (varies, after Union budget)</div>
+    </div>
+    <div class="ct-row">
+      <div class="ct-cell ct-feature">Total size</div>
+      <div class="ct-cell ct-union">~₹47 lakh crore (FY25)</div>
+      <div class="ct-cell ct-state">~₹3.5 lakh crore (FY25)</div>
+    </div>
+    <div class="ct-row">
+      <div class="ct-cell ct-feature">Borrowing source</div>
+      <div class="ct-cell ct-union">Market + RBI (no limit under Article 293 for Union)</div>
+      <div class="ct-cell ct-state">Market only, Centre-approved ceiling (3% GSDP cap)</div>
+    </div>
+    <div class="ct-row">
+      <div class="ct-cell ct-feature">Can print money?</div>
+      <div class="ct-cell ct-union">Indirectly via RBI — monetisation of deficit (rarely used)</div>
+      <div class="ct-cell ct-state">No. Cannot. Ever. Must borrow from market.</div>
+    </div>
+    <div class="ct-row">
+      <div class="ct-cell ct-feature">Tax changes</div>
+      <div class="ct-cell ct-union">Income tax, customs, central excise — changed via Finance Bill</div>
+      <div class="ct-cell ct-state">Motor vehicle tax, stamp duty, state excise — changed in budget. GST rates need GST Council approval (not state alone).</div>
+    </div>
+    <div class="ct-row">
+      <div class="ct-cell ct-feature">Who audits</div>
+      <div class="ct-cell ct-union">CAG → Public Accounts Committee (Lok Sabha)</div>
+      <div class="ct-cell ct-state">CAG → PAC of TN Assembly</div>
+    </div>
+    <div class="ct-row">
+      <div class="ct-cell ct-feature">Biggest expenditure</div>
+      <div class="ct-cell ct-union">Interest payments (25%) then Central transfers to states</div>
+      <div class="ct-cell ct-state">Salaries (28%) then interest (20%) then pensions (14%)</div>
+    </div>
+    <div class="ct-row">
+      <div class="ct-cell ct-feature">Constitutional article</div>
+      <div class="ct-cell ct-union">Article 112 — Annual Financial Statement</div>
+      <div class="ct-cell ct-state">Article 202 — Annual Financial Statement of states</div>
+    </div>
+  </div>
+
+  <div class="callout green mt16">
+    <strong>The GST Council — the body that changed everything.</strong> Post-GST (2017), neither Union nor states can unilaterally change most indirect tax rates. Both sit on the GST Council (Union Finance Minister chairs, all state FMs are members). Decisions need ¾ majority. This is unprecedented cooperative federalism — but also means TN cannot reduce GST on, say, textiles without Centre's approval. Simultaneously, the Centre cannot raise GST without state consent. A genuine shared power over India's largest tax base.
+  </div>
+</section>
+
+<div class="footer">
+  <strong>Tamil Nadu Civic Structure — Part III · Chapters 13–19 + Budget Deep Dive</strong><br/>
+  Assembly Tools · Writ Jurisdiction · Civil Service · PSUs · Tribunals · Elections · Full Budget Anatomy<br/>
+  Use with Part I (Structure, Legislature, Local Bodies, Bills, Police &amp; Courts) and Part II (7th Schedule, Central Agencies, Revenue Chain, Accountability, Governor, Budget Intro).<br/>
+  <span style="opacity:.6;font-size:11px;">Budget figures approximate FY 2024–25. Electoral data current to 2024. 15th Finance Commission (2021–26).</span>
+</div>
+
+<script>
+function toggleTheme(){
+  const h=document.documentElement;
+  const d=h.getAttribute('data-theme')==='dark';
+  h.setAttribute('data-theme',d?'light':'dark');
+  document.getElementById('themeBtn').textContent=d?'🌙 Dark':'☀️ Light';
+}
+function goTo(id){const el=document.getElementById(id);if(el)el.scrollIntoView({behavior:'smooth',block:'start'});}
+const sids=['assembly-tools','writs','civil-service','psus','tribunals','elections','budget-deep'];
+const links=document.querySelectorAll('.nl');
+window.addEventListener('scroll',()=>{
+  let cur='';
+  sids.forEach(id=>{const el=document.getElementById(id);if(el&&window.scrollY>=el.offsetTop-120)cur=id;});
+  links.forEach((l,i)=>l.classList.toggle('active',sids[i]===cur));
+},{passive:true});
+</script>
+</body>
+</html>

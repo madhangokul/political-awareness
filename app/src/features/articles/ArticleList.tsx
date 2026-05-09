@@ -1,40 +1,108 @@
-import { Link } from 'react-router-dom'
-import { useQuery } from '@tanstack/react-query'
-import { supabase } from '../../lib/supabase'
+// Static legacy article publisher — no auth, no DB
 
-// Per-article visual config — keyed by slug, fallback for unknowns
-type Stripe = 'warm' | 'dark'
-const CARD_META: Record<string, { tag: string; tagDark?: boolean; pills: string[]; stripe: Stripe }> = {
-  'what-is-dravidianism': {
+type LegacyCard = {
+  href: string
+  tag: string
+  tagDark?: boolean
+  title: string
+  subtitle: string
+  pills: string[]
+  stripe: 'warm' | 'dark' | 'teal' | 'blue'
+}
+
+const AWARENESS: LegacyCard[] = [
+  {
+    href: '/legacy/dravidianism-awareness.html',
     tag: 'Philosophy · History',
-    pills: ['No Agenda', 'Interactive'],
+    title: 'What is Dravidianism, actually?',
+    subtitle: 'A clear-eyed look at the ideology — its origins, what it claims, and what it actually delivered.',
+    pills: ['No Agenda', 'Long Read'],
     stripe: 'warm',
   },
-  'tn-governance-audit': {
+  {
+    href: '/legacy/tn-cited.html',
     tag: 'Data · Cited · Balanced',
     tagDark: true,
+    title: 'Tamil Nadu — Read the Full Record',
+    subtitle: 'Every major claim about TN governance, sourced. The achievements and the failures, side by side.',
     pills: ['Factual', 'Both-Sided', '2024–25'],
     stripe: 'dark',
   },
+]
+
+const CIVICS: LegacyCard[] = [
+  {
+    href: '/legacy/tn_civics/tn-civic-structure.html',
+    tag: 'Civics · Part I',
+    title: 'TN Civic Structure — Power & Governance',
+    subtitle: 'How the state is structured from the Governor down to the Village Panchayat. Who holds what power.',
+    pills: ['Reference', 'Interactive'],
+    stripe: 'blue',
+  },
+  {
+    href: '/legacy/tn_civics/tn-civic-structure-p2.html',
+    tag: 'Civics · Part II',
+    title: 'The 7th Schedule, Agencies & Revenue Chain',
+    subtitle: 'Who can make law on what, central investigative agencies in TN, and how revenue administration works.',
+    pills: ['Reference', 'Tables'],
+    stripe: 'teal',
+  },
+  {
+    href: '/legacy/tn_civics/tn-civic-structure-p3.html',
+    tag: 'Civics · Part III',
+    title: 'Legislature, Courts & Civil Service',
+    subtitle: 'How the Assembly functions day-to-day, High Court writ jurisdiction, TNPSC, and state PSUs.',
+    pills: ['Reference', 'Judiciary'],
+    stripe: 'blue',
+  },
+]
+
+const REFERENCE: LegacyCard[] = [
+  {
+    href: '/legacy/tn_civics/tn-ministries-civics.html',
+    tag: 'Cheat Sheet · Ministries',
+    title: 'TN Ministries — Civics Cheat Sheet',
+    subtitle: 'What each ministry actually controls, its key departments, and who does what inside the secretariat.',
+    pills: ['Quick Reference', 'Tables'],
+    stripe: 'warm',
+  },
+]
+
+function Card({ card }: { card: LegacyCard }) {
+  const stripeStyle: Record<string, string> = {
+    warm: 'linear-gradient(90deg, var(--accent), var(--gold))',
+    dark: 'linear-gradient(90deg, #1a5848, #18b898)',
+    teal: 'linear-gradient(90deg, #0891b2, #0d9488)',
+    blue: 'linear-gradient(90deg, #1d4ed8, #7c3aed)',
+  }
+  return (
+    <a href={card.href} className="card" style={{ textDecoration: 'none' }}>
+      <div className="stripe" style={{ background: stripeStyle[card.stripe] }} />
+      <div className={`card-tag${card.tagDark ? ' tag-dark' : ''}`}>{card.tag}</div>
+      <h2>{card.title}</h2>
+      <p>{card.subtitle}</p>
+      <div className="card-meta">
+        {card.pills.map(pill => (
+          <span key={pill} className="card-pill">{pill}</span>
+        ))}
+        <span className="card-arrow">→</span>
+      </div>
+    </a>
+  )
 }
-function cardMeta(slug: string, i: number) {
-  return CARD_META[slug] ?? { tag: 'Analysis', pills: ['Read'], stripe: i % 2 === 0 ? 'warm' : 'dark' } as const
+
+function Section({ label, cards }: { label: string; cards: LegacyCard[] }) {
+  return (
+    <>
+      <span className="section-label">{label}</span>
+      <div className="cards">
+        {cards.map(card => <Card key={card.href} card={card} />)}
+      </div>
+    </>
+  )
 }
 
 export function ArticleList() {
-  const { data: articles = [], isLoading } = useQuery({
-    queryKey: ['articles'],
-    queryFn: async () => {
-      const { data, error } = await supabase
-        .from('articles')
-        .select('id, slug, title, subtitle, current_version, updated_at')
-        .eq('published', true)
-        .order('updated_at', { ascending: false })
-      if (error) throw error
-      return data
-    },
-  })
-
   return (
     <>
       {/* ── Masthead ── */}
@@ -47,101 +115,23 @@ export function ArticleList() {
           <em>actually</em> believe.
         </h1>
         <p className="masthead-sub">
-          A collection of long reads designed to separate philosophy from party, history from
-          propaganda, and instinct from informed opinion.
+          Hand-written HTML articles on Tamil Nadu politics, governance, and civics.
+          No login. No algorithm. Just the page.
         </p>
         <div className="masthead-rule" />
       </div>
 
-      {/* ── Manifesto ── */}
-      <div className="manifesto">
-        <p>
-          Most political opinions are inherited — from family, region, language, or the last thing
-          you read. That's not a flaw. It's human. But{' '}
-          <strong>it's worth occasionally asking</strong>: do I hold this view because I examined
-          it, or because it was handed to me?
-        </p>
-        <p>
-          These pieces are not partisan. They are not trying to change your vote. They are trying to
-          give you <strong>the full picture</strong> — the uncomfortable parts included — so that
-          whatever you believe, you believe it with your eyes open.
-        </p>
+      {/* ── Awareness Articles ── */}
+      <Section label="Awareness · 2 articles" cards={AWARENESS} />
+
+      {/* ── Civic Structure Series ── */}
+      <div style={{ marginTop: 48, paddingTop: 40, borderTop: '1px solid var(--dust)' }}>
+        <Section label="TN Civic Structure · 3-part series" cards={CIVICS} />
       </div>
 
-      {/* ── Article cards ── */}
-      {isLoading ? (
-        <p className="text-center text-muted py-16 font-mono text-sm">Loading…</p>
-      ) : articles.length === 0 ? (
-        <p className="text-center text-muted py-16 font-mono text-sm">No articles published yet.</p>
-      ) : (
-        <>
-          <span className="section-label">Articles · {articles.length} published</span>
-          <div className="cards">
-            {articles.map((a, i) => {
-              const cfg = cardMeta(a.slug, i)
-              return (
-                <Link key={a.id} to={`/articles/${a.slug}`} className="card">
-                  <div className={`stripe stripe-${cfg.stripe}`} />
-                  <div className={`card-tag${cfg.tagDark ? ' tag-dark' : ''}`}>{cfg.tag}</div>
-                  <h2>{a.title}</h2>
-                  {a.subtitle && <p>{a.subtitle}</p>}
-                  <div className="card-meta">
-                    {cfg.pills.map((pill) => (
-                      <span key={pill} className="card-pill">{pill}</span>
-                    ))}
-                    <span className="card-arrow">→</span>
-                  </div>
-                </Link>
-              )
-            })}
-          </div>
-        </>
-      )}
-
-      {/* ── Legacy Archives ── */}
-      <div style={{ marginTop: 72, paddingTop: 40, borderTop: '1px solid var(--dust2)' }}>
-        <span className="section-label" style={{ marginBottom: 20 }}>
-          Legacy · Original static pages
-        </span>
-        <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.9rem', color: 'var(--muted)', marginBottom: 24, maxWidth: 520 }}>
-          The original hand-written HTML versions of these articles — no auth, no React, just the raw page.
-        </p>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-          {[
-            { file: 'dravidianism-awareness.html', label: 'What is Dravidianism, actually?' },
-            { file: 'tn-cited.html',               label: 'Tamil Nadu — Read the Full Record' },
-          ].map(({ file, label }) => (
-            <a
-              key={file}
-              href={`/legacy/${file}`}
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: 10,
-                fontFamily: 'var(--font-mono)',
-                fontSize: '0.8rem',
-                color: 'var(--muted)',
-                textDecoration: 'none',
-                letterSpacing: '0.03em',
-                transition: 'color 0.15s',
-              }}
-              onMouseEnter={e => (e.currentTarget.style.color = 'var(--accent)')}
-              onMouseLeave={e => (e.currentTarget.style.color = 'var(--muted)')}
-            >
-              <span style={{
-                fontSize: '0.65rem',
-                letterSpacing: '0.1em',
-                background: 'var(--dust)',
-                padding: '1px 6px',
-                borderRadius: 3,
-                color: 'var(--muted)',
-              }}>
-                HTML
-              </span>
-              {label} →
-            </a>
-          ))}
-        </div>
+      {/* ── Reference Sheets ── */}
+      <div style={{ marginTop: 48, paddingTop: 40, borderTop: '1px solid var(--dust)' }}>
+        <Section label="Reference Sheets · 1 page" cards={REFERENCE} />
       </div>
 
       {/* ── Footer ── */}

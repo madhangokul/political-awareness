@@ -1,0 +1,2261 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Tamil Nadu — Civic Structure & Governance</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+/* ════════════════════════════════════════════
+   THEME VARIABLES
+════════════════════════════════════════════ */
+:root {
+  --bg:       #f7f4ef;
+  --surface:  #ffffff;
+  --surface2: #f0ece4;
+  --border:   #ddd8cf;
+  --text:     #1a1612;
+  --text2:    #5a5248;
+  --text3:    #9a9088;
+  --accent:   #c8540a;
+  --shadow-sm: 0 1px 4px rgba(0,0,0,0.06);
+  --shadow:    0 2px 12px rgba(0,0,0,0.08);
+  --shadow-lg: 0 6px 28px rgba(0,0,0,0.12);
+  /* tier colors */
+  --union:  #1d4ed8;
+  --state:  #c2410c;
+  --local:  #166534;
+  /* hierarchy colors */
+  --h1: #1e3a8a; --h1t: #dbeafe;
+  --h2: #1d4ed8; --h2t: #eff6ff;
+  --h3: #2563eb; --h3t: #f0f9ff;
+  --h4: #0369a1; --h4t: #f0f9ff;
+  --h5: #0891b2; --h5t: #f0fdf4;
+  --h6: #0d9488; --h6t: #f0fdfa;
+  --h7: #059669; --h7t: #f0fdf4;
+  --h8: #16a34a; --h8t: #f7fee7;
+  --h9: #65a30d; --h9t: #fefce8;
+}
+[data-theme="dark"] {
+  --bg:       #0d1117;
+  --surface:  #161b22;
+  --surface2: #1c2128;
+  --border:   #262d3a;
+  --text:     #e8e2d8;
+  --text2:    #8090a8;
+  --text3:    #505870;
+  --accent:   #f0954a;
+  --shadow-sm: 0 1px 4px rgba(0,0,0,0.3);
+  --shadow:    0 2px 14px rgba(0,0,0,0.4);
+  --shadow-lg: 0 6px 30px rgba(0,0,0,0.5);
+  --union:  #60a5fa;
+  --state:  #fb923c;
+  --local:  #4ade80;
+  --h1: #93c5fd; --h1t: #1e3a5f;
+  --h2: #60a5fa; --h2t: #1e3a5f;
+  --h3: #38bdf8; --h3t: #0c2340;
+  --h4: #22d3ee; --h4t: #0c2340;
+  --h5: #2dd4bf; --h5t: #052e20;
+  --h6: #34d399; --h6t: #052e20;
+  --h7: #4ade80; --h7t: #052e20;
+  --h8: #86efac; --h8t: #052e20;
+  --h9: #bbf7d0; --h9t: #1a2e10;
+}
+
+/* ════════════════════════════════════════════
+   RESET & BASE
+════════════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 14px;
+  line-height: 1.65;
+  transition: background 0.3s, color 0.3s;
+}
+a { color: var(--accent); text-decoration: none; }
+
+/* ════════════════════════════════════════════
+   HEADER
+════════════════════════════════════════════ */
+header {
+  position: sticky; top: 0; z-index: 200;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 0 24px;
+  box-shadow: var(--shadow);
+  display: flex; align-items: stretch; gap: 0;
+}
+.header-inner {
+  flex: 1;
+  display: flex; align-items: center; gap: 16px;
+  padding: 12px 0;
+}
+.header-title-block { flex: 1; }
+.eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--accent);
+  margin-bottom: 1px;
+}
+.main-title {
+  font-family: 'Lora', Georgia, serif;
+  font-size: 18px; font-weight: 700; color: var(--text);
+}
+.toggle-btn {
+  background: var(--surface2); border: 1px solid var(--border);
+  color: var(--text2); padding: 7px 14px; border-radius: 20px;
+  font-size: 12px; cursor: pointer; white-space: nowrap;
+  font-family: 'DM Sans', sans-serif; transition: all 0.2s;
+}
+.toggle-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+/* ════════════════════════════════════════════
+   NAV BAR
+════════════════════════════════════════════ */
+nav {
+  position: sticky; top: 57px; z-index: 190;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+nav::-webkit-scrollbar { display: none; }
+.nav-inner {
+  display: flex; align-items: center; gap: 2px;
+  padding: 0 24px;
+  white-space: nowrap;
+  min-width: max-content;
+}
+.nav-link {
+  display: block; padding: 10px 14px;
+  font-size: 12px; font-weight: 500; color: var(--text3);
+  border-bottom: 2px solid transparent;
+  transition: all 0.15s; cursor: pointer;
+}
+.nav-link:hover { color: var(--accent); border-bottom-color: var(--accent); }
+.nav-link.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+/* ════════════════════════════════════════════
+   SECTION LAYOUT
+════════════════════════════════════════════ */
+section {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 52px 24px 24px;
+}
+section + section { padding-top: 40px; }
+
+.section-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 6px;
+}
+.section-title {
+  font-family: 'Lora', Georgia, serif;
+  font-size: clamp(22px, 4vw, 32px); font-weight: 700;
+  color: var(--text); line-height: 1.2; margin-bottom: 8px;
+}
+.section-sub {
+  font-size: 14px; color: var(--text2); max-width: 640px;
+  line-height: 1.7; margin-bottom: 32px;
+}
+.section-divider {
+  height: 1px; background: var(--border); margin: 40px 0;
+}
+
+/* ════════════════════════════════════════════
+   CARDS
+════════════════════════════════════════════ */
+.card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 10px; padding: 18px 20px;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.2s;
+}
+.card:hover { box-shadow: var(--shadow); }
+.card-label {
+  font-family: 'DM Mono', monospace; font-size: 9px;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 5px;
+}
+.card-title {
+  font-family: 'Lora', Georgia, serif;
+  font-size: 16px; font-weight: 700; color: var(--text);
+  margin-bottom: 4px;
+}
+.card-body {
+  font-size: 13px; color: var(--text2); line-height: 1.7;
+}
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+@media (max-width: 640px) {
+  .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+}
+
+/* ════════════════════════════════════════════
+   CALLOUT BOX
+════════════════════════════════════════════ */
+.callout {
+  background: var(--surface2); border-left: 3px solid var(--accent);
+  border-radius: 0 8px 8px 0; padding: 14px 18px;
+  font-size: 13px; color: var(--text2); line-height: 1.7;
+}
+.callout strong { color: var(--text); }
+
+/* ════════════════════════════════════════════
+   SECTION 1: THREE TIERS — NESTED BOXES
+════════════════════════════════════════════ */
+.tiers-wrapper {
+  position: relative;
+  border: 2px solid var(--union);
+  border-radius: 16px;
+  padding: 20px 20px 20px 20px;
+  margin-bottom: 12px;
+}
+.tier-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+  font-weight: 500;
+}
+.tier-top-row {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 12px;
+}
+.tier-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 4px 12px; border-radius: 20px;
+  font-size: 11px; font-weight: 600; font-family: 'DM Sans', sans-serif;
+}
+.tier-items {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  font-size: 12px; color: var(--text2);
+}
+.tier-chip {
+  background: var(--surface2); border: 1px solid var(--border);
+  border-radius: 6px; padding: 4px 10px;
+  font-size: 12px; color: var(--text2);
+}
+
+.tier-union { border-color: var(--union); }
+.tier-union .tier-badge { background: rgba(29,78,216,0.12); color: var(--union); }
+.tier-union .tier-label { color: var(--union); }
+
+.tier-state-wrap {
+  border: 2px solid var(--state);
+  border-radius: 12px; padding: 16px 16px 16px 16px;
+  margin-bottom: 8px;
+}
+.tier-state-wrap .tier-badge { background: rgba(194,65,12,0.12); color: var(--state); }
+.tier-state-wrap .tier-label { color: var(--state); }
+
+.tier-local-wrap {
+  border: 2px solid var(--local);
+  border-radius: 8px; padding: 14px 14px;
+}
+.tier-local-wrap .tier-badge { background: rgba(22,101,52,0.12); color: var(--local); }
+.tier-local-wrap .tier-label { color: var(--local); }
+
+.tn-star {
+  background: var(--state);
+  color: #fff;
+  font-size: 11px; font-weight: 700;
+  padding: 2px 8px; border-radius: 4px;
+  font-family: 'DM Mono', monospace;
+  letter-spacing: 0.08em;
+}
+
+/* ════════════════════════════════════════════
+   SECTION 2: EXECUTIVE ORG CHART
+════════════════════════════════════════════ */
+.exec-flow {
+  display: flex; flex-direction: column; align-items: center;
+  gap: 0; max-width: 560px; margin: 0 auto 32px;
+}
+.exec-node {
+  width: 100%;
+  border-radius: 10px;
+  padding: 14px 20px;
+  border: 1.5px solid var(--border);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+  display: flex; align-items: center; gap: 14px;
+  position: relative;
+}
+.exec-node.union-node { border-color: var(--union); }
+.exec-node.gov-node   { border-color: var(--accent); }
+.exec-node.cm-node    { border-color: var(--state); background: var(--surface2); }
+
+.exec-node-icon { font-size: 28px; flex-shrink: 0; line-height: 1; }
+.exec-node-title {
+  font-family: 'Lora', Georgia, serif;
+  font-size: 15px; font-weight: 700; color: var(--text);
+}
+.exec-node-role {
+  font-size: 11.5px; color: var(--text3);
+  font-family: 'DM Mono', monospace;
+  letter-spacing: 0.04em;
+}
+.exec-node-tag {
+  margin-left: auto; flex-shrink: 0;
+  font-size: 10px; font-weight: 600;
+  padding: 3px 9px; border-radius: 12px;
+  font-family: 'DM Sans', sans-serif;
+}
+.tag-ceremonial { background: rgba(29,78,216,0.12); color: var(--union); }
+.tag-real       { background: rgba(194,65,12,0.12); color: var(--state); }
+.tag-union      { background: rgba(29,78,216,0.08); color: var(--union); }
+
+.exec-arrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px; color: var(--text3);
+  display: flex; flex-direction: column; align-items: center; gap: 2px;
+  padding: 6px 0;
+}
+.exec-arrow-line { width: 2px; height: 16px; background: var(--border); }
+.exec-arrow-text { font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; }
+.exec-arrow-head { font-size: 10px; color: var(--text3); }
+
+.exec-multi {
+  display: grid; grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px; width: 100%;
+  position: relative;
+}
+.exec-multi::before {
+  content: '';
+  position: absolute;
+  top: -18px; left: 16.66%; right: 16.66%;
+  height: 2px; background: var(--border);
+}
+.exec-mini {
+  border-radius: 8px; padding: 12px 14px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+  text-align: center;
+  position: relative;
+}
+.exec-mini::before {
+  content: '';
+  position: absolute;
+  top: -18px; left: 50%; transform: translateX(-50%);
+  width: 2px; height: 18px; background: var(--border);
+}
+.exec-mini-title {
+  font-family: 'Lora', serif;
+  font-size: 13px; font-weight: 700; color: var(--text);
+  margin-bottom: 3px;
+}
+.exec-mini-body { font-size: 11px; color: var(--text3); line-height: 1.5; }
+
+@media (max-width: 500px) {
+  .exec-multi { grid-template-columns: 1fr; }
+  .exec-multi::before { display: none; }
+  .exec-mini::before { display: none; }
+}
+
+/* Role cards */
+.role-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+@media (max-width: 600px) { .role-cards { grid-template-columns: 1fr; } }
+
+.role-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 10px; padding: 16px 18px;
+  box-shadow: var(--shadow-sm);
+}
+.role-card-head {
+  display: flex; align-items: center; gap: 10px; margin-bottom: 10px;
+}
+.role-icon { font-size: 26px; line-height: 1; }
+.role-name {
+  font-family: 'Lora', serif; font-size: 15px;
+  font-weight: 700; color: var(--text);
+}
+.role-type {
+  font-size: 11px; color: var(--text3);
+  font-family: 'DM Mono', monospace; letter-spacing: 0.04em;
+}
+.role-powers {
+  list-style: none; display: flex; flex-direction: column; gap: 5px;
+}
+.role-powers li {
+  font-size: 12.5px; color: var(--text2);
+  display: flex; gap: 7px; align-items: baseline;
+  line-height: 1.5;
+}
+.power-dot {
+  width: 5px; height: 5px; border-radius: 50%;
+  background: var(--accent); flex-shrink: 0; margin-top: 5px;
+}
+.role-limit {
+  margin-top: 10px; padding: 8px 12px;
+  background: var(--surface2); border-radius: 6px;
+  font-size: 12px; color: var(--text2); line-height: 1.5;
+}
+.role-limit strong { color: var(--text); }
+
+/* ════════════════════════════════════════════
+   SECTION 3: LEGISLATURE
+════════════════════════════════════════════ */
+.assembly-stats {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 12px; margin-bottom: 24px;
+}
+@media (max-width: 600px) { .assembly-stats { grid-template-columns: 1fr 1fr; } }
+
+.stat-box {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 10px; padding: 16px 14px; text-align: center;
+  box-shadow: var(--shadow-sm);
+}
+.stat-num {
+  font-family: 'Lora', serif; font-size: 34px; font-weight: 700;
+  color: var(--accent); line-height: 1; margin-bottom: 4px;
+}
+.stat-label {
+  font-size: 12px; color: var(--text2); line-height: 1.4;
+}
+.stat-sub {
+  font-family: 'DM Mono', monospace; font-size: 10px;
+  color: var(--text3); letter-spacing: 0.04em; margin-top: 3px;
+}
+
+/* Seat bar */
+.seat-bar-wrap { margin-bottom: 28px; }
+.seat-bar-title {
+  font-size: 12px; color: var(--text3); margin-bottom: 8px;
+  font-family: 'DM Mono', monospace; letter-spacing: 0.08em; text-transform: uppercase;
+}
+.seat-bar {
+  display: flex; height: 32px; border-radius: 6px;
+  overflow: hidden; gap: 2px;
+}
+.seat-seg {
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 600; color: #fff;
+  transition: flex 0.4s ease;
+  border-radius: 4px;
+  white-space: nowrap; overflow: hidden;
+  min-width: 0;
+}
+.seg-label {
+  display: flex; align-items: center; gap: 20px;
+  flex-wrap: wrap; margin-top: 10px;
+}
+.seg-dot {
+  display: inline-block; width: 10px; height: 10px;
+  border-radius: 3px; margin-right: 5px;
+}
+.seg-text { font-size: 12px; color: var(--text2); }
+
+/* How elections work */
+.election-steps {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 10px; margin-top: 20px;
+}
+@media (max-width: 640px) { .election-steps { grid-template-columns: 1fr 1fr; } }
+
+.election-step {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; padding: 14px 14px;
+  box-shadow: var(--shadow-sm);
+}
+.es-num {
+  font-family: 'DM Mono', monospace; font-size: 22px;
+  font-weight: 500; color: var(--accent); line-height: 1; margin-bottom: 6px;
+}
+.es-title { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+.es-body  { font-size: 12px; color: var(--text2); line-height: 1.5; }
+
+/* Assembly roles */
+.assembly-roles {
+  display: grid; grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px; margin-top: 24px;
+}
+@media (max-width: 640px) { .assembly-roles { grid-template-columns: 1fr; } }
+
+.ar-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-top: 3px solid var(--accent);
+  border-radius: 0 0 8px 8px; padding: 14px 16px;
+  box-shadow: var(--shadow-sm);
+}
+.ar-title { font-family: 'Lora', serif; font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 5px; }
+.ar-body  { font-size: 12.5px; color: var(--text2); line-height: 1.6; }
+
+/* ════════════════════════════════════════════
+   SECTION 4: LOCAL BODIES
+════════════════════════════════════════════ */
+.local-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+@media (max-width: 640px) { .local-grid { grid-template-columns: 1fr; } }
+
+.local-track-title {
+  font-family: 'Lora', serif; font-size: 16px; font-weight: 700;
+  color: var(--text); margin-bottom: 12px;
+  display: flex; align-items: center; gap: 8px;
+}
+.track-badge {
+  font-size: 10px; font-weight: 600; padding: 2px 9px;
+  border-radius: 10px; font-family: 'DM Sans', sans-serif;
+}
+.badge-urban { background: rgba(29,78,216,0.12); color: var(--union); }
+.badge-rural { background: rgba(22,101,52,0.12); color: var(--local); }
+
+.local-level {
+  position: relative;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; padding: 13px 16px;
+  margin-bottom: 0;
+  box-shadow: var(--shadow-sm);
+}
+.local-level-num {
+  font-family: 'DM Mono', monospace; font-size: 10px;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--text3); margin-bottom: 2px;
+}
+.local-level-title {
+  font-family: 'Lora', serif; font-size: 14px; font-weight: 700;
+  color: var(--text); margin-bottom: 3px;
+}
+.local-level-stat {
+  font-family: 'DM Mono', monospace; font-size: 10px;
+  color: var(--accent); margin-bottom: 5px;
+}
+.local-level-body { font-size: 12px; color: var(--text2); line-height: 1.55; }
+
+.local-connector {
+  display: flex; align-items: center; justify-content: center;
+  height: 24px;
+}
+.connector-line {
+  width: 2px; height: 100%; background: var(--border);
+  position: relative;
+}
+.connector-arrow {
+  font-size: 12px; color: var(--text3);
+  position: absolute; bottom: -6px; left: 50%;
+  transform: translateX(-50%);
+}
+
+.local-roles-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 10px; margin-top: 28px;
+}
+@media (max-width: 500px) { .local-roles-grid { grid-template-columns: 1fr; } }
+
+.local-role-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; padding: 14px 16px;
+  box-shadow: var(--shadow-sm);
+}
+.lrc-head {
+  display: flex; align-items: center; gap: 8px; margin-bottom: 8px;
+}
+.lrc-icon { font-size: 22px; }
+.lrc-name { font-family: 'Lora', serif; font-size: 14px; font-weight: 700; color: var(--text); }
+.lrc-type { font-size: 11px; color: var(--text3); font-family: 'DM Mono', monospace; }
+.lrc-body { font-size: 12px; color: var(--text2); line-height: 1.6; }
+
+/* ════════════════════════════════════════════
+   SECTION 5: BILL PASSAGE
+════════════════════════════════════════════ */
+.bill-flow-wrap {
+  overflow-x: auto; padding-bottom: 8px;
+  margin-bottom: 24px;
+}
+.bill-flow {
+  display: flex; align-items: stretch; gap: 0;
+  min-width: 800px;
+}
+.bill-step {
+  flex: 1;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 0; padding: 16px 14px;
+  position: relative; text-align: center;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.2s;
+}
+.bill-step:first-child { border-radius: 10px 0 0 10px; }
+.bill-step:last-child  { border-radius: 0 10px 10px 0; border-color: var(--local); }
+.bill-step + .bill-step { border-left: none; }
+.bill-step-num {
+  font-family: 'DM Mono', monospace; font-size: 11px;
+  color: var(--text3); margin-bottom: 6px;
+}
+.bill-step-icon { font-size: 22px; margin-bottom: 6px; line-height: 1; }
+.bill-step-title {
+  font-family: 'Lora', serif; font-size: 13px; font-weight: 700;
+  color: var(--text); margin-bottom: 5px; line-height: 1.3;
+}
+.bill-step-body { font-size: 11.5px; color: var(--text2); line-height: 1.55; }
+.bill-arrow {
+  position: absolute; right: -14px; top: 50%;
+  transform: translateY(-50%);
+  width: 14px; height: 14px;
+  background: var(--accent);
+  clip-path: polygon(0 25%, 60% 25%, 60% 0%, 100% 50%, 60% 100%, 60% 75%, 0 75%);
+  z-index: 1;
+}
+.bill-step-special {
+  background: var(--surface2);
+  border-color: var(--accent) !important;
+}
+.bill-step-law {
+  background: rgba(22,101,52,0.08);
+  border-color: var(--local) !important;
+}
+
+.bill-note {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+@media (max-width: 540px) { .bill-note { grid-template-columns: 1fr; } }
+
+/* ════════════════════════════════════════════
+   SECTION 6: LAW & ORDER
+════════════════════════════════════════════ */
+
+/* Police pyramid */
+.pyramid-container {
+  display: flex; flex-direction: column; align-items: center;
+  gap: 3px; margin-bottom: 20px;
+}
+.p-row {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 14px;
+  height: 42px; border-radius: 6px;
+  transition: transform 0.2s;
+  cursor: default;
+}
+.p-row:hover { transform: scaleX(1.01); }
+
+.p-row-1  { width: 30%;  background: var(--h1); color: var(--h1t); }
+.p-row-2  { width: 42%;  background: var(--h2); color: var(--h2t); }
+.p-row-3  { width: 52%;  background: var(--h3); color: var(--h3t); }
+.p-row-4  { width: 62%;  background: var(--h4); color: var(--h4t); }
+.p-row-5  { width: 70%;  background: var(--h5); color: var(--h5t); }
+.p-row-6  { width: 78%;  background: var(--h6); color: var(--h6t); }
+.p-row-7  { width: 85%;  background: var(--h7); color: var(--h7t); }
+.p-row-8  { width: 92%;  background: var(--h8); color: var(--h8t); }
+.p-row-9  { width: 100%; background: var(--h9); color: var(--h9t); }
+
+.p-rank { font-family: 'DM Mono', monospace; font-size: 11.5px; font-weight: 500; }
+.p-detail { font-size: 10.5px; opacity: 0.8; text-align: right; }
+.p-abbr {
+  font-family: 'DM Mono', monospace; font-size: 10px;
+  opacity: 0.7; font-style: italic;
+}
+
+.police-legend {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 10px; margin-bottom: 24px;
+}
+@media (max-width: 500px) { .police-legend { grid-template-columns: 1fr; } }
+
+.police-note {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; padding: 12px 14px;
+  box-shadow: var(--shadow-sm);
+  font-size: 12.5px; color: var(--text2); line-height: 1.6;
+}
+.police-note strong { color: var(--text); }
+
+/* Judicial hierarchy */
+.court-levels {
+  display: flex; flex-direction: column; gap: 8px;
+}
+.court-level {
+  display: flex; align-items: center; gap: 14px;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; padding: 14px 18px;
+  box-shadow: var(--shadow-sm);
+}
+.court-tier-num {
+  font-family: 'DM Mono', monospace; font-size: 22px;
+  font-weight: 500; color: var(--accent); flex-shrink: 0; width: 32px;
+  text-align: center;
+}
+.court-info { flex: 1; }
+.court-name {
+  font-family: 'Lora', serif; font-size: 14px; font-weight: 700;
+  color: var(--text); margin-bottom: 2px;
+}
+.court-detail { font-size: 12px; color: var(--text2); line-height: 1.5; }
+.court-scope {
+  font-family: 'DM Mono', monospace; font-size: 10px;
+  color: var(--text3); letter-spacing: 0.06em; text-transform: uppercase;
+  text-align: right; flex-shrink: 0;
+}
+
+/* ════════════════════════════════════════════
+   FOOTER
+════════════════════════════════════════════ */
+.footer {
+  max-width: 960px; margin: 48px auto 0;
+  padding: 0 24px 60px;
+  border-top: 1px solid var(--border);
+  padding-top: 24px;
+  font-size: 12px; color: var(--text3); line-height: 1.8;
+  text-align: center;
+}
+
+/* Utility */
+.mt-8  { margin-top: 8px; }
+.mt-16 { margin-top: 16px; }
+.mt-24 { margin-top: 24px; }
+.mb-8  { margin-bottom: 8px; }
+
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--surface2); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     HEADER
+══════════════════════════════════════════ -->
+<header>
+  <div class="header-inner">
+    <div class="header-title-block">
+      <div class="eyebrow">Civics Guide · Phase One</div>
+      <div class="main-title">Tamil Nadu — Civic Structure & Governance</div>
+    </div>
+    <button class="toggle-btn" onclick="toggleTheme()" id="themeBtn">🌙 Dark</button>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════
+     NAV
+══════════════════════════════════════════ -->
+<nav>
+  <div class="nav-inner">
+    <a class="nav-link active" onclick="scrollTo('tiers')">Three Tiers</a>
+    <a class="nav-link" onclick="scrollTo('executive')">State Executive</a>
+    <a class="nav-link" onclick="scrollTo('legislature')">Legislature</a>
+    <a class="nav-link" onclick="scrollTo('local')">Local Bodies</a>
+    <a class="nav-link" onclick="scrollTo('bills')">How Bills Pass</a>
+    <a class="nav-link" onclick="scrollTo('laworder')">Law &amp; Order</a>
+    <span style="color:var(--border);padding:0 4px;font-size:12px;">·</span>
+    <a class="nav-link" onclick="scrollTo('schedule')">7th Schedule</a>
+    <a class="nav-link" onclick="scrollTo('agencies')">Central Agencies</a>
+    <a class="nav-link" onclick="scrollTo('revenue')">Revenue Admin</a>
+    <a class="nav-link" onclick="scrollTo('accountability')">Watchdogs</a>
+    <a class="nav-link" onclick="scrollTo('art356')">Art 356</a>
+    <a class="nav-link" onclick="scrollTo('budget')">Budget Cycle</a>
+  </div>
+</nav>
+
+
+<!-- ══════════════════════════════════════════
+     SECTION 1: THREE TIERS
+══════════════════════════════════════════ -->
+<section id="tiers">
+  <div class="section-eyebrow">Chapter 01</div>
+  <h2 class="section-title">India is a Federation — Three Layers of Government</h2>
+  <p class="section-sub">
+    India is not governed by just one government. Powers are split across three tiers. Each tier has its own elected body, its own powers, and its own responsibilities. Tamil Nadu is a <em>state</em> — it sits in the middle tier.
+  </p>
+
+  <!-- Nested tiers visual -->
+  <div class="tiers-wrapper tier-union">
+    <div class="tier-top-row">
+      <span class="tier-label">Tier 1</span>
+      <span class="tier-badge">🏛 Union Government</span>
+    </div>
+    <div class="tier-items mb-8">
+      <span class="tier-chip">Parliament (Lok Sabha + Rajya Sabha)</span>
+      <span class="tier-chip">President of India</span>
+      <span class="tier-chip">Prime Minister + Union Cabinet</span>
+      <span class="tier-chip">Supreme Court</span>
+    </div>
+    <div class="tier-items mb-8" style="font-size:12px; color: var(--text3)">
+      Controls: Defence · Foreign Affairs · Railways · Currency · Income Tax · National Highways
+    </div>
+
+    <div class="tier-state-wrap">
+      <div class="tier-top-row">
+        <span class="tier-label">Tier 2</span>
+        <span class="tier-badge">🟠 State Government <span class="tn-star" style="margin-left:8px">← TN is here</span></span>
+      </div>
+      <div class="tier-items mb-8">
+        <span class="tier-chip">Legislative Assembly (Vidhan Sabha)</span>
+        <span class="tier-chip">Governor</span>
+        <span class="tier-chip">Chief Minister + Cabinet</span>
+        <span class="tier-chip">High Court</span>
+      </div>
+      <div class="tier-items mb-8" style="font-size:12px; color: var(--text3)">
+        Controls: Police · State roads · Agriculture · Public health · Education · State taxes
+      </div>
+
+      <div class="tier-local-wrap">
+        <div class="tier-top-row">
+          <span class="tier-label">Tier 3</span>
+          <span class="tier-badge">🟢 Local Government</span>
+        </div>
+        <div class="tier-items mb-8">
+          <span class="tier-chip">Municipal Corporations</span>
+          <span class="tier-chip">Municipalities</span>
+          <span class="tier-chip">Panchayats</span>
+        </div>
+        <div class="tier-items" style="font-size:12px; color: var(--text3)">
+          Controls: Local roads · Water supply · Sanitation · Building permits · Street lights
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout mt-16">
+    <strong>The 73rd &amp; 74th Amendments (1992)</strong> made local government a constitutional right — 
+    ensuring that villages and cities have their own elected representatives, not just bureaucrats.
+    This is why you have a Panchayat President in every village and a Councillor in every ward.
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     SECTION 2: STATE EXECUTIVE
+══════════════════════════════════════════ -->
+<section id="executive">
+  <div class="section-divider"></div>
+  <div class="section-eyebrow">Chapter 02</div>
+  <h2 class="section-title">The State Executive — Who Actually Runs Tamil Nadu</h2>
+  <p class="section-sub">
+    There are two heads of the Tamil Nadu government. One is ceremonial (the Governor), and one is the real power (the Chief Minister). Understanding this distinction is crucial to understanding Indian governance.
+  </p>
+
+  <!-- Org chart flow -->
+  <div class="exec-flow">
+    <!-- President -->
+    <div class="exec-node union-node">
+      <div class="exec-node-icon">🇮🇳</div>
+      <div>
+        <div class="exec-node-title">President of India</div>
+        <div class="exec-node-role">New Delhi · Head of the Indian Union</div>
+      </div>
+      <span class="exec-node-tag tag-union">Union</span>
+    </div>
+
+    <div class="exec-arrow">
+      <div class="exec-arrow-line"></div>
+      <div class="exec-arrow-text">appoints on advice of PM</div>
+      <div class="exec-arrow-line"></div>
+      <div class="exec-arrow-head">▼</div>
+    </div>
+
+    <!-- Governor -->
+    <div class="exec-node gov-node">
+      <div class="exec-node-icon">🏛</div>
+      <div>
+        <div class="exec-node-title">Governor of Tamil Nadu</div>
+        <div class="exec-node-role">Raj Bhavan, Chennai · Constitutional Head of State</div>
+      </div>
+      <span class="exec-node-tag tag-ceremonial">Ceremonial</span>
+    </div>
+
+    <div class="exec-arrow">
+      <div class="exec-arrow-line"></div>
+      <div class="exec-arrow-text">appoints leader of majority party</div>
+      <div class="exec-arrow-line"></div>
+      <div class="exec-arrow-head">▼</div>
+    </div>
+
+    <!-- CM -->
+    <div class="exec-node cm-node">
+      <div class="exec-node-icon">⚡</div>
+      <div>
+        <div class="exec-node-title">Chief Minister</div>
+        <div class="exec-node-role">Fort St. George, Chennai · De Facto Executive Head</div>
+      </div>
+      <span class="exec-node-tag tag-real">Real Power</span>
+    </div>
+
+    <div class="exec-arrow">
+      <div class="exec-arrow-line"></div>
+      <div class="exec-arrow-text">leads</div>
+      <div class="exec-arrow-line"></div>
+      <div class="exec-arrow-head">▼</div>
+    </div>
+
+    <!-- Three children -->
+    <div class="exec-multi">
+      <div class="exec-mini">
+        <div class="exec-mini-title">Deputy CM</div>
+        <div class="exec-mini-body">Assists CM, takes over if CM is unavailable</div>
+      </div>
+      <div class="exec-mini" style="border-color: var(--accent);">
+        <div class="exec-mini-title">Council of Ministers</div>
+        <div class="exec-mini-body">~35 ministers, each heading a department</div>
+      </div>
+      <div class="exec-mini">
+        <div class="exec-mini-title">Chief Secretary</div>
+        <div class="exec-mini-body">Top IAS officer, head of civil service</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Role cards -->
+  <div class="role-cards">
+    <div class="role-card">
+      <div class="role-card-head">
+        <span class="role-icon">🏛</span>
+        <div>
+          <div class="role-name">Governor</div>
+          <div class="role-type">Constitutional Head · Ceremonial</div>
+        </div>
+      </div>
+      <ul class="role-powers">
+        <li><span class="power-dot"></span><span>Appoints the Chief Minister after elections</span></li>
+        <li><span class="power-dot"></span><span>Gives assent to bills passed by the Assembly — without this, a bill can't become law</span></li>
+        <li><span class="power-dot"></span><span>Can withhold assent or send a bill back for reconsideration once</span></li>
+        <li><span class="power-dot"></span><span>Addresses the Assembly at the start of each session</span></li>
+        <li><span class="power-dot"></span><span>Can impose President's Rule if government collapses</span></li>
+      </ul>
+      <div class="role-limit">
+        <strong>Key rule:</strong> The Governor must act on the advice of the Council of Ministers in most matters — they are not an independent decision-maker. The real authority lies with the elected CM.
+      </div>
+    </div>
+
+    <div class="role-card">
+      <div class="role-card-head">
+        <span class="role-icon">⚡</span>
+        <div>
+          <div class="role-name">Chief Minister</div>
+          <div class="role-type">Executive Head · Real Power</div>
+        </div>
+      </div>
+      <ul class="role-powers">
+        <li><span class="power-dot"></span><span>Leader of the party (or coalition) with majority in the Assembly</span></li>
+        <li><span class="power-dot"></span><span>Chairs all Cabinet meetings — final word on policy</span></li>
+        <li><span class="power-dot"></span><span>Controls General Administration — decides which IAS/IPS officers go where</span></li>
+        <li><span class="power-dot"></span><span>Allocates portfolios to ministers</span></li>
+        <li><span class="power-dot"></span><span>Can reshuffle or dismiss ministers at any time</span></li>
+      </ul>
+      <div class="role-limit">
+        <strong>Accountability:</strong> The CM must maintain the confidence of 118+ MLAs (majority in 234-seat assembly). If they lose it, the government falls.
+      </div>
+    </div>
+
+    <div class="role-card">
+      <div class="role-card-head">
+        <span class="role-icon">🗂</span>
+        <div>
+          <div class="role-name">Council of Ministers</div>
+          <div class="role-type">Executive Body · Collective Responsibility</div>
+        </div>
+      </div>
+      <ul class="role-powers">
+        <li><span class="power-dot"></span><span>~35 ministers, each holding specific portfolios</span></li>
+        <li><span class="power-dot"></span><span>Collectively responsible to the Assembly — if one falls, all must defend</span></li>
+        <li><span class="power-dot"></span><span>Cabinet decisions require collective agreement</span></li>
+        <li><span class="power-dot"></span><span>Each minister answers to the Assembly for their department</span></li>
+      </ul>
+      <div class="role-limit">
+        <strong>Note:</strong> Cabinet ministers are usually MLAs — they must win or have won an assembly seat to be a minister.
+      </div>
+    </div>
+
+    <div class="role-card">
+      <div class="role-card-head">
+        <span class="role-icon">📁</span>
+        <div>
+          <div class="role-name">Chief Secretary</div>
+          <div class="role-type">Top Bureaucrat · IAS Officer</div>
+        </div>
+      </div>
+      <ul class="role-powers">
+        <li><span class="power-dot"></span><span>Highest-ranking civil servant in Tamil Nadu</span></li>
+        <li><span class="power-dot"></span><span>Coordinates between the CM and all department secretaries</span></li>
+        <li><span class="power-dot"></span><span>Represents the permanent (non-political) government</span></li>
+        <li><span class="power-dot"></span><span>Responsible for government orders being executed correctly</span></li>
+      </ul>
+      <div class="role-limit">
+        <strong>Civil vs Political:</strong> Politicians come and go with elections. IAS officers stay — giving continuity to administration regardless of which party is in power.
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     SECTION 3: LEGISLATURE
+══════════════════════════════════════════ -->
+<section id="legislature">
+  <div class="section-divider"></div>
+  <div class="section-eyebrow">Chapter 03</div>
+  <h2 class="section-title">The Tamil Nadu Legislative Assembly</h2>
+  <p class="section-sub">
+    The Assembly (Vidhan Sabha) is the lawmaking body of the state. It is made up of 234 elected MLAs. Laws are debated and passed here. The government must maintain the Assembly's confidence to stay in power.
+  </p>
+
+  <!-- Stats -->
+  <div class="assembly-stats">
+    <div class="stat-box">
+      <div class="stat-num">234</div>
+      <div class="stat-label">Assembly Constituencies</div>
+      <div class="stat-sub">One MLA per constituency</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num">118</div>
+      <div class="stat-label">Majority Mark</div>
+      <div class="stat-sub">Needed to form govt</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num">5 yrs</div>
+      <div class="stat-label">Assembly Term</div>
+      <div class="stat-sub">Elections every 5 years</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num">1986</div>
+      <div class="stat-label">Unicameral Since</div>
+      <div class="stat-sub">Upper house abolished</div>
+    </div>
+  </div>
+
+  <!-- Unicameral note -->
+  <div class="callout mt-16" style="margin-bottom: 20px;">
+    <strong>Unicameral = One House.</strong> Until 1986, Tamil Nadu had two chambers — an upper (Legislative Council) and a lower (Legislative Assembly), like Parliament has Rajya Sabha + Lok Sabha. 
+    In 1986, the upper house was abolished. Today, bills only pass through <em>one</em> chamber, making law-making faster.
+  </div>
+
+  <!-- Seat composition bar -->
+  <div class="seat-bar-wrap">
+    <div class="seat-bar-title">234 seats — Reserved vs. General</div>
+    <div class="seat-bar">
+      <div class="seat-seg" style="flex: 38; background: #2563eb;">SC (38)</div>
+      <div class="seat-seg" style="flex: 2;  background: #7c3aed;">ST (2)</div>
+      <div class="seat-seg" style="flex: 194; background: #d1d5db; color: #374151;">General (194)</div>
+    </div>
+    <div class="seg-label">
+      <span><span class="seg-dot" style="background:#2563eb"></span><span class="seg-text">38 seats reserved for Scheduled Castes</span></span>
+      <span><span class="seg-dot" style="background:#7c3aed"></span><span class="seg-text">2 seats reserved for Scheduled Tribes</span></span>
+      <span><span class="seg-dot" style="background:#d1d5db"></span><span class="seg-text">194 General constituencies</span></span>
+    </div>
+  </div>
+
+  <!-- How elections work -->
+  <h3 style="font-family: 'Lora', serif; font-size: 17px; font-weight: 700; color: var(--text); margin-bottom: 12px;">
+    How Elections Work — FPTP System
+  </h3>
+  <div class="election-steps">
+    <div class="election-step">
+      <div class="es-num">01</div>
+      <div class="es-title">One Constituency</div>
+      <div class="es-body">TN is divided into 234 single-member constituencies. Each elects exactly one MLA.</div>
+    </div>
+    <div class="election-step">
+      <div class="es-num">02</div>
+      <div class="es-title">You Vote Once</div>
+      <div class="es-body">Each voter in a constituency casts one vote for one candidate (MLA). You are not voting for the CM directly.</div>
+    </div>
+    <div class="election-step">
+      <div class="es-num">03</div>
+      <div class="es-title">First Past the Post</div>
+      <div class="es-body">The candidate with the most votes — even if not 50%+ — wins the seat. No runoffs.</div>
+    </div>
+    <div class="election-step">
+      <div class="es-num">04</div>
+      <div class="es-title">Majority → CM</div>
+      <div class="es-body">The party winning 118+ seats forms the government. Their leader is invited by the Governor to be CM.</div>
+    </div>
+  </div>
+
+  <!-- Assembly roles -->
+  <h3 style="font-family: 'Lora', serif; font-size: 17px; font-weight: 700; color: var(--text); margin: 28px 0 12px;">
+    Key Roles Inside the Assembly
+  </h3>
+  <div class="assembly-roles">
+    <div class="ar-card">
+      <div class="ar-title">🔨 Speaker</div>
+      <div class="ar-body">Elected by all 234 MLAs. Runs Assembly sessions — decides who speaks, maintains order, and has the casting vote if there's a tie. Independent of party politics once elected.</div>
+    </div>
+    <div class="ar-card">
+      <div class="ar-title">👤 MLA (Member of Legislative Assembly)</div>
+      <div class="ar-body">Elected representative of one constituency. Their job: raise issues affecting their area, vote on bills, question ministers, attend sessions, and represent ~2 lakh voters.</div>
+    </div>
+    <div class="ar-card">
+      <div class="ar-title">⚔️ Leader of the Opposition</div>
+      <div class="ar-body">Leader of the largest party not in government. Critiques the ruling government, holds it accountable, and presents an alternative viewpoint on every major policy.</div>
+    </div>
+    <div class="ar-card" style="border-top-color: #7c3aed;">
+      <div class="ar-title">🎙️ Leader of the House</div>
+      <div class="ar-body">The Chief Minister. Leads the ruling side in the Assembly. Presents government policies, answers questions, and manages floor proceedings for the ruling party.</div>
+    </div>
+    <div class="ar-card" style="border-top-color: #059669;">
+      <div class="ar-title">📋 Chief Whip</div>
+      <div class="ar-body">Party's disciplinarian inside the Assembly. Issues "whip" orders to MLAs — telling them how to vote on a bill. Breaking a party whip can result in disqualification.</div>
+    </div>
+    <div class="ar-card" style="border-top-color: #0891b2;">
+      <div class="ar-title">🏛 Assembly Secretariat</div>
+      <div class="ar-body">The permanent staff of the Assembly — maintains records, drafts bills, sends notices, and ensures the institution runs regardless of which party is in power.</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     SECTION 4: LOCAL BODIES
+══════════════════════════════════════════ -->
+<section id="local">
+  <div class="section-divider"></div>
+  <div class="section-eyebrow">Chapter 04</div>
+  <h2 class="section-title">Local Governance — Closest to the People</h2>
+  <p class="section-sub">
+    Below the state government is the third tier — local bodies. These handle everyday civic life: your road, your water supply, your dustbin, your streetlight. TN has two parallel systems: one for urban areas, one for rural.
+  </p>
+
+  <div class="local-grid">
+    <!-- Urban Track -->
+    <div>
+      <div class="local-track-title">
+        🏙️ Urban Track
+        <span class="track-badge badge-urban">Cities &amp; Towns</span>
+      </div>
+
+      <div class="local-level" style="border-left: 3px solid var(--union);">
+        <div class="local-level-num">Level 1 — Largest</div>
+        <div class="local-level-title">Municipal Corporation</div>
+        <div class="local-level-stat">15 corporations · incl. Chennai, Coimbatore, Madurai</div>
+        <div class="local-level-body">For large cities. Has a Mayor, elected Councillors per ward, and a Commissioner (IAS) who runs day-to-day operations.</div>
+      </div>
+
+      <div class="local-connector"><div style="width:2px; height:24px; background:var(--border); margin:0 auto;"></div></div>
+
+      <div class="local-level" style="border-left: 3px solid #2563eb;">
+        <div class="local-level-num">Level 2</div>
+        <div class="local-level-title">Municipality</div>
+        <div class="local-level-stat">121 municipalities across TN</div>
+        <div class="local-level-body">For medium-sized towns. Has a Chairman (elected by Councillors) and an Executive Officer (state-appointed).</div>
+      </div>
+
+      <div class="local-connector"><div style="width:2px; height:24px; background:var(--border); margin:0 auto;"></div></div>
+
+      <div class="local-level" style="border-left: 3px solid #0891b2;">
+        <div class="local-level-num">Level 3 — Smallest Urban</div>
+        <div class="local-level-title">Town Panchayat</div>
+        <div class="local-level-stat">528 town panchayats</div>
+        <div class="local-level-body">For semi-urban areas transitioning from village to town. Has a President and Ward Members, directly elected.</div>
+      </div>
+    </div>
+
+    <!-- Rural Track -->
+    <div>
+      <div class="local-track-title">
+        🌾 Rural Track
+        <span class="track-badge badge-rural">Villages &amp; Blocks</span>
+      </div>
+
+      <div class="local-level" style="border-left: 3px solid var(--local);">
+        <div class="local-level-num">Level 1 — Largest</div>
+        <div class="local-level-title">District</div>
+        <div class="local-level-stat">38 districts in Tamil Nadu</div>
+        <div class="local-level-body">Administered by a District Collector (IAS). The single most powerful officer at ground level — oversees all state programmes in the district.</div>
+      </div>
+
+      <div class="local-connector"><div style="width:2px; height:24px; background:var(--border); margin:0 auto;"></div></div>
+
+      <div class="local-level" style="border-left: 3px solid #16a34a;">
+        <div class="local-level-num">Level 2 — Block/Taluk</div>
+        <div class="local-level-title">Panchayat Union</div>
+        <div class="local-level-stat">385 panchayat unions</div>
+        <div class="local-level-body">Covers a group of villages. Managed by a Block Development Officer (BDO) and an elected Panchayat Union Council with a Chairman/Chairperson.</div>
+      </div>
+
+      <div class="local-connector"><div style="width:2px; height:24px; background:var(--border); margin:0 auto;"></div></div>
+
+      <div class="local-level" style="border-left: 3px solid #65a30d;">
+        <div class="local-level-num">Level 3 — Smallest</div>
+        <div class="local-level-title">Village Panchayat</div>
+        <div class="local-level-stat">12,618 village panchayats</div>
+        <div class="local-level-body">The base of democracy — one per village (or cluster). Directly elected Panchayat President and Ward Members handle local roads, drains, and schemes.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Role cards for local -->
+  <h3 style="font-family: 'Lora', serif; font-size: 17px; font-weight: 700; color: var(--text); margin: 32px 0 14px;">
+    Who is Who — Local Body Roles Explained
+  </h3>
+  <div class="local-roles-grid">
+    <div class="local-role-card">
+      <div class="lrc-head">
+        <span class="lrc-icon">👑</span>
+        <div><div class="lrc-name">Mayor</div><div class="lrc-type">Municipal Corporation · Political Head</div></div>
+      </div>
+      <div class="lrc-body">Elected by Councillors from among themselves (in TN). Presides over council meetings, represents the city ceremonially. The <strong>Commissioner</strong> (IAS) is actually the operational head running the city day-to-day.</div>
+    </div>
+
+    <div class="local-role-card">
+      <div class="lrc-head">
+        <span class="lrc-icon">🗳</span>
+        <div><div class="lrc-name">Councillor</div><div class="lrc-type">Municipal Corporation/Municipality · Ward Rep</div></div>
+      </div>
+      <div class="lrc-body">Directly elected by residents of a ward (a subdivision of a city). Their job: represent the ward's needs in the corporation council, ensure roads/water/drainage in their ward are maintained.</div>
+    </div>
+
+    <div class="local-role-card">
+      <div class="lrc-head">
+        <span class="lrc-icon">🌾</span>
+        <div><div class="lrc-name">Panchayat President</div><div class="lrc-type">Village Panchayat · Directly Elected</div></div>
+      </div>
+      <div class="lrc-body">Directly elected by village residents. Chairs the Village Panchayat and is the first point of contact between the state and the villager. Implements welfare schemes and oversees village infrastructure.</div>
+    </div>
+
+    <div class="local-role-card">
+      <div class="lrc-head">
+        <span class="lrc-icon">📋</span>
+        <div><div class="lrc-name">District Collector</div><div class="lrc-type">District · IAS Officer</div></div>
+      </div>
+      <div class="lrc-body">An IAS officer appointed by the state. The most powerful government official in a district — wears multiple hats: executive head (development), District Magistrate (law &amp; order), and electoral officer during elections.</div>
+    </div>
+  </div>
+
+  <div class="callout mt-16">
+    <strong>MLA vs. Councillor vs. MP — what's the difference?</strong><br/>
+    <strong>MP</strong> (Member of Parliament) → represents a constituency at the national level in Lok Sabha, deals with national laws.<br/>
+    <strong>MLA</strong> (Member of Legislative Assembly) → represents a constituency at the state level, deals with state laws.<br/>
+    <strong>Councillor</strong> → represents a ward in a city/town, deals with purely local civic issues — roads, drains, waste.
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     SECTION 5: HOW A BILL BECOMES LAW
+══════════════════════════════════════════ -->
+<section id="bills">
+  <div class="section-divider"></div>
+  <div class="section-eyebrow">Chapter 05</div>
+  <h2 class="section-title">From Idea to Act — How a Bill Becomes Law</h2>
+  <p class="section-sub">
+    A "bill" is a proposed law. It has to pass through several formal stages before it becomes an "Act" (law). In Tamil Nadu, since there's only one house, it's a relatively straightforward process — but the Governor's assent is the final gate.
+  </p>
+
+  <div class="bill-flow-wrap">
+    <div class="bill-flow">
+
+      <div class="bill-step bill-step-special">
+        <div class="bill-step-num">01</div>
+        <div class="bill-step-icon">💡</div>
+        <div class="bill-step-title">Introduction</div>
+        <div class="bill-step-body">A minister or MLA introduces the bill. The text is circulated to all members. No debate at this stage.</div>
+        <div class="bill-arrow"></div>
+      </div>
+
+      <div class="bill-step">
+        <div class="bill-step-num">02</div>
+        <div class="bill-step-icon">📖</div>
+        <div class="bill-step-title">First Reading</div>
+        <div class="bill-step-body">The bill's title and purpose are read aloud. No debate. Assembly acknowledges the bill exists.</div>
+        <div class="bill-arrow"></div>
+      </div>
+
+      <div class="bill-step">
+        <div class="bill-step-num">03</div>
+        <div class="bill-step-icon">🗣</div>
+        <div class="bill-step-title">Second Reading</div>
+        <div class="bill-step-body">Main debate stage. MLAs discuss the bill's principles, raise objections, and propose amendments clause by clause.</div>
+        <div class="bill-arrow"></div>
+      </div>
+
+      <div class="bill-step">
+        <div class="bill-step-num">04</div>
+        <div class="bill-step-icon">🔍</div>
+        <div class="bill-step-title">Committee Stage</div>
+        <div class="bill-step-body">Optionally referred to a Select Committee for detailed review. Committee may call experts and submit recommendations.</div>
+        <div class="bill-arrow"></div>
+      </div>
+
+      <div class="bill-step">
+        <div class="bill-step-num">05</div>
+        <div class="bill-step-icon">🗳</div>
+        <div class="bill-step-title">Third Reading &amp; Vote</div>
+        <div class="bill-step-body">Final debate. Assembly votes. A simple majority (50%+1 of members present) passes the bill.</div>
+        <div class="bill-arrow"></div>
+      </div>
+
+      <div class="bill-step bill-step-special">
+        <div class="bill-step-num">06</div>
+        <div class="bill-step-icon">🏛</div>
+        <div class="bill-step-title">Governor's Assent</div>
+        <div class="bill-step-body">Bill sent to Governor. Can: ✅ Assent · ↩️ Return for reconsideration · 🔼 Reserve for President</div>
+        <div class="bill-arrow"></div>
+      </div>
+
+      <div class="bill-step bill-step-law">
+        <div class="bill-step-num">07</div>
+        <div class="bill-step-icon">⚖️</div>
+        <div class="bill-step-title">Gazette Notification → ACT</div>
+        <div class="bill-step-body">Published in the Tamil Nadu Government Gazette. Now it's law. Binding on all citizens.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Notes -->
+  <div class="bill-note">
+    <div class="callout">
+      <strong>What if the Governor returns a bill?</strong><br/>
+      The Assembly can simply pass the bill again — exactly as it was — and the Governor <em>must</em> give assent the second time. The Governor cannot veto indefinitely, but can delay.
+    </div>
+    <div class="callout">
+      <strong>Money Bills are special.</strong><br/>
+      Bills involving taxation or government spending (Money Bills) can only be introduced by a Minister — not a private MLA. They follow the same path but cannot be amended by anyone other than the government.
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     SECTION 6: LAW & ORDER
+══════════════════════════════════════════ -->
+<section id="laworder">
+  <div class="section-divider"></div>
+  <div class="section-eyebrow">Chapter 06</div>
+  <h2 class="section-title">Law &amp; Order — The Police and the Courts</h2>
+  <p class="section-sub">
+    Law and order in Tamil Nadu works through two independent systems: the Police (enforces laws) and the Courts (interprets and applies laws). Both operate through a strict hierarchy.
+  </p>
+
+  <!-- Police -->
+  <h3 style="font-family:'Lora',serif;font-size:17px;font-weight:700;color:var(--text);margin-bottom:8px;">Tamil Nadu Police — Rank Hierarchy</h3>
+  <p style="font-size:13px;color:var(--text2);margin-bottom:20px;">Reading top to bottom: most senior → ground level. <strong>IPS officers</strong> hold ranks from DGP down to DSP. Below that are <strong>State Police Service</strong> officers.</p>
+
+  <div class="pyramid-container">
+    <div class="p-row p-row-1">
+      <span class="p-rank">Director General of Police (DGP)</span>
+      <span class="p-detail">Head of TN Police · IPS</span>
+    </div>
+    <div class="p-row p-row-2">
+      <span class="p-rank">Additional Director General (ADGP)</span>
+      <span class="p-detail">Heads wings: CID, Special, Traffic · IPS</span>
+    </div>
+    <div class="p-row p-row-3">
+      <span class="p-rank">Inspector General of Police (IGP)</span>
+      <span class="p-detail">Oversees a zone / multiple districts · IPS</span>
+    </div>
+    <div class="p-row p-row-4">
+      <span class="p-rank">Deputy Inspector General (DIG)</span>
+      <span class="p-detail">Supervises a range of districts · IPS</span>
+    </div>
+    <div class="p-row p-row-5">
+      <span class="p-rank">Superintendent of Police (SP) / Commissioner</span>
+      <span class="p-detail">Controls one district / city commissionerate · IPS</span>
+    </div>
+    <div class="p-row p-row-6">
+      <span class="p-rank">Deputy SP (DSP) / Asst. Commissioner (ACP)</span>
+      <span class="p-detail">Sub-division level · State Police Service</span>
+    </div>
+    <div class="p-row p-row-7">
+      <span class="p-rank">Inspector of Police</span>
+      <span class="p-detail">Heads a police station · Station House Officer</span>
+    </div>
+    <div class="p-row p-row-8">
+      <span class="p-rank">Sub-Inspector (SI)</span>
+      <span class="p-detail">First-response officer · handles FIRs</span>
+    </div>
+    <div class="p-row p-row-9">
+      <span class="p-rank">ASI → Head Constable → Constable</span>
+      <span class="p-detail">The boots on the ground</span>
+    </div>
+  </div>
+
+  <div class="police-legend">
+    <div class="police-note">
+      <strong>District System:</strong> Outside major cities, a <strong>Superintendent of Police (SP)</strong> heads all police in one district. Under them: DSPs for each sub-division, Inspectors for each station.
+    </div>
+    <div class="police-note">
+      <strong>Commissionerate System:</strong> In major cities (Chennai, Coimbatore, Madurai, Trichy, Salem, Tirunelveli), a <strong>Commissioner of Police</strong> (IPS) heads city police, with DCPs and ACPs below them.
+    </div>
+    <div class="police-note">
+      <strong>FIR → Station:</strong> Every complaint starts with an FIR (First Information Report) at a <strong>police station</strong>, headed by an Inspector. They investigate, and if serious, refer to higher ranks.
+    </div>
+    <div class="police-note">
+      <strong>Home Ministry link:</strong> The entire police force answers to the Home Ministry at the state level. The CM (via the Home Ministry) controls all police postings and operations.
+    </div>
+  </div>
+
+  <!-- Courts -->
+  <h3 style="font-family:'Lora',serif;font-size:17px;font-weight:700;color:var(--text);margin-bottom:8px; margin-top:24px;">Judicial Hierarchy — The Courts</h3>
+  <p style="font-size:13px;color:var(--text2);margin-bottom:16px;">Courts are <strong>independent of the government</strong> — judges cannot be removed by politicians. Cases travel upwards through appeals.</p>
+
+  <div class="court-levels">
+    <div class="court-level" style="border-left: 4px solid #9333ea;">
+      <div class="court-tier-num">↑</div>
+      <div class="court-info">
+        <div class="court-name">Supreme Court of India</div>
+        <div class="court-detail">New Delhi · Final court of appeal for all of India. TN cases can reach here only after exhausting state courts. Its judgements override all state laws.</div>
+      </div>
+      <div class="court-scope">Union</div>
+    </div>
+
+    <div class="court-level" style="border-left: 4px solid var(--state);">
+      <div class="court-tier-num">1</div>
+      <div class="court-info">
+        <div class="court-name">Madras High Court</div>
+        <div class="court-detail">Established 1862 · Chennai (main bench) + Madurai (bench). Highest court for Tamil Nadu. Hears appeals from lower courts, interprets state laws, issues writs to protect fundamental rights.</div>
+      </div>
+      <div class="court-scope">State · Estd. 1862</div>
+    </div>
+
+    <div class="court-level" style="border-left: 4px solid #2563eb;">
+      <div class="court-tier-num">2</div>
+      <div class="court-info">
+        <div class="court-name">District &amp; Sessions Court</div>
+        <div class="court-detail">One per district (38 total). Handles serious criminal cases (Sessions) and major civil disputes. Presided by a District Judge.</div>
+      </div>
+      <div class="court-scope">District Level</div>
+    </div>
+
+    <div class="court-level" style="border-left: 4px solid #0891b2;">
+      <div class="court-tier-num">3</div>
+      <div class="court-info">
+        <div class="court-name">Chief Judicial Magistrate / Chief Metropolitan Magistrate</div>
+        <div class="court-detail">Below the Sessions Court. Handles criminal cases with sentences up to 7 years. CJM for districts, CMM for major cities like Chennai.</div>
+      </div>
+      <div class="court-scope">Sub-district</div>
+    </div>
+
+    <div class="court-level" style="border-left: 4px solid #059669;">
+      <div class="court-tier-num">4</div>
+      <div class="court-info">
+        <div class="court-name">Judicial Magistrate / Civil Judge</div>
+        <div class="court-detail">First port of call for most cases. JM handles criminal matters (below 3–7 years), Civil Judge handles property disputes, contracts, and civil cases. Closest court to citizens.</div>
+      </div>
+      <div class="court-scope">Taluk / Town</div>
+    </div>
+  </div>
+
+  <div class="callout mt-16">
+    <strong>Police vs. Courts — different branches, different jobs.</strong> Police are part of the <em>executive</em> — they implement the law and report to the government. Courts are the <em>judiciary</em> — they interpret the law and are constitutionally independent. A police officer cannot tell a judge what to rule, and a judge cannot tell a police officer where to patrol.
+  </div>
+
+</section>
+
+<!-- ══════════════════════════════════════════
+     NEW CSS FOR CHAPTERS 07–12
+══════════════════════════════════════════ -->
+<style>
+/* ─── Chapter 07: 7th Schedule ─── */
+.schedule-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-bottom: 20px; }
+.schedule-col { border-radius: 10px; padding: 16px; border: 1px solid var(--border); background: var(--surface); box-shadow: var(--shadow-sm); }
+.schedule-col-title { font-family: 'Lora', serif; font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+.schedule-col-sub { font-size: 11.5px; color: var(--text3); margin-bottom: 12px; line-height: 1.5; font-style: italic; }
+.schedule-item { font-size: 12px; color: var(--text2); padding: 6px 0; border-bottom: 1px solid var(--border); display: flex; align-items: baseline; gap: 8px; line-height: 1.4; }
+.schedule-item:last-child { border-bottom: none; }
+.schedule-dot { width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; margin-top: 4px; }
+
+/* ─── Chapter 08: Central Agencies ─── */
+.agency-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
+.agency-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; box-shadow: var(--shadow-sm); }
+.agency-card-head { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 10px; gap: 10px; }
+.agency-name { font-family: 'Lora', serif; font-size: 15px; font-weight: 700; color: var(--text); }
+.agency-full { font-size: 10.5px; color: var(--text3); font-family: 'DM Mono', monospace; margin-top: 2px; }
+.consent-badge { font-size: 10px; font-weight: 700; padding: 3px 9px; border-radius: 12px; white-space: nowrap; flex-shrink: 0; font-family: 'DM Sans', sans-serif; }
+.consent-no  { background: rgba(201,42,42,0.12); color: #c92a2a; border: 1px solid rgba(201,42,42,0.25); }
+.consent-yes { background: rgba(22,101,52,0.12); color: #166534; border: 1px solid rgba(22,101,52,0.25); }
+[data-theme="dark"] .consent-no  { color: #ff8787; background: rgba(255,135,135,0.1); border-color: rgba(255,135,135,0.2); }
+[data-theme="dark"] .consent-yes { color: #4ade80; background: rgba(74,222,128,0.1); border-color: rgba(74,222,128,0.2); }
+.agency-attr { display: flex; gap: 8px; font-size: 12px; color: var(--text2); margin-bottom: 5px; line-height: 1.5; align-items: baseline; }
+.agency-attr-label { font-family: 'DM Mono', monospace; font-size: 9.5px; color: var(--text3); letter-spacing: 0.08em; text-transform: uppercase; min-width: 54px; flex-shrink: 0; }
+.agency-power-box { margin-top: 10px; padding: 9px 12px; border-radius: 6px; background: var(--surface2); font-size: 12px; color: var(--text2); line-height: 1.65; }
+.agency-power-box strong { color: var(--text); }
+.agency-wide { grid-column: 1 / -1; }
+
+/* ─── Chapter 09: Revenue Chain ─── */
+.rev-chain { display: flex; flex-direction: column; align-items: stretch; max-width: 620px; margin: 0 auto 24px; }
+.rev-node { background: var(--surface); border: 1px solid var(--border); border-left: 4px solid var(--accent); border-radius: 0 8px 8px 0; padding: 13px 16px; }
+.rev-connector-wrap { display: flex; height: 24px; padding-left: 30px; }
+.rev-connector-line { width: 2px; background: var(--border); }
+.rev-level-num { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text3); margin-bottom: 2px; }
+.rev-node-title { font-family: 'Lora', serif; font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 2px; }
+.rev-node-sub { font-size: 11px; color: var(--accent); font-family: 'DM Mono', monospace; margin-bottom: 5px; letter-spacing: 0.04em; }
+.rev-node-body { font-size: 12px; color: var(--text2); line-height: 1.55; }
+.rev-cert-chips { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 7px; }
+.rev-cert { background: var(--surface2); border: 1px solid var(--border); border-radius: 4px; padding: 2px 8px; font-size: 10.5px; color: var(--text2); font-family: 'DM Mono', monospace; }
+
+/* ─── Chapter 10: Accountability ─── */
+.watchdog-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.watchdog-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; box-shadow: var(--shadow-sm); }
+.watchdog-head { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.watchdog-icon { font-size: 26px; flex-shrink: 0; }
+.watchdog-name { font-family: 'Lora', serif; font-size: 15px; font-weight: 700; color: var(--text); }
+.watchdog-type { font-size: 11px; color: var(--text3); font-family: 'DM Mono', monospace; }
+.watchdog-attr { font-size: 12.5px; color: var(--text2); line-height: 1.65; margin-bottom: 8px; }
+.watchdog-limit { padding: 8px 12px; background: var(--surface2); border-radius: 6px; font-size: 12px; color: var(--text2); line-height: 1.5; }
+.watchdog-limit strong { color: var(--text); }
+
+/* ─── Chapter 11: Art 356 ─── */
+.art356-scenarios { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
+.scenario-box { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; box-shadow: var(--shadow-sm); }
+.scenario-title { font-family: 'Lora', serif; font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 6px; display: flex; align-items: center; gap: 7px; }
+.scenario-body { font-size: 12px; color: var(--text2); line-height: 1.65; }
+.art356-steps { display: flex; flex-direction: column; gap: 0; max-width: 600px; margin: 0 auto 20px; }
+.a356-step { display: flex; gap: 14px; }
+.a356-left { display: flex; flex-direction: column; align-items: center; width: 32px; flex-shrink: 0; }
+.a356-num { width: 26px; height: 26px; border-radius: 50%; background: var(--accent); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; font-family: 'DM Mono', monospace; flex-shrink: 0; }
+.a356-line { width: 2px; flex: 1; background: var(--border); margin: 4px 0; min-height: 14px; }
+.a356-content { flex: 1; padding-bottom: 18px; }
+.a356-title { font-family: 'Lora', serif; font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 3px; }
+.a356-body { font-size: 12px; color: var(--text2); line-height: 1.6; }
+
+/* ─── Chapter 12: Budget ─── */
+.budget-flow { display: flex; flex-direction: column; align-items: center; gap: 0; max-width: 700px; margin: 0 auto 24px; }
+.budget-node { width: 100%; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 13px 18px; display: flex; align-items: center; gap: 12px; box-shadow: var(--shadow-sm); }
+.budget-node-icon { font-size: 24px; flex-shrink: 0; }
+.budget-node-title { font-family: 'Lora', serif; font-size: 14px; font-weight: 700; color: var(--text); }
+.budget-node-detail { font-size: 12px; color: var(--text2); line-height: 1.5; }
+.budget-node-tag { margin-left: auto; font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 12px; white-space: nowrap; flex-shrink: 0; font-family: 'DM Sans', sans-serif; }
+.budget-arrow { display: flex; flex-direction: column; align-items: center; padding: 4px 0; }
+.budget-arrow-line { width: 2px; height: 14px; background: var(--border); }
+.budget-arrow-label { font-size: 10px; font-family: 'DM Mono', monospace; color: var(--text3); letter-spacing: 0.06em; text-transform: uppercase; }
+.budget-split-nodes { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; width: 100%; }
+
+.timeline-v { display: flex; flex-direction: column; gap: 0; margin-bottom: 20px; }
+.tlv-item { display: flex; gap: 14px; }
+.tlv-left { display: flex; flex-direction: column; align-items: center; width: 56px; flex-shrink: 0; }
+.tlv-month { font-family: 'DM Mono', monospace; font-size: 10px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); white-space: nowrap; padding-top: 3px; text-align: center; }
+.tlv-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--accent); flex-shrink: 0; margin-top: 3px; }
+.tlv-line { width: 2px; flex: 1; background: var(--border); margin: 4px 0; min-height: 14px; }
+.tlv-content { flex: 1; padding-bottom: 18px; }
+.tlv-title { font-family: 'Lora', serif; font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 2px; }
+.tlv-body { font-size: 12px; color: var(--text2); line-height: 1.55; }
+
+.tn-budget-bars { display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
+.bbar-row { display: flex; align-items: center; gap: 10px; }
+.bbar-label { font-size: 12px; color: var(--text2); width: 180px; flex-shrink: 0; line-height: 1.3; }
+.bbar-track { flex: 1; height: 24px; background: var(--surface2); border-radius: 4px; overflow: hidden; }
+.bbar-fill { height: 100%; border-radius: 4px; display: flex; align-items: center; padding-left: 8px; font-size: 11px; font-weight: 600; color: #fff; white-space: nowrap; }
+.bbar-val { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text3); width: 80px; text-align: right; flex-shrink: 0; }
+
+.fc-bar { display: flex; height: 40px; border-radius: 8px; overflow: hidden; gap: 2px; margin-bottom: 12px; }
+.fc-seg { display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; color: #fff; min-width: 0; overflow: hidden; white-space: nowrap; border-radius: 4px; }
+.fc-legend { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-bottom: 20px; }
+.fc-leg-item { display: flex; align-items: flex-start; gap: 7px; }
+.fc-leg-dot { width: 10px; height: 10px; border-radius: 3px; flex-shrink: 0; margin-top: 3px; }
+.fc-leg-text { font-size: 12px; color: var(--text2); line-height: 1.4; }
+.fc-leg-pct { font-family: 'DM Mono', monospace; font-weight: 600; color: var(--text); }
+
+.scheme-compare { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 20px; }
+.scheme-col { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; }
+.scheme-col-title { font-family: 'Lora', serif; font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 8px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+.scheme-row { font-size: 12px; color: var(--text2); margin-bottom: 6px; line-height: 1.55; }
+.scheme-row-label { font-family: 'DM Mono', monospace; font-size: 9.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text3); display: block; margin-bottom: 1px; }
+.scheme-examples { margin-top: 10px; display: flex; flex-direction: column; gap: 4px; }
+.scheme-eg { font-size: 11px; color: var(--text2); padding: 3px 8px; background: var(--surface2); border-radius: 4px; line-height: 1.4; }
+
+@media (max-width: 640px) {
+  .schedule-grid { grid-template-columns: 1fr; }
+  .agency-grid { grid-template-columns: 1fr; }
+  .art356-scenarios { grid-template-columns: 1fr; }
+  .scheme-compare { grid-template-columns: 1fr; }
+  .fc-legend { grid-template-columns: 1fr 1fr; }
+  .budget-split-nodes { grid-template-columns: 1fr; }
+  .watchdog-grid { grid-template-columns: 1fr; }
+  .bbar-label { width: 120px; font-size: 11px; }
+}
+</style>
+
+
+<!-- ══════════════════════════════════════════
+     CHAPTER 07: 7TH SCHEDULE
+══════════════════════════════════════════ -->
+<section id="schedule">
+  <div class="section-divider"></div>
+  <div class="section-eyebrow">Chapter 07</div>
+  <h2 class="section-title">The 7th Schedule — Who Can Make Law on What</h2>
+  <p class="section-sub">
+    The Constitution divides all of governance into three lists. Before asking "why isn't the Centre doing something about this?" or "why is the state not acting?" — the answer is almost always in the 7th Schedule. This is the rulebook for the entire federal system.
+  </p>
+
+  <div class="schedule-grid">
+
+    <div class="schedule-col" style="border-top: 3px solid var(--union);">
+      <div class="schedule-col-title" style="color: var(--union);">🇮🇳 Union List</div>
+      <div class="schedule-col-sub">Parliament alone legislates. 97 subjects. States have zero jurisdiction.</div>
+      <div class="schedule-item"><span class="schedule-dot" style="background: var(--union)"></span>Defence & Armed Forces</div>
+      <div class="schedule-item"><span class="schedule-dot" style="background: var(--union)"></span>Foreign affairs, treaties, war</div>
+      <div class="schedule-item"><span class="schedule-dot" style="background: var(--union)"></span>Railways, national highways, airways</div>
+      <div class="schedule-item"><span class="schedule-dot" style="background: var(--union)"></span>Banking, insurance, stock exchanges</div>
+      <div class="schedule-item"><span class="schedule-dot" style="background: var(--union)"></span>Income tax, customs, central excise</div>
+      <div class="schedule-item"><span class="schedule-dot" style="background: var(--union)"></span>Atomic energy & nuclear minerals</div>
+      <div class="schedule-item"><span class="schedule-dot" style="background: var(--union)"></span>Currency, coinage, RBI</div>
+      <div class="schedule-item"><span class="schedule-dot" style="background: var(--union)"></span>CBI (Entry 8 — Central Bureau)</div>
+      <div class="schedule-item"><span class="schedule-dot" style="background: var(--union)"></span>Citizenship, passports</div>
+      <div class="schedule-item"><span class="schedule-dot" style="background: var(--union)"></span>Census, elections to Parliament</div>
+    </div>
+
+    <div class="schedule-col" style="border-top: 3px solid #7c3aed;">
+      <div class="schedule-col-title" style="color: #7c3aed;">⚖️ Concurrent List</div>
+      <div class="schedule-col-sub">Both can legislate. If conflict arises, Central law prevails. 47 subjects.</div>
+      <div class="schedule-item"><span class="schedule-dot" style="background:#7c3aed"></span>Criminal law — IPC, CrPC (procedure)</div>
+      <div class="schedule-item"><span class="schedule-dot" style="background:#7c3aed"></span>Marriage, divorce, adoption, wills</div>
+      <div class="schedule-item"><span class="schedule-dot" style="background:#7c3aed"></span>Education (moved here in 1976)</div>
+      <div class="schedule-item"><span class="schedule-dot" style="background:#7c3aed"></span>Forests & protection of wild animals</div>
+      <div class="schedule-item"><span class="schedule-dot" style="background:#7c3aed"></span>Labour — trade unions, industrial disputes</div>
+      <div class="schedule-item"><span class="schedule-dot" style="background:#7c3aed"></span>Electricity</div>
+      <div class="schedule-item"><span class="schedule-dot" style="background:#7c3aed"></span>Drugs, medicines, poisons</div>
+      <div class="schedule-item"><span class="schedule-dot" style="background:#7c3aed"></span>Social security & social insurance</div>
+      <div class="schedule-item"><span class="schedule-dot" style="background:#7c3aed"></span>Price control of goods</div>
+      <div class="schedule-item"><span class="schedule-dot" style="background:#7c3aed"></span>Economic & social planning</div>
+    </div>
+
+    <div class="schedule-col" style="border-top: 3px solid var(--state);">
+      <div class="schedule-col-title" style="color: var(--state);">🟠 State List</div>
+      <div class="schedule-col-sub">State legislature alone can legislate. 66 subjects. Centre can enter only during national emergency.</div>
+      <div class="schedule-item"><span class="schedule-dot" style="background: var(--state)"></span>Police & public order</div>
+      <div class="schedule-item"><span class="schedule-dot" style="background: var(--state)"></span>Agriculture, land rights, tenancy</div>
+      <div class="schedule-item"><span class="schedule-dot" style="background: var(--state)"></span>State taxes — stamp duty, state excise, professional tax</div>
+      <div class="schedule-item"><span class="schedule-dot" style="background: var(--state)"></span>Local government — panchayats, municipalities</div>
+      <div class="schedule-item"><span class="schedule-dot" style="background: var(--state)"></span>Public health, hospitals, sanitation</div>
+      <div class="schedule-item"><span class="schedule-dot" style="background: var(--state)"></span>Fisheries within state territory</div>
+      <div class="schedule-item"><span class="schedule-dot" style="background: var(--state)"></span>Prisons & reformatories</div>
+      <div class="schedule-item"><span class="schedule-dot" style="background: var(--state)"></span>Roads & bridges (except national)</div>
+      <div class="schedule-item"><span class="schedule-dot" style="background: var(--state)"></span>Water within state (rivers, irrigation)</div>
+      <div class="schedule-item"><span class="schedule-dot" style="background: var(--state)"></span>Industries (except those Parliament reserves)</div>
+    </div>
+
+  </div>
+
+  <div class="grid-2">
+    <div class="callout">
+      <strong>Conflict rule:</strong> If a state law and a central law both cover the same subject on the Concurrent List, the Central law automatically prevails — even if the state law came first. The state law is not "illegal" but it becomes inoperative to the extent of inconsistency.
+    </div>
+    <div class="callout">
+      <strong>Residuary powers:</strong> Anything not explicitly in any of the three lists? Parliament gets it. That's why Parliament could legislate on cyberspace, genetic engineering, and cryptocurrencies — none existed when the Constitution was written.
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     CHAPTER 08: CENTRAL AGENCIES
+══════════════════════════════════════════ -->
+<section id="agencies">
+  <div class="section-divider"></div>
+  <div class="section-eyebrow">Chapter 08</div>
+  <h2 class="section-title">Central Investigative Agencies — The Centre's Long Arm</h2>
+  <p class="section-sub">
+    These are not state police. They are central bodies with their own laws, their own jurisdiction, and their own relationship with state governments. The key question for each: <em>does the agency need the state's permission to operate within TN?</em>
+  </p>
+
+  <div class="agency-grid">
+
+    <div class="agency-card">
+      <div class="agency-card-head">
+        <div>
+          <div class="agency-name">CBI</div>
+          <div class="agency-full">Central Bureau of Investigation</div>
+        </div>
+        <span class="consent-badge consent-yes">State consent: REQUIRED</span>
+      </div>
+      <div class="agency-attr"><span class="agency-attr-label">Under</span> Ministry of Personnel (effectively PMO oversight)</div>
+      <div class="agency-attr"><span class="agency-attr-label">Law</span> Delhi Special Police Establishment Act, 1946 — not a statutory body, created by executive resolution</div>
+      <div class="agency-attr"><span class="agency-attr-label">Investigates</span> Corruption in central government, serious fraud, court-transferred cases</div>
+      <div class="agency-power-box">
+        <strong>The consent rule:</strong> CBI needs a state's "general consent" under Section 6 to operate. TN withdrew this in 2021. Post-withdrawal, CBI must get a specific court order for every investigation — High Court or Supreme Court must transfer the case. It still can investigate central government employees without consent.
+      </div>
+    </div>
+
+    <div class="agency-card" style="border-top: 3px solid #c92a2a;">
+      <div class="agency-card-head">
+        <div>
+          <div class="agency-name">ED</div>
+          <div class="agency-full">Enforcement Directorate</div>
+        </div>
+        <span class="consent-badge consent-no">State consent: NOT NEEDED</span>
+      </div>
+      <div class="agency-attr"><span class="agency-attr-label">Under</span> Ministry of Finance — Department of Revenue</div>
+      <div class="agency-attr"><span class="agency-attr-label">Laws</span> PMLA (Prevention of Money Laundering Act) · FEMA (Foreign Exchange Management Act)</div>
+      <div class="agency-attr"><span class="agency-attr-label">Investigates</span> Proceeds of crime, money laundering, forex violations</div>
+      <div class="agency-power-box">
+        <strong>Why ED is the most feared agency right now:</strong> Under PMLA Section 24, the <em>burden of proof is reversed</em> — the accused must prove the property is NOT proceeds of crime. ED can attach property before any conviction. Bail is governed by a "twin test" (Section 45) — court must believe you're not guilty AND won't re-offend. Both conditions simultaneously = nearly impossible to satisfy. No state's consent can stop ED from entering.
+      </div>
+    </div>
+
+    <div class="agency-card">
+      <div class="agency-card-head">
+        <div>
+          <div class="agency-name">Income Tax Dept.</div>
+          <div class="agency-full">CBDT — Central Board of Direct Taxes</div>
+        </div>
+        <span class="consent-badge consent-no">State consent: NOT NEEDED</span>
+      </div>
+      <div class="agency-attr"><span class="agency-attr-label">Under</span> Ministry of Finance</div>
+      <div class="agency-attr"><span class="agency-attr-label">Law</span> Income Tax Act, 1961 — Black Money Act, Benami Transactions Act</div>
+      <div class="agency-attr"><span class="agency-attr-label">Investigates</span> Tax evasion, undisclosed income, benami properties</div>
+      <div class="agency-power-box">
+        <strong>Raids (Search & Seizure):</strong> Can enter premises without prior notice under Section 132. Seizes cash, documents, digital records. Different from ED — IT deals with tax owed to government, ED deals with criminal money laundering. But cases often start with an IT raid and then get referred to ED.
+      </div>
+    </div>
+
+    <div class="agency-card">
+      <div class="agency-card-head">
+        <div>
+          <div class="agency-name">NCB</div>
+          <div class="agency-full">Narcotics Control Bureau</div>
+        </div>
+        <span class="consent-badge consent-no">State consent: NOT NEEDED</span>
+      </div>
+      <div class="agency-attr"><span class="agency-attr-label">Under</span> Ministry of Home Affairs</div>
+      <div class="agency-attr"><span class="agency-attr-label">Law</span> NDPS Act (Narcotic Drugs and Psychotropic Substances Act, 1985)</div>
+      <div class="agency-attr"><span class="agency-attr-label">Investigates</span> Drug trafficking, narcotics networks, international drug flows</div>
+      <div class="agency-power-box">
+        <strong>Joint operations:</strong> Usually works with state police, Customs, and Coast Guard. NDPS has harsh bail conditions similar to PMLA — hard to get bail for drug offenses above a threshold quantity. Jurisdiction overlaps with state police on local drug cases.
+      </div>
+    </div>
+
+    <div class="agency-card agency-wide">
+      <div class="agency-card-head">
+        <div>
+          <div class="agency-name">NIA</div>
+          <div class="agency-full">National Investigation Agency</div>
+        </div>
+        <span class="consent-badge consent-no">State consent: NOT NEEDED — can take over from state police</span>
+      </div>
+      <div class="agency-attr"><span class="agency-attr-label">Under</span> Ministry of Home Affairs · Formed post-26/11 attacks in 2008</div>
+      <div class="agency-attr"><span class="agency-attr-label">Law</span> NIA Act, 2008 — can investigate Unlawful Activities Prevention Act (UAPA) cases, terrorism, human trafficking, counterfeit currency</div>
+      <div class="agency-power-box">
+        <strong>Unlike CBI:</strong> NIA does not need state consent and can take over a case from state police suo motu (on its own) if it involves terrorism or national security. Has its own Special NIA Courts. UAPA (like PMLA) makes bail extremely difficult — can hold a person for up to 180 days without chargesheet.
+      </div>
+    </div>
+
+  </div>
+
+  <div class="callout">
+    <strong>The combined pressure system — how it works in practice:</strong> When the Centre and a state government are in conflict, the toolkit is: Governor stalling bills or sending adverse reports → ED attaching assets of party donors or politicians under PMLA → IT raids on party financiers → CBI getting court orders to investigate → NIA invoking national security if any angle exists. These are used as individual actions legally, but together they constitute systemic political pressure. Understanding this is essential to reading current-affairs governance news.
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     CHAPTER 09: REVENUE ADMINISTRATION
+══════════════════════════════════════════ -->
+<section id="revenue">
+  <div class="section-divider"></div>
+  <div class="section-eyebrow">Chapter 09</div>
+  <h2 class="section-title">Revenue Administration — The Chain You Actually Interact With</h2>
+  <p class="section-sub">
+    Most citizens never meet an IPS officer or walk into the High Court. But everyone eventually needs a caste certificate, or a land record, or income proof. That entire chain is the Revenue Administration — a parallel hierarchy under the Collector that reaches all the way to your village.
+  </p>
+
+  <div class="rev-chain">
+
+    <div class="rev-node" style="border-left-color: #1d4ed8;">
+      <div class="rev-level-num">Level 1 · District</div>
+      <div class="rev-node-title">District Collector</div>
+      <div class="rev-node-sub">IAS Officer · Most powerful ground-level officer</div>
+      <div class="rev-node-body">Wears three hats: Executive head of the district (development), District Magistrate (law & order), and District Election Officer during elections. Oversees all revenue functions and is the final appellate authority for most revenue disputes.</div>
+    </div>
+
+    <div class="rev-connector-wrap"><div class="rev-connector-line"></div></div>
+
+    <div class="rev-node" style="border-left-color: #2563eb;">
+      <div class="rev-level-num">Level 2 · Revenue Division</div>
+      <div class="rev-node-title">Revenue Divisional Officer (RDO)</div>
+      <div class="rev-node-sub">IAS/TN Civil Service · Controls 3–5 taluks</div>
+      <div class="rev-node-body">Appeals against Tahsildar orders come here. Oversees land acquisition for government projects. First appellate authority for caste certificate appeals. Also functions as Sub-Divisional Magistrate.</div>
+    </div>
+
+    <div class="rev-connector-wrap"><div class="rev-connector-line"></div></div>
+
+    <div class="rev-node" style="border-left-color: var(--accent);">
+      <div class="rev-level-num">Level 3 · Taluk — The Core Level</div>
+      <div class="rev-node-title">Tahsildar</div>
+      <div class="rev-node-sub">TN Civil Service · Controls a taluk (sub-district)</div>
+      <div class="rev-node-body">The workhorse of revenue administration. Issues most certificates, maintains land records, conducts patta transfers, and handles land disputes. If you've ever applied for a government certificate, it came from or through this office.</div>
+      <div class="rev-cert-chips">
+        <span class="rev-cert">Caste / Community Certificate</span>
+        <span class="rev-cert">Income Certificate</span>
+        <span class="rev-cert">Nativity Certificate</span>
+        <span class="rev-cert">Patta (land ownership)</span>
+        <span class="rev-cert">Legal Heir Certificate</span>
+        <span class="rev-cert">OBC/SC/ST Certificate</span>
+      </div>
+    </div>
+
+    <div class="rev-connector-wrap"><div class="rev-connector-line"></div></div>
+
+    <div class="rev-node" style="border-left-color: #059669;">
+      <div class="rev-level-num">Level 4 · Sub-Taluk</div>
+      <div class="rev-node-title">Deputy Tahsildar / Revenue Inspector</div>
+      <div class="rev-node-sub">Controls a firka (group of villages)</div>
+      <div class="rev-node-body">Field verification officer. When you apply for a certificate, the RI visits your village to verify facts on the ground — income, caste, landholding. Their field report determines your certificate outcome.</div>
+    </div>
+
+    <div class="rev-connector-wrap"><div class="rev-connector-line"></div></div>
+
+    <div class="rev-node" style="border-left-color: #16a34a;">
+      <div class="rev-level-num">Level 5 · Village — First Contact</div>
+      <div class="rev-node-title">Village Administrative Officer (VAO)</div>
+      <div class="rev-node-sub">Controls a revenue village or cluster</div>
+      <div class="rev-node-body">The government's presence at the village level. Maintains village accounts (Adangal), knows every land parcel in the village, certifies facts for all revenue documents, and is the first point of contact for any government record. Most government schemes are also verified through the VAO.</div>
+      <div class="rev-cert-chips">
+        <span class="rev-cert">Adangal (village land register)</span>
+        <span class="rev-cert">Chitta (land classification)</span>
+        <span class="rev-cert">Residence/Domicile proof</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="callout">
+    <strong>TN's SMART (Simplified, Moral, Accountable, Responsive, Transparent) initiative</strong> digitized most revenue records. You can now access patta, chitta, and adangal online via TN e-District services — but the underlying chain of officers is still what verifies and issues certificates for sensitive applications.
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     CHAPTER 10: ACCOUNTABILITY BODIES
+══════════════════════════════════════════ -->
+<section id="accountability">
+  <div class="section-divider"></div>
+  <div class="section-eyebrow">Chapter 10</div>
+  <h2 class="section-title">Watchdogs — Who Checks the Government</h2>
+  <p class="section-sub">
+    Power without accountability becomes corrupt. The Constitution and Parliament created several independent bodies whose entire purpose is to audit, scrutinise, and check what the government does with money and power. They report to the legislature, not to the executive — which is what keeps them independent.
+  </p>
+
+  <div class="watchdog-grid">
+
+    <div class="watchdog-card">
+      <div class="watchdog-head">
+        <span class="watchdog-icon">🔍</span>
+        <div>
+          <div class="watchdog-name">CAG</div>
+          <div class="watchdog-type">Comptroller & Auditor General · Constitutional (Art. 148)</div>
+        </div>
+      </div>
+      <div class="watchdog-attr">Audits <strong>every rupee</strong> of government expenditure — Union and State. Cannot be removed by the government (same security of tenure as a Supreme Court judge). Reports directly to Parliament/Legislature, not to any minister.</div>
+      <div class="watchdog-attr">After audit, reports go to the <strong>Public Accounts Committee (PAC)</strong> of the Assembly, which cross-examines senior officers about spending lapses.</div>
+      <div class="watchdog-limit"><strong>Famous use:</strong> The 2G Spectrum scam (2008) was quantified as a ₹1.76 lakh crore "presumptive loss" by a CAG report — which triggered the Supreme Court cancelling 122 telecom licenses.</div>
+    </div>
+
+    <div class="watchdog-card">
+      <div class="watchdog-head">
+        <span class="watchdog-icon">📄</span>
+        <div>
+          <div class="watchdog-name">RTI</div>
+          <div class="watchdog-type">Right to Information Act, 2005 · Citizen's tool</div>
+        </div>
+      </div>
+      <div class="watchdog-attr">Any citizen can file an RTI application requesting specific information from any public authority. Response must come within <strong>30 days</strong> (48 hours if life/liberty is involved).</div>
+      <div class="watchdog-attr">Escalation path: First Appellate Authority (within the department) → <strong>Tamil Nadu State Information Commission</strong> → High Court. Central RTI appeals go to the Central Information Commission.</div>
+      <div class="watchdog-limit"><strong>Exemptions:</strong> Cabinet notes, national security, personal privacy, ongoing investigations, and information that would harm a third party are exempted. But the burden of proof to claim exemption is on the government, not the citizen.</div>
+    </div>
+
+    <div class="watchdog-card">
+      <div class="watchdog-head">
+        <span class="watchdog-icon">🏛</span>
+        <div>
+          <div class="watchdog-name">Vigilance Commission</div>
+          <div class="watchdog-type">TN Vigilance & Anti-Corruption Directorate</div>
+        </div>
+      </div>
+      <div class="watchdog-attr">Investigates corruption among Tamil Nadu government employees and public servants. Can initiate suo motu investigations without a complaint. Works alongside the Anti-Corruption Branch of TN Police.</div>
+      <div class="watchdog-attr">At the Union level, the <strong>Central Vigilance Commission (CVC)</strong> performs a similar role for central government employees and is constitutionally independent.</div>
+      <div class="watchdog-limit"><strong>Key limitation:</strong> Cannot investigate sitting Chief Ministers or Cabinet Ministers directly under normal operation — those require either a Governor's reference or a court direction in most scenarios.</div>
+    </div>
+
+    <div class="watchdog-card">
+      <div class="watchdog-head">
+        <span class="watchdog-icon">⚖️</span>
+        <div>
+          <div class="watchdog-name">State Human Rights Commission</div>
+          <div class="watchdog-type">SHRC · Tamil Nadu · Statutory Body</div>
+        </div>
+      </div>
+      <div class="watchdog-attr">Investigates human rights violations by state police, prisons, government institutions. Can summon officers, examine records, and recommend <strong>compensation to victims</strong> and prosecution of erring officers.</div>
+      <div class="watchdog-attr">Separate from NHRC (National Human Rights Commission), which handles Union-level violations. The <strong>TN Women's Commission</strong> is a parallel body for gender-based violations — can investigate complaints, summon accused, and recommend FIRs.</div>
+      <div class="watchdog-limit"><strong>Teeth limitation:</strong> Both bodies can only <em>recommend</em> — they cannot compel action. But their reports are admissible as evidence in courts, which is where real enforcement happens.</div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     CHAPTER 11: GOVERNOR + ARTICLE 356
+══════════════════════════════════════════ -->
+<section id="art356">
+  <div class="section-divider"></div>
+  <div class="section-eyebrow">Chapter 11</div>
+  <h2 class="section-title">Governor's Discretionary Powers & Article 356</h2>
+  <p class="section-sub">
+    The Governor is mostly ceremonial — but at three specific moments, the Governor has genuine discretion that can change political outcomes. Article 356 (President's Rule) is the most extreme intervention possible: the Centre dismissing a state government. Understanding when it's legitimate vs. weaponised is essential.
+  </p>
+
+  <h3 style="font-family:'Lora',serif;font-size:16px;font-weight:700;color:var(--text);margin-bottom:12px;">The Three Discretionary Moments</h3>
+  <div class="art356-scenarios">
+    <div class="scenario-box" style="border-top: 3px solid var(--union);">
+      <div class="scenario-title">🗳 Hung Assembly — Who to Invite?</div>
+      <div class="scenario-body">When no single party wins a majority, the Governor must decide who to invite to form government. There's no fixed rule. Conventions: (1) Invite the single largest party, (2) Invite a pre-poll alliance, (3) Ask for proof of majority. If no one can prove majority within a reasonable period → recommend President's Rule.</div>
+    </div>
+    <div class="scenario-box" style="border-top: 3px solid var(--accent);">
+      <div class="scenario-title">📜 Stalling Bills — Pocket Veto</div>
+      <div class="scenario-body">No time limit is explicitly set in the Constitution for how long a Governor can sit on a bill. A Governor can simply not sign — a "pocket veto." However, if the Assembly passes the bill a second time, the Governor <em>must</em> give assent. Governors have also "reserved" bills for the President — which can delay for years.</div>
+    </div>
+    <div class="scenario-box" style="border-top: 3px solid #c92a2a;">
+      <div class="scenario-title">📋 Governor's Report to Centre</div>
+      <div class="scenario-body">The Governor sends periodic reports to the Centre about the state's political situation. An adverse report — saying the state government has broken down constitutionally — is the trigger mechanism for Article 356. This is why Governors and state governments are often in conflict: an adverse report can end a government.</div>
+    </div>
+    <div class="scenario-box" style="border-top: 3px solid #166534;">
+      <div class="scenario-title">⚡ Floor Test — Governor Can Direct</div>
+      <div class="scenario-body">If there's doubt about whether the CM commands majority, the Governor can direct the CM to prove majority on the floor of the Assembly within a fixed number of days. This happened in TN in 2017 (Palaniswami government) — Governor directed a floor test within 24 hours.</div>
+    </div>
+  </div>
+
+  <h3 style="font-family:'Lora',serif;font-size:16px;font-weight:700;color:var(--text);margin-bottom:12px;">Article 356 — President's Rule, Step by Step</h3>
+  <div class="art356-steps">
+    <div class="a356-step">
+      <div class="a356-left"><div class="a356-num">1</div><div class="a356-line"></div></div>
+      <div class="a356-content">
+        <div class="a356-title">Governor sends report to President</div>
+        <div class="a356-body">States that the government of the state "cannot be carried on in accordance with the provisions of the Constitution." This is the trigger. The report can cite political breakdown, lawlessness, or constitutional crisis.</div>
+      </div>
+    </div>
+    <div class="a356-step">
+      <div class="a356-left"><div class="a356-num">2</div><div class="a356-line"></div></div>
+      <div class="a356-content">
+        <div class="a356-title">President issues Proclamation</div>
+        <div class="a356-body">On the advice of the Union Cabinet, the President issues the Art. 356 proclamation. The state government is dismissed. The Governor assumes executive power. The Assembly is suspended (or dissolved).</div>
+      </div>
+    </div>
+    <div class="a356-step">
+      <div class="a356-left"><div class="a356-num">3</div><div class="a356-line"></div></div>
+      <div class="a356-content">
+        <div class="a356-title">Parliament approves within 2 months</div>
+        <div class="a356-body">The proclamation must be approved by both Houses of Parliament within 2 months. If Parliament is dissolved during this period, the new Parliament gets 30 days after first sitting. If Parliament does NOT approve — the proclamation lapses and the state government is automatically restored.</div>
+      </div>
+    </div>
+    <div class="a356-step">
+      <div class="a356-left"><div class="a356-num">4</div><div class="a356-line"></div></div>
+      <div class="a356-content">
+        <div class="a356-title">Duration: max 3 years with extensions</div>
+        <div class="a356-body">Initial period: 6 months. Can be extended up to 3 years — but each 6-month extension requires fresh Parliament approval. After 1 year, extension requires either a national emergency or Elections Commission certification that elections cannot be held.</div>
+      </div>
+    </div>
+    <div class="a356-step">
+      <div class="a356-left"><div class="a356-num">5</div><div class="a356-line"></div></div>
+      <div class="a356-content">
+        <div class="a356-title">Bommai Judgment (1994) — The Guardrail</div>
+        <div class="a356-body">S.R. Bommai v. Union of India is the most important Supreme Court ruling on this. Key holdings: (1) State government must be given opportunity to prove majority on the floor before dismissal. (2) Assembly cannot be dissolved before Parliament approves the proclamation — if Parliament rejects, the government is restored. (3) Art. 356 is justiciable — courts can strike it down if mala fide (misused politically). This judgment dramatically curtailed Art. 356 misuse.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="callout">
+      <strong>TN's Art. 356 history:</strong> Imposed 4 times — 1976 (Emergency), 1980 (after Janata govt dismissals), 1988 (after MGR's death and political instability), 1991 (after Rajiv Gandhi assassination and breakdown of DMK govt). The last use was 33+ years ago — the Bommai guardrail has largely held since.
+    </div>
+    <div class="callout">
+      <strong>Soft pressure is more common today:</strong> Post-Bommai, outright dismissal is harder. The modern pattern is: Governor withholds assent on bills for months → sends adverse reports → enables Central agencies to operate → creates political instability without technically imposing 356. This is subtler but equally impactful.
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     CHAPTER 12: BUDGET CYCLE
+══════════════════════════════════════════ -->
+<section id="budget">
+  <div class="section-divider"></div>
+  <div class="section-eyebrow">Chapter 12</div>
+  <h2 class="section-title">The Budget Cycle — Where Money Comes From and Where It Goes</h2>
+  <p class="section-sub">
+    A budget is the government's annual financial statement. Understanding it requires two things: how India's money flows from Centre to State (via the Finance Commission), and how the state then plans and spends it. These are two distinct but connected systems.
+  </p>
+
+  <!-- Part A: Union Budget Timeline -->
+  <h3 style="font-family:'Lora',serif;font-size:16px;font-weight:700;color:var(--text);margin-bottom:4px;">Part A — Union Budget Timeline</h3>
+  <p style="font-size:13px;color:var(--text2);margin-bottom:16px;">Every year, the Finance Minister presents the Union Budget. Here's the cycle that makes it happen:</p>
+
+  <div class="timeline-v">
+    <div class="tlv-item">
+      <div class="tlv-left"><div class="tlv-month">Oct</div><div class="tlv-dot"></div><div class="tlv-line"></div></div>
+      <div class="tlv-content">
+        <div class="tlv-title">Budget circular to all ministries</div>
+        <div class="tlv-body">Finance Ministry asks all central ministries to submit their expenditure demands for the coming year. Each ministry estimates how much it needs.</div>
+      </div>
+    </div>
+    <div class="tlv-item">
+      <div class="tlv-left"><div class="tlv-month">Nov–Dec</div><div class="tlv-dot"></div><div class="tlv-line"></div></div>
+      <div class="tlv-content">
+        <div class="tlv-title">Pre-budget consultations</div>
+        <div class="tlv-body">Finance Minister holds meetings with industry bodies (CII, FICCI), farmers' groups, economists, and state finance ministers to gauge needs and build consensus.</div>
+      </div>
+    </div>
+    <div class="tlv-item">
+      <div class="tlv-left"><div class="tlv-month">Feb 1</div><div class="tlv-dot"></div><div class="tlv-line"></div></div>
+      <div class="tlv-content">
+        <div class="tlv-title">Budget presented in Lok Sabha</div>
+        <div class="tlv-body">Finance Minister presents the budget speech. Two bills tabled: the <strong>Finance Bill</strong> (tax proposals) and the <strong>Appropriation Bill</strong> (authorizing spending). This date moved from Feb 28 to Feb 1 in 2017 to give states more time to plan before the financial year starts.</div>
+      </div>
+    </div>
+    <div class="tlv-item">
+      <div class="tlv-left"><div class="tlv-month">Feb–Mar</div><div class="tlv-dot"></div><div class="tlv-line"></div></div>
+      <div class="tlv-content">
+        <div class="tlv-title">Parliamentary debate — Demands for Grants</div>
+        <div class="tlv-body">Parliament debates each ministry's allocation. MPs can move "cut motions" to reduce specific allocations. Practically, the government rarely loses these given majority.</div>
+      </div>
+    </div>
+    <div class="tlv-item">
+      <div class="tlv-left"><div class="tlv-month">Mar 31</div><div class="tlv-dot"></div><div class="tlv-line"></div></div>
+      <div class="tlv-content">
+        <div class="tlv-title">Appropriation Bill + Finance Bill passed</div>
+        <div class="tlv-body">Must be passed before March 31 (end of financial year). The Finance Bill must pass within 75 days of presentation. If the Appropriation Bill isn't ready, Parliament passes a <strong>Vote on Account</strong> — a temporary authorization allowing government to spend for 2 months while the full budget is finalized.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Part B: TN State Budget -->
+  <h3 style="font-family:'Lora',serif;font-size:16px;font-weight:700;color:var(--text);margin:28px 0 6px;">Part B — Tamil Nadu State Budget</h3>
+  <p style="font-size:13px;color:var(--text2);margin-bottom:16px;">Follows the same structure as the Union Budget but at the state level. Presented in the Assembly by the State Finance Minister, usually in February or March.</p>
+
+  <div class="grid-2" style="margin-bottom: 20px;">
+    <div>
+      <p style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text3);margin-bottom:10px;">TN Revenue Sources (approx. FY 2024–25)</p>
+      <div class="tn-budget-bars">
+        <div class="bbar-row">
+          <span class="bbar-label">GST — State Share</span>
+          <div class="bbar-track"><div class="bbar-fill" style="width:42%;background:#1d4ed8;">42%</div></div>
+          <span class="bbar-val">~₹80,000 Cr</span>
+        </div>
+        <div class="bbar-row">
+          <span class="bbar-label">Centre tax devolution</span>
+          <div class="bbar-track"><div class="bbar-fill" style="width:28%;background:#2563eb;">28%</div></div>
+          <span class="bbar-val">~₹55,000 Cr</span>
+        </div>
+        <div class="bbar-row">
+          <span class="bbar-label">State Excise (TASMAC)</span>
+          <div class="bbar-track"><div class="bbar-fill" style="width:18%;background:#c2410c;">18%</div></div>
+          <span class="bbar-val">~₹36,000 Cr</span>
+        </div>
+        <div class="bbar-row">
+          <span class="bbar-label">Stamp duty & Registration</span>
+          <div class="bbar-track"><div class="bbar-fill" style="width:10%;background:#059669;">10%</div></div>
+          <span class="bbar-val">~₹20,000 Cr</span>
+        </div>
+        <div class="bbar-row">
+          <span class="bbar-label">CSS grants + borrowings</span>
+          <div class="bbar-track"><div class="bbar-fill" style="width:8%;background:#7c3aed;">8%</div></div>
+          <span class="bbar-val">remaining</span>
+        </div>
+      </div>
+    </div>
+    <div>
+      <p style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text3);margin-bottom:10px;">TN Expenditure Breakdown</p>
+      <div class="tn-budget-bars">
+        <div class="bbar-row">
+          <span class="bbar-label">Salaries & pensions</span>
+          <div class="bbar-track"><div class="bbar-fill" style="width:38%;background:#1e3a8a;">38%</div></div>
+          <span class="bbar-val">largest item</span>
+        </div>
+        <div class="bbar-row">
+          <span class="bbar-label">Welfare schemes (subsidies)</span>
+          <div class="bbar-track"><div class="bbar-fill" style="width:24%;background:#c2410c;">24%</div></div>
+          <span class="bbar-val">free rice, ₹1000</span>
+        </div>
+        <div class="bbar-row">
+          <span class="bbar-label">Debt interest payments</span>
+          <div class="bbar-track"><div class="bbar-fill" style="width:18%;background:#9333ea;">18%</div></div>
+          <span class="bbar-val">~₹35,000 Cr</span>
+        </div>
+        <div class="bbar-row">
+          <span class="bbar-label">Capital: Roads, buildings</span>
+          <div class="bbar-track"><div class="bbar-fill" style="width:14%;background:#059669;">14%</div></div>
+          <span class="bbar-val">infrastructure</span>
+        </div>
+        <div class="bbar-row">
+          <span class="bbar-label">Education & Health</span>
+          <div class="bbar-track"><div class="bbar-fill" style="width:10%;background:#0891b2;">10%</div></div>
+          <span class="bbar-val">dept allocations</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout" style="margin-bottom: 28px;">
+    <strong>Revenue vs. Capital expenditure:</strong> Revenue expenditure is day-to-day spending — salaries, subsidies, interest. Capital expenditure builds assets — roads, buildings, machinery. A healthy budget has more capital spending; but TN (like most Indian states) spends heavily on revenue (salaries + welfare), leaving less for capital investment. Interest payments eating 18% of the budget is a structural problem common to almost all states.
+  </div>
+
+  <!-- Part C: Finance Commission -->
+  <h3 style="font-family:'Lora',serif;font-size:16px;font-weight:700;color:var(--text);margin-bottom:6px;">Part C — Finance Commission: The Money Pipeline from Centre to States</h3>
+  <p style="font-size:13px;color:var(--text2);margin-bottom:16px;">Constituted every 5 years under Article 280, the Finance Commission decides how to divide the country's tax revenue between the Centre and all states. The 15th Finance Commission covered 2021–26; the 16th is currently sitting.</p>
+
+  <!-- Money flow -->
+  <div class="budget-flow">
+    <div class="budget-node" style="border-color: var(--union); background: var(--surface2);">
+      <div class="budget-node-icon">🇮🇳</div>
+      <div>
+        <div class="budget-node-title">Centre collects Gross Tax Revenue</div>
+        <div class="budget-node-detail">Income Tax + GST (Centre's share) + Customs + Central Excise on petroleum</div>
+      </div>
+      <span class="budget-node-tag" style="background:rgba(29,78,216,0.1);color:var(--union);">~₹35 lakh Cr (FY25)</span>
+    </div>
+    <div class="budget-arrow"><div class="budget-arrow-line"></div><div class="budget-arrow-label">Finance Commission awards</div><div class="budget-arrow-line"></div></div>
+    <div class="budget-node" style="border-color: #7c3aed;">
+      <div class="budget-node-icon">⚖️</div>
+      <div>
+        <div class="budget-node-title">41% goes to all states as Divisible Pool</div>
+        <div class="budget-node-detail">Finance Commission formula distributes this 41% among 28 states. Centre retains 59% for its own spending and central schemes.</div>
+      </div>
+      <span class="budget-node-tag" style="background:rgba(124,58,237,0.1);color:#7c3aed;">15th FC: 41%</span>
+    </div>
+    <div class="budget-arrow"><div class="budget-arrow-line"></div><div class="budget-arrow-label">split by formula below</div><div class="budget-arrow-line"></div></div>
+    <div class="budget-split-nodes">
+      <div class="budget-node" style="border-color: #059669;">
+        <div class="budget-node-icon">📅</div>
+        <div>
+          <div class="budget-node-title">Tax Devolution (monthly)</div>
+          <div class="budget-node-detail">Unconditional transfer — TN spends as it decides. No strings attached. Most reliable revenue for states.</div>
+        </div>
+      </div>
+      <div class="budget-node" style="border-color: var(--accent);">
+        <div class="budget-node-icon">📋</div>
+        <div>
+          <div class="budget-node-title">Grants-in-Aid</div>
+          <div class="budget-node-detail">Conditional grants for disaster relief, local bodies, revenue deficit states. Conditions apply.</div>
+        </div>
+      </div>
+    </div>
+    <div class="budget-arrow"><div class="budget-arrow-line"></div><div class="budget-arrow-label">lands in</div><div class="budget-arrow-line"></div></div>
+    <div class="budget-node" style="border-color: var(--state);">
+      <div class="budget-node-icon">🏛</div>
+      <div>
+        <div class="budget-node-title">Tamil Nadu State Treasury</div>
+        <div class="budget-node-detail">Combined with TN's own tax revenue (GST share, excise, stamp duty) and borrowings — this is the total state budget pool.</div>
+      </div>
+      <span class="budget-node-tag" style="background:rgba(194,65,12,0.1);color:var(--state);">TN gets ~4.189%</span>
+    </div>
+  </div>
+
+  <!-- FC Formula -->
+  <p style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text3);margin-bottom:10px;margin-top:24px;">15th Finance Commission — How the 41% is split among states</p>
+  <div class="fc-bar">
+    <div class="fc-seg" style="flex:45;background:#1d4ed8;">Income Dist. 45%</div>
+    <div class="fc-seg" style="flex:15;background:#7c3aed;">Pop 15%</div>
+    <div class="fc-seg" style="flex:15;background:#0891b2;">Area 15%</div>
+    <div class="fc-seg" style="flex:12.5;background:#059669;">Demo 12.5%</div>
+    <div class="fc-seg" style="flex:10;background:#16a34a;">Forest 10%</div>
+    <div class="fc-seg" style="flex:2.5;background:#65a30d;">Tax 2.5%</div>
+  </div>
+  <div class="fc-legend">
+    <div class="fc-leg-item"><div class="fc-leg-dot" style="background:#1d4ed8"></div><div class="fc-leg-text"><span class="fc-leg-pct">45%</span> Income Distance — states with lower per-capita income get more (equity principle)</div></div>
+    <div class="fc-leg-item"><div class="fc-leg-dot" style="background:#7c3aed"></div><div class="fc-leg-text"><span class="fc-leg-pct">15%</span> Population — 2011 census data</div></div>
+    <div class="fc-leg-item"><div class="fc-leg-dot" style="background:#0891b2"></div><div class="fc-leg-text"><span class="fc-leg-pct">15%</span> Area — larger states get proportionally more</div></div>
+    <div class="fc-leg-item"><div class="fc-leg-dot" style="background:#059669"></div><div class="fc-leg-text"><span class="fc-leg-pct">12.5%</span> Demographic performance — states that reduced fertility rate rewarded (benefits TN, Kerala)</div></div>
+    <div class="fc-leg-item"><div class="fc-leg-dot" style="background:#16a34a"></div><div class="fc-leg-text"><span class="fc-leg-pct">10%</span> Forest & ecology — incentivizes conservation</div></div>
+    <div class="fc-leg-item"><div class="fc-leg-dot" style="background:#65a30d"></div><div class="fc-leg-text"><span class="fc-leg-pct">2.5%</span> Tax effort — states that collect more tax get rewarded</div></div>
+  </div>
+
+  <div class="callout" style="margin-bottom: 28px;">
+    <strong>TN's Finance Commission grievance — the South India problem:</strong> Tamil Nadu, Kerala, Karnataka, AP, and Telangana argue the formula penalises them. They controlled population growth (so have fewer people), industrialised (so pay more income tax to Centre), and collect high state taxes — but the largest weight (45%) goes to "income distance," meaning poorer, populous states (UP, Bihar) get proportionally more back. Southern states effectively subsidise the Hindi belt. This is a live and intensifying political tension, not just an academic debate.
+  </div>
+
+  <!-- Part D: CSS vs State Schemes -->
+  <h3 style="font-family:'Lora',serif;font-size:16px;font-weight:700;color:var(--text);margin-bottom:6px;">Part D — Central Schemes vs. State Schemes</h3>
+  <p style="font-size:13px;color:var(--text2);margin-bottom:16px;">Not all government money works the same way. There are three types of schemes — and understanding the difference explains why states sometimes rename central schemes, and why Centre-State fiscal fights happen.</p>
+
+  <div class="scheme-compare">
+    <div class="scheme-col" style="border-top: 3px solid var(--union);">
+      <div class="scheme-col-title" style="color:var(--union);">🇮🇳 Central Sector Schemes</div>
+      <div class="scheme-row"><span class="scheme-row-label">Funded by</span>100% Centre</div>
+      <div class="scheme-row"><span class="scheme-row-label">Designed by</span>Centre</div>
+      <div class="scheme-row"><span class="scheme-row-label">Implemented by</span>Central agencies, often directly</div>
+      <div class="scheme-row"><span class="scheme-row-label">State role</span>None or minimal facilitation</div>
+      <div class="scheme-examples">
+        <span class="scheme-eg">PM Gram Sadak Yojana</span>
+        <span class="scheme-eg">PM Awas Yojana (Urban)</span>
+        <span class="scheme-eg">Pradhan Mantri Jan Dhan</span>
+        <span class="scheme-eg">National Pension System</span>
+      </div>
+    </div>
+    <div class="scheme-col" style="border-top: 3px solid #7c3aed;">
+      <div class="scheme-col-title" style="color:#7c3aed;">⚖️ Centrally Sponsored Schemes (CSS)</div>
+      <div class="scheme-col-title" style="font-size:11px;margin-top:-8px;color:var(--text3);font-weight:400;font-family:'DM Sans',sans-serif;">Most politically contentious type</div>
+      <div class="scheme-row"><span class="scheme-row-label">Funded by</span>Centre + State share. For TN: typically 60:40 (Centre:State)</div>
+      <div class="scheme-row"><span class="scheme-row-label">Designed by</span>Centre sets rules & guidelines</div>
+      <div class="scheme-row"><span class="scheme-row-label">Implemented by</span>State government</div>
+      <div class="scheme-row"><span class="scheme-row-label">State role</span>Must contribute 40%, follow Centre's guidelines, report back</div>
+      <div class="scheme-examples">
+        <span class="scheme-eg">MGNREGS (job guarantee)</span>
+        <span class="scheme-eg">PM Poshan (midday meal)</span>
+        <span class="scheme-eg">Jal Jeevan Mission</span>
+        <span class="scheme-eg">Swachh Bharat Mission</span>
+        <span class="scheme-eg">PMAY-Gramin (rural housing)</span>
+      </div>
+    </div>
+    <div class="scheme-col" style="border-top: 3px solid var(--state);">
+      <div class="scheme-col-title" style="color:var(--state);">🟠 State Schemes</div>
+      <div class="scheme-row"><span class="scheme-row-label">Funded by</span>100% State</div>
+      <div class="scheme-row"><span class="scheme-row-label">Designed by</span>State — full flexibility</div>
+      <div class="scheme-row"><span class="scheme-row-label">Implemented by</span>State departments</div>
+      <div class="scheme-row"><span class="scheme-row-label">State role</span>Complete ownership, can start/stop/modify</div>
+      <div class="scheme-examples">
+        <span class="scheme-eg">Kalaignar Magalir Urimai (₹1000/month)</span>
+        <span class="scheme-eg">Free rice distribution (PDS top-up)</span>
+        <span class="scheme-eg">CM Breakfast Scheme</span>
+        <span class="scheme-eg">Free laptops for students</span>
+        <span class="scheme-eg">Free bus travel for women</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <strong>The CSS fiscal trap:</strong> If the Centre reduces its CSS allocation mid-year (a common budget move), the state has already committed to its 40% share and has often started the project. The state must either cut the scheme (politically painful) or find extra money (fiscally painful). This is why state governments are perpetually in fiscal stress even when they appear to have large budgets — a significant portion is locked into CSS matching obligations.
+  </div>
+
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════ -->
+<div class="footer">
+  <strong>Tamil Nadu Civic Structure — Complete Civics Reference (Chapters 01–12)</strong><br/>
+  Covers constitutional structure, executive, legislature, local bodies, bill passage, law & order,<br/>
+  7th Schedule, central agencies, revenue admin, accountability bodies, Art. 356, and budget cycle.<br/>
+  Sources: Constitution of India · 15th Finance Commission Report · TN Budget Documents · Supreme Court judgements<br/>
+  <span style="opacity:0.6; font-size:11px; margin-top:4px; display:block;">Phase Two: The Political Landscape — parties, elections, coalitions, and who holds power now.</span>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     SCRIPT
+══════════════════════════════════════════ -->
+<script>
+  function toggleTheme() {
+    const html = document.documentElement;
+    const isDark = html.getAttribute('data-theme') === 'dark';
+    html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+    document.getElementById('themeBtn').textContent = isDark ? '🌙 Dark' : '☀️ Light';
+  }
+
+  function scrollTo(id) {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  const sections = ['tiers','executive','legislature','local','bills','laworder','schedule','agencies','revenue','accountability','art356','budget'];
+  const navLinks = document.querySelectorAll('.nav-link');
+
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(id => {
+      const el = document.getElementById(id);
+      if (el && window.scrollY >= el.offsetTop - 120) current = id;
+    });
+    navLinks.forEach((link, i) => {
+      link.classList.toggle('active', sections[i] === current);
+    });
+  }, { passive: true });
+</script>
+</body>
+</html>

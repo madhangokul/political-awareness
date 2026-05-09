@@ -1,0 +1,11 @@
+#!/bin/sh
+set -e
+
+echo "→ lint..."
+npm run lint
+
+echo "→ typecheck..."
+npm run typecheck
+
+echo "→ build..."
+npm run build

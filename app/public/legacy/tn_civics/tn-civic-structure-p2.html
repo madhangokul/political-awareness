@@ -1,0 +1,1245 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Tamil Nadu — Civic Structure Part II</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+/* ═══════════════════════════════════════
+   THEME
+═══════════════════════════════════════ */
+:root {
+  --bg:#f7f4ef; --surface:#ffffff; --surface2:#f0ece4;
+  --border:#ddd8cf; --text:#1a1612; --text2:#5a5248; --text3:#9a9088;
+  --accent:#c8540a;
+  --shadow-sm:0 1px 4px rgba(0,0,0,.06);
+  --shadow:0 2px 12px rgba(0,0,0,.08);
+  --union:#1d4ed8; --state:#c2410c; --local:#166534;
+  --purple:#7c3aed; --teal:#0891b2; --rose:#be185d;
+}
+[data-theme="dark"] {
+  --bg:#0d1117; --surface:#161b22; --surface2:#1c2128;
+  --border:#262d3a; --text:#e8e2d8; --text2:#8090a8; --text3:#505870;
+  --accent:#f0954a;
+  --shadow-sm:0 1px 4px rgba(0,0,0,.3);
+  --shadow:0 2px 14px rgba(0,0,0,.4);
+  --union:#60a5fa; --state:#fb923c; --local:#4ade80;
+  --purple:#a78bfa; --teal:#22d3ee; --rose:#f472b6;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',system-ui,sans-serif;font-size:14px;line-height:1.65;transition:background .3s,color .3s;}
+
+/* ═══════════════════════════════════════
+   HEADER + NAV
+═══════════════════════════════════════ */
+header{position:sticky;top:0;z-index:200;background:var(--surface);border-bottom:1px solid var(--border);padding:0 24px;box-shadow:var(--shadow);display:flex;align-items:center;gap:16px;}
+.hinner{flex:1;display:flex;align-items:center;gap:16px;padding:12px 0;}
+.eyebrow{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);margin-bottom:1px;}
+.main-title{font-family:'Lora',Georgia,serif;font-size:18px;font-weight:700;color:var(--text);}
+.toggle-btn{background:var(--surface2);border:1px solid var(--border);color:var(--text2);padding:7px 14px;border-radius:20px;font-size:12px;cursor:pointer;white-space:nowrap;font-family:'DM Sans',sans-serif;transition:all .2s;}
+.toggle-btn:hover{border-color:var(--accent);color:var(--accent);}
+
+nav{position:sticky;top:57px;z-index:190;background:var(--surface);border-bottom:1px solid var(--border);overflow-x:auto;scrollbar-width:none;}
+nav::-webkit-scrollbar{display:none;}
+.nav-inner{display:flex;align-items:center;gap:2px;padding:0 24px;white-space:nowrap;min-width:max-content;}
+.nav-link{display:block;padding:10px 14px;font-size:12px;font-weight:500;color:var(--text3);border-bottom:2px solid transparent;transition:all .15s;cursor:pointer;}
+.nav-link:hover,.nav-link.active{color:var(--accent);border-bottom-color:var(--accent);}
+
+/* ═══════════════════════════════════════
+   SECTION BASE
+═══════════════════════════════════════ */
+section{max-width:960px;margin:0 auto;padding:52px 24px 24px;}
+section+section{padding-top:40px;}
+.section-eyebrow{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;}
+.section-title{font-family:'Lora',Georgia,serif;font-size:clamp(22px,4vw,30px);font-weight:700;color:var(--text);line-height:1.2;margin-bottom:8px;}
+.section-sub{font-size:14px;color:var(--text2);max-width:640px;line-height:1.7;margin-bottom:28px;}
+.divider{height:1px;background:var(--border);margin:40px 0;}
+.h3{font-family:'Lora',serif;font-size:17px;font-weight:700;color:var(--text);margin-bottom:12px;}
+.h3.mt{margin-top:28px;}
+
+/* ═══════════════════════════════════════
+   SHARED CARDS
+═══════════════════════════════════════ */
+.card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:18px 20px;box-shadow:var(--shadow-sm);}
+.card-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:5px;}
+.card-title{font-family:'Lora',serif;font-size:15px;font-weight:700;color:var(--text);margin-bottom:5px;}
+.card-body{font-size:13px;color:var(--text2);line-height:1.7;}
+.callout{background:var(--surface2);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;padding:14px 18px;font-size:13px;color:var(--text2);line-height:1.7;}
+.callout strong{color:var(--text);}
+.callout.warn{border-left-color:#dc2626;}
+.callout.green{border-left-color:var(--local);}
+.callout.purple{border-left-color:var(--purple);}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+@media(max-width:640px){.grid-2,.grid-3{grid-template-columns:1fr;}}
+.dot{width:5px;height:5px;border-radius:50%;background:var(--accent);flex-shrink:0;margin-top:5px;}
+.bullet-list{list-style:none;display:flex;flex-direction:column;gap:5px;}
+.bullet-list li{font-size:12.5px;color:var(--text2);display:flex;gap:7px;align-items:baseline;line-height:1.5;}
+.mt8{margin-top:8px;} .mt16{margin-top:16px;} .mt24{margin-top:24px;} .mb8{margin-bottom:8px;} .mb16{margin-bottom:16px;}
+
+/* ═══════════════════════════════════════
+   CH 07: 7TH SCHEDULE
+═══════════════════════════════════════ */
+.schedule-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:20px;}
+@media(max-width:640px){.schedule-grid{grid-template-columns:1fr;}}
+
+.sched-col{border-radius:10px;border:1.5px solid var(--border);overflow:hidden;box-shadow:var(--shadow-sm);}
+.sched-header{padding:12px 16px;}
+.sched-header-title{font-family:'Lora',serif;font-size:14px;font-weight:700;margin-bottom:2px;}
+.sched-header-sub{font-size:11px;opacity:.85;}
+.sched-union .sched-header{background:rgba(29,78,216,.12);border-bottom:1px solid rgba(29,78,216,.2);}
+.sched-union .sched-header-title{color:var(--union);}
+.sched-union .sched-header-sub{color:var(--union);}
+.sched-concurrent .sched-header{background:rgba(124,58,237,.12);border-bottom:1px solid rgba(124,58,237,.2);}
+.sched-concurrent .sched-header-title{color:var(--purple);}
+.sched-concurrent .sched-header-sub{color:var(--purple);}
+.sched-state .sched-header{background:rgba(22,101,52,.12);border-bottom:1px solid rgba(22,101,52,.2);}
+.sched-state .sched-header-title{color:var(--local);}
+.sched-state .sched-header-sub{color:var(--local);}
+
+.sched-body{padding:12px 16px;display:flex;flex-direction:column;gap:6px;}
+.sched-item{font-size:12px;color:var(--text2);display:flex;gap:6px;align-items:baseline;}
+.sched-dot-union{width:5px;height:5px;border-radius:50%;background:var(--union);flex-shrink:0;margin-top:5px;}
+.sched-dot-con{width:5px;height:5px;border-radius:50%;background:var(--purple);flex-shrink:0;margin-top:5px;}
+.sched-dot-state{width:5px;height:5px;border-radius:50%;background:var(--local);flex-shrink:0;margin-top:5px;}
+
+.conflict-box{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:16px 20px;box-shadow:var(--shadow-sm);}
+.conflict-title{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;}
+.conflict-flow{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+.cf-box{padding:8px 14px;border-radius:6px;font-size:12.5px;font-weight:600;text-align:center;flex:1;min-width:120px;}
+.cf-union{background:rgba(29,78,216,.12);color:var(--union);}
+.cf-state{background:rgba(22,101,52,.12);color:var(--local);}
+.cf-win{background:rgba(29,78,216,.2);color:var(--union);font-size:13px;}
+.cf-arrow{font-size:18px;color:var(--text3);}
+.cf-note{font-size:11px;color:var(--text3);margin-top:4px;}
+
+/* ═══════════════════════════════════════
+   CH 08: CENTRAL AGENCIES
+═══════════════════════════════════════ */
+.agency-cards{display:flex;flex-direction:column;gap:12px;}
+.agency-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;overflow:hidden;box-shadow:var(--shadow-sm);}
+.agency-header{display:flex;align-items:center;gap:14px;padding:14px 20px;border-bottom:1px solid var(--border);}
+.agency-icon{font-size:26px;flex-shrink:0;}
+.agency-name{font-family:'Lora',serif;font-size:15px;font-weight:700;color:var(--text);}
+.agency-full{font-size:11px;color:var(--text3);font-family:'DM Mono',monospace;}
+.agency-tags{margin-left:auto;display:flex;gap:6px;flex-wrap:wrap;}
+.atag{font-size:10px;font-weight:600;padding:3px 8px;border-radius:10px;white-space:nowrap;}
+.atag-red{background:rgba(220,38,38,.12);color:#dc2626;}
+.atag-green{background:rgba(22,101,52,.12);color:var(--local);}
+.atag-amber{background:rgba(180,83,9,.12);color:#b45309;}
+.atag-blue{background:rgba(29,78,216,.12);color:var(--union);}
+.agency-body{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;}
+@media(max-width:600px){.agency-body{grid-template-columns:1fr;}}
+.agency-cell{padding:12px 18px;border-right:1px solid var(--border);}
+.agency-cell:last-child{border-right:none;}
+.agency-cell-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--text3);margin-bottom:4px;}
+.agency-cell-text{font-size:12.5px;color:var(--text2);line-height:1.5;}
+.agency-cell-text strong{color:var(--text);}
+
+.consent-matrix{background:var(--surface);border:1px solid var(--border);border-radius:10px;overflow:hidden;box-shadow:var(--shadow-sm);margin-top:20px;}
+.matrix-header{display:grid;grid-template-columns:1.8fr 1fr 1fr 1fr;gap:0;background:var(--surface2);border-bottom:1px solid var(--border);}
+.matrix-row{display:grid;grid-template-columns:1.8fr 1fr 1fr 1fr;gap:0;border-bottom:1px solid var(--border);}
+.matrix-row:last-child{border-bottom:none;}
+.mc{padding:10px 14px;font-size:12px;border-right:1px solid var(--border);}
+.mc:last-child{border-right:none;}
+.mc-head{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.08em;color:var(--text3);text-transform:uppercase;}
+.mc-agency{font-weight:600;color:var(--text);}
+.mc-yes{color:#dc2626;font-weight:600;}
+.mc-no{color:var(--local);font-weight:600;}
+.mc-cond{color:#b45309;font-weight:600;}
+@media(max-width:560px){.matrix-header,.matrix-row{grid-template-columns:1fr 1fr;}}
+
+/* ═══════════════════════════════════════
+   CH 09: REVENUE CHAIN
+═══════════════════════════════════════ */
+.rev-chain{display:flex;flex-direction:column;gap:0;max-width:680px;margin:0 auto 28px;}
+.rev-node{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px 20px;display:flex;align-items:flex-start;gap:14px;box-shadow:var(--shadow-sm);}
+.rev-connector{display:flex;align-items:center;justify-content:center;height:24px;}
+.rev-conn-line{width:2px;height:100%;background:var(--border);}
+.rev-level-num{font-family:'DM Mono',monospace;font-size:28px;font-weight:500;line-height:1;flex-shrink:0;margin-top:2px;}
+.rev-info{flex:1;}
+.rev-title{font-family:'Lora',serif;font-size:15px;font-weight:700;color:var(--text);margin-bottom:2px;}
+.rev-role{font-family:'DM Mono',monospace;font-size:10px;color:var(--text3);letter-spacing:.04em;margin-bottom:5px;}
+.rev-body{font-size:12.5px;color:var(--text2);line-height:1.6;}
+.rev-chips{display:flex;flex-wrap:wrap;gap:5px;margin-top:7px;}
+.rev-chip{background:var(--surface2);border:1px solid var(--border);border-radius:4px;padding:2px 8px;font-family:'DM Mono',monospace;font-size:10px;color:var(--text3);}
+
+/* ═══════════════════════════════════════
+   CH 10: ACCOUNTABILITY
+═══════════════════════════════════════ */
+.acc-cards{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+@media(max-width:600px){.acc-cards{grid-template-columns:1fr;}}
+.acc-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:16px 18px;box-shadow:var(--shadow-sm);}
+.acc-head{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+.acc-icon{font-size:24px;flex-shrink:0;}
+.acc-name{font-family:'Lora',serif;font-size:14px;font-weight:700;color:var(--text);}
+.acc-type{font-size:10px;color:var(--text3);font-family:'DM Mono',monospace;letter-spacing:.04em;}
+.acc-body{font-size:12.5px;color:var(--text2);line-height:1.65;}
+.acc-note{margin-top:9px;padding:8px 12px;background:var(--surface2);border-radius:6px;font-size:12px;color:var(--text2);line-height:1.5;}
+.acc-note strong{color:var(--text);}
+
+/* ═══════════════════════════════════════
+   CH 11: GOVERNOR + 356
+═══════════════════════════════════════ */
+.powers-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px;}
+@media(max-width:600px){.powers-grid{grid-template-columns:1fr;}}
+.pwr-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;overflow:hidden;box-shadow:var(--shadow-sm);}
+.pwr-header{padding:11px 16px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;}
+.pwr-header.ceremonial{background:rgba(29,78,216,.1);color:var(--union);}
+.pwr-header.discretionary{background:rgba(220,38,38,.1);color:#dc2626;}
+.pwr-body{padding:12px 16px;display:flex;flex-direction:column;gap:5px;}
+.pwr-item{font-size:12.5px;color:var(--text2);display:flex;gap:7px;align-items:baseline;line-height:1.5;}
+
+.art356-flow{display:flex;flex-direction:column;gap:0;max-width:600px;margin:0 auto 20px;}
+.a356-step{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px 18px;display:flex;gap:12px;align-items:flex-start;box-shadow:var(--shadow-sm);}
+.a356-conn{height:20px;display:flex;justify-content:center;align-items:center;}
+.a356-conn-line{width:2px;height:100%;background:var(--border);}
+.a356-num{font-family:'DM Mono',monospace;font-size:20px;color:var(--accent);flex-shrink:0;line-height:1;margin-top:2px;}
+.a356-title{font-family:'Lora',serif;font-size:13px;font-weight:700;color:var(--text);margin-bottom:2px;}
+.a356-body{font-size:12px;color:var(--text2);line-height:1.55;}
+.a356-step.danger{border-color:#dc2626;}
+.a356-step.safe{border-color:var(--local);}
+
+/* ═══════════════════════════════════════
+   CH 12: BUDGET — DEEP
+═══════════════════════════════════════ */
+
+/* Mental model */
+.analogy-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px;}
+@media(max-width:560px){.analogy-grid{grid-template-columns:1fr;}}
+.analogy-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:16px;box-shadow:var(--shadow-sm);}
+.analogy-title{font-family:'Lora',serif;font-size:14px;font-weight:700;color:var(--text);margin-bottom:4px;}
+.analogy-sub{font-size:11px;color:var(--text3);font-family:'DM Mono',monospace;letter-spacing:.04em;margin-bottom:8px;}
+.analogy-body{font-size:12.5px;color:var(--text2);line-height:1.6;}
+
+/* Budget calendar */
+.budget-calendar{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin-bottom:20px;}
+@media(max-width:640px){.budget-calendar{grid-template-columns:repeat(3,1fr);}}
+.cal-month{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:10px 8px;text-align:center;box-shadow:var(--shadow-sm);}
+.cal-month.active{border-color:var(--accent);background:rgba(200,84,10,.06);}
+.cal-month.peak{border-color:#dc2626;background:rgba(220,38,38,.06);}
+.cal-name{font-family:'DM Mono',monospace;font-size:11px;font-weight:500;color:var(--text);margin-bottom:3px;}
+.cal-event{font-size:10.5px;color:var(--text2);line-height:1.4;}
+.cal-month.active .cal-name{color:var(--accent);}
+.cal-month.peak .cal-name{color:#dc2626;}
+
+/* Three funds */
+.funds-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:20px;}
+@media(max-width:640px){.funds-grid{grid-template-columns:1fr;}}
+.fund-card{background:var(--surface);border:1.5px solid var(--border);border-radius:10px;padding:16px;box-shadow:var(--shadow-sm);}
+.fund-icon{font-size:28px;margin-bottom:8px;}
+.fund-name{font-family:'Lora',serif;font-size:14px;font-weight:700;color:var(--text);margin-bottom:4px;}
+.fund-size{font-family:'DM Mono',monospace;font-size:11px;color:var(--accent);margin-bottom:8px;}
+.fund-body{font-size:12px;color:var(--text2);line-height:1.6;}
+.fund-card.primary{border-color:var(--union);}
+.fund-card.secondary{border-color:var(--accent);}
+.fund-card.tertiary{border-color:var(--local);}
+
+/* Deficit visual */
+.deficit-visual{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:20px;box-shadow:var(--shadow-sm);margin-bottom:20px;}
+.dv-title{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--text3);margin-bottom:16px;}
+.dv-row{margin-bottom:12px;}
+.dv-row-label{display:flex;justify-content:space-between;margin-bottom:4px;}
+.dv-row-name{font-size:12.5px;font-weight:600;color:var(--text);}
+.dv-row-val{font-family:'DM Mono',monospace;font-size:12px;color:var(--text2);}
+.dv-bar-track{height:22px;background:var(--surface2);border-radius:4px;overflow:hidden;position:relative;}
+.dv-bar-fill{height:100%;border-radius:4px;display:flex;align-items:center;padding:0 8px;font-size:11px;font-weight:600;color:#fff;transition:width .4s ease;}
+.dv-gap{height:22px;display:flex;align-items:center;gap:8px;margin-top:2px;}
+.dv-gap-line{flex:1;height:2px;background:repeating-linear-gradient(90deg,#dc2626 0,#dc2626 6px,transparent 6px,transparent 12px);}
+.dv-gap-label{font-size:11.5px;color:#dc2626;font-weight:600;white-space:nowrap;}
+.deficit-types{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:20px;}
+@media(max-width:560px){.deficit-types{grid-template-columns:1fr;}}
+.def-type{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:13px 15px;box-shadow:var(--shadow-sm);}
+.def-name{font-family:'Lora',serif;font-size:13px;font-weight:700;color:var(--text);margin-bottom:4px;}
+.def-formula{font-family:'DM Mono',monospace;font-size:10px;color:var(--accent);margin-bottom:6px;line-height:1.5;}
+.def-body{font-size:12px;color:var(--text2);line-height:1.55;}
+
+/* TN Revenue Sources */
+.rev-sources{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:20px;box-shadow:var(--shadow-sm);margin-bottom:20px;}
+.rs-title{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--text3);margin-bottom:14px;}
+.rs-row{margin-bottom:10px;}
+.rs-row-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:3px;}
+.rs-row-name{font-size:12.5px;color:var(--text2);}
+.rs-row-val{font-family:'DM Mono',monospace;font-size:11px;color:var(--text3);}
+.rs-bar-track{height:14px;background:var(--surface2);border-radius:3px;overflow:hidden;}
+.rs-bar-fill{height:100%;border-radius:3px;}
+.rs-note{font-size:11px;color:var(--text3);margin-top:3px;}
+
+/* Finance Commission */
+.fc-formula{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:20px;box-shadow:var(--shadow-sm);margin-bottom:16px;}
+.fc-title{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--text3);margin-bottom:14px;}
+.fc-bar{display:flex;height:36px;border-radius:6px;overflow:hidden;gap:2px;margin-bottom:12px;}
+.fc-seg{display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;color:#fff;text-align:center;padding:0 6px;}
+.fc-legend{display:flex;flex-wrap:wrap;gap:10px;}
+.fc-leg-item{display:flex;align-items:center;gap:6px;font-size:11.5px;color:var(--text2);}
+.fc-leg-dot{width:10px;height:10px;border-radius:3px;flex-shrink:0;}
+.fc-insight{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px;}
+@media(max-width:540px){.fc-insight{grid-template-columns:1fr;}}
+.fc-ins{background:var(--surface2);border-radius:8px;padding:12px 14px;font-size:12px;color:var(--text2);line-height:1.6;}
+.fc-ins strong{color:var(--text);}
+
+/* CSS vs State Schemes */
+.scheme-compare{display:flex;flex-direction:column;gap:8px;margin-bottom:20px;}
+.sc-row{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px 16px;display:flex;align-items:center;gap:14px;box-shadow:var(--shadow-sm);}
+.sc-name{font-family:'Lora',serif;font-size:13px;font-weight:700;color:var(--text);width:200px;flex-shrink:0;}
+.sc-bar-wrap{flex:1;}
+.sc-bar{display:flex;height:20px;border-radius:4px;overflow:hidden;}
+.sc-centre{background:#1d4ed8;display:flex;align-items:center;justify-content:center;font-size:10.5px;font-weight:600;color:#fff;}
+.sc-state-seg{background:var(--state);display:flex;align-items:center;justify-content:center;font-size:10.5px;font-weight:600;color:#fff;}
+.sc-state-only{background:var(--local);display:flex;align-items:center;justify-content:center;font-size:10.5px;font-weight:600;color:#fff;width:100%;}
+.sc-eg{font-size:11px;color:var(--text3);margin-top:4px;line-height:1.4;}
+@media(max-width:560px){.sc-row{flex-direction:column;align-items:flex-start;} .sc-name{width:auto;}}
+
+/* Money flow */
+.money-flow{display:flex;align-items:stretch;gap:0;overflow-x:auto;padding-bottom:6px;margin-bottom:20px;}
+.mf-step{flex:1;min-width:120px;background:var(--surface);border:1px solid var(--border);padding:14px 12px;text-align:center;border-right:none;box-shadow:var(--shadow-sm);}
+.mf-step:first-child{border-radius:8px 0 0 8px;}
+.mf-step:last-child{border-radius:0 8px 8px 0;border-right:1px solid var(--border);}
+.mf-icon{font-size:22px;margin-bottom:6px;}
+.mf-title{font-family:'Lora',serif;font-size:13px;font-weight:700;color:var(--text);margin-bottom:4px;}
+.mf-body{font-size:11px;color:var(--text2);line-height:1.5;}
+.mf-arrow{display:flex;align-items:center;padding:0;flex-shrink:0;}
+.mf-arr-inner{width:20px;height:20px;background:var(--accent);clip-path:polygon(0 25%,60% 25%,60% 0%,100% 50%,60% 100%,60% 75%,0 75%);flex-shrink:0;}
+
+/* Footer */
+.footer{max-width:960px;margin:48px auto 0;padding:24px 24px 60px;border-top:1px solid var(--border);font-size:12px;color:var(--text3);line-height:1.8;text-align:center;}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="hinner">
+    <div style="flex:1">
+      <div class="eyebrow">Civics Guide · Part II · Chapters 07–12</div>
+      <div class="main-title">Tamil Nadu — Centre, Power, Money &amp; Accountability</div>
+    </div>
+    <button class="toggle-btn" onclick="toggleTheme()" id="themeBtn">🌙 Dark</button>
+  </div>
+</header>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-link active" onclick="goTo('schedule')">7th Schedule</a>
+    <a class="nav-link" onclick="goTo('agencies')">Central Agencies</a>
+    <a class="nav-link" onclick="goTo('revenue-chain')">Revenue Chain</a>
+    <a class="nav-link" onclick="goTo('accountability')">Accountability</a>
+    <a class="nav-link" onclick="goTo('governor356')">Governor + 356</a>
+    <a class="nav-link" onclick="goTo('budget')">Budget Cycle</a>
+  </div>
+</nav>
+
+
+<!-- ══════════════════════════════════════
+     CH 07: 7TH SCHEDULE
+══════════════════════════════════════ -->
+<section id="schedule">
+  <div class="section-eyebrow">Chapter 07</div>
+  <h2 class="section-title">The 7th Schedule — Who Can Make Law on What</h2>
+  <p class="section-sub">
+    India's Constitution divides all possible law-making subjects into three lists. This is the rulebook. Without understanding it, every Centre–State conflict is just noise. Parliament and State Assemblies cannot stray outside their assigned lists.
+  </p>
+
+  <div class="schedule-grid">
+    <div class="sched-col sched-union">
+      <div class="sched-header">
+        <div class="sched-header-title">Union List</div>
+        <div class="sched-header-sub">97 subjects · Only Parliament</div>
+      </div>
+      <div class="sched-body">
+        <div class="sched-item"><span class="sched-dot-union"></span><span>Defence &amp; Armed Forces</span></div>
+        <div class="sched-item"><span class="sched-dot-union"></span><span>Foreign Affairs &amp; Treaties</span></div>
+        <div class="sched-item"><span class="sched-dot-union"></span><span>Atomic Energy &amp; Space</span></div>
+        <div class="sched-item"><span class="sched-dot-union"></span><span>Railways &amp; National Highways</span></div>
+        <div class="sched-item"><span class="sched-dot-union"></span><span>Banking &amp; Insurance</span></div>
+        <div class="sched-item"><span class="sched-dot-union"></span><span>Currency &amp; Reserve Bank</span></div>
+        <div class="sched-item"><span class="sched-dot-union"></span><span>Income Tax &amp; Customs</span></div>
+        <div class="sched-item"><span class="sched-dot-union"></span><span>Inter-State Trade</span></div>
+        <div class="sched-item"><span class="sched-dot-union"></span><span>Citizenship &amp; Naturalisation</span></div>
+      </div>
+    </div>
+    <div class="sched-col sched-concurrent">
+      <div class="sched-header">
+        <div class="sched-header-title">Concurrent List</div>
+        <div class="sched-header-sub">47 subjects · Both, Union wins conflict</div>
+      </div>
+      <div class="sched-body">
+        <div class="sched-item"><span class="sched-dot-con"></span><span>Education (moved here in 1976)</span></div>
+        <div class="sched-item"><span class="sched-dot-con"></span><span>Forests &amp; Wildlife</span></div>
+        <div class="sched-item"><span class="sched-dot-con"></span><span>Electricity</span></div>
+        <div class="sched-item"><span class="sched-dot-con"></span><span>Labour &amp; Trade Unions</span></div>
+        <div class="sched-item"><span class="sched-dot-con"></span><span>Criminal Law (IPC, CrPC)</span></div>
+        <div class="sched-item"><span class="sched-dot-con"></span><span>Marriage &amp; Divorce</span></div>
+        <div class="sched-item"><span class="sched-dot-con"></span><span>Drugs &amp; Poisons</span></div>
+        <div class="sched-item"><span class="sched-dot-con"></span><span>Stamp Duties (rates)</span></div>
+        <div class="sched-item"><span class="sched-dot-con"></span><span>Price Control</span></div>
+      </div>
+    </div>
+    <div class="sched-col sched-state">
+      <div class="sched-header">
+        <div class="sched-header-title">State List</div>
+        <div class="sched-header-sub">66 subjects · Only State Legislature</div>
+      </div>
+      <div class="sched-body">
+        <div class="sched-item"><span class="sched-dot-state"></span><span>Police &amp; Public Order</span></div>
+        <div class="sched-item"><span class="sched-dot-state"></span><span>Land &amp; Land Revenue</span></div>
+        <div class="sched-item"><span class="sched-dot-state"></span><span>Agriculture</span></div>
+        <div class="sched-item"><span class="sched-dot-state"></span><span>Local Government (Panchayats, Corporations)</span></div>
+        <div class="sched-item"><span class="sched-dot-state"></span><span>Public Health &amp; Sanitation</span></div>
+        <div class="sched-item"><span class="sched-dot-state"></span><span>Irrigation &amp; Canals</span></div>
+        <div class="sched-item"><span class="sched-dot-state"></span><span>State Highways &amp; Roads</span></div>
+        <div class="sched-item"><span class="sched-dot-state"></span><span>State Taxes (excise, registration)</span></div>
+        <div class="sched-item"><span class="sched-dot-state"></span><span>Fisheries</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Conflict rule -->
+  <div class="conflict-box mb16">
+    <div class="conflict-title">What happens when there's a conflict on the Concurrent List?</div>
+    <div class="conflict-flow">
+      <div class="cf-box cf-state">State passes a law<br/><span style="font-size:11px;font-weight:400;">e.g. TN education fee regulation</span></div>
+      <div class="cf-arrow">⚡</div>
+      <div class="cf-box cf-union">Parliament passes a law<br/><span style="font-size:11px;font-weight:400;">on the same subject</span></div>
+      <div class="cf-arrow">→</div>
+      <div class="cf-box cf-win">Parliament law wins<br/><span style="font-size:11px;font-weight:400;">State law is void</span></div>
+    </div>
+    <div class="cf-note" style="margin-top:10px;font-size:12px;color:var(--text2);">
+      <strong style="color:var(--text)">One exception:</strong> If the state law received the President's assent <em>before</em> Parliament passed a conflicting law, the state law survives in that state. This is why states sometimes rush contentious laws to the Governor/President for assent.
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="callout">
+      <strong>Residuary Powers go to Parliament — not states.</strong><br/>
+      Anything not in any of the three lists? Parliament decides. This is the opposite of the USA, where states hold residuary powers. India's framers deliberately made the Centre stronger.
+    </div>
+    <div class="callout purple">
+      <strong>Why was Education moved to Concurrent in 1976?</strong><br/>
+      Originally a state subject. Indira Gandhi's government moved it to the Concurrent List during the Emergency, allowing the Centre to set national education standards. TN's NEET resistance is a direct consequence of this.
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     CH 08: CENTRAL AGENCIES
+══════════════════════════════════════ -->
+<section id="agencies">
+  <div class="divider"></div>
+  <div class="section-eyebrow">Chapter 08</div>
+  <h2 class="section-title">Central Investigative Agencies Operating in Tamil Nadu</h2>
+  <p class="section-sub">
+    These agencies are created by Parliament and answer to the Union government — not the state. Understanding each agency's jurisdiction, consent requirements, and special powers is what separates real comprehension from headline reading.
+  </p>
+
+  <div class="agency-cards">
+
+    <div class="agency-card">
+      <div class="agency-header">
+        <span class="agency-icon">🔍</span>
+        <div>
+          <div class="agency-name">CBI</div>
+          <div class="agency-full">Central Bureau of Investigation · Under MHA / DSPE Act</div>
+        </div>
+        <div class="agency-tags">
+          <span class="atag atag-amber">Needs Consent</span>
+          <span class="atag atag-blue">Corruption + Serious Crime</span>
+        </div>
+      </div>
+      <div class="agency-body">
+        <div class="agency-cell">
+          <div class="agency-cell-label">State Consent Rule</div>
+          <div class="agency-cell-text"><strong>YES — general consent required.</strong> TN can withdraw it. When withdrawn, CBI needs a court order (usually HC or SC) to investigate within TN.</div>
+        </div>
+        <div class="agency-cell">
+          <div class="agency-cell-label">Special Power</div>
+          <div class="agency-cell-text">Can take over cases from state police. Courts can direct CBI transfer against a state's wishes — a powerful judicial tool.</div>
+        </div>
+        <div class="agency-cell">
+          <div class="agency-cell-label">Used For</div>
+          <div class="agency-cell-text">Corruption by public servants, serious fraud, inter-state crime, cases where state police are seen as compromised.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="agency-card" style="border-color:#dc2626;">
+      <div class="agency-header">
+        <span class="agency-icon">💰</span>
+        <div>
+          <div class="agency-name">ED</div>
+          <div class="agency-full">Enforcement Directorate · Under Finance Ministry · PMLA + FEMA</div>
+        </div>
+        <div class="agency-tags">
+          <span class="atag atag-red">No Consent Needed</span>
+          <span class="atag atag-red">Reversed Burden</span>
+        </div>
+      </div>
+      <div class="agency-body">
+        <div class="agency-cell">
+          <div class="agency-cell-label">State Consent Rule</div>
+          <div class="agency-cell-text"><strong>NONE needed.</strong> ED can investigate in any state without permission. State governments cannot block ED operations.</div>
+        </div>
+        <div class="agency-cell">
+          <div class="agency-cell-label">The PMLA Reversal</div>
+          <div class="agency-cell-text"><strong>Accused must prove innocence</strong> — not ED proving guilt. Can provisionally attach property before any conviction. Bail is extremely hard to obtain.</div>
+        </div>
+        <div class="agency-cell">
+          <div class="agency-cell-label">Why It Matters</div>
+          <div class="agency-cell-text">PMLA's reversed burden + property attachment + no consent = the Centre's most potent lever over state politicians. Opposition-ruled states experience this acutely.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="agency-card">
+      <div class="agency-header">
+        <span class="agency-icon">📊</span>
+        <div>
+          <div class="agency-name">Income Tax (CBDT)</div>
+          <div class="agency-full">Central Board of Direct Taxes · Under Finance Ministry</div>
+        </div>
+        <div class="agency-tags">
+          <span class="atag atag-green">No Consent</span>
+          <span class="atag atag-blue">Tax Evasion</span>
+        </div>
+      </div>
+      <div class="agency-body">
+        <div class="agency-cell">
+          <div class="agency-cell-label">State Consent Rule</div>
+          <div class="agency-cell-text">None needed. IT raids can occur anywhere, anytime, on any taxpayer — individual or organisation.</div>
+        </div>
+        <div class="agency-cell">
+          <div class="agency-cell-label">Special Power</div>
+          <div class="agency-cell-text">Survey and search powers — can enter premises, seize documents and cash, freeze bank accounts pending assessment.</div>
+        </div>
+        <div class="agency-cell">
+          <div class="agency-cell-label">Political Use</div>
+          <div class="agency-cell-text">IT raids on political donors or media houses ahead of elections are a frequently observed pressure tool, regardless of which party is in power at Centre.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="agency-card">
+      <div class="agency-header">
+        <span class="agency-icon">🛡</span>
+        <div>
+          <div class="agency-name">NIA</div>
+          <div class="agency-full">National Investigation Agency · Under MHA · NIA Act 2008</div>
+        </div>
+        <div class="agency-tags">
+          <span class="atag atag-red">No Consent</span>
+          <span class="atag atag-blue">Terrorism Only</span>
+        </div>
+      </div>
+      <div class="agency-body">
+        <div class="agency-cell">
+          <div class="agency-cell-label">State Consent Rule</div>
+          <div class="agency-cell-text"><strong>Zero consent needed.</strong> NIA can take over any terrorism, secessionist, or UAPA case from state police automatically.</div>
+        </div>
+        <div class="agency-cell">
+          <div class="agency-cell-label">Special Court</div>
+          <div class="agency-cell-text">NIA cases go to designated Special NIA Courts, not regular sessions courts — faster, different evidentiary standards.</div>
+        </div>
+        <div class="agency-cell">
+          <div class="agency-cell-label">TN Relevance</div>
+          <div class="agency-cell-text">LTTE-linked cases, ISIS-radicalization cases, and smuggling with terror nexus have been taken up by NIA in TN without state consent.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="agency-card">
+      <div class="agency-header">
+        <span class="agency-icon">💊</span>
+        <div>
+          <div class="agency-name">NCB</div>
+          <div class="agency-full">Narcotics Control Bureau · Under MHA · NDPS Act</div>
+        </div>
+        <div class="agency-tags">
+          <span class="atag atag-green">No Consent</span>
+          <span class="atag atag-amber">NDPS Reversed Burden</span>
+        </div>
+      </div>
+      <div class="agency-body">
+        <div class="agency-cell">
+          <div class="agency-cell-label">State Consent Rule</div>
+          <div class="agency-cell-text">None needed. Works alongside TN's own state drug enforcement — jurisdiction overlaps frequently.</div>
+        </div>
+        <div class="agency-cell">
+          <div class="agency-cell-label">NDPS Act</div>
+          <div class="agency-cell-text">Like PMLA, NDPS has strict bail provisions — courts must record reasons in writing to grant bail. Reversed burden for commercial quantity.</div>
+        </div>
+        <div class="agency-cell">
+          <div class="agency-cell-label">TN Relevance</div>
+          <div class="agency-cell-text">Coastal drug trafficking (Sri Lanka-TN route), ganja cultivation in border districts — NCB coordinates with state police.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Consent matrix -->
+  <h3 class="h3 mt">Quick Reference — Consent &amp; Powers Matrix</h3>
+  <div class="consent-matrix">
+    <div class="matrix-header">
+      <div class="mc mc-head">Agency</div>
+      <div class="mc mc-head">State Consent?</div>
+      <div class="mc mc-head">Attach Property?</div>
+      <div class="mc mc-head">Reversed Burden?</div>
+    </div>
+    <div class="matrix-row">
+      <div class="mc mc-agency">CBI</div>
+      <div class="mc mc-cond">CONDITIONAL<br/><span style="font-size:10px;color:var(--text3)">General consent or court order</span></div>
+      <div class="mc mc-no">No</div>
+      <div class="mc mc-no">No</div>
+    </div>
+    <div class="matrix-row" style="background:rgba(220,38,38,.04);">
+      <div class="mc mc-agency">ED (PMLA)</div>
+      <div class="mc mc-no" style="color:var(--local)">NOT NEEDED</div>
+      <div class="mc mc-yes">YES — pre-conviction</div>
+      <div class="mc mc-yes">YES — accused proves innocence</div>
+    </div>
+    <div class="matrix-row">
+      <div class="mc mc-agency">Income Tax</div>
+      <div class="mc mc-no" style="color:var(--local)">NOT NEEDED</div>
+      <div class="mc mc-cond">Can attach</div>
+      <div class="mc mc-no">No</div>
+    </div>
+    <div class="matrix-row" style="background:rgba(220,38,38,.04);">
+      <div class="mc mc-agency">NIA</div>
+      <div class="mc mc-no" style="color:var(--local)">NOT NEEDED</div>
+      <div class="mc mc-no">No</div>
+      <div class="mc mc-no">No</div>
+    </div>
+    <div class="matrix-row">
+      <div class="mc mc-agency">NCB</div>
+      <div class="mc mc-no" style="color:var(--local)">NOT NEEDED</div>
+      <div class="mc mc-no">No</div>
+      <div class="mc mc-cond">Partial (commercial qty)</div>
+    </div>
+  </div>
+
+  <div class="callout warn mt16">
+    <strong>The pressure system — understand it as a whole.</strong><br/>
+    When Centre wants leverage over a state: Governor stalls bills + ED attaches properties of party donors + IT raids on allied businesses + NIA takes over politically sensitive cases. None of these individually looks like an attack. Together they form a coherent squeeze. This is the real Centre–State dynamic in India today, regardless of which party is in power.
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     CH 09: REVENUE ADMINISTRATION
+══════════════════════════════════════ -->
+<section id="revenue-chain">
+  <div class="divider"></div>
+  <div class="section-eyebrow">Chapter 09</div>
+  <h2 class="section-title">Revenue Administration — The Chain Most Citizens Actually Use</h2>
+  <p class="section-sub">
+    The police and judiciary get all the attention — but for most citizens, the government they interact with daily is the <em>revenue administration</em>. Land records, caste certificates, income certificates — all flow through this chain.
+  </p>
+
+  <div class="rev-chain">
+
+    <div class="rev-node" style="border-left:3px solid var(--state);">
+      <div class="rev-level-num" style="color:var(--state);">1</div>
+      <div class="rev-info">
+        <div class="rev-title">District Collector</div>
+        <div class="rev-role">IAS Officer · Head of District Administration</div>
+        <div class="rev-body">The single most powerful officer in a district. Wears three hats simultaneously: Revenue Officer (land administration), District Magistrate (law &amp; order), and Electoral Officer (elections). All government schemes in the district answer to the Collector.</div>
+        <div class="rev-chips">
+          <span class="rev-chip">Land acquisition</span>
+          <span class="rev-chip">Disaster relief</span>
+          <span class="rev-chip">Supervises all depts</span>
+          <span class="rev-chip">Election authority</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="rev-connector"><div class="rev-conn-line"></div></div>
+
+    <div class="rev-node" style="border-left:3px solid #b45309;">
+      <div class="rev-level-num" style="color:#b45309;">2</div>
+      <div class="rev-info">
+        <div class="rev-title">Revenue Divisional Officer (RDO)</div>
+        <div class="rev-role">Sub-Divisional Level · Usually a Deputy Collector (IAS/IRS)</div>
+        <div class="rev-body">Each district is divided into sub-divisions. The RDO is the Collector's representative at this level — handles land disputes, issues community certificates, oversees Tahsildars below them, and has quasi-judicial powers for land matters.</div>
+        <div class="rev-chips">
+          <span class="rev-chip">Community certificate appeals</span>
+          <span class="rev-chip">Land dispute orders</span>
+          <span class="rev-chip">Oversees Tahsildars</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="rev-connector"><div class="rev-conn-line"></div></div>
+
+    <div class="rev-node" style="border-left:3px solid var(--teal);">
+      <div class="rev-level-num" style="color:var(--teal);">3</div>
+      <div class="rev-info">
+        <div class="rev-title">Tahsildar</div>
+        <div class="rev-role">Taluk Level · Tamil Nadu Revenue Service Officer</div>
+        <div class="rev-body">The face of revenue administration for most citizens. This is where you go for caste certificate, income certificate, nativity certificate, and land patta issues. Tahsildars have wide powers — they can certify, attach, and record land ownership.</div>
+        <div class="rev-chips">
+          <span class="rev-chip">Caste certificate</span>
+          <span class="rev-chip">Income certificate</span>
+          <span class="rev-chip">Land patta</span>
+          <span class="rev-chip">Nativity certificate</span>
+          <span class="rev-chip">Encumbrance certificate</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="rev-connector"><div class="rev-conn-line"></div></div>
+
+    <div class="rev-node" style="border-left:3px solid var(--local);">
+      <div class="rev-level-num" style="color:var(--local);">4</div>
+      <div class="rev-info">
+        <div class="rev-title">Revenue Inspector (RI)</div>
+        <div class="rev-role">Firka Level · Group of Villages</div>
+        <div class="rev-body">Oversees a cluster of villages (a firka). Inspects land, verifies agricultural data, supervises VAOs, and is the first official to physically visit disputed land. Crucial link between the village and the taluk office.</div>
+        <div class="rev-chips">
+          <span class="rev-chip">Field verification of land</span>
+          <span class="rev-chip">Agricultural survey</span>
+          <span class="rev-chip">Supervises VAOs</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="rev-connector"><div class="rev-conn-line"></div></div>
+
+    <div class="rev-node" style="border-left:3px solid #65a30d;">
+      <div class="rev-level-num" style="color:#65a30d;">5</div>
+      <div class="rev-info">
+        <div class="rev-title">Village Administrative Officer (VAO)</div>
+        <div class="rev-role">Village Level · One per revenue village</div>
+        <div class="rev-body">The most ground-level revenue official. Maintains the village land register (A-register), records crop details (chitta/adangal), helps citizens apply for certificates, and is often the first government contact for any village resident. Historically a powerful local figure.</div>
+        <div class="rev-chips">
+          <span class="rev-chip">A-register (land records)</span>
+          <span class="rev-chip">Chitta / Adangal</span>
+          <span class="rev-chip">Patta applications</span>
+          <span class="rev-chip">Scheme beneficiary lists</span>
+          <span class="rev-chip">Certificate initiation</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="callout green">
+    <strong>The documents that change lives — and where they come from:</strong><br/>
+    <strong>Patta</strong> — Land ownership record. Issued by Tahsildar.<br/>
+    <strong>Chitta</strong> — Who holds the land (possession). Maintained by VAO.<br/>
+    <strong>Adangal</strong> — What crops are grown on the land. Maintained by VAO.<br/>
+    <strong>EC (Encumbrance Certificate)</strong> — Confirms no loans/mortgages on a property. Critical for buying land. From Sub-Registrar office.<br/>
+    <strong>Community Certificate</strong> — Caste/tribe classification for reservations. Issued by Tahsildar, verified by RDO.<br/>
+    <strong>Income Certificate</strong> — Annual family income, for scholarships and schemes. Issued by Tahsildar.
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     CH 10: ACCOUNTABILITY BODIES
+══════════════════════════════════════ -->
+<section id="accountability">
+  <div class="divider"></div>
+  <div class="section-eyebrow">Chapter 10</div>
+  <h2 class="section-title">Accountability — The Watchdogs Over Government</h2>
+  <p class="section-sub">
+    Every power structure needs a check. These bodies exist to audit, expose, investigate, and give citizens recourse against the government — without them, everything covered so far operates unchecked.
+  </p>
+
+  <div class="acc-cards">
+
+    <div class="acc-card">
+      <div class="acc-head">
+        <span class="acc-icon">🔬</span>
+        <div>
+          <div class="acc-name">CAG — Comptroller &amp; Auditor General</div>
+          <div class="acc-type">Constitutional Body · Article 148 · Independent of both Centre and State</div>
+        </div>
+      </div>
+      <div class="acc-body">
+        Audits <em>every rupee</em> spent by the government — Union, state, and government-owned companies. The CAG cannot be removed by the government (only by Parliament, like a Supreme Court judge). After auditing, the CAG submits a report to the Legislature — called the CAG Report — which is then examined by the Public Accounts Committee of the Assembly.
+      </div>
+      <div class="acc-note"><strong>In practice:</strong> When the CAG flags ₹2,000 Cr worth of irregularities in a TASMAC tender, that report becomes a political weapon for the opposition — and can trigger further investigation.</div>
+    </div>
+
+    <div class="acc-card">
+      <div class="acc-head">
+        <span class="acc-icon">📄</span>
+        <div>
+          <div class="acc-name">RTI — Right to Information Act, 2005</div>
+          <div class="acc-type">Citizen's Tool · Any citizen can use it · Free for BPL</div>
+        </div>
+      </div>
+      <div class="acc-body">
+        Any citizen can ask any government department for any information — and the department <em>must</em> reply within 30 days. If they don't, or if you're unhappy, you can appeal to the State Information Commission (SIC) or Central IC. This is arguably the single most powerful transparency tool a citizen has.
+      </div>
+      <div class="acc-note"><strong>Exemptions:</strong> National security, cabinet deliberations, personal privacy, information given in confidence. <strong>In practice:</strong> RTI is used to expose ghost beneficiaries in welfare schemes, fake construction bills, and officer misconduct.</div>
+    </div>
+
+    <div class="acc-card">
+      <div class="acc-head">
+        <span class="acc-icon">⚖️</span>
+        <div>
+          <div class="acc-name">Tamil Nadu Vigilance Commission</div>
+          <div class="acc-type">State Anti-Corruption Body · Advises on disciplinary proceedings</div>
+        </div>
+      </div>
+      <div class="acc-body">
+        Deals with corruption allegations against state government employees. The Directorate of Vigilance and Anti-Corruption (DVAC) is TN's investigative arm — like a state-level CBI for corruption. DVAC files cases in special anti-corruption courts. Unlike the Lokayukta (which TN doesn't have in a strong form), DVAC works through the criminal courts system.
+      </div>
+      <div class="acc-note"><strong>Key gap:</strong> TN does not have a strong independent Lokayukta. Politicians and senior officers are largely outside DVAC's reach — it mainly catches lower-level corruption.</div>
+    </div>
+
+    <div class="acc-card">
+      <div class="acc-head">
+        <span class="acc-icon">🏛</span>
+        <div>
+          <div class="acc-name">TN Human Rights Commission</div>
+          <div class="acc-type">Quasi-Judicial Body · State-level NHRC equivalent</div>
+        </div>
+      </div>
+      <div class="acc-body">
+        Investigates complaints of human rights violations by state government officers — police brutality, custodial deaths, denial of basic rights. Can recommend compensation and action. Cannot try criminal cases, but its findings can trigger FIRs and departmental action.
+      </div>
+      <div class="acc-note"><strong>In practice:</strong> Custodial death in a TN police station → family files with TNHRC → Commission issues notice to SP → inquiry ordered → compensation recommended.</div>
+    </div>
+
+    <div class="acc-card">
+      <div class="acc-head">
+        <span class="acc-icon">👩‍⚖️</span>
+        <div>
+          <div class="acc-name">TN State Women's Commission</div>
+          <div class="acc-type">Statutory Body · Recommends, mediates, investigates</div>
+        </div>
+      </div>
+      <div class="acc-body">
+        Investigates complaints of harassment, discrimination, and violence against women involving government officials or public spaces. Can summon officers, recommend action, and refer cases to police. Does not have the power to punish directly.
+      </div>
+      <div class="acc-note"><strong>Important distinction:</strong> The Commission is an advisory body — it cannot convict. It creates pressure and documentation that feeds into actual police or court proceedings.</div>
+    </div>
+
+    <div class="acc-card">
+      <div class="acc-head">
+        <span class="acc-icon">📢</span>
+        <div>
+          <div class="acc-name">Public Accounts Committee (PAC)</div>
+          <div class="acc-type">Legislative Committee · MLAs examining government spending</div>
+        </div>
+      </div>
+      <div class="acc-body">
+        A committee of MLAs that scrutinises the CAG's audit reports. The PAC calls government officials before it, questions spending decisions, and submits its own report to the Assembly. It is the Assembly's primary financial oversight mechanism over the executive.
+      </div>
+      <div class="acc-note"><strong>The chain:</strong> CAG audits → finds irregularity → reports to Assembly → PAC examines → summons officials → submits findings → Assembly debates → government must respond.</div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     CH 11: GOVERNOR + ARTICLE 356
+══════════════════════════════════════ -->
+<section id="governor356">
+  <div class="divider"></div>
+  <div class="section-eyebrow">Chapter 11</div>
+  <h2 class="section-title">Governor's Special Powers &amp; Article 356</h2>
+  <p class="section-sub">
+    Most of the time, the Governor is ceremonial. But in specific situations — a hung assembly, a constitutional crisis, or a politically motivated Centre — the Governor becomes the most consequential figure in the state. Understanding the rules and safeguards here is essential.
+  </p>
+
+  <div class="powers-grid">
+    <div class="pwr-card">
+      <div class="pwr-header ceremonial">Normal Powers — Must act on CM's advice</div>
+      <div class="pwr-body">
+        <div class="pwr-item"><span class="dot" style="background:var(--union)"></span><span>Appoints CM (must be leader of majority)</span></div>
+        <div class="pwr-item"><span class="dot" style="background:var(--union)"></span><span>Gives assent to bills — cannot refuse indefinitely</span></div>
+        <div class="pwr-item"><span class="dot" style="background:var(--union)"></span><span>Summons, prorogues, and dissolves Assembly — on CM's advice</span></div>
+        <div class="pwr-item"><span class="dot" style="background:var(--union)"></span><span>Addresses the Assembly</span></div>
+        <div class="pwr-item"><span class="dot" style="background:var(--union)"></span><span>Appoints Advocate General, TNPSC members</span></div>
+      </div>
+    </div>
+    <div class="pwr-card">
+      <div class="pwr-header discretionary">Discretionary Powers — Can act independently</div>
+      <div class="pwr-body">
+        <div class="pwr-item"><span class="dot" style="background:#dc2626"></span><span>Choosing CM in a hung assembly (no majority)</span></div>
+        <div class="pwr-item"><span class="dot" style="background:#dc2626"></span><span>Dismissing CM if they lose floor majority and refuse to resign</span></div>
+        <div class="pwr-item"><span class="dot" style="background:#dc2626"></span><span>Dissolving Assembly if no stable govt is possible</span></div>
+        <div class="pwr-item"><span class="dot" style="background:#dc2626"></span><span>Reserving a bill for President's consideration instead of giving assent</span></div>
+        <div class="pwr-item"><span class="dot" style="background:#dc2626"></span><span>Sending a report to Centre recommending Article 356</span></div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="h3 mt">Article 356 — President's Rule: How It Works</h3>
+  <p style="font-size:13px;color:var(--text2);margin-bottom:16px;">
+    Article 356 allows the Centre to dismiss a state government and take direct control. It is the most extreme use of central power. The Sarkaria Commission (1988) and the <strong>S.R. Bommai case (1994)</strong> created crucial safeguards.
+  </p>
+
+  <div class="art356-flow">
+    <div class="a356-step">
+      <div class="a356-num">1</div>
+      <div><div class="a356-title">Governor sends a report to President</div>
+      <div class="a356-body">Stating that the state's constitutional machinery has broken down — either because no party has a majority, or the government is violating the Constitution.</div></div>
+    </div>
+    <div class="a356-conn"><div class="a356-conn-line"></div></div>
+    <div class="a356-step">
+      <div class="a356-num">2</div>
+      <div><div class="a356-title">Union Cabinet recommends to President</div>
+      <div class="a356-body">The Centre (PM + Cabinet) recommends proclamation of President's Rule. The President acts on this advice.</div></div>
+    </div>
+    <div class="a356-conn"><div class="a356-conn-line"></div></div>
+    <div class="a356-step danger">
+      <div class="a356-num">3</div>
+      <div><div class="a356-title">President's Rule Proclaimed</div>
+      <div class="a356-body">State government dismissed. Governor becomes executive head. State Assembly is suspended or dissolved. Parliament controls state legislation.</div></div>
+    </div>
+    <div class="a356-conn"><div class="a356-conn-line"></div></div>
+    <div class="a356-step safe">
+      <div class="a356-num">4</div>
+      <div><div class="a356-title">Bommai Safeguard — Parliamentary Approval Within 2 Months</div>
+      <div class="a356-body">The S.R. Bommai judgment (1994) ruled: the proclamation must be approved by <em>both Houses of Parliament</em> within 2 months. Until then, the Assembly cannot be dissolved — only suspended. Courts can also review whether the proclamation was valid.</div></div>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="callout warn">
+      <strong>The "Bill Pocket Veto" problem.</strong><br/>
+      Governors can simply sit on bills — not give assent, not return them, not reserve them. This is called the de facto pocket veto. TN's Electricity Regulation Bill and other bills have sat unsigned for months/years during Centre-State tensions. The Constitution gives no time limit for assent, creating this gap.
+    </div>
+    <div class="callout">
+      <strong>Hung Assembly — who becomes CM?</strong><br/>
+      Governor invites the single largest party first. If they can't prove majority in a floor test within a set timeframe, the second-largest coalition gets a chance. The Governor has real, consequential discretion here — and political bias has been alleged in Maharashtra (2019) and other states.
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     CH 12: BUDGET CYCLE — DEEP
+══════════════════════════════════════ -->
+<section id="budget">
+  <div class="divider"></div>
+  <div class="section-eyebrow">Chapter 12 · Deep Dive</div>
+  <h2 class="section-title">The Budget Cycle — How Government Money Actually Works</h2>
+  <p class="section-sub">
+    The budget is not a spreadsheet. It is the government's <em>statement of intent</em> — what it will tax, what it will borrow, and what it will spend. Understanding the full cycle from preparation to Finance Commission devolution is essential to understanding how anything gets funded.
+  </p>
+
+  <!-- Mental Model -->
+  <h3 class="h3">The Mental Model — Think of It Like a Household</h3>
+  <div class="analogy-grid">
+    <div class="analogy-card">
+      <div class="analogy-title">Revenue Account</div>
+      <div class="analogy-sub">= Monthly salary &amp; regular bills</div>
+      <div class="analogy-body">Regular income (taxes, fees) vs regular spending (salaries, subsidies, interest on old loans). If spending &gt; income here, it's a <strong>Revenue Deficit</strong> — you're borrowing to pay monthly bills. Deeply problematic.</div>
+    </div>
+    <div class="analogy-card">
+      <div class="analogy-title">Capital Account</div>
+      <div class="analogy-sub">= Home loan &amp; investments</div>
+      <div class="analogy-body">Borrowing for long-term assets (roads, hospitals). Unlike a revenue deficit, a capital deficit is acceptable — as long as the asset being created justifies the borrowing.</div>
+    </div>
+    <div class="analogy-card">
+      <div class="analogy-title">Fiscal Deficit</div>
+      <div class="analogy-sub">= Total credit card bill for the year</div>
+      <div class="analogy-body">Total expenditure minus all receipts except borrowings. The entire gap the government fills by borrowing. FRBM Act targets this at ≤3% of GDP/GSDP. TN typically runs 3–4%.</div>
+    </div>
+    <div class="analogy-card">
+      <div class="analogy-title">Primary Deficit</div>
+      <div class="analogy-sub">= New borrowing, excluding old debt service</div>
+      <div class="analogy-body">Fiscal Deficit minus interest payments. If Primary Deficit = 0, you are only borrowing to pay interest on past loans — not taking on new debt. A better measure of underlying fiscal health.</div>
+    </div>
+  </div>
+
+  <!-- Union Budget Calendar -->
+  <h3 class="h3 mt">Union Budget — The Annual Calendar</h3>
+  <div class="budget-calendar">
+    <div class="cal-month"><div class="cal-name">Jul–Aug</div><div class="cal-event">Budget Circular sent to all Union ministries</div></div>
+    <div class="cal-month active"><div class="cal-name">Sep–Oct</div><div class="cal-event">Ministries submit expenditure demands to Finance Ministry</div></div>
+    <div class="cal-month active"><div class="cal-name">Nov</div><div class="cal-event">Pre-budget consultations with industry, economists, states</div></div>
+    <div class="cal-month peak"><div class="cal-name">Dec–Jan</div><div class="cal-event">Halwa ceremony, Budget Division goes into lockdown</div></div>
+    <div class="cal-month peak"><div class="cal-name">Feb 1</div><div class="cal-event">Finance Minister presents Budget in Lok Sabha</div></div>
+    <div class="cal-month"><div class="cal-name">Mar 31</div><div class="cal-event">Finance Act passed. Funds authorised for new financial year.</div></div>
+  </div>
+  <div class="callout mb16">
+    <strong>Changed from Feb 28 to Feb 1 in 2017</strong> — so that funds are available from April 1 (start of financial year), rather than mid-May after Parliament approves. This alone improved capital expenditure deployment by weeks.
+  </div>
+
+  <!-- Three Funds -->
+  <h3 class="h3 mt">The Three Funds — Where Government Money Actually Lives</h3>
+  <div class="funds-grid">
+    <div class="fund-card primary">
+      <div class="fund-icon">🏦</div>
+      <div class="fund-name">Consolidated Fund of India / State</div>
+      <div class="fund-size">All revenues + borrowings flow in · All payments flow out</div>
+      <div class="fund-body">Every rupee of tax, fee, and borrowing must enter here. Every government payment must come from here. <strong>Parliament/Assembly must vote to authorize every single withdrawal</strong> — this is the budget vote. Nothing can bypass this without legislative approval.</div>
+    </div>
+    <div class="fund-card secondary">
+      <div class="fund-icon">🚨</div>
+      <div class="fund-name">Contingency Fund</div>
+      <div class="fund-size">Union: ₹500 Cr · States: smaller corpus</div>
+      <div class="fund-body">An imprest account for unforeseen emergencies — floods, sudden crises — where waiting for Parliament is impossible. The President (or Governor for states) can authorise spending. <strong>Must be replenished by Parliament</strong> at the next session.</div>
+    </div>
+    <div class="fund-card tertiary">
+      <div class="fund-icon">📦</div>
+      <div class="fund-name">Public Account</div>
+      <div class="fund-size">Money held in trust — not the government's own</div>
+      <div class="fund-body">Money the government holds for others — PPF deposits, provident fund contributions, small savings, court deposits. The government is a banker here, not a spender. <strong>No Parliamentary vote needed</strong> because it's not the government's money to spend.</div>
+    </div>
+  </div>
+
+  <!-- Deficit Visual -->
+  <h3 class="h3 mt">Tamil Nadu Budget — Revenue vs Expenditure (Approximate FY 2024-25)</h3>
+  <div class="deficit-visual">
+    <div class="dv-title">Revenue Account — Where the structural tension lives</div>
+
+    <div class="dv-row">
+      <div class="dv-row-label"><span class="dv-row-name">Revenue Receipts</span><span class="dv-row-val">~₹2.4 lakh crore</span></div>
+      <div class="dv-bar-track"><div class="dv-bar-fill" style="width:80%;background:#16a34a;">₹2.4L Cr</div></div>
+    </div>
+    <div class="dv-row">
+      <div class="dv-row-label"><span class="dv-row-name">Revenue Expenditure</span><span class="dv-row-val">~₹2.8 lakh crore</span></div>
+      <div class="dv-bar-track"><div class="dv-bar-fill" style="width:93%;background:#dc2626;">₹2.8L Cr</div></div>
+      <div class="dv-gap">
+        <div class="dv-gap-line"></div>
+        <div class="dv-gap-label">Revenue Deficit ~₹0.4L Cr ← borrowed for daily expenses</div>
+      </div>
+    </div>
+
+    <div class="dv-row" style="margin-top:16px;">
+      <div class="dv-row-label"><span class="dv-row-name">Capital Expenditure (Infrastructure)</span><span class="dv-row-val">~₹0.45 lakh crore</span></div>
+      <div class="dv-bar-track"><div class="dv-bar-fill" style="width:50%;background:#1d4ed8;">₹0.45L Cr</div></div>
+    </div>
+
+    <div style="margin-top:14px;padding:12px 14px;background:var(--surface2);border-radius:6px;font-size:12.5px;color:var(--text2);line-height:1.7;">
+      <strong style="color:var(--text)">Fiscal Deficit ≈ ₹0.85 lakh crore (~3.2% of GSDP)</strong> — total gap filled by borrowings from markets, RBI, and centre. TN's interest burden alone (~₹55,000 Cr/year) consumes a growing share of revenue.
+    </div>
+  </div>
+
+  <!-- Deficit types -->
+  <div class="deficit-types">
+    <div class="def-type">
+      <div class="def-name">Revenue Deficit</div>
+      <div class="def-formula">Revenue Expenditure − Revenue Receipts</div>
+      <div class="def-body">If positive: govt borrows for salaries and subsidies — unsustainable. TN has struggled to maintain revenue surplus in recent years.</div>
+    </div>
+    <div class="def-type">
+      <div class="def-name">Fiscal Deficit</div>
+      <div class="def-formula">Total Expenditure − All Receipts except borrowings</div>
+      <div class="def-body">The total borrowing need. FRBM Act caps states at 3% of GSDP. Post-COVID, states were allowed 4-4.5%. TN typically 3–4%.</div>
+    </div>
+    <div class="def-type">
+      <div class="def-name">Primary Deficit</div>
+      <div class="def-formula">Fiscal Deficit − Interest Payments</div>
+      <div class="def-body">True new borrowing need, stripping out old debt service. If zero: not adding real new debt. TN's interest payments are ~₹55,000 Cr, making this the real watch number.</div>
+    </div>
+  </div>
+
+  <!-- TN Revenue Sources -->
+  <h3 class="h3 mt">Where Tamil Nadu Gets Its Money</h3>
+  <div class="rev-sources">
+    <div class="rs-title">Revenue Receipts Breakdown — Approximate FY 2024-25</div>
+
+    <div class="rs-row">
+      <div class="rs-row-top"><span class="rs-row-name">State's Own Tax Revenue (GST state share, TASMAC excise, Registration, Motor vehicles)</span><span class="rs-row-val">~50%  ₹1.2L Cr</span></div>
+      <div class="rs-bar-track"><div class="rs-bar-fill" style="width:50%;background:#1d4ed8;"></div></div>
+      <div class="rs-note">TASMAC alone contributes ~₹36,000 Cr. GST state share ~₹50,000 Cr. This is TN's own earning.</div>
+    </div>
+
+    <div class="rs-row">
+      <div class="rs-row-top"><span class="rs-row-name">Central Tax Devolution (TN's share: 4.189% of divisible pool)</span><span class="rs-row-val">~18%  ₹43,000 Cr</span></div>
+      <div class="rs-bar-track"><div class="rs-bar-fill" style="width:18%;background:#7c3aed;"></div></div>
+      <div class="rs-note">TN's 4.189% from the 15th Finance Commission. Received without conditions — the state can spend it as it wishes.</div>
+    </div>
+
+    <div class="rs-row">
+      <div class="rs-row-top"><span class="rs-row-name">Grants from Centre (CSS matching grants, sector-specific grants)</span><span class="rs-row-val">~14%  ₹34,000 Cr</span></div>
+      <div class="rs-bar-track"><div class="rs-bar-fill" style="width:14%;background:#0891b2;"></div></div>
+      <div class="rs-note">Tied grants — must be spent on specified schemes like NHM, PM Awas. Centre monitors how state spends this.</div>
+    </div>
+
+    <div class="rs-row">
+      <div class="rs-row-top"><span class="rs-row-name">Non-Tax Revenue (PSU dividends, user charges, interest receipts)</span><span class="rs-row-val">~8%  ₹19,000 Cr</span></div>
+      <div class="rs-bar-track"><div class="rs-bar-fill" style="width:8%;background:#059669;"></div></div>
+      <div class="rs-note">Dividends from TASMAC, TNEB, TANGEDCO, and fees from government services.</div>
+    </div>
+
+    <div class="rs-row">
+      <div class="rs-row-top"><span class="rs-row-name">Borrowings (Market loans, NSSF, World Bank/ADB loans)</span><span class="rs-row-val">~25%  ₹60,000 Cr</span></div>
+      <div class="rs-bar-track"><div class="rs-bar-fill" style="width:25%;background:#dc2626;"></div></div>
+      <div class="rs-note">This is the fiscal deficit — borrowed to fund the gap. Subject to FRBM cap. Must be repaid with interest.</div>
+    </div>
+  </div>
+
+  <!-- Finance Commission -->
+  <h3 class="h3 mt">Finance Commission — How the Centre Shares Tax With States</h3>
+  <p style="font-size:13px;color:var(--text2);margin-bottom:16px;line-height:1.7;">
+    Every 5 years, the President appoints a Finance Commission to decide: (1) what % of Union taxes goes to all states (vertical devolution), and (2) how that share is split between states (horizontal devolution). The 15th Finance Commission covers 2021–2026.
+  </p>
+
+  <div class="fc-formula">
+    <div class="fc-title">15th Finance Commission — How TN's 4.189% Share is Calculated</div>
+    <div class="fc-bar">
+      <div class="fc-seg" style="flex:45;background:#1d4ed8;">Income Distance (45%)</div>
+      <div class="fc-seg" style="flex:15;background:#7c3aed;">Population (15%)</div>
+      <div class="fc-seg" style="flex:15;background:#0891b2;">Area (15%)</div>
+      <div class="fc-seg" style="flex:12.5;background:#059669;">Demog. Perf. (12.5%)</div>
+      <div class="fc-seg" style="flex:10;background:#65a30d;">Forest (10%)</div>
+      <div class="fc-seg" style="flex:2.5;background:#b45309;">Tax (2.5%)</div>
+    </div>
+    <div class="fc-legend">
+      <div class="fc-leg-item"><span class="fc-leg-dot" style="background:#1d4ed8;"></span>Income Distance 45% — states with lower per-capita income get more</div>
+      <div class="fc-leg-item"><span class="fc-leg-dot" style="background:#7c3aed;"></span>Population 15% — 2011 census used</div>
+      <div class="fc-leg-item"><span class="fc-leg-dot" style="background:#0891b2;"></span>Area 15% — larger states get more</div>
+      <div class="fc-leg-item"><span class="fc-leg-dot" style="background:#059669;"></span>Demographic Performance 12.5% — reward for controlling population growth (TN benefits)</div>
+      <div class="fc-leg-item"><span class="fc-leg-dot" style="background:#65a30d;"></span>Forest &amp; Ecology 10% — forest cover maintained</div>
+      <div class="fc-leg-item"><span class="fc-leg-dot" style="background:#b45309;"></span>Tax Effort 2.5% — reward for better tax collection</div>
+    </div>
+    <div class="fc-insight">
+      <div class="fc-ins"><strong>Why TN gets only 4.189%</strong> — despite being industrially advanced. TN's high per-capita income means it scores low on the Income Distance factor (45% weight). Poorer states like UP and Bihar get more because they have greater "distance" from the national average income.</div>
+      <div class="fc-ins"><strong>TN's win: Demographic Performance.</strong> TN controlled its fertility rate early (TFR ~1.7 vs national average ~2.0). This factor rewards exactly that. Without it, TN's share would be even lower. The irony: reducing population means fewer votes in the population-weighted formula, but gains back partly via this factor.</div>
+    </div>
+  </div>
+
+  <div class="callout mb16">
+    <strong>Vertical Devolution: 41% of divisible pool to states</strong> (down from 42% — 1% was adjusted for J&amp;K/Ladakh becoming UTs). The divisible pool = Union's tax revenues excluding certain cesses and surcharges. Note: PMGKY-type cesses are outside the divisible pool — states do not share in those collections, which is a point of ongoing political friction.
+  </div>
+
+  <!-- CSS vs State Schemes -->
+  <h3 class="h3 mt">Central vs State Schemes — Who Funds What</h3>
+  <div class="scheme-compare">
+
+    <div class="sc-row">
+      <div class="sc-name">Central Sector Schemes</div>
+      <div class="sc-bar-wrap">
+        <div class="sc-bar"><div class="sc-state-only">100% Centre</div></div>
+        <div class="sc-eg">PM Kisan · PM Kaushal Vikas · Startup India · PM Gram Sadak Yojana</div>
+      </div>
+    </div>
+
+    <div class="sc-row">
+      <div class="sc-name">Core CSS — NE/Himalayan States</div>
+      <div class="sc-bar-wrap">
+        <div class="sc-bar">
+          <div class="sc-centre" style="flex:90;">Centre 90%</div>
+          <div class="sc-state-seg" style="flex:10;">S 10%</div>
+        </div>
+        <div class="sc-eg">NHM, MGNREGS, PM Awas — for special category states</div>
+      </div>
+    </div>
+
+    <div class="sc-row">
+      <div class="sc-name">Core CSS — General States (incl. TN)</div>
+      <div class="sc-bar-wrap">
+        <div class="sc-bar">
+          <div class="sc-centre" style="flex:60;">Centre 60%</div>
+          <div class="sc-state-seg" style="flex:40;">State 40%</div>
+        </div>
+        <div class="sc-eg">MGNREGS · National Health Mission · PM Awas Yojana (Urban &amp; Rural)</div>
+      </div>
+    </div>
+
+    <div class="sc-row">
+      <div class="sc-name">Flexible CSS</div>
+      <div class="sc-bar-wrap">
+        <div class="sc-bar">
+          <div class="sc-centre" style="flex:75;">Centre 75%</div>
+          <div class="sc-state-seg" style="flex:25;">State 25%</div>
+        </div>
+        <div class="sc-eg">Swachh Bharat Mission · Smart Cities · Atal Mission for Rejuvenation (AMRUT)</div>
+      </div>
+    </div>
+
+    <div class="sc-row" style="border-color:var(--local);">
+      <div class="sc-name">State Schemes</div>
+      <div class="sc-bar-wrap">
+        <div class="sc-bar"><div class="sc-state-only" style="background:var(--local);">100% State</div></div>
+        <div class="sc-eg">Kalaignar Magalir Urimai · CM Breakfast Scheme · Noon Meal · Free Bus Pass</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Money flow -->
+  <h3 class="h3 mt">How Money Flows from Parliament to a Village in TN</h3>
+  <div class="money-flow">
+    <div class="mf-step">
+      <div class="mf-icon">🏛</div>
+      <div class="mf-title">Parliament Votes Budget</div>
+      <div class="mf-body">Authorises ₹X for MGNREGS nationally</div>
+    </div>
+    <div class="mf-arrow"><div class="mf-arr-inner"></div></div>
+    <div class="mf-step">
+      <div class="mf-icon">🏢</div>
+      <div class="mf-title">Ministry of Rural Development</div>
+      <div class="mf-body">Releases funds to states based on utilisation reports</div>
+    </div>
+    <div class="mf-arrow"><div class="mf-arr-inner"></div></div>
+    <div class="mf-step">
+      <div class="mf-icon">🏙</div>
+      <div class="mf-title">TN State Government</div>
+      <div class="mf-body">Adds state 40% share, passes through DRDA</div>
+    </div>
+    <div class="mf-arrow"><div class="mf-arr-inner"></div></div>
+    <div class="mf-step">
+      <div class="mf-icon">🗺</div>
+      <div class="mf-title">District Collector</div>
+      <div class="mf-body">Allocates to Panchayat Unions. Monitors work</div>
+    </div>
+    <div class="mf-arrow"><div class="mf-arr-inner"></div></div>
+    <div class="mf-step">
+      <div class="mf-icon">🏘</div>
+      <div class="mf-title">Village Panchayat</div>
+      <div class="mf-body">Implements — hires workers, reports attendance</div>
+    </div>
+    <div class="mf-arrow"><div class="mf-arr-inner"></div></div>
+    <div class="mf-step">
+      <div class="mf-icon">👷</div>
+      <div class="mf-title">Worker</div>
+      <div class="mf-body">Wages direct to bank account via DBT</div>
+    </div>
+  </div>
+
+  <div class="callout green">
+    <strong>DBT (Direct Benefit Transfer)</strong> — since 2013, most welfare payments bypass all middlemen and go directly to the beneficiary's Aadhaar-linked bank account. This has reduced leakage significantly, but created new exclusion problems for those without Aadhaar or bank access.
+  </div>
+
+</section>
+
+<!-- FOOTER -->
+<div class="footer">
+  <strong>Tamil Nadu Civic Structure — Part II · Chapters 07–12</strong><br/>
+  Covers: 7th Schedule · Central Agencies · Revenue Administration · Accountability Bodies · Governor &amp; Article 356 · Budget Cycle<br/>
+  Use alongside Part I (State Structure, Legislature, Local Bodies, Bill Passage, Law &amp; Order) for a complete picture.<br/>
+  <span style="opacity:.6;font-size:11px;">Budget figures are approximate FY 2024–25. Finance Commission data is 15th FC (2021–26).</span>
+</div>
+
+<script>
+function toggleTheme() {
+  const html = document.documentElement;
+  const dark = html.getAttribute('data-theme') === 'dark';
+  html.setAttribute('data-theme', dark ? 'light' : 'dark');
+  document.getElementById('themeBtn').textContent = dark ? '🌙 Dark' : '☀️ Light';
+}
+
+function goTo(id) {
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+const sids = ['schedule','agencies','revenue-chain','accountability','governor356','budget'];
+const links = document.querySelectorAll('.nav-link');
+window.addEventListener('scroll', () => {
+  let cur = '';
+  sids.forEach(id => {
+    const el = document.getElementById(id);
+    if (el && window.scrollY >= el.offsetTop - 120) cur = id;
+  });
+  links.forEach((l,i) => l.classList.toggle('active', sids[i] === cur));
+}, { passive: true });
+</script>
+</body>
+</html>
