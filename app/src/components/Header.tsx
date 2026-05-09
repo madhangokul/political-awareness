@@ -15,22 +15,29 @@ export function Header() {
 
   return (
     <>
-      <header className="border-b border-dust bg-paper sticky top-0 z-40">
+      <header className="border-b border-white/10 bg-[#111111] sticky top-0 z-40">
         <div className="max-w-article mx-auto px-6 flex items-center justify-between h-12">
           {/* Site name */}
           <Link
             to="/"
-            className="font-mono text-[9px] tracking-[0.28em] uppercase text-muted hover:text-ink no-underline"
+            className="font-mono text-[9px] tracking-[0.28em] uppercase text-white/40 hover:text-white no-underline transition-colors"
           >
             Examine It Yourself
           </Link>
 
           {/* Nav */}
           <nav className="flex items-center gap-5">
+            <Link
+              to="/components"
+              className="font-mono text-[9px] tracking-widest uppercase text-white/25 hover:text-white/60 transition-colors"
+            >
+              UI Kit
+            </Link>
+
             {(profile?.role === 'admin' || profile?.role === 'reviewer') && (
               <Link
                 to="/admin"
-                className="font-mono text-[9px] tracking-widest uppercase text-muted hover:text-accent"
+                className="font-mono text-[9px] tracking-widest uppercase text-white/40 hover:text-[#D4810A] transition-colors"
               >
                 {profile.role === 'admin' ? 'Admin' : 'Review'}
               </Link>
@@ -40,12 +47,12 @@ export function Header() {
 
             {user ? (
               <div className="flex items-center gap-3">
-                <span className="font-mono text-[10px] text-muted hidden sm:block">
+                <span className="font-mono text-[10px] text-white/30 hidden sm:block">
                   {profile?.display_name ?? profile?.username ?? ''}
                 </span>
                 <button
                   onClick={handleSignOut}
-                  className="font-mono text-[9px] uppercase tracking-wider text-muted hover:text-ink"
+                  className="font-mono text-[9px] uppercase tracking-wider text-white/40 hover:text-white transition-colors"
                 >
                   Sign out
                 </button>
@@ -53,7 +60,7 @@ export function Header() {
             ) : (
               <button
                 onClick={() => setShowLogin(true)}
-                className="font-mono text-[9px] uppercase tracking-wider text-muted hover:text-ink border border-dust px-3 py-1 hover:border-ink transition-colors"
+                className="font-mono text-[9px] uppercase tracking-wider text-[#D4810A] border border-[#D4810A]/50 px-3 py-1 hover:bg-[#D4810A] hover:text-[#111] transition-colors"
               >
                 Login
               </button>

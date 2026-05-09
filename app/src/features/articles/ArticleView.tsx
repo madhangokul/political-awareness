@@ -1,9 +1,11 @@
 import { useParams, Link } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import { supabase } from '../../lib/supabase'
+import { useAuth } from '../auth/AuthProvider'
+import { LoginModal } from '../auth/LoginModal'
 import { CommentThread } from '../comments/CommentThread'
 
 declare global {
@@ -18,6 +20,8 @@ declare global {
 
 export function ArticleView() {
   const { slug } = useParams<{ slug: string }>()
+  const { user, loading: authLoading } = useAuth()
+  const [showLogin, setShowLogin] = useState(false)
   const htmlRef = useRef<HTMLDivElement>(null)
 
   const { data: article, isLoading: articleLoading } = useQuery({
@@ -46,7 +50,7 @@ export function ArticleView() {
       if (error) throw error
       return data
     },
-    enabled: !!article,
+    enabled: !!article && !!user,
   })
 
   const content = currentVersion?.content ?? ''
@@ -234,12 +238,69 @@ export function ArticleView() {
     }
   }, [isHtml, currentVersion?.id])
 
-  if (articleLoading || versionLoading) {
+  if (authLoading || articleLoading || (user && versionLoading)) {
     return <p className="text-center text-muted py-16 font-mono text-sm">Loading…</p>
   }
 
   if (!article) {
     return <p className="text-center text-muted py-16">Article not found.</p>
+  }
+
+  // ── Auth gate — show title but block content ───────────────────────────────
+  if (!user) {
+    return (
+      <>
+        <div className="article-masthead" style={{ marginBottom: 0 }}>
+          <span className="masthead-label">Sign in to read</span>
+          <h1>{article.title}</h1>
+          {article.subtitle && (
+            <p className="masthead-sub">{article.subtitle}</p>
+          )}
+        </div>
+
+        <div className="article-nav" style={{ marginTop: '1.5rem' }}>
+          <Link to="/" className="article-nav-back">← All Articles</Link>
+        </div>
+
+        {/* Content gate */}
+        <div style={{
+          margin: '3rem auto',
+          maxWidth: 480,
+          textAlign: 'center',
+          padding: '3rem 2rem',
+          border: '1px solid var(--dust2)',
+          background: 'var(--paper-2)',
+        }}>
+          <p className="font-mono" style={{ fontSize: 9, letterSpacing: '0.28em', textTransform: 'uppercase', color: 'var(--muted)', marginBottom: '1rem' }}>
+            Members only
+          </p>
+          <p className="font-display" style={{ fontSize: '1.5rem', color: 'var(--ink)', marginBottom: '0.75rem', lineHeight: 1.3 }}>
+            This article is for signed-in readers
+          </p>
+          <p style={{ fontSize: '0.9rem', color: 'var(--muted)', marginBottom: '2rem', lineHeight: 1.6 }}>
+            Every claim here carries a citation. Sign in to read, fact-check, and join the discussion.
+          </p>
+          <button
+            onClick={() => setShowLogin(true)}
+            style={{
+              fontFamily: "'Space Mono', monospace",
+              fontSize: 10,
+              letterSpacing: '0.2em',
+              textTransform: 'uppercase',
+              background: 'var(--ink)',
+              color: 'var(--paper)',
+              border: 'none',
+              padding: '0.75rem 2rem',
+              cursor: 'pointer',
+            }}
+          >
+            Sign in to continue
+          </button>
+        </div>
+
+        {showLogin && <LoginModal onClose={() => setShowLogin(false)} />}
+      </>
+    )
   }
 
   // ── HTML article mode ──────────────────────────────────────────────────────

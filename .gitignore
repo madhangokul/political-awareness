@@ -1,1 +1,4 @@
 supabase/functions/.env
+
+app/.env.production
+app/.env.local

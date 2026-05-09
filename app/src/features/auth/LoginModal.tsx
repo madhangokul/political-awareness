@@ -1,52 +1,55 @@
 import { useState } from 'react'
 import { supabase } from '../../lib/supabase'
 
-type Mode = 'password' | 'otp'
+type Screen = 'signin' | 'signup'
 
 interface Props {
   onClose: () => void
 }
 
 export function LoginModal({ onClose }: Props) {
-  const [mode, setMode] = useState<Mode>('password')
+  const [screen, setScreen] = useState<Screen>('signin')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [sent, setSent] = useState(false)
+  const [displayName, setDisplayName] = useState('')
+  const [done, setDone] = useState(false)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
-  function switchMode(m: Mode) {
-    setMode(m)
+  function switchScreen(s: Screen) {
+    setScreen(s)
     setError(null)
-    setSent(false)
+    setDone(false)
   }
 
-  async function handleSubmit(e: React.FormEvent) {
+  async function handleSignIn(e: React.FormEvent) {
     e.preventDefault()
     setLoading(true)
     setError(null)
-
-    if (mode === 'password') {
-      const { error } = await supabase.auth.signInWithPassword({ email, password })
-      setLoading(false)
-      if (error) {
-        setError(error.message)
-      } else {
-        onClose()
-      }
-    } else {
-      const { error } = await supabase.auth.signInWithOtp({
-        email,
-        options: { emailRedirectTo: window.location.origin },
-      })
-      setLoading(false)
-      if (error) {
-        setError(error.message)
-      } else {
-        setSent(true)
-      }
-    }
+    const { error } = await supabase.auth.signInWithPassword({ email, password })
+    setLoading(false)
+    if (error) setError(error.message)
+    else onClose()
   }
+
+  async function handleSignUp(e: React.FormEvent) {
+    e.preventDefault()
+    setLoading(true)
+    setError(null)
+    const { error } = await supabase.auth.signUp({
+      email,
+      password,
+      options: { data: { full_name: displayName || undefined } },
+    })
+    setLoading(false)
+    if (error) setError(error.message)
+    else setDone(true)
+  }
+
+  const tabs: { key: Screen; label: string }[] = [
+    { key: 'signin', label: 'Sign In' },
+    { key: 'signup', label: 'Sign Up' },
+  ]
 
   return (
     <div
@@ -58,74 +61,89 @@ export function LoginModal({ onClose }: Props) {
         onClick={(e) => e.stopPropagation()}
       >
         <span className="block font-mono text-[9px] tracking-[0.28em] uppercase text-muted mb-5">
-          Sign In
+          {screen === 'signup' ? 'Create Account' : 'Sign In'}
         </span>
 
-        {/* Mode toggle */}
+        {/* Tab bar */}
         <div className="flex border border-dust2 mb-6">
-          <button
-            type="button"
-            onClick={() => switchMode('password')}
-            className={`flex-1 py-1.5 font-mono text-[10px] tracking-widest uppercase transition-colors ${
-              mode === 'password' ? 'bg-ink text-paper' : 'text-muted hover:text-ink'
-            }`}
-          >
-            Password
-          </button>
-          <button
-            type="button"
-            onClick={() => switchMode('otp')}
-            className={`flex-1 py-1.5 font-mono text-[10px] tracking-widest uppercase transition-colors ${
-              mode === 'otp' ? 'bg-ink text-paper' : 'text-muted hover:text-ink'
-            }`}
-          >
-            Magic Link
-          </button>
+          {tabs.map(t => (
+            <button
+              key={t.key}
+              type="button"
+              onClick={() => switchScreen(t.key)}
+              className={`flex-1 py-1.5 font-mono text-[10px] tracking-widest uppercase transition-colors ${
+                screen === t.key ? 'bg-ink text-paper' : 'text-muted hover:text-ink'
+              }`}
+            >
+              {t.label}
+            </button>
+          ))}
         </div>
 
-        {sent ? (
-          <div>
-            <p className="font-display text-xl mb-3">Check your inbox</p>
-            <p className="text-muted text-sm">
-              We sent a magic link to <strong className="text-ink">{email}</strong>.
-              Click the link to sign in.
-            </p>
-          </div>
-        ) : (
-          <form onSubmit={handleSubmit}>
-            <input
-              type="email"
-              placeholder="your@email.com"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
+        {/* ── Sign In ── */}
+        {screen === 'signin' && (
+          <form onSubmit={handleSignIn}>
+            <input type="email" placeholder="your@email.com" value={email}
+              onChange={(e) => setEmail(e.target.value)} required
               className="w-full border border-dust2 bg-paper2 px-3 py-2 text-sm font-mono mb-3 outline-none focus:border-ink"
             />
-            {mode === 'password' && (
-              <input
-                type="password"
-                placeholder="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-                className="w-full border border-dust2 bg-paper2 px-3 py-2 text-sm font-mono mb-3 outline-none focus:border-ink"
-              />
-            )}
-            {error && (
-              <p className="text-danger text-sm mb-3">{error}</p>
-            )}
-            <button
-              type="submit"
-              disabled={loading}
+            <input type="password" placeholder="Password" value={password}
+              onChange={(e) => setPassword(e.target.value)} required
+              className="w-full border border-dust2 bg-paper2 px-3 py-2 text-sm font-mono mb-3 outline-none focus:border-ink"
+            />
+            {error && <p className="text-danger text-sm mb-3">{error}</p>}
+            <button type="submit" disabled={loading}
               className="w-full bg-ink text-paper font-mono text-xs tracking-widest uppercase py-2.5 px-4 hover:bg-accent transition-colors disabled:opacity-50"
             >
-              {loading
-                ? 'Please wait…'
-                : mode === 'password'
-                ? 'Sign In'
-                : 'Send Magic Link'}
+              {loading ? 'Please wait…' : 'Sign In'}
             </button>
+            <p className="text-center text-muted text-xs mt-4">
+              No account?{' '}
+              <button type="button" onClick={() => switchScreen('signup')} className="text-ink underline underline-offset-2">Sign up free</button>
+            </p>
           </form>
+        )}
+
+        {/* ── Sign Up ── */}
+        {screen === 'signup' && (
+          done ? (
+            <div>
+              <p className="font-display text-xl mb-3">Welcome aboard</p>
+              <p className="text-muted text-sm mb-4">
+                Account created for <strong className="text-ink">{email}</strong>.
+              </p>
+              <button type="button" onClick={() => { setDone(false); switchScreen('signin') }}
+                className="w-full bg-ink text-paper font-mono text-xs tracking-widest uppercase py-2.5 px-4 hover:bg-accent transition-colors"
+              >
+                Sign In Now
+              </button>
+            </div>
+          ) : (
+            <form onSubmit={handleSignUp}>
+              <input type="text" placeholder="Display name (optional)" value={displayName}
+                onChange={(e) => setDisplayName(e.target.value)}
+                className="w-full border border-dust2 bg-paper2 px-3 py-2 text-sm font-mono mb-3 outline-none focus:border-ink"
+              />
+              <input type="email" placeholder="your@email.com" value={email}
+                onChange={(e) => setEmail(e.target.value)} required
+                className="w-full border border-dust2 bg-paper2 px-3 py-2 text-sm font-mono mb-3 outline-none focus:border-ink"
+              />
+              <input type="password" placeholder="Password (min 6 chars)" value={password}
+                onChange={(e) => setPassword(e.target.value)} required minLength={6}
+                className="w-full border border-dust2 bg-paper2 px-3 py-2 text-sm font-mono mb-3 outline-none focus:border-ink"
+              />
+              {error && <p className="text-danger text-sm mb-3">{error}</p>}
+              <button type="submit" disabled={loading}
+                className="w-full bg-ink text-paper font-mono text-xs tracking-widest uppercase py-2.5 px-4 hover:bg-accent transition-colors disabled:opacity-50"
+              >
+                {loading ? 'Please wait…' : 'Create Account'}
+              </button>
+              <p className="text-center text-muted text-xs mt-4">
+                Already have one?{' '}
+                <button type="button" onClick={() => switchScreen('signin')} className="text-ink underline underline-offset-2">Sign in</button>
+              </p>
+            </form>
+          )
         )}
 
         <button

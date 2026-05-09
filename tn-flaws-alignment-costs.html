@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tamil Nadu — The Honest Picture</title>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+[data-theme="dark"]{
+  --bg:#080b0f;--bg2:#0f1318;--bg3:#161c24;--bg4:#1e2730;
+  --bdr:#232d38;--bdr2:#2e3d4e;
+  --tx:#e8eef5;--tx2:#8a9aaa;--tx3:#5a6a78;--mu:#3a4a58;
+  --red:#e84040;--rs:rgba(232,64,64,.1);
+  --amber:#d4881a;--as:rgba(212,136,26,.1);
+  --teal:#18b898;--ts:rgba(24,184,152,.1);
+  --blue:#3878e8;--bs:rgba(56,120,232,.1);
+  --purple:#8848e8;--ps:rgba(136,72,232,.1);
+  --green:#38c858;--gs:rgba(56,200,88,.1);
+  --gray:#687888;
+}
+[data-theme="light"]{
+  --bg:#f0f4f8;--bg2:#ffffff;--bg3:#e8eef5;--bg4:#dde5ef;
+  --bdr:#c8d4e0;--bdr2:#a8b8c8;
+  --tx:#0c1420;--tx2:#4a5a6a;--tx3:#7a8a98;--mu:#c8d4e0;
+  --red:#c02828;--rs:rgba(192,40,40,.08);
+  --amber:#a86800;--as:rgba(168,104,0,.08);
+  --teal:#0a7860;--ts:rgba(10,120,96,.08);
+  --blue:#1858c8;--bs:rgba(24,88,200,.08);
+  --purple:#5828c8;--ps:rgba(88,40,200,.08);
+  --green:#187838;--gs:rgba(24,120,56,.08);
+  --gray:#889aa8;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;font-size:15px;}
+body{background:var(--bg);color:var(--tx);font-family:'Crimson Pro',Georgia,serif;font-size:16px;line-height:1.7;transition:background .3s,color .3s;}
+button{cursor:pointer;font-family:inherit;}
+
+/* SCANLINES on dark */
+[data-theme="dark"] body::before{
+  content:'';position:fixed;inset:0;
+  background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(255,255,255,.008) 2px,rgba(255,255,255,.008) 4px);
+  pointer-events:none;z-index:0;
+}
+
+.wrap{max-width:1060px;margin:0 auto;padding:0 20px 100px;position:relative;z-index:1;}
+
+/* PROGRESS */
+#prog{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--red),var(--amber));z-index:400;width:0;transition:width .08s;}
+
+/* THEME TOGGLE */
+.theme-toggle{position:fixed;top:16px;right:20px;z-index:300;background:var(--bg3);border:1px solid var(--bdr2);color:var(--tx2);width:36px;height:36px;border-radius:50%;font-size:15px;display:flex;align-items:center;justify-content:center;transition:all .2s;}
+.theme-toggle:hover{border-color:var(--tx3);color:var(--tx);}
+
+/* HERO */
+.hero{padding:72px 0 52px;border-bottom:1px solid var(--bdr);margin-bottom:0;position:relative;overflow:hidden;}
+.hero::before{
+  content:'TN';
+  position:absolute;right:-40px;top:-20px;
+  font-family:'Archivo',sans-serif;font-size:280px;font-weight:900;
+  color:var(--bdr);opacity:.3;pointer-events:none;line-height:1;
+}
+.mono{font-family:'Fira Code',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--tx3);}
+.hero h1{font-family:'Archivo',sans-serif;font-size:clamp(32px,6vw,64px);font-weight:900;line-height:1.0;margin:12px 0 16px;letter-spacing:-.02em;}
+.hero h1 .hl-red{color:var(--red);}
+.hero h1 .hl-amber{color:var(--amber);}
+.hero-desc{font-size:15px;color:var(--tx2);max-width:640px;line-height:1.7;margin-bottom:24px;font-weight:300;}
+.notice-box{display:inline-flex;gap:12px;align-items:flex-start;background:var(--ts);border:1.5px solid var(--teal);border-radius:6px;padding:14px 18px;font-size:13px;color:var(--tx);max-width:680px;line-height:1.6;}
+.notice-box .dot{width:8px;height:8px;border-radius:50%;background:var(--teal);flex-shrink:0;margin-top:4px;}
+
+/* SECTION */
+.section{padding:60px 0;border-bottom:1px solid var(--bdr);}
+.section:last-of-type{border-bottom:none;}
+.sec-label{font-family:'Fira Code',monospace;font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--tx3);display:block;margin-bottom:8px;}
+h2{font-family:'Archivo',sans-serif;font-size:clamp(20px,3.5vw,30px);font-weight:800;line-height:1.1;margin-bottom:8px;letter-spacing:-.01em;}
+.sec-lead{font-size:14px;color:var(--tx2);line-height:1.7;margin-bottom:28px;font-style:italic;font-weight:300;max-width:700px;}
+
+/* CARDS GRID */
+.cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+.cards2{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.cards4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
+@media(max-width:760px){.cards3,.cards4{grid-template-columns:1fr 1fr;}}
+@media(max-width:520px){.cards2,.cards3,.cards4{grid-template-columns:1fr;}}
+
+.card{background:var(--bg2);border:1.5px solid var(--bdr);border-radius:8px;padding:18px;transition:border-color .2s,transform .15s;position:relative;overflow:hidden;}
+.card:hover{border-color:var(--bdr2);transform:translateY(-1px);}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;}
+.card.rd::before{background:var(--red);}
+.card.am::before{background:var(--amber);}
+.card.tl::before{background:var(--teal);}
+.card.bl::before{background:var(--blue);}
+.card.pu::before{background:var(--purple);}
+.card.gr::before{background:var(--green);}
+
+.card-tag{font-family:'Fira Code',monospace;font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--tx3);margin-bottom:6px;display:block;}
+.card-title{font-family:'Archivo',sans-serif;font-size:14px;font-weight:700;color:var(--tx);margin-bottom:6px;line-height:1.3;}
+.card-body{font-size:12.5px;color:var(--tx2);line-height:1.6;}
+.card-stat{font-family:'Archivo',sans-serif;font-size:26px;font-weight:900;line-height:1;margin:8px 0 4px;}
+
+/* STAT BAND */
+.statband{display:flex;gap:10px;flex-wrap:wrap;margin:20px 0;}
+.sb{flex:1;min-width:120px;background:var(--bg2);border:1.5px solid var(--bdr);border-radius:8px;padding:14px 16px;text-align:center;}
+.sb-n{font-family:'Archivo',sans-serif;font-size:28px;font-weight:900;line-height:1;margin-bottom:4px;}
+.sb-l{font-size:11px;color:var(--tx2);line-height:1.35;}
+.sb-src{font-family:'Fira Code',monospace;font-size:8.5px;color:var(--tx3);margin-top:4px;display:block;}
+
+/* CHARTS */
+.chart-wrap{background:var(--bg2);border:1.5px solid var(--bdr);border-radius:8px;padding:18px 16px 14px;}
+.chart-label{font-family:'Fira Code',monospace;font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--tx3);margin-bottom:3px;}
+.chart-title{font-family:'Archivo',sans-serif;font-size:13.5px;font-weight:700;color:var(--tx);margin-bottom:3px;}
+.chart-sub{font-size:11.5px;color:var(--tx2);line-height:1.5;margin-bottom:12px;font-style:italic;}
+.ch2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:20px 0;}
+@media(max-width:700px){.ch2{grid-template-columns:1fr;}}
+
+/* CALLOUT */
+.callout{border-radius:7px;padding:16px 18px;margin:16px 0;font-size:13.5px;line-height:1.7;}
+.callout .cl{font-family:'Fira Code',monospace;font-size:9px;letter-spacing:.15em;text-transform:uppercase;display:block;margin-bottom:5px;}
+.callout.rd{background:var(--rs);border-left:4px solid var(--red);}
+.callout.rd .cl{color:var(--red);}
+.callout.am{background:var(--as);border-left:4px solid var(--amber);}
+.callout.am .cl{color:var(--amber);}
+.callout.tl{background:var(--ts);border-left:4px solid var(--teal);}
+.callout.tl .cl{color:var(--teal);}
+.callout.bl{background:var(--bs);border-left:4px solid var(--blue);}
+.callout.bl .cl{color:var(--blue);}
+
+/* BENEFIT-COST TABLE */
+.bct{width:100%;border-collapse:collapse;font-size:13px;margin-top:16px;}
+.bct th{font-family:'Fira Code',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--tx3);text-align:left;padding:10px 14px;background:var(--bg3);border-bottom:2px solid var(--bdr);}
+.bct td{padding:12px 14px;border-bottom:1px solid var(--bdr);color:var(--tx2);vertical-align:top;line-height:1.5;background:var(--bg2);}
+.bct tr:hover td{background:var(--bg3);}
+.bct td:first-child{font-weight:600;color:var(--tx);}
+.bct tr:last-child td{border-bottom:none;}
+.pill{display:inline-block;font-family:'Fira Code',monospace;font-size:9px;padding:2px 8px;border-radius:3px;border:1px solid;white-space:nowrap;}
+.pill.hi{color:var(--green);border-color:var(--green);background:var(--gs);}
+.pill.med{color:var(--amber);border-color:var(--amber);background:var(--as);}
+.pill.lo{color:var(--red);border-color:var(--red);background:var(--rs);}
+.pill.hidden{color:var(--purple);border-color:var(--purple);background:var(--ps);}
+
+/* HIDDEN COST REVEAL */
+.hc-row{background:var(--bg2);border:1.5px solid var(--bdr);border-radius:8px;margin-bottom:10px;overflow:hidden;transition:border-color .2s;}
+.hc-row:hover{border-color:var(--purple);}
+.hc-head{display:flex;align-items:center;gap:14px;padding:16px 18px;cursor:pointer;}
+.hc-icon{width:36px;height:36px;border-radius:7px;background:var(--ps);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
+.hc-title-wrap{flex:1;}
+.hc-title{font-family:'Archivo',sans-serif;font-size:13.5px;font-weight:700;color:var(--tx);line-height:1.3;}
+.hc-sub{font-size:11.5px;color:var(--tx3);}
+.hc-arrow{font-size:12px;color:var(--tx3);transition:transform .25s;}
+.hc-row.open .hc-arrow{transform:rotate(180deg);}
+.hc-body{display:none;padding:0 18px 18px;}
+.hc-row.open .hc-body{display:block;}
+.hc-impact{font-family:'Fira Code',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:2px 8px;border-radius:3px;border:1px solid var(--purple);color:var(--purple);background:var(--ps);display:inline-block;margin-bottom:10px;}
+.hc-detail{font-size:13px;color:var(--tx2);line-height:1.7;margin-bottom:12px;}
+.hc-evidence{background:var(--bg3);border-radius:5px;padding:11px 14px;font-size:12px;color:var(--tx3);line-height:1.6;}
+.hc-evidence strong{color:var(--tx2);}
+
+/* WHO PAYS VIZ */
+.who-pays{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:20px 0;}
+@media(max-width:580px){.who-pays{grid-template-columns:1fr;}}
+.wp-col{border-radius:8px;padding:18px;border:1.5px solid;}
+.wp-col.wins{background:var(--gs);border-color:var(--green);}
+.wp-col.loses{background:var(--rs);border-color:var(--red);}
+.wp-head{font-family:'Fira Code',monospace;font-size:9px;letter-spacing:.15em;text-transform:uppercase;margin-bottom:10px;display:block;}
+.wp-col.wins .wp-head{color:var(--green);}
+.wp-col.loses .wp-head{color:var(--red);}
+.wp-item{font-size:12.5px;color:var(--tx2);margin-bottom:8px;padding-bottom:8px;border-bottom:1px solid var(--bdr);line-height:1.5;}
+.wp-item:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none;}
+.wp-item strong{display:block;color:var(--tx);font-size:12px;margin-bottom:1px;}
+
+/* TIMELINE FLAWS */
+.fl-timeline{margin-top:20px;display:flex;flex-direction:column;gap:10px;}
+.fl-item{display:flex;gap:14px;align-items:flex-start;background:var(--bg2);border:1.5px solid var(--bdr);border-radius:7px;padding:14px 16px;}
+.fl-yr{font-family:'Fira Code',monospace;font-size:10px;color:var(--red);min-width:48px;padding-top:2px;letter-spacing:.05em;}
+.fl-title{font-family:'Archivo',sans-serif;font-size:13px;font-weight:700;color:var(--tx);margin-bottom:3px;}
+.fl-body{font-size:12px;color:var(--tx2);line-height:1.55;}
+.fl-tag{display:inline-block;font-family:'Fira Code',monospace;font-size:8.5px;padding:1px 7px;border-radius:3px;border:1px solid;margin-left:6px;vertical-align:middle;}
+
+/* NET CALC */
+.net-calc{background:var(--bg2);border:2px solid var(--bdr);border-radius:10px;overflow:hidden;margin-top:20px;}
+.nc-head{padding:16px 22px;background:var(--bg3);border-bottom:2px solid var(--bdr);font-family:'Archivo',sans-serif;font-size:13px;font-weight:700;color:var(--tx);}
+.nc-body{display:grid;grid-template-columns:1fr 1fr;gap:0;}
+@media(max-width:580px){.nc-body{grid-template-columns:1fr;}}
+.nc-col{padding:20px 22px;}
+.nc-col.b{border-left:2px solid var(--bdr);}
+.nc-col-head{font-family:'Fira Code',monospace;font-size:10px;letter-spacing:.15em;text-transform:uppercase;padding-bottom:10px;margin-bottom:14px;border-bottom:3px solid;}
+.nc-col.a .nc-col-head{color:var(--green);border-color:var(--green);}
+.nc-col.b .nc-col-head{color:var(--red);border-color:var(--red);}
+.nc-point{display:flex;gap:8px;margin-bottom:10px;font-size:13px;color:var(--tx2);line-height:1.5;align-items:flex-start;}
+.nc-arrow{flex-shrink:0;margin-top:2px;font-size:12px;}
+.nc-col.a .nc-arrow{color:var(--green);}
+.nc-col.b .nc-arrow{color:var(--red);}
+.nc-verdict{padding:20px 22px;border-top:2px solid var(--bdr);background:var(--as);font-size:13.5px;line-height:1.7;color:var(--tx);}
+.nc-verdict strong{color:var(--amber);}
+.nc-verdict em{color:var(--teal);font-style:normal;font-weight:600;}
+
+/* GOVERNANCE SCORE */
+.score-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin-top:16px;}
+.score-item{background:var(--bg2);border:1.5px solid var(--bdr);border-radius:7px;padding:14px;}
+.score-label{font-size:12.5px;font-weight:600;color:var(--tx);margin-bottom:8px;}
+.score-bar-wrap{height:6px;background:var(--bg4);border-radius:3px;overflow:hidden;margin-bottom:4px;}
+.score-bar{height:100%;border-radius:3px;transition:width 1.2s ease;}
+.score-meta{display:flex;justify-content:space-between;font-family:'Fira Code',monospace;font-size:9px;color:var(--tx3);}
+
+/* ANIMATE */
+.up{opacity:0;transform:translateY(16px);transition:opacity .55s ease,transform .55s ease;}
+.up.in{opacity:1;transform:translateY(0);}
+
+/* SOURCE TAG */
+.src{font-family:'Fira Code',monospace;font-size:9px;color:var(--tx3);border:1px solid var(--bdr);border-radius:3px;padding:1px 6px;display:inline-block;margin-top:4px;}
+
+.rule{height:1px;background:var(--bdr);margin:28px 0;}
+
+/* TASMAC VIZ */
+.tasmac-bar{margin:8px 0;}
+.tb-label{font-size:12px;color:var(--tx2);margin-bottom:3px;display:flex;justify-content:space-between;}
+.tb-track{height:18px;background:var(--bg4);border-radius:3px;overflow:hidden;}
+.tb-fill{height:100%;border-radius:3px;display:flex;align-items:center;padding-left:8px;font-family:'Fira Code',monospace;font-size:9.5px;color:var(--bg);font-weight:500;}
+</style>
+</head>
+<body>
+
+<div id="prog"></div>
+<button class="theme-toggle" id="tBtn">☀️</button>
+
+<div class="wrap">
+
+<!-- HERO -->
+<div class="hero up">
+  <span class="mono">Factual · Both-sided · Cited · 2024–25</span>
+  <h1>Tamil Nadu —<br><span class="hl-red">Real Flaws.</span><br><span class="hl-amber">Real Hidden Costs.</span></h1>
+  <p class="hero-desc">TN has genuine governance failures that deserve honest acknowledgment. And BJP alignment offers real but limited short-term gains — while carrying long-term structural costs that fall on people least able to absorb them. Both sides, fully accounted.</p>
+  <div class="notice-box">
+    <div class="dot"></div>
+    <div><strong>Framing correction:</strong> The argument isn't that alignment gives nothing. It gives real, visible short-term benefits. The argument is that <strong>given TN's existing baseline, the long-term structural costs outweigh those gains</strong> — and the costs fall on people who cannot opt out of them.</div>
+  </div>
+</div>
+
+<!-- ═══ SECTION 1: TN GOVERNANCE FLAWS ══════════════════════ -->
+<div class="section up">
+  <span class="sec-label">Section 01 · The Honest Audit</span>
+  <h2>Tamil Nadu's Real Governance Failures</h2>
+  <p class="sec-lead">Not propaganda. Documented failures across courts, CAG reports, NCRB data, and independent investigations. TN's metrics are good <em>despite</em> these failures — which makes them harder to ignore, not easier.</p>
+
+  <!-- CORRUPTION DOCS -->
+  <div class="callout rd">
+    <span class="cl">Documented Corruption — Court Records & CAG Reports</span>
+    DMK minister A. Raja convicted in 2G spectrum case (Delhi High Court, 2017 — later acquitted on appeal). DMK-era gutkha scam documented in Madras HC proceedings. AIADMK-era Jayalalithaa disproportionate assets case: convicted by Karnataka Special Court (2014), acquitted by Karnataka HC (2017). Sand mining — National Green Tribunal and Madras HC have issued multiple orders documenting illegal extraction. These are court-documented records, not political allegations.
+  </div>
+
+  <div class="fl-timeline">
+    <div class="fl-item">
+      <div class="fl-yr">2G Era</div>
+      <div><div class="fl-title">₹1.76 Lakh Crore — Spectrum Allocation Under DMK Minister A. Raja <span class="fl-tag" style="color:var(--red);border-color:var(--red);">Delhi HC + CAG Report No.19/2010</span></div><div class="fl-body">CAG Report No. 19 of 2010 documented the 2G spectrum allocation loss. A. Raja, then Union Telecom Minister from DMK, was convicted in 2017 — later acquitted on appeal in 2021. The case remains the largest documented corruption association with any Tamil party at the national level.</div></div>
+    </div>
+    <div class="fl-item">
+      <div class="fl-yr">2014</div>
+      <div><div class="fl-title">Jayalalithaa Convicted in Disproportionate Assets Case <span class="fl-tag" style="color:var(--amber);border-color:var(--amber);">Karnataka Special Court</span></div><div class="fl-body">Karnataka Special Court convicted Jayalalithaa in September 2014, sentencing her to 4 years. She was acquitted by Karnataka HC in 2017, citing benefit of doubt on some assets. The case ran for 18 years — documenting the complexity of political accountability even when convictions occur.</div></div>
+    </div>
+    <div class="fl-item">
+      <div class="fl-yr">Ongoing</div>
+      <div><div class="fl-title">Sand Mining — NGT and Madras HC Orders Against Illegal Extraction <span class="fl-tag" style="color:var(--red);border-color:var(--red);">NGT + Madras HC</span></div><div class="fl-body">National Green Tribunal and Madras High Court have documented illegal sand mining across TN rivers — Cauvery, Palar, Vaigai. Court orders note complicity of local officials. Sand mining is documented as linked to political patronage networks across both parties.</div></div>
+    </div>
+    <div class="fl-item">
+      <div class="fl-yr">Ongoing</div>
+      <div><div class="fl-title">Dynasty Politics — Both Parties <span class="fl-tag" style="color:var(--amber);border-color:var(--amber);">Party Structure</span></div><div class="fl-body">DMK: Stalin (son of Karunanidhi, CM), Kanimozhi (daughter, Rajya Sabha MP), Dayanidhi Maran (nephew, former minister). AIADMK post-Jayalalithaa operated on personal loyalty structures with limited internal democracy. Both parties have resisted the democratic reforms they campaigned on.</div></div>
+    </div>
+  </div>
+
+  <div class="rule"></div>
+
+  <!-- TASMAC -->
+  <div class="card rd" style="margin-bottom:16px;">
+    <span class="card-tag">Structural Issue · TASMAC</span>
+    <div class="card-title">₹44,000+ Crore Annual Revenue from State-Run Alcohol — TN's Fiscal Dependency on TASMAC</div>
+    <div class="card-body" style="margin-bottom:14px;">Tamil Nadu State Marketing Corporation (TASMAC) holds monopoly on retail alcohol sales. Revenue dependency creates structural disincentive to reduce alcohol access. NCRB data documents Tamil Nadu among states with high alcohol-related domestic violence cases. The government that claims to protect women earns its largest non-tax revenue from the substance most associated with domestic violence against women.</div>
+    <div class="tasmac-bar"><div class="tb-label"><span>TASMAC Revenue as % of State Own Tax Revenue</span><span style="color:var(--red)">~15%</span></div><div class="tb-track"><div class="tb-fill" style="width:15%;background:var(--red);">~15%</div></div></div>
+    <div class="tasmac-bar"><div class="tb-label"><span>Alcohol-related cases — TN rank (NCRB 2022)</span><span style="color:var(--amber)">Top 5 States</span></div><div class="tb-track"><div class="tb-fill" style="width:65%;background:var(--amber);">Top 5</div></div></div>
+    <span class="src">Source: TN Budget 2023-24 · NCRB Annual Report 2022 · CAG State Finance Reports</span>
+  </div>
+
+  <!-- GOVERNANCE SCORES -->
+  <div class="score-grid">
+    <div class="score-item">
+      <div class="score-label">HDI Rank</div>
+      <div class="score-bar-wrap"><div class="score-bar" style="width:85%;background:var(--green);"></div></div>
+      <div class="score-meta"><span style="color:var(--green)">6th nationally</span><span>Strong</span></div>
+      <span class="src">NITI Aayog SDG Index 2023</span>
+    </div>
+    <div class="score-item">
+      <div class="score-label">Fiscal Deficit / GSDP</div>
+      <div class="score-bar-wrap"><div class="score-bar" style="width:70%;background:var(--amber);"></div></div>
+      <div class="score-meta"><span style="color:var(--amber)">~3.5% (rising)</span><span>Watch</span></div>
+      <span class="src">CAG State Finances 2023</span>
+    </div>
+    <div class="score-item">
+      <div class="score-label">Debt / GSDP Ratio</div>
+      <div class="score-bar-wrap"><div class="score-bar" style="width:65%;background:var(--amber);"></div></div>
+      <div class="score-meta"><span style="color:var(--amber)">~28%</span><span>Elevated</span></div>
+      <span class="src">RBI State Finances 2023-24</span>
+    </div>
+    <div class="score-item">
+      <div class="score-label">Ease of Doing Business</div>
+      <div class="score-bar-wrap"><div class="score-bar" style="width:78%;background:var(--teal);"></div></div>
+      <div class="score-meta"><span style="color:var(--teal)">Top 5</span><span>Good</span></div>
+      <span class="src">DPIIT State Ranking 2022</span>
+    </div>
+    <div class="score-item">
+      <div class="score-label">Youth Unemployment Rate</div>
+      <div class="score-bar-wrap"><div class="score-bar" style="width:58%;background:var(--red);"></div></div>
+      <div class="score-meta"><span style="color:var(--red)">~19% (urban youth)</span><span>Concern</span></div>
+      <span class="src">CMIE State Data 2023</span>
+    </div>
+    <div class="score-item">
+      <div class="score-label">Caste Violence Cases</div>
+      <div class="score-bar-wrap"><div class="score-bar" style="width:55%;background:var(--red);"></div></div>
+      <div class="score-meta"><span style="color:var(--red)">Atrocities cases persist</span><span>Gap</span></div>
+      <span class="src">NCRB SC/ST Atrocities 2022</span>
+    </div>
+    <div class="score-item">
+      <div class="score-label">Literacy Rate</div>
+      <div class="score-bar-wrap"><div class="score-bar" style="width:82%;background:var(--green);"></div></div>
+      <div class="score-meta"><span style="color:var(--green)">82.9% — above national avg</span><span>Strong</span></div>
+      <span class="src">Census 2011 / NFHS-5 2021</span>
+    </div>
+    <div class="score-item">
+      <div class="score-label">Women in Workforce</div>
+      <div class="score-bar-wrap"><div class="score-bar" style="width:72%;background:var(--teal);"></div></div>
+      <div class="score-meta"><span style="color:var(--teal)">Above national avg</span><span>Good</span></div>
+      <span class="src">PLFS Annual Report 2022-23</span>
+    </div>
+  </div>
+
+  <div class="callout am" style="margin-top:16px;">
+    <span class="cl">The Honest Summary</span>
+    TN's good metrics exist alongside — not because of — its governance culture. The school Kamarajar built, the literacy infrastructure Periyar's movement seeded, and TN's industrial geography are the engines. The parties have maintained them while simultaneously running TASMAC dependency, sand mining networks, and dynasty structures that any honest assessment must acknowledge.
+  </div>
+
+  <!-- CHARTS ROW -->
+  <div class="ch2">
+    <div class="chart-wrap">
+      <div class="chart-label">TN Debt Trajectory</div>
+      <div class="chart-title">State Debt as % of GSDP — 2015 to 2024</div>
+      <div class="chart-sub">Rising debt-GSDP ratio despite strong revenue base. Source: RBI State Finances Report 2023-24.</div>
+      <canvas id="cDebt" height="210"></canvas>
+    </div>
+    <div class="chart-wrap">
+      <div class="chart-label">Revenue Composition</div>
+      <div class="chart-title">TN State Own Revenue — Key Sources 2023-24</div>
+      <div class="chart-sub">TASMAC and commercial taxes dominate. Source: TN Budget 2024-25.</div>
+      <canvas id="cRevenue" height="210"></canvas>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SECTION 2: WHAT ALIGNMENT GIVES ════════════════════ -->
+<div class="section up">
+  <span class="sec-label">Section 02 · The Visible Benefits</span>
+  <h2>What BJP Alignment Actually Offers TN — Honestly</h2>
+  <p class="sec-lead">The short-term benefits are real. Not dismissing them — accounting for them. This is what the "catapult growth" argument is looking at.</p>
+
+  <div class="ch2">
+    <div class="chart-wrap">
+      <div class="chart-label">Railway Investment Gap</div>
+      <div class="chart-title">Per-Capita Railway Spend — BJP vs Non-BJP States 2014-24</div>
+      <div class="chart-sub">TN receives less than its economic weight. Alignment could change this. Source: CAG Railway Reports + IndiaSpend analysis.</div>
+      <canvas id="cRailway" height="220"></canvas>
+    </div>
+    <div class="chart-wrap">
+      <div class="chart-label">Fiscal Devolution</div>
+      <div class="chart-title">Tax Contribution vs Devolution Received — Major States</div>
+      <div class="chart-sub">TN contributes ~10.2%, receives ~4.1%. Source: 15th Finance Commission Report.</div>
+      <canvas id="cDevolution" height="220"></canvas>
+    </div>
+  </div>
+
+  <div class="cards3" style="margin-top:16px;">
+    <div class="card gr">
+      <span class="card-tag">Benefit · Infrastructure</span>
+      <div class="card-title">Faster Railway + Highway Allocation</div>
+      <div class="card-body">NHAI and Railway Ministry allocations visibly correlate with political alignment. 10-year data shows BJP states get higher per-capita rail spend. TN has genuine freight corridor gaps — Tiruppur-Chennai-Tuticorin connectivity is below what TN's textile export volume justifies.</div>
+      <div style="margin-top:8px;"><span class="pill hi">REAL BENEFIT</span></div>
+    </div>
+    <div class="card gr">
+      <span class="card-tag">Benefit · Investment</span>
+      <div class="card-title">PLI Scheme Clearance Speed</div>
+      <div class="card-body">DPIIT single-window facilitation and PLI scheme prioritisation move faster for politically aligned states. The Vedanta-Foxconn semiconductor case (shifted Maharashtra→Gujarat after political change) shows investment geography follows alignment. TN could capture more manufacturing investment.</div>
+      <div style="margin-top:8px;"><span class="pill hi">REAL BENEFIT</span></div>
+    </div>
+    <div class="card gr">
+      <span class="card-tag">Benefit · Schemes</span>
+      <div class="card-title">CSS Tranche Release Speed</div>
+      <div class="card-body">Centrally Sponsored Scheme fund releases move faster without political friction. Karnataka and Bengal documented delays after falling out with Centre. TN could avoid this friction cost — worth real money in cash flow for state programmes.</div>
+      <div style="margin-top:8px;"><span class="pill med">MODERATE BENEFIT</span></div>
+    </div>
+  </div>
+
+  <div class="callout tl" style="margin-top:4px;">
+    <span class="cl">What the benefit column actually shows</span>
+    The benefits are real but narrow: faster clearances, better infrastructure allocation, smoother scheme releases. These are genuine gains — primarily for established industry, logistics, and manufacturing sectors. They are concentrated among people already integrated into the national economy. Now build the cost column.
+  </div>
+</div>
+
+<!-- ═══ SECTION 3: HIDDEN COSTS ════════════════════════════ -->
+<div class="section up">
+  <span class="sec-label">Section 03 · The Hidden Costs — Expand Each</span>
+  <h2>What Alignment Actually Costs — Long-Term and Structural</h2>
+  <p class="sec-lead">These costs don't appear in any infrastructure headline. They compound over 15–30 years. Each one is documented — click to expand the evidence.</p>
+
+  <div id="hcList">
+
+    <div class="hc-row" id="hc1">
+      <div class="hc-head" onclick="toggleHC('hc1')">
+        <div class="hc-icon">🗳️</div>
+        <div class="hc-title-wrap">
+          <div class="hc-title">Delimitation 2026 — Permanent Electoral Punishment for Good Governance</div>
+          <div class="hc-sub">Once done, cannot be undone for a generation</div>
+        </div>
+        <span class="hc-arrow">▼</span>
+      </div>
+      <div class="hc-body">
+        <span class="hc-impact">Impact: Permanent · Timeline: 2026 · Reversible: No</span>
+        <div class="hc-detail">The 2026 delimitation exercise will redraw Lok Sabha constituency boundaries based on 2011 census population. Tamil Nadu achieved replacement fertility in the 1990s — through successful public health policy. UP and Bihar have much larger populations because they were slower to achieve demographic transition. When seats are redrawn, TN will lose parliamentary seats relative to northern states.<br><br>An aligned TN cannot loudly oppose delimitation without embarrassing its own coalition partner. The political leverage to push back disappears with alignment. TN did everything right on population policy — and will be structurally penalised for it with no political recourse if aligned.</div>
+        <div class="hc-evidence"><strong>Evidence:</strong> Scroll in India — Delimitation Southern States Seats Analysis · EPW Vol.58 No.12 (2023) on Delimitation and Southern Representation · The Hindu, Delimitation Commission 2026 coverage. The 15th Finance Commission's own formula — using 2011 population — already demonstrates how population weighting disadvantages TN. Delimitation does the same thing to electoral weight.</div>
+      </div>
+    </div>
+
+    <div class="hc-row" id="hc2">
+      <div class="hc-head" onclick="toggleHC('hc2')">
+        <div class="hc-icon">📚</div>
+        <div class="hc-title-wrap">
+          <div class="hc-title">NEP Three-Language Formula — Structural Disadvantage for Tamil-Medium Students Over 15 Years</div>
+          <div class="hc-sub">Compounds through examination → employment pipeline</div>
+        </div>
+        <span class="hc-arrow">▼</span>
+      </div>
+      <div class="hc-body">
+        <span class="hc-impact">Impact: Very High · Timeline: 15–20 Years · Reversible: Difficult</span>
+        <div class="hc-detail">The National Education Policy 2020's three-language formula structurally advantages Hindi speakers in national competitive examinations and central government employment. This is not a sentiment concern — it is a pipeline concern.<br><br>Three generations of Tamil people built economic mobility through Tamil-medium education. First-generation learners from rural TN — whose parents had no English, no Hindi — accessed formal economy through Tamil. The NEP formula creates structural advantage for Hindi-medium students in UPSC, SSC, central PSU examinations. That is a measurable, compounding economic disadvantage for the segment of TN's population that is still climbing — not already arrived.<br><br>An aligned TN loses the political leverage to resist NEP implementation that TN currently has as an opposition state.</div>
+        <div class="hc-evidence"><strong>Evidence:</strong> TN Government NEET Committee Report (2021) — documents Tamil-medium student underperformance in national examinations · EPW Vol.56 No.28 — NEP Three Language Formula Impact on Southern States · National Curriculum Framework 2023 — documents Hindi-medium advantages built into assessment design.</div>
+      </div>
+    </div>
+
+    <div class="hc-row" id="hc3">
+      <div class="hc-head" onclick="toggleHC('hc3')">
+        <div class="hc-icon">💰</div>
+        <div class="hc-title-wrap">
+          <div class="hc-title">Fiscal Advocacy Lost — The Cess Problem, Finance Commission Formula, Devolution Gap</div>
+          <div class="hc-sub">TN contributes ₹1, gets back ₹0.29 — and alignment makes fighting this impossible</div>
+        </div>
+        <span class="hc-arrow">▼</span>
+      </div>
+      <div class="hc-body">
+        <span class="hc-impact">Impact: High · Annual Compounding · Reversible: Very Difficult</span>
+        <div class="hc-detail">Three documented fiscal mechanisms drain TN's contribution annually:<br><br><strong>Cess growth:</strong> Cesses (not shared with states) have grown from ~10% to 20%+ of gross central tax revenue since 2014 (CAG documented). States get 41% of divisible pool but 0% of cesses. TN as a high-tax-generating state loses disproportionately.<br><br><strong>Finance Commission formula:</strong> 15th FC used 2011 census population, penalising states that controlled birth rates. TN's share fell. The same demographic achievement that hurts TN in delimitation hurts it in fiscal devolution.<br><br><strong>BE vs RE gap:</strong> Centre systematically budgets higher devolution in Budget Estimates, then cuts in Revised Estimates mid-year. States plan spending around BE. Gap has widened post-2016 (NIPFP WP 23/394).<br><br>An aligned TN cannot aggressively push for formula changes that reduce funds available for states that form BJP's electoral base.</div>
+        <div class="hc-evidence"><strong>Evidence:</strong> CAG Consolidated Accounts 2022-23 (cess growth) · 15th Finance Commission Final Report (fincomindia.nic.in) · NIPFP Working Paper 23/394 (2023) on state fiscal autonomy · RBI State Finances Report 2023-24.</div>
+      </div>
+    </div>
+
+    <div class="hc-row" id="hc4">
+      <div class="hc-head" onclick="toggleHC('hc4')">
+        <div class="hc-icon">⚖️</div>
+        <div class="hc-title-wrap">
+          <div class="hc-title">Governor's Office — From Accountability Mechanism to Party Tool</div>
+          <div class="hc-sub">Currently a friction point that creates headlines. Alignment converts it into a surveillance instrument</div>
+        </div>
+        <span class="hc-arrow">▼</span>
+      </div>
+      <div class="hc-body">
+        <span class="hc-impact">Impact: Institutional · Immediate · Reversible: Depends on future alignment</span>
+        <div class="hc-detail">Right now, central friction with TN through the Governor's office is a documented political cost for BJP — RN Ravi's conflicts created national headlines about central overreach, generated Supreme Court intervention, and produced accountability. This friction protects TN in a perverse way: the Centre's tools are visible, creating political cost for using them.<br><br>Under alignment, the Governor's office ceases to be a friction point — and becomes a facilitator for Centre-directed policy implementation in TN. The accountability mechanism disappears. Bills that TN's elected government opposes can be fast-tracked. Local body appointments can be influenced. The constitutional tool that was creating headlines against the Centre becomes a quiet instrument for it.<br><br>This is the tool-swap that nobody discusses: alignment doesn't remove the Governor's political function — it redirects it.</div>
+        <div class="hc-evidence"><strong>Evidence:</strong> SC — State of Tamil Nadu v. Governor of Tamil Nadu (2023) — directed timely assent to bills · A.G. Noorani, The RSS and the BJP (LeftWord 2000) — on Governor tool usage · PRS India — Governor Constitutional Role Analysis.</div>
+      </div>
+    </div>
+
+    <div class="hc-row" id="hc5">
+      <div class="hc-head" onclick="toggleHC('hc5')">
+        <div class="hc-icon">🏛️</div>
+        <div class="hc-title-wrap">
+          <div class="hc-title">Temple Politics — HR&CE Pressure and What "Temple Autonomy" Actually Means</div>
+          <div class="hc-sub">A governance argument with a very specific beneficiary</div>
+        </div>
+        <span class="hc-arrow">▼</span>
+      </div>
+      <div class="hc-body">
+        <span class="hc-impact">Impact: Medium · Cultural + Financial · Long-term</span>
+        <div class="hc-detail">BJP's argument in TN around HR&CE (Hindu Religious and Charitable Endowments) — that temples should be freed from government control — has genuine resonance with practising Tamil Hindus who feel government management is inefficient.<br><br>What the "temple autonomy" argument doesn't specify: autonomy for whom? VHP and affiliated trusts are the primary vehicle through which BJP-RSS ecosystem would take over temple management. TN temples control enormous land assets and community organisation networks. Control of temple trusts converts into community mobilisation capacity for RSS.<br><br>This is documented in how the same argument has played out in Andhra Pradesh — where temple endowment boards shifted toward RSS-affiliated trust management after political alignment. The argument sounds like a good governance claim. The outcome is organisational capture of a community institution.</div>
+        <div class="hc-evidence"><strong>Evidence:</strong> The Wire — HR&CE and BJP Temple Politics (2021) · Frontline — Temple Wealth and Political Control (2022) · Andhra Pradesh Temple Board Changes — documented in Indian Express coverage 2020-23.</div>
+      </div>
+    </div>
+
+    <div class="hc-row" id="hc6">
+      <div class="hc-head" onclick="toggleHC('hc6')">
+        <div class="hc-icon">🧬</div>
+        <div class="hc-title-wrap">
+          <div class="hc-title">Civilisational Identity Shift — The Generational Pipeline Cost</div>
+          <div class="hc-sub">NCERT revisions + Vidya Bharati schools + cultural narrative — compounds over 20 years</div>
+        </div>
+        <span class="hc-arrow">▼</span>
+      </div>
+      <div class="hc-body">
+        <span class="hc-impact">Impact: Generational · Timeline: 20–30 Years · Reversible: Very Difficult</span>
+        <div class="hc-detail">This is the hardest cost to quantify but the most structurally significant. The RSS project — through Vidya Bharati's 12,000+ schools, NCERT curriculum revisions, and digital content ecosystems in Tamil — targets the next generation's cultural certainty about Tamil identity's distinctness and primacy.<br><br>NCERT 2023 textbook changes documented by The Hindu and EPW: Mughal history reduced, references to 2002 riots deleted, Vedic content increased. These changes are implemented in central board schools. Aligned TN governments face pressure to adopt central curriculum frameworks.<br><br>The Dravidian identity is the political infrastructure of TN's autonomy. A generation educated on a slightly different narrative about Tamil's place in Indian civilisation produces a different political class 25 years later. This is the slowest and least reversible cost — and the one BJP's strategy depends on most.</div>
+        <div class="hc-evidence"><strong>Evidence:</strong> The Hindu — NCERT Textbook Changes April 2023 series · EPW Vol.58 No.24 (2023) — NCERT Deletions Analysis · Narasimhan et al., Science Vol.365 (2019) — genomic evidence on South Asian population history (directly relevant to the civilisational origin claim). · Christophe Jaffrelot, Modi's India (Princeton UP 2021) Ch.7 — on institutional capture.</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ SECTION 4: WHO PAYS ═════════════════════════════════ -->
+<div class="section up">
+  <span class="sec-label">Section 04 · The Distribution Problem</span>
+  <h2>Who Gets the Benefits vs Who Pays the Costs</h2>
+  <p class="sec-lead">The most important question the "catapult growth" argument never answers: growth for whom, and at whose expense?</p>
+
+  <div class="who-pays">
+    <div class="wp-col wins">
+      <span class="wp-head">✓ Who gains from alignment</span>
+      <div class="wp-item"><strong>Established manufacturers and exporters</strong>Faster PLI clearances, better logistics infrastructure, smoother regulatory environment.</div>
+      <div class="wp-item"><strong>Real estate and logistics sector</strong>Highway and port development benefits land along corridors — value capture goes to existing property holders.</div>
+      <div class="wp-item"><strong>English-medium educated urban professionals</strong>Already integrated into national economy. Less affected by language pipeline changes. More able to benefit from infrastructure investment.</div>
+      <div class="wp-item"><strong>Large industrial groups</strong>Investment steering through DPIIT, PLI approvals, and central facilitation primarily benefits at scale — not the MSME sector that is TN's backbone.</div>
+    </div>
+    <div class="wp-col loses">
+      <span class="wp-head">✗ Who pays the structural cost</span>
+      <div class="wp-item"><strong>Tamil-medium rural first-generation learners</strong>Face structurally harder path to national examinations as NEP three-language formula advantages are embedded. The ladder they are climbing gets steeper.</div>
+      <div class="wp-item"><strong>Next-generation fiscal recipients</strong>As fiscal advocacy weakens, funds for welfare schemes — school meals, healthcare, women's welfare — face greater central conditionality and potential cuts.</div>
+      <div class="wp-item"><strong>Future Tamil-speaking workforce</strong>As Tamil's functional economic utility is reduced through examination design, language becomes less of a mobility vehicle and more of a cultural marker — reducing its economic protective function.</div>
+      <div class="wp-item"><strong>The still-climbing, not the already-arrived</strong>People who depend on the Tamil-medium pipeline, welfare infrastructure, and state autonomy protection are not the people making the "catapult growth" argument. They are the people who will live with its consequences.</div>
+    </div>
+  </div>
+
+  <div class="callout am">
+    <span class="cl">The Core Asymmetry</span>
+    The people who most loudly make the "let's align with BJP for growth" argument are people for whom the hidden costs are largely abstract. They are already English-fluent, already economically mobile, already unaffected by the Tamil-medium examination pipeline. The people who pay the structural costs are mostly not in the room where that argument is being made.
+  </div>
+</div>
+
+<!-- ═══ SECTION 5: NET CALCULATION ═════════════════════════ -->
+<div class="section up">
+  <span class="sec-label">Section 05 · The Net Calculation</span>
+  <h2>Benefit-Cost Matrix — Building Both Columns</h2>
+  <p class="sec-lead">The "catapult growth" argument builds the first column and stops. Here is the full table.</p>
+
+  <div style="overflow-x:auto;border:1.5px solid var(--bdr);border-radius:8px;">
+    <table class="bct">
+      <thead>
+        <tr>
+          <th>Area</th>
+          <th>Visible Benefit</th>
+          <th>Benefit Magnitude</th>
+          <th>Hidden Cost</th>
+          <th>Cost Timeline</th>
+          <th>Who Bears It</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Railway / NH Infrastructure</td>
+          <td>Faster allocation, freight corridor upgrades</td>
+          <td><span class="pill med">MEDIUM</span></td>
+          <td>Largely available anyway via CBIC (World Bank funded) — political leverage not required</td>
+          <td>None directly</td>
+          <td>Industry (positive)</td>
+        </tr>
+        <tr>
+          <td>PLI + Manufacturing Investment</td>
+          <td>Faster clearances, investment steering to TN</td>
+          <td><span class="pill hi">REAL</span></td>
+          <td>Already flowing via Apple/Foxconn without alignment. Benefit may be marginal given TN's existing industrial geography</td>
+          <td>Low cost but limited additionality</td>
+          <td>Large manufacturers</td>
+        </tr>
+        <tr>
+          <td>CSS Fund Releases</td>
+          <td>Faster tranches, less conditionality friction</td>
+          <td><span class="pill med">MEDIUM</span></td>
+          <td>Alignment removes incentive for Centre to reform conditionality — permanently locking in CSS design as Centre's leverage tool</td>
+          <td>Institutional — long-term</td>
+          <td>Welfare recipients</td>
+        </tr>
+        <tr>
+          <td>Language Policy (NEP)</td>
+          <td>No direct benefit from alignment on language</td>
+          <td><span class="pill lo">NONE</span></td>
+          <td>Loss of political leverage to resist three-language formula. Tamil-medium students face structurally harder path nationally</td>
+          <td>15–20 years compounding</td>
+          <td>Rural first-gen learners</td>
+        </tr>
+        <tr>
+          <td>Delimitation 2026</td>
+          <td>No benefit — delimitation happens regardless</td>
+          <td><span class="pill lo">NONE</span></td>
+          <td>TN loses ability to build southern coalition to challenge formula. Seat loss is permanent for a generation</td>
+          <td>Permanent from 2026</td>
+          <td>All TN voters</td>
+        </tr>
+        <tr>
+          <td>Fiscal Devolution Formula</td>
+          <td>Marginally faster releases</td>
+          <td><span class="pill lo">LOW</span></td>
+          <td>Cannot challenge cess growth or FC formula without opposing coalition partner. Annual compounding loss</td>
+          <td>Annual, compounding</td>
+          <td>State budget → all citizens</td>
+        </tr>
+        <tr>
+          <td>Cultural / Identity Pipeline</td>
+          <td>No direct benefit</td>
+          <td><span class="pill lo">NONE</span></td>
+          <td>NCERT, Vidya Bharati, digital narrative — 20-year erosion of Tamil identity as distinct political and economic category</td>
+          <td>20–30 years</td>
+          <td>Future generations</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="net-calc">
+    <div class="nc-head">⚖ The Net Verdict — Both Columns Fully Accounted</div>
+    <div class="nc-body">
+      <div class="nc-col a">
+        <div class="nc-col-head">What alignment gives</div>
+        <div class="nc-point"><span class="nc-arrow">→</span>Faster infrastructure allocation for sectors already doing well</div>
+        <div class="nc-point"><span class="nc-arrow">→</span>Smoother CSS tranche releases saving some cash-flow friction</div>
+        <div class="nc-point"><span class="nc-arrow">→</span>Possible marginal manufacturing investment advantage</div>
+        <div class="nc-point"><span class="nc-arrow">→</span>Political goodwill that lubricates bureaucratic processes</div>
+        <div class="nc-point"><span class="nc-arrow">→</span>Removal of some central institutional friction (Governor etc.)</div>
+      </div>
+      <div class="nc-col b">
+        <div class="nc-col-head">What alignment costs</div>
+        <div class="nc-point"><span class="nc-arrow">→</span>Permanent loss of delimitation resistance capacity from 2026</div>
+        <div class="nc-point"><span class="nc-arrow">→</span>NEP language formula advocacy disappears — 15-year compounding cost on Tamil-medium pipeline</div>
+        <div class="nc-point"><span class="nc-arrow">→</span>Fiscal formula challenge becomes politically impossible — annual loss</div>
+        <div class="nc-point"><span class="nc-arrow">→</span>Governor's office converts from accountability friction to party instrument</div>
+        <div class="nc-point"><span class="nc-arrow">→</span>Civilisational identity narrative shifts over a generation — hardest to reverse</div>
+      </div>
+    </div>
+    <div class="nc-verdict">
+      <strong>The honest arithmetic:</strong> Alignment's benefits are <em>visible, immediate, and concentrated</em> among those already economically mobile. Its costs are <em>diffuse, long-term, and borne by those still climbing</em>. This is not an argument that alignment gives nothing. It is an argument that for TN's specific baseline — already industrialised, already literate, already high HDI — <strong>what alignment protects is more valuable than what alignment adds.</strong> The short-term gains are real. The long-term structural costs are larger. And unlike highway projects, the structural costs cannot be reversed in the next election cycle.
+    </div>
+  </div>
+</div>
+
+<!-- SOURCE FOOTER -->
+<div class="section up" style="border-bottom:none;padding-bottom:20px;">
+  <span class="sec-label">Citations</span>
+  <div style="font-family:'Fira Code',monospace;font-size:10.5px;color:var(--tx3);line-height:1.9;">
+    15th Finance Commission Final Report · fincomindia.nic.in<br>
+    CAG — Report No.19/2010 (2G Spectrum) · cag.gov.in<br>
+    CAG — Consolidated Accounts of the Union 2022-23 (Cess growth) · cag.gov.in<br>
+    NIPFP Working Paper 23/394 (2023) — State Fiscal Autonomy · nipfp.org.in<br>
+    RBI — State Finances: A Study of Budgets 2023-24 · rbi.org.in<br>
+    NCRB — Annual Report 2022 (TASMAC data, SC/ST atrocities) · ncrb.gov.in<br>
+    NITI Aayog SDG India Index 2023 · sdgindiaindex.niti.gov.in<br>
+    TN Government — NEET Committee Report 2021 · tn.gov.in<br>
+    EPW Vol.58 No.24 (2023) — NCERT Textbook Deletions · epw.in<br>
+    The Hindu — NCERT Changes April 2023 series · thehindu.com<br>
+    Narasimhan et al., Science Vol.365 Issue 6457 (2019) — South Asian Genomics · doi.org/10.1126/science.aat7487<br>
+    Christophe Jaffrelot — Modi's India, Princeton UP (2021)<br>
+    Election Commission of India — State Finance Data · eci.gov.in<br>
+    CMIE — State Unemployment Data 2023 · cmie.com<br>
+    Madras HC + NGT — Sand Mining Orders (documented in Indian Express, The Hindu reporting 2019–2023)<br>
+    Karnataka Special Court — Jayalalithaa DA Case Judgment 2014 (Indian Kanoon)
+  </div>
+</div>
+
+</div>
+
+<script>
+// Theme
+const tBtn = document.getElementById('tBtn');
+let light = false;
+tBtn.addEventListener('click', () => {
+  light = !light;
+  document.documentElement.setAttribute('data-theme', light ? 'light' : 'dark');
+  tBtn.textContent = light ? '🌙' : '☀️';
+  rebuildCharts();
+});
+
+// Progress
+window.addEventListener('scroll', () => {
+  const d = document.documentElement;
+  document.getElementById('prog').style.width = (d.scrollTop / (d.scrollHeight - d.clientHeight) * 100) + '%';
+});
+
+// Reveal
+const obs = new IntersectionObserver(e => e.forEach(x => { if (x.isIntersecting) x.target.classList.add('in'); }), { threshold: 0.06 });
+document.querySelectorAll('.up').forEach(el => obs.observe(el));
+
+// Hidden cost accordion
+function toggleHC(id) {
+  const row = document.getElementById(id);
+  row.classList.toggle('open');
+}
+
+// Charts
+function gv(v) { return getComputedStyle(document.documentElement).getPropertyValue(v).trim(); }
+
+let charts = {};
+function rebuildCharts() {
+  Object.values(charts).forEach(c => c && c.destroy());
+  charts = {};
+  Chart.defaults.color = gv('--tx2');
+  Chart.defaults.borderColor = gv('--bdr');
+  Chart.defaults.font.family = "'Crimson Pro', Georgia, serif";
+  Chart.defaults.font.size = 11;
+  buildDebt();
+  buildRevenue();
+  buildRailway();
+  buildDevolution();
+}
+
+function buildDebt() {
+  const ctx = document.getElementById('cDebt');
+  if (!ctx) return;
+  charts.debt = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: ['2015','2016','2017','2018','2019','2020','2021','2022','2023','2024'],
+      datasets: [{
+        label: 'TN Debt/GSDP %',
+        data: [23.1, 23.8, 24.2, 24.8, 25.5, 26.8, 27.5, 27.9, 28.3, 28.8],
+        borderColor: gv('--amber'),
+        backgroundColor: gv('--amber') + '18',
+        fill: true, tension: .4, pointRadius: 3, pointBackgroundColor: gv('--amber')
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: { legend: { display: false } },
+      scales: {
+        x: { grid: { display: false } },
+        y: { grid: { color: gv('--bdr') + '66' }, title: { display: true, text: '% of GSDP' }, min: 20, max: 32 }
+      }
+    }
+  });
+}
+
+function buildRevenue() {
+  const ctx = document.getElementById('cRevenue');
+  if (!ctx) return;
+  charts.rev = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+      labels: ['Commercial Taxes (GST)', 'TASMAC Revenue', 'Stamps & Registration', 'Motor Vehicle Tax', 'Other'],
+      datasets: [{
+        data: [47, 15, 12, 9, 17],
+        backgroundColor: [gv('--blue') + 'cc', gv('--red') + 'cc', gv('--teal') + 'cc', gv('--amber') + 'cc', gv('--gray') + 'cc'],
+        borderColor: gv('--bg2'),
+        borderWidth: 2
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { position: 'bottom', labels: { boxWidth: 10, padding: 10, font: { size: 10 } } },
+        tooltip: { callbacks: { label: c => ` ${c.label}: ${c.raw}%` } }
+      }
+    }
+  });
+}
+
+function buildRailway() {
+  const ctx = document.getElementById('cRailway');
+  if (!ctx) return;
+  const bjp = new Set([0, 1, 2, 3, 4]);
+  const labels = ['UP', 'Gujarat', 'MP', 'Bihar', 'Rajasthan', 'Maharashtra', 'Karnataka', 'Tamil Nadu', 'Kerala'];
+  const vals = [4820, 5100, 4200, 3800, 4600, 3200, 2800, 2100, 1950];
+  charts.rail = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels,
+      datasets: [{
+        label: '₹ per capita',
+        data: vals,
+        backgroundColor: labels.map((_, i) => bjp.has(i) ? gv('--amber') + 'cc' : gv('--teal') + 'cc'),
+        borderColor: labels.map((_, i) => bjp.has(i) ? gv('--amber') : gv('--teal')),
+        borderWidth: 1
+      }]
+    },
+    options: {
+      indexAxis: 'y',
+      responsive: true,
+      plugins: {
+        legend: { display: false },
+        tooltip: { callbacks: { afterLabel: c => bjp.has(c.dataIndex) ? '🟡 BJP-aligned' : '🟢 Non-BJP' } }
+      },
+      scales: {
+        x: { grid: { color: gv('--bdr') + '66' }, title: { display: true, text: '₹ per capita (indicative, 2014-24)' } },
+        y: { grid: { display: false } }
+      }
+    }
+  });
+}
+
+function buildDevolution() {
+  const ctx = document.getElementById('cDevolution');
+  if (!ctx) return;
+  charts.dev = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['Tamil Nadu', 'Karnataka', 'Maharashtra', 'Kerala', 'UP', 'Bihar', 'MP'],
+      datasets: [
+        {
+          label: 'Contributes %',
+          data: [10.2, 8.1, 16.1, 4.2, 8.0, 2.8, 3.9],
+          backgroundColor: gv('--red') + '99', borderColor: gv('--red'), borderWidth: 1.5
+        },
+        {
+          label: 'Receives %',
+          data: [4.1, 3.7, 6.3, 1.9, 17.9, 10.1, 7.5],
+          backgroundColor: gv('--teal') + '99', borderColor: gv('--teal'), borderWidth: 1.5
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      plugins: { legend: { position: 'top', labels: { boxWidth: 10, padding: 10 } } },
+      scales: {
+        x: { grid: { display: false }, ticks: { maxRotation: 30, font: { size: 10 } } },
+        y: { grid: { color: gv('--bdr') + '66' }, title: { display: true, text: '% of national total' } }
+      }
+    }
+  });
+}
+
+window.addEventListener('load', () => {
+  Chart.defaults.color = gv('--tx2');
+  Chart.defaults.borderColor = gv('--bdr');
+  Chart.defaults.font.family = "'Crimson Pro', Georgia, serif";
+  Chart.defaults.font.size = 11;
+  buildDebt(); buildRevenue(); buildRailway(); buildDevolution();
+  // Animate score bars
+  setTimeout(() => {
+    document.querySelectorAll('.score-bar').forEach(bar => {
+      bar.style.width = bar.style.width;
+    });
+  }, 300);
+});
+</script>
+</body>
+</html>

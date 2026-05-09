@@ -16,8 +16,8 @@ export default {
           2: '#b8aa90',
         },
         muted: '#8a7d68',
-        accent: '#8b3a00',
-        gold: '#a07030',
+        accent: '#D4810A',
+        gold: '#B07830',
         teal: {
           DEFAULT: '#1a5848',
           soft: 'rgba(26,88,72,0.08)',
@@ -32,12 +32,12 @@ export default {
         },
       },
       fontFamily: {
-        display: ['"Playfair Display"', 'Georgia', 'serif'],
+        display: ['Inter', 'system-ui', 'sans-serif'],
         body: ['Literata', 'Georgia', 'serif'],
         mono: ['"Space Mono"', 'monospace'],
       },
       maxWidth: {
-        article: '820px',
+        article: '1040px',
       },
       borderRadius: {
         DEFAULT: '2px',

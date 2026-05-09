@@ -50,7 +50,7 @@ export function NotificationBell() {
       <button
         onClick={handleOpen}
         aria-label={`Notifications${unread > 0 ? `, ${unread} unread` : ''}`}
-        className="font-mono text-[10px] text-muted hover:text-ink relative"
+        className="font-mono text-[10px] text-white/40 hover:text-white relative transition-colors"
       >
         ◎
         {unread > 0 && (
