@@ -5,31 +5,23 @@ export default {
   theme: {
     extend: {
       colors: {
-        ink: '#1a1208',
+        // All palette colors reference CSS vars so Tailwind classes
+        // automatically adapt to light / dark mode token swaps.
+        ink:   'var(--ink)',
         paper: {
-          DEFAULT: '#faf6ee',
-          2: '#f3ede0',
-          3: '#ebe3d0',
+          DEFAULT: 'var(--paper)',
+          2:       'var(--paper2)',
+          3:       'var(--paper3)',
         },
         dust: {
-          DEFAULT: '#d4c9b0',
-          2: '#b8aa90',
+          DEFAULT: 'var(--dust)',
+          2:       'var(--dust2)',
         },
-        muted: '#8a7d68',
-        accent: '#D4810A',
-        gold: '#B07830',
-        teal: {
-          DEFAULT: '#1a5848',
-          soft: 'rgba(26,88,72,0.08)',
-        },
-        danger: {
-          DEFAULT: '#8b2020',
-          soft: 'rgba(139,32,32,0.08)',
-        },
-        ink_blue: {
-          DEFAULT: '#1a3868',
-          soft: 'rgba(26,56,104,0.08)',
-        },
+        muted:  'var(--muted)',
+        accent: 'var(--accent)',
+        gold:   'var(--gold)',
+        teal:   'var(--teal)',
+        danger: 'var(--red)',
       },
       fontFamily: {
         display: ['Inter', 'system-ui', 'sans-serif'],

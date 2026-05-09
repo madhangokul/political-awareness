@@ -4,10 +4,12 @@ import { useAuth } from '../features/auth/AuthProvider'
 import { LoginModal } from '../features/auth/LoginModal'
 import { NotificationBell } from '../features/notifications/NotificationBell'
 import { supabase } from '../lib/supabase'
+import { useTheme } from '../lib/useTheme'
 
 export function Header() {
   const { user, profile } = useAuth()
   const [showLogin, setShowLogin] = useState(false)
+  const { isDark, toggle } = useTheme()
 
   async function handleSignOut() {
     await supabase.auth.signOut()
@@ -15,7 +17,10 @@ export function Header() {
 
   return (
     <>
-      <header className="border-b border-white/10 bg-[#111111] sticky top-0 z-40">
+      <header
+        className="sticky top-0 z-40"
+        style={{ background: 'var(--header-bg)', borderBottom: '1px solid var(--header-border)' }}
+      >
         <div className="max-w-article mx-auto px-6 flex items-center justify-between h-12">
           {/* Site name */}
           <Link
@@ -44,6 +49,16 @@ export function Header() {
             )}
 
             <NotificationBell />
+
+            {/* Theme toggle */}
+            <button
+              onClick={toggle}
+              title={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+              aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+              className="font-mono text-[13px] text-white/35 hover:text-white/80 transition-colors leading-none select-none"
+            >
+              {isDark ? '○' : '●'}
+            </button>
 
             {user ? (
               <div className="flex items-center gap-3">

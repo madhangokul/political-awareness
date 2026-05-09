@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Freebies · What Was the Thought Behind It?</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='5' fill='%23faf6ee'/><path d='M16 10c-8 0-12 6-12 6s4 6 12 6 12-6 12-6-4-6-12-6z' fill='none' stroke='%231a1208' stroke-width='1.5'/><circle cx='16' cy='16' r='4' fill='%238b3a00'/><circle cx='17.5' cy='14.5' r='1.5' fill='%23faf6ee' opacity='.7'/></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Literata:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:     #1a1208;
+  --paper:   #faf6ee;
+  --paper2:  #f3ede0;
+  --paper3:  #ebe3d0;
+  --dust:    #d4c9b0;
+  --dust2:   #b8aa90;
+  --muted:   #8a7d68;
+  --accent:  #8b3a00;
+  --gold:    #a07030;
+  --teal:    #1a5848;
+  --green:   #2a6020;
+  --navy:    #1a2848;
+  --rose:    #7a2030;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Literata', Georgia, serif;
+  font-size: 16px;
+  line-height: 1.75;
+  min-height: 100vh;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+}
+
+.wrap {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 0 24px 120px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── BACK NAV ── */
+.topnav {
+  padding: 24px 0 0;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.back-link {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: none;
+  border-bottom: 1px solid var(--dust);
+  padding-bottom: 1px;
+  transition: color .15s, border-color .15s;
+}
+
+.back-link:hover { color: var(--accent); border-color: var(--accent); }
+
+/* ── MASTHEAD ── */
+.masthead {
+  padding: 52px 0 36px;
+  border-bottom: 2px solid var(--ink);
+  text-align: center;
+}
+
+.masthead-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 18px;
+  display: block;
+}
+
+.masthead h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(34px, 6vw, 58px);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -.02em;
+  margin-bottom: 16px;
+}
+
+.masthead h1 em { font-style: italic; color: var(--accent); }
+
+.masthead-sub {
+  font-size: 15px;
+  color: var(--muted);
+  font-style: italic;
+  font-weight: 300;
+  max-width: 520px;
+  margin: 0 auto 24px;
+  line-height: 1.7;
+}
+
+.intent-box {
+  background: var(--paper2);
+  border: 1.5px solid var(--dust);
+  border-radius: 4px;
+  padding: 14px 18px;
+  font-size: 13.5px;
+  color: var(--muted);
+  line-height: 1.8;
+  font-style: italic;
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+/* ── RULE ── */
+.rule { border: none; border-top: 1px solid var(--dust); margin: 0; }
+.rule-heavy { border: none; border-top: 2px solid var(--ink); margin: 0; }
+
+/* ── SECTION HEADER ── */
+.party-block {
+  margin-top: 64px;
+}
+
+.party-header {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  margin-bottom: 6px;
+}
+
+.party-name {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(22px, 3.5vw, 30px);
+  font-weight: 900;
+  letter-spacing: -.02em;
+  line-height: 1;
+}
+
+.party-span {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.party-desc {
+  font-size: 14px;
+  color: var(--muted);
+  font-weight: 300;
+  font-style: italic;
+  margin-bottom: 28px;
+  line-height: 1.7;
+  border-left: 2px solid var(--dust);
+  padding-left: 14px;
+}
+
+/* ── FREEBIE CARD ── */
+.freebie-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.freebie {
+  background: var(--paper2);
+  border: 1.5px solid var(--dust);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.freebie-head {
+  padding: 14px 18px 12px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  border-bottom: 1px solid var(--dust);
+  cursor: pointer;
+  user-select: none;
+}
+
+.freebie-head:hover { background: var(--paper3); }
+
+.freebie-icon {
+  font-size: 18px;
+  line-height: 1;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.freebie-title-wrap { flex: 1; }
+
+.freebie-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.25;
+  margin-bottom: 2px;
+}
+
+.freebie-tagline {
+  font-size: 12px;
+  color: var(--muted);
+  font-style: italic;
+  font-weight: 300;
+}
+
+.freebie-toggle {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  color: var(--dust2);
+  flex-shrink: 0;
+  margin-top: 3px;
+  transition: transform .2s;
+}
+
+.freebie.open .freebie-toggle { transform: rotate(90deg); }
+
+.freebie-body {
+  display: none;
+  padding: 16px 18px 18px;
+}
+
+.freebie.open .freebie-body { display: block; }
+
+.coin {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+@media (max-width: 540px) { .coin { grid-template-columns: 1fr; } }
+
+.coin-side {
+  border-radius: 3px;
+  padding: 12px 14px;
+  font-size: 13px;
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+.coin-intent {
+  background: rgba(42,96,32,.06);
+  border: 1px solid rgba(42,96,32,.2);
+}
+
+.coin-tension {
+  background: rgba(139,58,0,.06);
+  border: 1px solid rgba(139,58,0,.2);
+}
+
+.coin-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 8px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  margin-bottom: 7px;
+  display: block;
+  font-weight: 700;
+}
+
+.coin-intent .coin-label { color: var(--green); }
+.coin-tension .coin-label { color: var(--accent); }
+
+/* ── ANECDOTE ── */
+.anecdote {
+  background: var(--paper3);
+  border: 1.5px solid var(--dust2);
+  border-left: 3px solid var(--gold);
+  border-radius: 2px 4px 4px 2px;
+  padding: 16px 18px;
+  margin-top: 12px;
+  font-size: 13.5px;
+  line-height: 1.8;
+  color: var(--ink);
+  font-style: italic;
+}
+
+.anecdote-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 8px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-style: normal;
+  display: block;
+  margin-bottom: 8px;
+}
+
+/* placeholder */
+.anecdote-placeholder {
+  opacity: .5;
+  border-style: dashed;
+  border-left-style: dashed;
+}
+
+/* ── QUESTION BOX ── */
+.reflect {
+  margin-top: 14px;
+  font-size: 13px;
+  color: var(--muted);
+  font-style: italic;
+  line-height: 1.75;
+}
+
+.reflect::before {
+  content: "Something to sit with: ";
+  font-style: normal;
+  font-family: 'Space Mono', monospace;
+  font-size: 8px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--dust2);
+  display: block;
+  margin-bottom: 4px;
+}
+
+/* ── CLOSING ── */
+.closing {
+  margin-top: 72px;
+  padding-top: 40px;
+  border-top: 2px solid var(--ink);
+  text-align: center;
+  max-width: 560px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.closing h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(20px, 3vw, 28px);
+  font-weight: 700;
+  margin-bottom: 14px;
+  letter-spacing: -.01em;
+}
+
+.closing p {
+  font-size: 14.5px;
+  color: var(--muted);
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.8;
+}
+
+/* ── FOOTER ── */
+.footer {
+  margin-top: 64px;
+  padding-top: 28px;
+  border-top: 1px solid var(--dust);
+  text-align: center;
+}
+
+.footer p {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--dust2);
+  line-height: 2;
+}
+
+/* ── FADE ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-up { animation: fadeUp .5s ease both; }
+
+/* PARTY COLOR ACCENTS */
+.dmk-bar   { height: 3px; background: linear-gradient(90deg, #c41e3a, #1a1208); }
+.aiadmk-bar{ height: 3px; background: linear-gradient(90deg, #006400, #e5b800); }
+.bjp-bar   { height: 3px; background: linear-gradient(90deg, #f97316, #1a2848); }
+.inc-bar   { height: 3px; background: linear-gradient(90deg, #19567a, #138808); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <nav class="topnav fade-up">
+    <a class="back-link" href="index.html">← Home</a>
+  </nav>
+
+  <!-- ══ MASTHEAD ══ -->
+  <div class="masthead fade-up">
+    <span class="masthead-label">Welfare · Ideology · Both Sides · Read and Decide</span>
+    <h1>The <em>thought</em> behind<br>the freebie.</h1>
+    <p class="masthead-sub">Every welfare scheme has a reason it was designed — and a reason it is contested. This page shows both. No verdict. You bring that.</p>
+    <div class="intent-box">
+      The word "freebie" is political in itself — one side calls it dignity, another calls it a bribe. This page doesn't settle that. It shows what each scheme was trying to solve, and where honest people disagree about whether it did.
+    </div>
+  </div>
+
+  <hr class="rule-heavy" style="margin-top:0;">
+
+  <!-- ══════════════════════════════════════
+       DMK
+  ══════════════════════════════════════ -->
+  <div class="party-block fade-up">
+    <div class="dmk-bar" style="border-radius:2px;margin-bottom:20px;"></div>
+    <div class="party-header">
+      <span class="party-name">DMK</span>
+      <span class="party-span">Tamil Nadu · 1967–present (periodic)</span>
+    </div>
+    <p class="party-desc">DMK's welfare identity is rooted in Periyarist social reform — schemes often targeted caste-based economic exclusion, women's autonomy, and universal baseline access. The philosophy: the state must compensate for structural disadvantage.</p>
+
+    <div class="freebie-grid">
+
+      <div class="freebie" onclick="toggle(this)">
+        <div class="freebie-head">
+          <span class="freebie-icon">🚌</span>
+          <div class="freebie-title-wrap">
+            <div class="freebie-name">Free Bus Travel for Women</div>
+            <div class="freebie-tagline">All government buses, statewide — 2021</div>
+          </div>
+          <span class="freebie-toggle">▶</span>
+        </div>
+        <div class="freebie-body">
+          <div class="coin">
+            <div class="coin-side coin-intent">
+              <span class="coin-label">The intent</span>
+              Women in TN, especially in semi-urban and rural areas, were self-rationing travel — skipping work, hospitals, markets — because the Rs 10–30 daily commute added up. Removing the fare raised effective income without a cash transfer, and increased daily mobility documented across districts.
+            </div>
+            <div class="coin-side coin-tension">
+              <span class="coin-label">The tension</span>
+              TNSTC (the bus corporation) absorbs ~₹1,800 crore/year in forgone revenue. Buses are overcrowded in some corridors and under-serviced in others. Critics ask: is the money better spent fixing frequency and safety rather than making an already strained service free?
+            </div>
+          </div>
+          <p class="reflect">If you were a woman who commuted daily for work — how much did the fare matter? How much did the crowd and reliability matter?</p>
+        </div>
+      </div>
+
+      <div class="freebie" onclick="toggle(this)">
+        <div class="freebie-head">
+          <span class="freebie-icon">⚡</span>
+          <div class="freebie-title-wrap">
+            <div class="freebie-name">Free Electricity — 100 Units / Month</div>
+            <div class="freebie-tagline">Households consuming under 100 units — 2021</div>
+          </div>
+          <span class="freebie-toggle">▶</span>
+        </div>
+        <div class="freebie-body">
+          <div class="coin">
+            <div class="coin-side coin-intent">
+              <span class="coin-label">The intent</span>
+              For the lowest-consumption households — often the poorest — electricity is already basic (lighting, a fan, charging a phone). Making that baseline free removes one more variable cost from the tightest budgets. The 100-unit ceiling targets it away from middle-class households.
+            </div>
+            <div class="coin-side coin-tension">
+              <span class="coin-label">The tension</span>
+              TANGEDCO (state electricity board) carries massive debt — over ₹1.5 lakh crore as of 2024. The subsidy adds to the burden, making it harder to invest in grid modernisation and renewable capacity. Some economists argue the money would do more if redirected to fixing energy infrastructure that benefits everyone.
+            </div>
+          </div>
+          <p class="reflect">Does removing the bottom cost help more — or does improving the system that delivers electricity matter more? Can both be true at once?</p>
+        </div>
+      </div>
+
+      <div class="freebie" onclick="toggle(this)">
+        <div class="freebie-head">
+          <span class="freebie-icon">🍳</span>
+          <div class="freebie-title-wrap">
+            <div class="freebie-name">Kalaignar Breakfast Scheme</div>
+            <div class="freebie-tagline">Free breakfast in government primary schools — 2022</div>
+          </div>
+          <span class="freebie-toggle">▶</span>
+        </div>
+        <div class="freebie-body">
+          <div class="coin">
+            <div class="coin-side coin-intent">
+              <span class="coin-label">The intent</span>
+              Studies in TN showed significant dropout at the transition from home to school — often because children from labouring families left home without eating. A warm breakfast before classes, the evidence suggested, improved attendance and attention. Mid-day meals existed; breakfast was the missing link.
+            </div>
+            <div class="coin-side coin-tension">
+              <span class="coin-label">The tension</span>
+              Implementation quality varies by school. In some districts it runs well; in others the food is inadequate or erratic. A scheme that reaches 17 lakh children but with inconsistent quality raises the question: is universal coverage at low quality better than targeted quality at fewer schools?
+            </div>
+          </div>
+          <p class="reflect">A hungry child's first hour in school. How much does that shape the rest of the day — and the year?</p>
+        </div>
+      </div>
+
+      <div class="freebie" onclick="toggle(this)">
+        <div class="freebie-head">
+          <span class="freebie-icon">💸</span>
+          <div class="freebie-title-wrap">
+            <div class="freebie-name">Magalir Urimai Thittam — ₹1,000/month</div>
+            <div class="freebie-tagline">Direct cash to women heads of household — 2023</div>
+          </div>
+          <span class="freebie-toggle">▶</span>
+        </div>
+        <div class="freebie-body">
+          <div class="coin">
+            <div class="coin-side coin-intent">
+              <span class="coin-label">The intent</span>
+              An unconditional cash transfer to women — not tied to any behaviour, product, or program. The philosophy: women make better household expenditure decisions than any bureaucrat can predict. ₹1,000 is small but it is theirs, without conditions. It also formally recognises homemakers' economic contribution.
+            </div>
+            <div class="coin-side coin-tension">
+              <span class="coin-label">The tension</span>
+              ₹1,000 is ~₹33/day — below any meaningful poverty line. Critics call it a floor that looks like a ceiling. Others worry about fiscal pressure on a state already running high deficits. And UCC (Universal Cash Condition) programs elsewhere have shown mixed results on long-term income mobility.
+            </div>
+          </div>
+          <p class="reflect">If ₹1,000 isn't enough to transform — is it still worth giving? What does "unconditional" mean to someone who has had almost everything conditioned?</p>
+        </div>
+      </div>
+
+    </div><!-- /dmk freebies -->
+  </div><!-- /dmk block -->
+
+  <!-- ══════════════════════════════════════
+       AIADMK
+  ══════════════════════════════════════ -->
+  <div class="party-block fade-up">
+    <div class="aiadmk-bar" style="border-radius:2px;margin-bottom:20px;"></div>
+    <div class="party-header">
+      <span class="party-name">AIADMK</span>
+      <span class="party-span">Tamil Nadu · 1977–present (periodic)</span>
+    </div>
+    <p class="party-desc">AIADMK's welfare tradition — particularly under Jayalalithaa — was paternalistic in form but genuinely extensive in reach. The "Amma" branding was political; the delivery was often real. The philosophy: the state as provider, the leader as matriarch.</p>
+
+    <div class="freebie-grid">
+
+      <div class="freebie" onclick="toggle(this)">
+        <div class="freebie-head">
+          <span class="freebie-icon">🍱</span>
+          <div class="freebie-title-wrap">
+            <div class="freebie-name">Amma Canteen</div>
+            <div class="freebie-tagline">Subsidised meals at Rs 1–5 — 2013</div>
+          </div>
+          <span class="freebie-toggle">▶</span>
+        </div>
+        <div class="freebie-body">
+          <div class="coin">
+            <div class="coin-side coin-intent">
+              <span class="coin-label">The intent</span>
+              A hot, dignified meal for Rs 1 (idli) or Rs 5 (rice meals) at state-run canteens. Targeted at daily wage workers, the homeless, and anyone in between. The logic: food insecurity is acute and daily — not a quarterly problem. Remove it daily.
+            </div>
+            <div class="coin-side coin-tension">
+              <span class="coin-label">The tension</span>
+              After 2021, many canteens deteriorated significantly — understaffing, poor quality, irregular supply. The scheme was politically branded rather than institutionally rooted. When the government changed, political will to maintain it dropped. A lesson about schemes tied to personality rather than systems.
+            </div>
+          </div>
+          <p class="reflect">The same scheme that fed thousands became a ghost of itself within years. What does that say about how we design welfare — around systems or around leaders?</p>
+        </div>
+      </div>
+
+      <div class="freebie" onclick="toggle(this)">
+        <div class="freebie-head">
+          <span class="freebie-icon">💻</span>
+          <div class="freebie-title-wrap">
+            <div class="freebie-name">Free Laptops for Students</div>
+            <div class="freebie-tagline">Class XI/XII government school students — 2011</div>
+          </div>
+          <span class="freebie-toggle">▶</span>
+        </div>
+        <div class="freebie-body">
+          <div class="coin">
+            <div class="coin-side coin-intent">
+              <span class="coin-label">The intent</span>
+              Digital access was not equal. A student in a government school had no laptop; a private school student did. The scheme tried to close a hardware gap that would compound into a skills gap. By 2014, ~1.2 crore laptops had been distributed — one of the largest such programs in the world.
+            </div>
+            <div class="coin-side coin-tension">
+              <span class="coin-label">The tension</span>
+              A laptop without reliable internet, curriculum integration, or teacher training is a device — not education. Studies showed many laptops were used primarily for entertainment. The gap being addressed was hardware; the deeper gap — pedagogy, connectivity, support — was left largely untouched.
+            </div>
+          </div>
+          <p class="reflect">Does closing one gap — and only one gap — still matter? Or does a partial solution create false confidence that the problem is solved?</p>
+        </div>
+      </div>
+
+      <div class="freebie" onclick="toggle(this)">
+        <div class="freebie-head">
+          <span class="freebie-icon">🚲</span>
+          <div class="freebie-title-wrap">
+            <div class="freebie-name">Free Bicycles for Girl Students</div>
+            <div class="freebie-tagline">Class VI government school girls — 2012</div>
+          </div>
+          <span class="freebie-toggle">▶</span>
+        </div>
+        <div class="freebie-body">
+          <div class="coin">
+            <div class="coin-side coin-intent">
+              <span class="coin-label">The intent</span>
+              In rural TN, the distance between home and the nearest secondary school was a documented reason girls dropped out — more than boys, because safety and cost compounded. A bicycle halved travel time and removed the dependency on a parent or bus. Research across India shows bicycle schemes measurably raised girls' enrolment and retention.
+            </div>
+            <div class="coin-side coin-tension">
+              <span class="coin-label">The tension</span>
+              Roads aren't always safe. In many villages, a girl cycling to school alone was not socially accepted. The scheme addressed physical distance without addressing the social distance. Some families sold the bicycles. The problem was real; the solution was partially real.
+            </div>
+          </div>
+          <p class="reflect">When a scheme works in some contexts and not others — who decides if it was worth doing?</p>
+        </div>
+      </div>
+
+    </div><!-- /aiadmk freebies -->
+  </div><!-- /aiadmk block -->
+
+  <!-- ══════════════════════════════════════
+       BJP (CENTRAL)
+  ══════════════════════════════════════ -->
+  <div class="party-block fade-up">
+    <div class="bjp-bar" style="border-radius:2px;margin-bottom:20px;"></div>
+    <div class="party-header">
+      <span class="party-name">BJP</span>
+      <span class="party-span">Central Government · 2014–present</span>
+    </div>
+    <p class="party-desc">BJP's central welfare programs operate at national scale — massive in reach, often market-adjacent in design (bank accounts, insurance, cooking gas). The philosophy: welfare as infrastructure access, not direct subsidy. Bring people into formal systems rather than give them things.</p>
+
+    <div class="freebie-grid">
+
+      <div class="freebie" onclick="toggle(this)">
+        <div class="freebie-head">
+          <span class="freebie-icon">🔥</span>
+          <div class="freebie-title-wrap">
+            <div class="freebie-name">PM Ujjwala Yojana — LPG Cylinders</div>
+            <div class="freebie-tagline">Free LPG connection + cylinder to BPL households — 2016</div>
+          </div>
+          <span class="freebie-toggle">▶</span>
+        </div>
+        <div class="freebie-body">
+          <div class="coin">
+            <div class="coin-side coin-intent">
+              <span class="coin-label">The intent</span>
+              9 crore+ rural women were cooking on wood fire or cow dung — with documented health costs (indoor air pollution causes ~5 lakh deaths/year in India). The scheme provided a free connection and initial cylinder. The goal was to shift households off biomass permanently — a genuine public health intervention.
+            </div>
+            <div class="coin-side coin-tension">
+              <span class="coin-label">The tension</span>
+              After the initial free cylinder, refills cost market rate — ₹800–1,000. Many beneficiaries, unable to afford refills, returned to firewood. Refill rates dropped significantly within 2 years. A connection without affordability of use is a solved headline and an unsolved kitchen. Additionally — the cylinder and stove provided were often not suited to local cooking styles (single burner, no kadai support).
+            </div>
+          </div>
+          <!-- GAS STOVE ANECDOTE PLACEHOLDER -->
+          <div class="anecdote anecdote-placeholder">
+            <span class="anecdote-label">Anecdote · To be added</span>
+            A specific story about a household that received a 2-burner stove under a related scheme — where the decision to give 2 burners was an ideological choice (time-saving = progress) rather than something the woman asked for, or was consulted about. The single stove she had was not broken. The 2-burner was not a need she named. This section will be updated after a conversation about how to frame this without putting words in anyone's mouth.
+          </div>
+          <p class="reflect">What is the difference between a solution designed for the person — and a solution designed for the image of that person held by the designer?</p>
+        </div>
+      </div>
+
+      <div class="freebie" onclick="toggle(this)">
+        <div class="freebie-head">
+          <span class="freebie-icon">🏦</span>
+          <div class="freebie-title-wrap">
+            <div class="freebie-name">Jan Dhan Yojana — Zero-Balance Bank Accounts</div>
+            <div class="freebie-tagline">Universal banking access — 2014</div>
+          </div>
+          <span class="freebie-toggle">▶</span>
+        </div>
+        <div class="freebie-body">
+          <div class="coin">
+            <div class="coin-side coin-intent">
+              <span class="coin-label">The intent</span>
+              ~50 crore Indians had no bank account. Without one: no insurance, no credit, no formal saving, no direct government transfer possible. Jan Dhan opened accounts with no minimum balance and linked them to Aadhaar + mobile (the JAM trinity). It made direct benefit transfers possible at scale — and largely eliminated middlemen from government cash programs.
+            </div>
+            <div class="coin-side coin-tension">
+              <span class="coin-label">The tension</span>
+              A large percentage of opened accounts remained dormant for years. Access to a bank account is not the same as financial inclusion — if the nearest branch is 20km away, if digital literacy is low, if distrust of formal institutions runs deep. Critics also raise Aadhaar-linkage data-privacy concerns and exclusion errors where the system rejected genuine beneficiaries.
+            </div>
+          </div>
+          <p class="reflect">Is formal inclusion always beneficial — or can it also mean being formally visible to systems that weren't designed with you in mind?</p>
+        </div>
+      </div>
+
+      <div class="freebie" onclick="toggle(this)">
+        <div class="freebie-head">
+          <span class="freebie-icon">🌾</span>
+          <div class="freebie-title-wrap">
+            <div class="freebie-name">PM-KISAN — ₹6,000/year to Farmers</div>
+            <div class="freebie-tagline">Direct income support to small landholding farmers — 2019</div>
+          </div>
+          <span class="freebie-toggle">▶</span>
+        </div>
+        <div class="freebie-body">
+          <div class="coin">
+            <div class="coin-side coin-intent">
+              <span class="coin-label">The intent</span>
+              ₹6,000 (₹500/month) as income support — not tied to crop, market, or season. Small farmers carry massive input cost uncertainty. This was meant to provide a predictable, unconditional baseline so farmers weren't forced to take high-interest informal loans for seeds and fertiliser.
+            </div>
+            <div class="coin-side coin-tension">
+              <span class="coin-label">The tension</span>
+              ₹6,000/year against input costs that often exceed ₹50,000–₹1,00,000 is a rounding error for most farming households. Tenant farmers — who farm land they don't own, which is a large portion of India's actual farmers — were initially excluded. The scheme's design privileged land ownership over farming practice.
+            </div>
+          </div>
+          <p class="reflect">If a support payment is too small to matter economically — does it still matter politically? And is that a cynical question or a pragmatic one?</p>
+        </div>
+      </div>
+
+    </div><!-- /bjp freebies -->
+  </div><!-- /bjp block -->
+
+  <!-- ══════════════════════════════════════
+       CONGRESS (CENTRAL)
+  ══════════════════════════════════════ -->
+  <div class="party-block fade-up">
+    <div class="inc-bar" style="border-radius:2px;margin-bottom:20px;"></div>
+    <div class="party-header">
+      <span class="party-name">Congress</span>
+      <span class="party-span">Central Government · UPA I & II · 2004–2014</span>
+    </div>
+    <p class="party-desc">Congress's UPA years produced some of India's most structurally consequential welfare legislation — rights-based, often contested in implementation, but philosophically distinct: welfare as legal entitlement, not government gift.</p>
+
+    <div class="freebie-grid">
+
+      <div class="freebie" onclick="toggle(this)">
+        <div class="freebie-head">
+          <span class="freebie-icon">🏗️</span>
+          <div class="freebie-title-wrap">
+            <div class="freebie-name">MGNREGA — 100 Days Guaranteed Work</div>
+            <div class="freebie-tagline">Right to work for rural households — 2005</div>
+          </div>
+          <span class="freebie-toggle">▶</span>
+        </div>
+        <div class="freebie-body">
+          <div class="coin">
+            <div class="coin-side coin-intent">
+              <span class="coin-label">The intent</span>
+              Not a handout — a legal right to work. Any rural adult who demanded work had to be given it within 15 days or receive unemployment allowance. Designed to be demand-driven (you show up, work exists) rather than supply-driven (we decide what you get). Also served as a wage floor — MGNREGA wages raised private sector agricultural wages in many districts.
+            </div>
+            <div class="coin-side coin-tension">
+              <span class="coin-label">The tension</span>
+              Implementation was plagued by wage delays, ghost entries, low-quality work, and local corruption. In some states it ran efficiently; in others, middlemen captured most of the funds. The demand-driven model broke down where beneficiaries lacked the social power to actually demand. And critics note that it entrenches low-skill manual labour rather than building pathways out of it.
+            </div>
+          </div>
+          <p class="reflect">A "right to work" that's poorly implemented — is it still better than no right? Or does a bad right create a false sense of protection?</p>
+        </div>
+      </div>
+
+      <div class="freebie" onclick="toggle(this)">
+        <div class="freebie-head">
+          <span class="freebie-icon">🌾</span>
+          <div class="freebie-title-wrap">
+            <div class="freebie-name">National Food Security Act — Subsidised Grain</div>
+            <div class="freebie-tagline">5 kg grain/month at Rs 1–3/kg — 2013</div>
+          </div>
+          <span class="freebie-toggle">▶</span>
+        </div>
+        <div class="freebie-body">
+          <div class="coin">
+            <div class="coin-side coin-intent">
+              <span class="coin-label">The intent</span>
+              Legal right to food for 67% of India's population. At Rs 1–3/kg vs market rate of Rs 25–40/kg, it protected the bottom 800 million from food price volatility. The law made food security justiciable — you could legally challenge denial of rations. That was philosophically new.
+            </div>
+            <div class="coin-side coin-tension">
+              <span class="coin-label">The tension</span>
+              The targeting — identifying who is in the "67%" — has been persistently imperfect. Genuine beneficiaries excluded; non-eligible households included. The PDS (public distribution system) machinery it runs on is decades old in many states, with leakage rates historically cited at 40–50%. A rights law that relies on a broken delivery system.
+            </div>
+          </div>
+          <p class="reflect">A right without reliable delivery — who bears the cost of that gap?</p>
+        </div>
+      </div>
+
+      <div class="freebie" onclick="toggle(this)">
+        <div class="freebie-head">
+          <span class="freebie-icon">📚</span>
+          <div class="freebie-title-wrap">
+            <div class="freebie-name">Right to Education Act</div>
+            <div class="freebie-tagline">Free and compulsory education 6–14 — 2009</div>
+          </div>
+          <span class="freebie-toggle">▶</span>
+        </div>
+        <div class="freebie-body">
+          <div class="coin">
+            <div class="coin-side coin-intent">
+              <span class="coin-label">The intent</span>
+              No child should be out of school because of cost. Mandatory enrollment, free books, uniforms, mid-day meals — and 25% reservation of private school seats for economically weaker sections. The law tried to use private school capacity for public benefit.
+            </div>
+            <div class="coin-side coin-tension">
+              <span class="coin-label">The tension</span>
+              Being enrolled is not the same as learning. India's learning crisis — documented by ASER reports annually — shows that a large share of Class 5 students cannot read a Class 2 text. RTE brought children into classrooms; it did not automatically improve what happened there. The 25% EWS quota was resisted and inconsistently implemented by many private schools.
+            </div>
+          </div>
+          <p class="reflect">If universal enrolment is achieved without universal learning — what exactly was achieved?</p>
+        </div>
+      </div>
+
+    </div><!-- /inc freebies -->
+  </div><!-- /inc block -->
+
+  <!-- ══ CLOSING ══ -->
+  <div class="closing fade-up">
+    <h2>So — are freebies good or bad?</h2>
+    <p>That may be the wrong question. Each scheme above was trying to solve something real. Each one had a gap between intent and outcome. The gap is usually where the honest debate lives — not in whether to help, but in how, and whether the how actually reaches the who.</p>
+    <p style="margin-top:14px;">The word "freebie" flattens this. It treats a ration card and a TV as the same moral category. They aren't. And neither is every critique of them — some critiques are about delivery, some are about philosophy, and some are about who gets to decide what another person needs.</p>
+    <p style="margin-top:14px;font-size:13px;color:var(--dust2);">Notice which ones made you uncomfortable. That's usually where the real question is.</p>
+  </div>
+
+  <div class="footer">
+    <p>No verdict here · Political Self-Awareness · Pure HTML<br><a href="index.html" style="color:var(--dust2);text-decoration:none;border-bottom:1px solid var(--dust);">← Back to home</a></p>
+  </div>
+
+</div>
+
+<script>
+function toggle(el) {
+  const wasOpen = el.classList.contains('open');
+  // close all
+  document.querySelectorAll('.freebie.open').forEach(f => f.classList.remove('open'));
+  if (!wasOpen) el.classList.add('open');
+}
+
+// Fade-up on scroll
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.style.opacity = 1; e.target.style.transform = 'translateY(0)'; } });
+}, { threshold: 0.08 });
+
+document.querySelectorAll('.party-block').forEach(el => {
+  el.style.opacity = 0;
+  el.style.transform = 'translateY(20px)';
+  el.style.transition = 'opacity .5s ease, transform .5s ease';
+  obs.observe(el);
+});
+</script>
+</body>
+</html>
