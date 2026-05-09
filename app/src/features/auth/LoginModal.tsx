@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { supabase } from '../../lib/supabase'
 
-type Screen = 'signin' | 'signup'
+type Screen = 'signin' | 'signup' | 'forgot'
 
 interface Props {
   onClose: () => void
@@ -46,6 +46,18 @@ export function LoginModal({ onClose }: Props) {
     else setDone(true)
   }
 
+  async function handleForgot(e: React.FormEvent) {
+    e.preventDefault()
+    setLoading(true)
+    setError(null)
+    const { error } = await supabase.auth.resetPasswordForEmail(email, {
+      redirectTo: `${window.location.origin}/reset-password`,
+    })
+    setLoading(false)
+    if (error) setError(error.message)
+    else setDone(true)
+  }
+
   const tabs: { key: Screen; label: string }[] = [
     { key: 'signin', label: 'Sign In' },
     { key: 'signup', label: 'Sign Up' },
@@ -61,24 +73,26 @@ export function LoginModal({ onClose }: Props) {
         onClick={(e) => e.stopPropagation()}
       >
         <span className="block font-mono text-[9px] tracking-[0.28em] uppercase text-muted mb-5">
-          {screen === 'signup' ? 'Create Account' : 'Sign In'}
+          {screen === 'signup' ? 'Create Account' : screen === 'forgot' ? 'Reset Password' : 'Sign In'}
         </span>
 
-        {/* Tab bar */}
-        <div className="flex border border-dust2 mb-6">
-          {tabs.map(t => (
-            <button
-              key={t.key}
-              type="button"
-              onClick={() => switchScreen(t.key)}
-              className={`flex-1 py-1.5 font-mono text-[10px] tracking-widest uppercase transition-colors ${
-                screen === t.key ? 'bg-ink text-paper' : 'text-muted hover:text-ink'
-              }`}
-            >
-              {t.label}
-            </button>
-          ))}
-        </div>
+        {/* Tab bar — only on signin/signup */}
+        {screen !== 'forgot' && (
+          <div className="flex border border-dust2 mb-6">
+            {tabs.map(t => (
+              <button
+                key={t.key}
+                type="button"
+                onClick={() => switchScreen(t.key)}
+                className={`flex-1 py-1.5 font-mono text-[10px] tracking-widest uppercase transition-colors ${
+                  screen === t.key ? 'bg-ink text-paper' : 'text-muted hover:text-ink'
+                }`}
+              >
+                {t.label}
+              </button>
+            ))}
+          </div>
+        )}
 
         {/* ── Sign In ── */}
         {screen === 'signin' && (
@@ -100,6 +114,11 @@ export function LoginModal({ onClose }: Props) {
             <p className="text-center text-muted text-xs mt-4">
               No account?{' '}
               <button type="button" onClick={() => switchScreen('signup')} className="text-ink underline underline-offset-2">Sign up free</button>
+            </p>
+            <p className="text-center mt-2">
+              <button type="button" onClick={() => switchScreen('forgot')} className="text-muted text-xs hover:text-ink underline underline-offset-2">
+                Forgot password?
+              </button>
             </p>
           </form>
         )}
@@ -141,6 +160,40 @@ export function LoginModal({ onClose }: Props) {
               <p className="text-center text-muted text-xs mt-4">
                 Already have one?{' '}
                 <button type="button" onClick={() => switchScreen('signin')} className="text-ink underline underline-offset-2">Sign in</button>
+              </p>
+            </form>
+          )
+        )}
+
+        {/* ── Forgot Password ── */}
+        {screen === 'forgot' && (
+          done ? (
+            <div>
+              <p className="font-display text-lg mb-3">Check your inbox</p>
+              <p className="text-muted text-sm mb-4">
+                A reset link was sent to <strong className="text-ink">{email}</strong>. Click it to set a new password.
+              </p>
+              <button type="button" onClick={() => { setDone(false); switchScreen('signin') }}
+                className="w-full bg-ink text-paper font-mono text-xs tracking-widest uppercase py-2.5 px-4 hover:bg-accent transition-colors"
+              >
+                Back to Sign In
+              </button>
+            </div>
+          ) : (
+            <form onSubmit={handleForgot}>
+              <p className="text-muted text-sm mb-4">Enter your email and we'll send a reset link.</p>
+              <input type="email" placeholder="your@email.com" value={email}
+                onChange={(e) => setEmail(e.target.value)} required
+                className="w-full border border-dust2 bg-paper2 px-3 py-2 text-sm font-mono mb-3 outline-none focus:border-ink"
+              />
+              {error && <p className="text-danger text-sm mb-3">{error}</p>}
+              <button type="submit" disabled={loading}
+                className="w-full bg-ink text-paper font-mono text-xs tracking-widest uppercase py-2.5 px-4 hover:bg-accent transition-colors disabled:opacity-50"
+              >
+                {loading ? 'Sending…' : 'Send Reset Link'}
+              </button>
+              <p className="text-center text-muted text-xs mt-4">
+                <button type="button" onClick={() => switchScreen('signin')} className="underline underline-offset-2 hover:text-ink">Back to sign in</button>
               </p>
             </form>
           )

@@ -1,48 +1,48 @@
 -- ─────────────────────────────────────────────────────────────────────────────
--- Seed: admin user (mejella@gmail.com / 123456) + two seeded articles
+-- Seed: admin (madhangokulc@gmail.com) + reviewer (mejella@gmail.com) + articles
 -- ─────────────────────────────────────────────────────────────────────────────
 
--- ── 1. Admin user ─────────────────────────────────────────────────────────────
+-- ── 1a. Admin user: madhangokulc@gmail.com / MAD@0809 ─────────────────────────
 INSERT INTO auth.users (
-  id,
-  instance_id,
-  aud,
-  role,
-  email,
-  encrypted_password,
-  email_confirmed_at,
-  raw_app_meta_data,
-  raw_user_meta_data,
-  is_super_admin,
-  created_at,
-  updated_at,
-  confirmation_token,
-  recovery_token,
-  email_change_token_new,
-  email_change,
-  email_change_token_current,
-  is_sso_user
+  id, instance_id, aud, role, email, encrypted_password,
+  email_confirmed_at, raw_app_meta_data, raw_user_meta_data,
+  is_super_admin, created_at, updated_at,
+  confirmation_token, recovery_token, email_change_token_new,
+  email_change, email_change_token_current, is_sso_user
+) VALUES (
+  'f1a2b3c4-d5e6-7890-abcd-ef1234567891',
+  '00000000-0000-0000-0000-000000000000',
+  'authenticated', 'authenticated', 'madhangokulc@gmail.com',
+  crypt('MAD@0809', gen_salt('bf')),
+  now(), '{"provider":"email","providers":["email"]}',
+  '{"full_name":"Madhan Gokul"}',
+  false, now(), now(), '', '', '', '', '', false
+) ON CONFLICT (id) DO NOTHING;
+
+INSERT INTO public.profiles (id, username, role)
+VALUES ('f1a2b3c4-d5e6-7890-abcd-ef1234567891', 'madhan', 'admin')
+ON CONFLICT (id) DO UPDATE SET role = 'admin', username = EXCLUDED.username;
+
+-- ── 1b. Reviewer user: mejella@gmail.com / 123456 ─────────────────────────────
+INSERT INTO auth.users (
+  id, instance_id, aud, role, email, encrypted_password,
+  email_confirmed_at, raw_app_meta_data, raw_user_meta_data,
+  is_super_admin, created_at, updated_at,
+  confirmation_token, recovery_token, email_change_token_new,
+  email_change, email_change_token_current, is_sso_user
 ) VALUES (
   'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
   '00000000-0000-0000-0000-000000000000',
-  'authenticated',
-  'authenticated',
-  'mejella@gmail.com',
+  'authenticated', 'authenticated', 'mejella@gmail.com',
   crypt('123456', gen_salt('bf')),
-  now(),
-  '{"provider":"email","providers":["email"]}',
-  '{}',
-  false,
-  now(),
-  now(),
-  '', '', '', '', '',
-  false
+  now(), '{"provider":"email","providers":["email"]}',
+  '{"full_name":"Mejella"}',
+  false, now(), now(), '', '', '', '', '', false
 ) ON CONFLICT (id) DO NOTHING;
 
--- Trigger handle_new_user creates the profile as 'reader'; override to admin
 INSERT INTO public.profiles (id, username, role)
-VALUES ('a1b2c3d4-e5f6-7890-abcd-ef1234567890', 'mejella', 'admin')
-ON CONFLICT (id) DO UPDATE SET role = 'admin', username = EXCLUDED.username;
+VALUES ('a1b2c3d4-e5f6-7890-abcd-ef1234567890', 'mejella', 'reviewer')
+ON CONFLICT (id) DO UPDATE SET role = 'reviewer', username = EXCLUDED.username;
 
 -- ── 2. Article: Dravidianism ───────────────────────────────────────────────────
 INSERT INTO public.articles (id, slug, title, subtitle, current_version, published, created_by)
@@ -53,7 +53,7 @@ VALUES (
   'Not the politics. Not the parties. The 100-year philosophy that most people have an opinion about — but haven''t quite examined.',
   1,
   true,
-  'a1b2c3d4-e5f6-7890-abcd-ef1234567890'
+  'f1a2b3c4-d5e6-7890-abcd-ef1234567891'
 ) ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.article_versions (article_id, version_number, content, created_by)
@@ -566,24 +566,24 @@ VALUES (
 </div><!-- /wrap -->
 
 $drav_body$,
-  'a1b2c3d4-e5f6-7890-abcd-ef1234567890'
+  'f1a2b3c4-d5e6-7890-abcd-ef1234567891'
 ) ON CONFLICT (article_id, version_number) DO NOTHING;
 
 -- ── 3. Article: Tamil Nadu Governance Audit ───────────────────────────────────
 INSERT INTO public.articles (id, slug, title, subtitle, current_version, published, created_by)
 VALUES (
-  'c3d4e5f6-a7b8-9012-cdef-123456789012',
+  'e5f6a7b8-c9d0-1234-efab-567890123456',
   'tn-governance-audit',
   'Tamil Nadu — Read the Full Record',
   'Factual · Cited · Both-Sided · 2024–25. Real governance flaws and the real hidden costs of BJP alignment.',
   1,
   true,
-  'a1b2c3d4-e5f6-7890-abcd-ef1234567890'
+  'f1a2b3c4-d5e6-7890-abcd-ef1234567891'
 ) ON CONFLICT (slug) DO NOTHING;
 
 INSERT INTO public.article_versions (article_id, version_number, content, created_by)
 VALUES (
-  'c3d4e5f6-a7b8-9012-cdef-123456789012',
+  'e5f6a7b8-c9d0-1234-efab-567890123456',
   1,
   $tn_body$<div data-theme="dark">
 <div id="prog"></div>
@@ -1564,5 +1564,5 @@ VALUES (
 
 
 </div>$tn_body$,
-  'a1b2c3d4-e5f6-7890-abcd-ef1234567890'
+  'f1a2b3c4-d5e6-7890-abcd-ef1234567891'
 ) ON CONFLICT (article_id, version_number) DO NOTHING;

@@ -8,6 +8,7 @@ import { VersionHistory } from './features/articles/VersionHistory'
 import { AdminPanel } from './features/admin/AdminPanel'
 import { ComponentExplorer } from './pages/ComponentExplorer'
 import { LegacyView } from './pages/LegacyView'
+import { ResetPassword } from './pages/ResetPassword'
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -32,6 +33,8 @@ export default function App() {
               <Route path="components" element={<ComponentExplorer />} />
               <Route path="legacy/:slug" element={<LegacyView />} />
             </Route>
+            {/* Reset password — outside Layout so no header chrome needed */}
+            <Route path="reset-password" element={<ResetPassword />} />
           </Routes>
         </BrowserRouter>
       </AuthProvider>
