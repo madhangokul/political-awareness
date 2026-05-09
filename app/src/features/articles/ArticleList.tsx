@@ -108,13 +108,12 @@ export function ArticleList() {
         </p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
           {[
-            { slug: 'dravidianism-awareness', label: 'What is Dravidianism, actually?' },
-            { slug: 'tn-cited',               label: 'Tamil Nadu — Read the Full Record' },
-            { slug: 'tn-flaws-alignment-costs', label: 'TN Flaws & Alignment Costs' },
-          ].map(({ slug, label }) => (
-            <Link
-              key={slug}
-              to={`/legacy/${slug}`}
+            { file: 'dravidianism-awareness.html', label: 'What is Dravidianism, actually?' },
+            { file: 'tn-cited.html',               label: 'Tamil Nadu — Read the Full Record' },
+          ].map(({ file, label }) => (
+            <a
+              key={file}
+              href={`/legacy/${file}`}
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
@@ -140,7 +139,7 @@ export function ArticleList() {
                 HTML
               </span>
               {label} →
-            </Link>
+            </a>
           ))}
         </div>
       </div>
