@@ -1,8 +1,41 @@
 import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
+import { RichTable, type ColDef } from '../components/RichTable'
+import { CitationRef } from '../components/CitationRef'
+import { Footnotes } from '../components/Footnotes'
 
 const MONO: React.CSSProperties = { fontFamily: "'Space Mono', monospace" }
 const INTER: React.CSSProperties = { fontFamily: 'Inter, system-ui, sans-serif' }
+
+// ── Rich table demo data ──────────────────────────────────────────────────
+type StateRow = {
+  state: string; sdg: number; debt: number; trend: number[]
+  dev: number; status: string
+}
+const TABLE_COLS: ColDef<StateRow>[] = [
+  { key: 'state',  label: 'State',        type: 'text',      sortable: true },
+  { key: 'sdg',    label: 'SDG Rank',     type: 'number',    sortable: true },
+  { key: 'debt',   label: 'Debt / GSDP',  type: 'barfill',   sortable: true, max: 50 },
+  { key: 'trend',  label: 'NITI Trend',   type: 'sparkline' },
+  { key: 'dev',    label: 'Devolution %', type: 'number',    sortable: true },
+  { key: 'status', label: 'Status',       type: 'badge',     sortable: true,
+    badgeMap: {
+      Strong: { label: 'Strong', color: 'var(--teal)' },
+      Watch:  { label: 'Watch',  color: '#D4810A'     },
+      Weak:   { label: 'Weak',   color: 'var(--red)'  },
+    },
+  },
+]
+const TABLE_DATA: StateRow[] = [
+  { state: 'Kerala',        sdg: 2,  debt: 34.1, trend: [70,71,72,74,76,76], dev: 1.9,  status: 'Strong' },
+  { state: 'Tamil Nadu',    sdg: 6,  debt: 28.8, trend: [68,70,71,71,72,73], dev: 4.1,  status: 'Watch'  },
+  { state: 'Gujarat',       sdg: 10, debt: 22.3, trend: [66,67,69,70,70,70], dev: 6.3,  status: 'Watch'  },
+  { state: 'Maharashtra',   sdg: 13, debt: 19.8, trend: [64,65,67,68,67,68], dev: 6.3,  status: 'Watch'  },
+  { state: 'Telangana',     sdg: 11, debt: 28.9, trend: [62,63,65,66,67,67], dev: 2.5,  status: 'Watch'  },
+  { state: 'Rajasthan',     sdg: 25, debt: 36.1, trend: [54,55,55,56,56,57], dev: 5.8,  status: 'Weak'   },
+  { state: 'Uttar Pradesh', sdg: 28, debt: 33.5, trend: [50,51,52,53,53,54], dev: 17.9, status: 'Weak'   },
+  { state: 'Bihar',         sdg: 36, debt: 38.2, trend: [48,49,50,51,51,52], dev: 10.1, status: 'Weak'   },
+]
 
 const sectionHead: React.CSSProperties = {
   display: 'flex', alignItems: 'baseline', gap: 16,
@@ -180,39 +213,7 @@ export function ComponentExplorer() {
           <span style={sectionNum}>03</span>
           <span style={sectionTitle}>Data Table</span>
         </div>
-        <div style={{ overflowX: 'auto' }}>
-          <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 13.5 }}>
-            <thead>
-              <tr>
-                {['State', 'SDG Rank', 'Debt / GSDP', 'NITI Score', 'Devolution Received'].map(h => (
-                  <th key={h} style={{ ...MONO, fontSize: 8, letterSpacing: '0.15em', textTransform: 'uppercase', background: 'var(--ink)', color: 'var(--paper)', padding: '10px 16px', textAlign: 'left', whiteSpace: 'nowrap' }}>{h}</th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {([
-                { state: 'Kerala',         sdg: '2',  debt: '34.1%', niti: '76', dev: '1.9%' },
-                { state: 'Tamil Nadu',     sdg: '6',  debt: '28.8%', niti: '73', dev: '4.1%' },
-                { state: 'Gujarat',        sdg: '10', debt: '22.3%', niti: '70', dev: '6.3%' },
-                { state: 'Maharashtra',    sdg: '13', debt: '19.8%', niti: '68', dev: '6.3%' },
-                { state: 'Bihar',          sdg: '36', debt: '38.2%', niti: '52', dev: '10.1%' },
-                { state: 'Uttar Pradesh',  sdg: '28', debt: '33.5%', niti: '54', dev: '17.9%' },
-              ] as { state: string; sdg: string; debt: string; niti: string; dev: string }[]).map((row, i) => {
-                const bg = i % 2 === 0 ? 'var(--paper2)' : 'var(--paper)'
-                const td: React.CSSProperties = { padding: '10px 16px', borderBottom: '1px solid var(--dust)', background: bg, color: 'var(--muted)' }
-                return (
-                  <tr key={row.state}>
-                    <td style={{ ...td, fontWeight: 600, color: 'var(--ink)' }}>{row.state}</td>
-                    <td style={td}>{row.sdg}</td>
-                    <td style={{ ...td, ...MONO, fontSize: 12 }}>{row.debt}</td>
-                    <td style={td}>{row.niti}</td>
-                    <td style={{ ...td, ...MONO, fontSize: 12 }}>{row.dev}</td>
-                  </tr>
-                )
-              })}
-            </tbody>
-          </table>
-        </div>
+        <RichTable cols={TABLE_COLS} rows={TABLE_DATA} pageSize={5} />
       </section>
 
       {/* ── 04 CHARTS ── */}
@@ -367,6 +368,59 @@ export function ComponentExplorer() {
               <div key={`b-${i}`} style={{ padding: '10px 20px', background: i % 2 === 0 ? 'var(--paper3)' : 'var(--paper2)', fontSize: 13.5, color: 'var(--muted)', borderBottom: '1px solid var(--dust)' }}>{b}</div>
             </>
           ))}
+        </div>
+      </section>
+
+      {/* ── 10 CITATIONS & REFERENCES ── */}
+      <section>
+        <div style={sectionHead}>
+          <span style={sectionNum}>10</span>
+          <span style={sectionTitle}>Citations &amp; References</span>
+        </div>
+        <div style={{ maxWidth: 680 }}>
+          {/* System description */}
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 3, marginBottom: 32 }}>
+            {([
+              { icon: '①', label: 'Inline anchor', desc: '<CitationRef n={1} /> — superscript that scrolls to footnote and flashes it.' },
+              { icon: '↑', label: 'Back-link',     desc: 'Each footnote has a ↑ button that scrolls back to the citation and flashes the superscript.' },
+              { icon: '✦', label: 'Flash pulse',   desc: 'A brief amber pulse on both ends confirms the navigation — no manual search.' },
+              { icon: '→', label: 'Source link',   desc: 'Optional [source →] opens the primary source in a new tab; never disrupts reading flow.' },
+            ] as { icon: string; desc: string; label: string }[]).map(({ icon, label, desc }) => (
+              <div key={label} style={{ background: 'var(--paper2)', border: '1px solid var(--dust)', padding: '16px 18px' }}>
+                <div style={{ ...MONO, fontSize: 18, color: 'var(--accent)', marginBottom: 8, lineHeight: 1 }}>{icon}</div>
+                <div style={{ ...MONO, fontSize: 8, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--muted)', marginBottom: 6 }}>{label}</div>
+                <p style={{ fontSize: 12.5, color: 'var(--muted)', lineHeight: 1.6, margin: 0 }}>{desc}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* Live demo */}
+          <div style={{ background: 'var(--paper2)', border: '1px solid var(--dust)', padding: '28px 28px 24px', borderRadius: 2 }}>
+            <span style={{ ...MONO, display: 'block', fontSize: 8, letterSpacing: '0.25em', textTransform: 'uppercase', color: 'var(--muted)', marginBottom: 20 }}>
+              Live demo — click a citation number
+            </span>
+            <p style={{ fontFamily: 'Literata, Georgia, serif', fontSize: 15.5, lineHeight: 1.8, color: 'var(--ink)', margin: '0 0 16px' }}>
+              Tamil Nadu's fiscal deficit has widened consistently since 2015.<CitationRef n={1} /> The
+              debt-to-GSDP ratio reached 28.8% in 2023–24,<CitationRef n={2} /> well above the FRBM
+              target of 25%. At the same time, TASMAC contributed ₹44,000 crore to state
+              revenues<CitationRef n={3} /> — roughly 15% of own-tax revenue — creating a structural
+              incentive misalignment on alcohol policy reform.
+            </p>
+            <p style={{ fontFamily: 'Literata, Georgia, serif', fontSize: 15.5, lineHeight: 1.8, color: 'var(--ink)', margin: 0 }}>
+              Despite this, Tamil Nadu ranks 6th nationally on the NITI Aayog SDG Index<CitationRef n={4} /> and
+              leads most large states on health and education outcomes.
+            </p>
+
+            <Footnotes
+              title="References"
+              items={[
+                { n: 1, text: 'Tamil Nadu Budget Speech 2024–25, Government of Tamil Nadu Finance Department.', url: 'https://finance.tn.gov.in' },
+                { n: 2, text: 'RBI State Finances: A Study of Budgets 2024–25. Table 2.3: Debt-GSDP Ratios.', url: 'https://rbi.org.in' },
+                { n: 3, text: 'TASMAC Annual Report 2023–24. Gross revenue including excise duty and sales proceeds.' },
+                { n: 4, text: 'NITI Aayog SDG India Index 2023–24. Tamil Nadu Score: 73/100. Rank: 6.', url: 'https://sdgindiaindex.niti.gov.in' },
+              ]}
+            />
+          </div>
         </div>
       </section>
 

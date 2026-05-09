@@ -127,6 +127,96 @@ body::before {
   padding: 44px 0 28px;
 }
 
+/* ── Notification sheet (mobile bottom sheet) ───────────────────────────────── */
+@keyframes notif-backdrop-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes notif-sheet-in {
+  from { transform: translateY(100%); }
+  to   { transform: translateY(0); }
+}
+.notif-backdrop { animation: notif-backdrop-in 0.18s ease both; }
+.notif-sheet    { animation: notif-sheet-in 0.32s cubic-bezier(0.32, 0.72, 0, 1) both; }
+
+/* ── Citation refs (inline superscript) ──────────────────────────────────── */
+.cite-ref {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  color: var(--accent);
+  text-decoration: none;
+  padding: 0 1px;
+  border-bottom: 1px dotted var(--accent);
+  transition: color 0.15s;
+  cursor: pointer;
+}
+.cite-ref:hover { color: var(--accent2); border-bottom-color: var(--accent2); }
+
+@keyframes cite-flash {
+  0%, 100% { background: transparent; }
+  30%, 70%  { background: rgba(212,129,10,0.18); border-radius: 2px; }
+}
+.cite-highlight { animation: cite-flash 1s ease; }
+.fn-highlight   { animation: cite-flash 1s ease; }
+
+/* ── Footnotes section ───────────────────────────────────────────────────── */
+.footnotes-section {
+  margin-top: 52px;
+  padding-top: 20px;
+  border-top: 1px solid var(--dust);
+}
+.footnotes-header {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 14px;
+}
+.footnotes-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.footnote-item {
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+.fn-back-btn {
+  font-family: 'Space Mono', monospace;
+  font-size: 12px;
+  color: var(--accent);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  flex-shrink: 0;
+  line-height: 1;
+  transition: transform 0.15s;
+}
+.fn-back-btn:hover { transform: translateY(-2px); }
+.fn-text { flex: 1; }
+.fn-n {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  color: var(--accent);
+  margin-right: 2px;
+}
+.fn-link {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  color: var(--accent);
+  text-decoration: none;
+}
+.fn-link:hover { text-decoration: underline; }
+
 /* ── ComponentExplorer: stat callout grid ───────────────────────────────────── */
 .stat-grid {
   display: grid;
